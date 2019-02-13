@@ -1,0 +1,254 @@
+
+/*=============================================
+=           08. Shop            =
+=============================================*/
+
+.shop-header{
+    .sort-by-dropdown{
+        p{
+            font-size: 14px;
+            color: #232323;
+            font-weight: 400;
+        }
+    }
+    .nice-select{
+        border-radius: 0;
+        .list{
+            border-radius: 0;
+            right: 0;
+            left: auto;
+        }
+    }
+    p{
+        &.shop-header-title{
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 500;
+            color: #1e1e1e;
+        }
+
+        &.result-show-message{
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    .view-mode-icons{
+        a{
+            font-size: 24px;
+            margin-right: 15px;
+            color: #aaaaaa;
+
+            &.active{
+                color: $theme-color;
+            }
+
+            &:hover{
+                color: $hover-color;
+            }
+        }
+    }
+}
+
+
+.shop-product-wrap{
+    margin-bottom: -50px;
+    .ptk-product{
+        margin-bottom: 50px;
+    }
+}
+
+
+     
+    /*----------  Shop product grid list switcher style  ----------*/
+    
+    .shop-product-wrap {
+        &.grid {
+            .shop-list-view-product {
+                display: none;
+            }
+            .shop-grid-view-product{
+                animation-name: zoomIn;
+                animation-duration: 1s;
+            }
+        }
+    
+        &.list {
+            .shop-grid-view-product {
+                display: none;
+            }
+            .shop-list-view-product{
+                animation-name: fadeInRight;
+                animation-duration: 1s;
+            }
+        }
+    }
+
+    
+    .shop-product-wrap.list {
+    
+        [class*="col"],
+        [class*="col-"] {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 0 100%;
+            flex: 1 0 100%;
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    .shop-list-view-product{
+        display: flex;
+        justify-content: start;
+
+        @media #{$large-mobile}{
+            flex-direction: column;
+        }
+
+        .image{
+            flex-basis: 330px; 
+            margin-right: 15px; 
+            margin-bottom: 0; 
+
+            @media #{$desktop-device}{
+                flex-basis: 350px;
+            }
+
+            @media #{$tablet-device}{
+                flex-basis: 450px; 
+
+            }
+        }
+
+        .rating{
+            position: relative;
+            visibility: visible;
+            opacity: 1;
+            margin-bottom: 20px;
+        }
+
+        .content{
+
+            margin-top: 30px;
+            flex-basis: 100%;
+
+            @media #{$large-mobile}{
+                margin-top: 20px;
+            }
+
+            p{
+                &.product-title{
+                    a{
+
+                        font-size: 16px;
+                    }
+                }
+                &.product-price{
+                    margin-bottom: 20px;
+                    span{
+                        &.main-price{
+                            
+                            font-size: 22px;
+                            font-weight: 400;
+                            color: #cea45f;
+                            
+                        }
+                        &.discounted{
+                            font-size: 18px;
+                            line-height: 18px;
+                            color: #999999;
+                            padding-right: 5px;
+                            text-decoration: line-through;
+                        }
+                        &.discounted-price{
+                            font-size: 22px;
+                            font-weight: 400;
+                            color: #cea45f; 
+                        }
+                    }
+                }
+
+                &.product-description{
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: #727272;
+                    font-weight: 400;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .hover-icons{
+                a{
+                    display: inline-block;
+                    width: 35px;
+                    height: 35px;
+                    background-color: $white;
+                    border-radius: 50%;
+                    text-align: center;
+                    font-size: 14px; 
+                    border: 2px solid $theme-color; 
+                    i.lnr{
+                        line-height: 35px;
+                    }
+
+                    &:hover{
+                        background-color: $hover-color;
+                        color: $white;
+                        border-color: $theme-color;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    
+    /*----------  pagination  ----------*/
+    
+    .pagination-container{
+        border-bottom: 1px solid #eeeeee;
+        p{
+            &.show-result-text{
+                font-size: 14px;
+                color: #232323;
+                font-weight: 400;
+            }
+        }
+
+        .pagination-content{
+            ul{
+                li{
+                    display: inline-block;
+                    a{
+                        display: block;
+                        font-size: 14px;
+                        line-height: 16px;
+                        font-weight: 400;
+                        color: #232323;
+                        margin: 0 15px;
+
+                        &.active{
+                            font-size: 20px;
+                            color: $theme-color;
+                        }
+
+                        &:hover{
+                            color: $hover-color;
+                        }
+                    }
+
+                    a{
+                        &:last-child{
+                            margin-right: 0;
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+/*=====  End of 08. Shop  ======*/
+

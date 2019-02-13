@@ -1,0 +1,360 @@
+
+/*=============================================
+=            21. Footer            =
+=============================================*/
+
+
+/*----------  home two style  ----------*/
+
+.home-two-wrapper{
+    .footer-container{
+        
+            a{
+                &:hover{
+                    color: $hover-color-2;
+                }
+            }   
+            button{
+                &:hover{
+                    color: $hover-color-2;
+                }
+            }   
+
+            .social-link{
+                ul{
+                    li{
+                        a{
+                            &:hover{
+                                color: $hover-color-2;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .navigation-container{
+                ul{
+                    li{
+                        a{
+                            &:hover{
+                                color: $hover-color-2;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .app-download-area{
+                a{
+                    &:hover{
+                        color: $white;
+                    }
+                }
+            }
+
+
+        
+    }
+
+    .copyright-section{
+        p{
+            &.copyright-text{
+                color: #999;
+                a{
+                    &:hover{
+                        color: $hover-color-2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*----------  home three style  ----------*/
+
+.home-three-wrapper{
+    .footer-container{
+        
+        a{
+            &:hover{
+                color: $hover-color-3;
+            }
+        }   
+        button{
+            &:hover{
+                color: $hover-color-3;
+            }
+        }   
+
+        .social-link{
+            ul{
+                li{
+                    a{
+                        &:hover{
+                            color: $hover-color-3;
+                        }
+                    }
+                }
+            }
+        }
+
+        .navigation-container{
+            ul{
+                li{
+                    a{
+                        &:hover{
+                            color: $hover-color-3;
+                        }
+                    }
+                }
+            }
+        }
+
+        .app-download-area{
+            a{
+                &:hover{
+                    color: $white;
+                }
+            }
+        }
+    
+}
+
+.copyright-section{
+    p{
+        &.copyright-text{
+            color: #999;
+            a{
+                &:hover{
+                    color: $hover-color-3;
+                }
+            }
+        }
+    }
+}
+}
+
+.footer-container{
+    background-color: #1e1e1e;
+}
+
+.single-footer{
+    h3.footer-title{
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #fff;
+        text-transform: capitalize;
+        letter-spacing: .02em;
+        font-family: $font-family-name;
+        margin-bottom: 10px;
+    }
+
+    p{
+        color: #999;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: .02em;
+        line-height: 24px;
+
+    }
+
+    ul{
+        li{
+            a{
+                font-size: 14px;
+                line-height: 20px;
+                margin-bottom: 15px;
+                display: block;
+                position: relative;
+                font-weight: 400;
+                color: #999;
+
+                
+
+                &:hover{
+                    color: $hover-color;
+                    padding-left: 10px;
+                }
+            }
+
+            &:last-child{
+                a{
+                    margin-bottom: 0;
+                }
+                
+            }
+        }
+    }
+}
+
+
+/*----------  Newsletter form  ----------*/
+
+.newsletter-form{
+    position: relative;
+    border-bottom: 1px solid #434343;
+    padding-right: 30px;
+
+    input, button{
+        background: none;
+        border: none;
+    }
+    input{
+        width: 100%;
+        padding: 10px;
+        color: #999;
+    }
+    button{
+        position: absolute;
+        color: #a9a8a8; 
+        top: 50%;
+        margin-top: -15px;
+        right: 0;
+        font-size: 24px;
+
+        &:hover{
+            color: $hover-color;
+        }
+    }
+}
+
+
+
+/*----------  Mailchimp alerts  ----------*/
+
+.mailchimp-alerts{
+    color: #ffffff;
+    a{
+        &:hover{
+            color: $hover-color;
+        }
+    }
+}
+
+
+/*----------  Footer social link container    ----------*/
+
+.footer-social-link-container{
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+
+    span.title{
+        font-size: 14px;
+        line-height: 16px;
+        color: #fff;
+        font-weight: 400;
+        margin-right: 10px;
+    }
+
+    .app-download-area{
+        span{
+            &.title{
+
+                @media #{$extra-small-mobile}{
+                    display: block;
+                    margin-bottom: 15px;
+                }
+                
+            }
+        }
+    }
+
+    a.app-download-btn{
+        font-size: 13px;
+        color: #fff;
+        padding: 7px 15px;
+        border-radius: 2px;
+        margin-right: 10px;
+        display: inline-block;
+        position: relative;
+        font-weight: 400;
+
+        @media #{$extra-small-mobile}{
+            
+        }
+
+        &.apple-store{
+            background: #434343;
+        }
+
+        &.google-play{
+            background: #558000;
+        }
+
+        i.fa{
+            padding-right: 5px;
+        }
+    }
+
+    .social-link{
+        ul{
+            display: inline-block;
+            li{
+                display: inline-block;
+                padding-right: 10px;
+                a{
+                    display: block;
+                    color: #999; 
+                    font-size: 16px;
+                    line-height: 16px;
+
+                    &:hover{
+                        color: $hover-color;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+
+/*----------  Footer navigation  ----------*/
+
+.footer-bottom-navigation{
+    .navigation-container{
+        ul{
+            li{
+                display: inline-block;
+                a{
+                    color: #999;
+                    font-size: 14px;
+                    line-height: 24px;
+                    letter-spacing: .02em;
+
+                    &:hover{
+                       color:  $hover-color;
+                    }
+                }
+                span{
+                    &.separator{
+                        color: #999;
+                        padding: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/*----------  Copyright section  ----------*/
+
+.copyright-section{
+    p{
+        &.copyright-text{
+            color: #999;
+            a{
+                &:hover{
+                    color: $hover-color;
+                }
+            }
+        }
+    }
+}
+/*=====  End of 21. Footer  ======*/
+

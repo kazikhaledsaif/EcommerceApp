@@ -1,0 +1,769 @@
+
+/*=============================================
+=           04. Hero            =
+=============================================*/
+
+
+/*=============================================
+=            home two style            =
+=============================================*/
+
+.home-two-wrapper{
+    .hero-slider-one{
+        .hero-slider-item{
+            padding: 0;
+            height: 450px;
+
+            @media #{$large-mobile}{
+                height: 400px;
+            }
+            @media #{$small-mobile}{
+                height: 400px;
+            }
+ 
+            .slider-content{
+                width: 70%;
+                padding-left: 30px; 
+
+                @media #{$large-mobile}{
+                    width: 90%;
+                }
+                @media #{$extra-small-mobile}{
+                    width: 100%;
+                }
+                p{
+                    width: 100%;
+                    font-size: 22px;
+                    line-height: 30px;
+                    color: #727272;
+                    font-weight: 300;
+                }
+
+                h1{
+                    font-size: 80px;
+                    line-height: 90px;
+                    color: $theme-color-2;
+
+                    @media #{$small-mobile}{
+                        font-size: 60px;
+                        line-height: 60px;
+                    }
+
+                    span{
+                        font-size: 50px;
+                        line-height: 60px;
+                        @media #{$small-mobile}{
+                            font-size: 40px;
+                            line-height: 40px;
+                        }
+                    }
+                }
+
+                a{
+                    &:hover{
+                        background-color: $hover-color-2;
+                    }
+                }
+            }
+        }
+
+        &:hover{
+            .slick-arrow{
+                &.slick-prev{
+                    left: 0;
+                }
+                &.slick-next{
+                    right: 0;
+                }
+            }
+        }
+
+        .slick-arrow{
+            @media #{$large-mobile}{
+                display: none !important;
+            }
+            background-color: #e3e3e3;
+            color: #ffffff;
+            &:hover{
+                background-color: $hover-color-2;
+                color: $white;
+                border-color: $hover-color-2;
+            }
+        }
+
+        .slick-dots{
+            li{
+                &.slick-active{
+                    button{
+                        border-color: $theme-color-2;
+                        
+                    }
+                }
+
+                button{
+                    background-color: #ffffff;
+                    &:hover{
+                        border-color: $hover-color-2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*=====  End of home two style  ======*/
+
+
+
+/*=============================================
+=            home three style            =
+=============================================*/
+
+.home-three-wrapper{
+    .hero-slider-one{
+        
+        .hero-slider-item{
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 650px; 
+ 
+            @media #{$laptop-device}{
+                height: 550px;
+            }
+            @media #{$desktop-device}{
+                height: 550px;
+            }
+            @media #{$tablet-device}{
+                height: 450px; 
+            }
+            @media #{$large-mobile}{
+                height: 350px;  
+            }
+            @media #{$small-mobile}{
+                height: 350px; 
+                background-position-x: 30%;
+            }
+        }
+
+        .slider-content{
+            padding-left: 0;
+            width: 50%;
+            @media #{$tablet-device}{
+                padding-top: 0px;
+                width: 70%;
+            }
+            @media #{$large-mobile}{
+                padding-top: 0px;
+                width: 70%;
+            }
+            @media #{$large-mobile}{
+                padding-top: 0px;
+                width: 80%;
+            }
+            @media #{$extra-small-mobile}{
+                padding-top: 0px;
+                width: 100%;
+            }
+            p{
+                font-size: 18px;
+                line-height: 18px;
+                color: $theme-color-3;
+                font-weight: 500;
+                width: 100%;
+                margin-bottom: 35px;
+                text-transform: uppercase;
+
+                @media #{$large-mobile}{
+                    margin-bottom: 25px;
+                }
+            } 
+            h1{
+                font-size: 44px;
+                line-height: 48px;
+                font-weight: 500;
+                font-family: $font-family-name;
+                color: #232323;
+                margin-bottom: 35px;
+
+
+
+                @media #{$tablet-device}{
+                    font-size: 34px;
+                    line-height: 40px;
+                }
+                @media #{$large-mobile}{
+                    font-size: 34px;
+                    line-height: 40px;
+                    margin-bottom: 25px;
+                }
+                @media #{$extra-small-mobile}{
+                    font-size: 30px;
+                    line-height: 40px;
+                }
+            }
+
+            a{
+                background-color: $theme-color-3;
+                border-color: $theme-color-3;
+                color: $white;
+                border: 1px solid $theme-color-3;
+                &:hover{
+                    background-color: #727272;
+                    border-color: #727272;
+                    color: $white;
+                }
+            }
+        }
+
+        .slick-arrow{
+            height: 40px;
+            line-height: 40px;
+            background-color: #e3e3e3;
+            color: $white;
+            border: 1px solid #e3e3e3;
+
+            @media #{$large-mobile}{
+                height: 40px;
+                line-height: 40px;
+                display: none;
+            }
+
+            &:hover{
+                background-color: $theme-color-3;
+                color: $white;
+                border-color: $theme-color-3;
+            }
+        }
+
+        .slick-dots{
+            li{
+                button{
+                    background-color: transparent;
+                    border-color: $theme-color-3;
+
+                    &:hover{
+                        border-color: $hover-color-3;
+                    }
+                }
+
+                &.slick-active{
+                    button{
+                        background-color: $theme-color-3;
+                        border-color: $theme-color-3;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*=====  End of home three style  ======*/
+
+
+
+
+
+
+
+/*=============================================
+=            home four style            =
+=============================================*/
+
+
+.home-four-wrapper{
+    .hero-slider-one{
+        
+        .hero-slider-item{
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 900px; 
+
+            @media #{$laptop-device}{
+                height: 650px;
+            }
+            @media #{$desktop-device}{
+                height: 650px;
+            }
+            @media #{$tablet-device}{
+                height: 450px; 
+            }
+            @media #{$large-mobile}{
+                height: 350px;  
+            }
+            @media #{$small-mobile}{
+                height: 350px; 
+                background-position-x: 30%;
+            }
+        }
+
+        .slider-content{
+            padding-top: 225px;
+            padding-left: 0;
+            width: 50%;
+            @media #{$tablet-device}{
+                padding-top: 0px;
+                width: 70%;
+            }
+            @media #{$large-mobile}{
+                padding-top: 0px;
+                width: 70%;
+            }
+            @media #{$large-mobile}{
+                padding-top: 0px;
+                width: 80%;
+            }
+            @media #{$extra-small-mobile}{
+                padding-top: 0px;
+                width: 100%;
+            }
+            p{
+                font-size: 18px;
+                line-height: 18px;
+                color: #ffffff;
+                font-weight: 500;
+                width: 100%;
+                margin-bottom: 35px;
+
+                @media #{$large-mobile}{
+                    margin-bottom: 25px;
+                }
+            } 
+            h1{
+                font-size: 44px;
+                line-height: 48px;
+                font-weight: 500;
+                font-family: $font-family-name;
+                color: #ffffff;
+                margin-bottom: 35px;
+
+
+
+                @media #{$tablet-device}{
+                    font-size: 34px;
+                    line-height: 40px;
+                }
+                @media #{$large-mobile}{
+                    font-size: 34px;
+                    line-height: 40px;
+                    margin-bottom: 25px;
+                }
+                @media #{$extra-small-mobile}{
+                    font-size: 30px;
+                    line-height: 40px;
+                }
+            }
+
+            a{
+                background-color: transparent;
+                border-color: $white;
+                color: $white;
+                border: 1px solid $white;
+                &:hover{
+                    color: #232323;
+                    border-color: #232323;
+                }
+            }
+        }
+
+        .slick-arrow{
+            height: 80px;
+            line-height: 80px;
+
+            @media #{$large-mobile}{
+                height: 40px;
+                line-height: 40px;
+                display: none;
+            }
+
+            &:hover{
+                background-color: $white;
+                color: $theme-color;
+                border-color: $white;
+            }
+        }
+
+        .slick-dots{
+            li{
+                button{
+                    background-color: transparent;
+                    border-color: #ffffff;
+                }
+
+                &.slick-active{
+                    button{
+                        background-color: $white;
+                        border-color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*=====  End of home four style  ======*/
+
+
+
+/*----------  Hero slider 01  ----------*/
+
+
+
+.slider-bg-1{
+    background-image: url('../images/slider/slider1.jpg');
+}
+
+.slider-bg-2{
+    background-image: url('../images/slider/slider2.jpg');
+}
+
+.slider-bg-3{
+    background-image: url('../images/slider/slider3.jpg');
+}
+
+.slider-bg-4{
+    background-image: url('../images/slider/slider4.jpg');
+}
+
+.slider-bg-5{
+    background-image: url('../images/slider/slider5.jpg');
+}
+
+.slider-bg-6{
+    background-image: url('../images/slider/slider6.jpg');
+}
+
+.slider-bg-7{
+    background-image: url('../images/slider/slider7.jpg');
+}
+
+.slider-bg-8{
+    background-image: url('../images/slider/slider8.jpg');
+}
+
+.hero-area{
+    background-color: #f2f3f7;
+}
+
+.hero-slider-one{
+    .hero-slider-item{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: #dddddd;
+        padding: 0;
+        height: 480px;
+
+        @media #{$large-mobile}{
+            height: 400px;
+            background-position-x: 20%;
+        }
+        @media #{$small-mobile}{
+            height: 400px;
+            background-position-x: 20%; 
+        }
+    }
+
+    .slider-content{
+        & > * {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-name: fadeOutUp;
+        }
+        padding-left: 60px;
+
+        @media #{$extra-small-mobile}{
+            padding-left: 40px;
+        }
+        p{
+            margin-bottom: 20px;
+            font-size: 22px;
+            line-height: 30px;
+            color: #727272;
+            font-weight: 300;
+            width: 38%; 
+
+
+            @media #{$laptop-device}{
+                width: 40%;
+            }
+            
+
+            @media #{$tablet-device}{
+                font-size: 16px;
+                line-height: 20px;
+
+            }
+            @media #{$large-mobile}{
+                font-size: 16px;
+                line-height: 20px;
+                width: 60%; 
+
+            }
+
+            @media #{$extra-small-mobile}{
+                width: 100%;
+            }
+            
+
+        }
+        h1{
+            margin-bottom: 20px;
+            font-size: 80px;
+            line-height: 86px;
+            color: $theme-color;
+            font-weight: 500;
+            font-family: $font-family-name; 
+
+            @media #{$tablet-device}{
+                font-size: 60px;
+                line-height: 60px;
+
+            }
+            @media #{$large-mobile}{
+                font-size: 40px;
+                line-height: 40px;
+
+            }
+            @media #{$small-mobile}{
+                font-size: 30px;
+                line-height: 30px;
+
+            }
+
+
+            span{
+                display: block;
+                font-size: 50px;
+                line-height: 60px;
+                @media #{$tablet-device}{
+                    font-size: 60px;
+                    line-height: 60px;
+    
+                }
+                @media #{$large-mobile}{
+                    font-size: 40px;
+                    line-height: 40px;
+    
+                }
+                @media #{$large-mobile}{
+                    font-size: 30px;
+                    line-height: 30px;
+    
+                }
+            }
+        }
+    }
+
+    .slick-active {
+     
+        /*-- Hero Content --*/
+        & .slider-content {
+            
+            // All Element Selector
+            & > * {
+                animation-name: fadeInLeft;
+               
+                // Child Selector
+                &:nth-child(1) {
+                    animation-duration: 1.5s;
+                    animation-delay: 0.5s;
+                }
+                &:nth-child(2) {
+                    animation-duration: 1.5s;
+                    animation-delay: 1.5s;
+                }
+                &:nth-child(3) {
+                    animation-name: zoomIn;
+                    animation-duration: 1s;
+                    animation-delay: 3s;
+                }
+            }
+        }
+        
+    }
+
+    .slick-arrow{
+        position: absolute;
+        top: 50%;
+        background: none; 
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        border: 1px solid #e8e8e8;
+        color: #a3a3a3;
+        z-index: 2;
+        margin-top: -20px; 
+        visibility: hidden;
+        opacity: 0;
+        background-color: $white;
+
+        @media #{$large-mobile}{
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+            display: none; 
+        }
+
+        &:hover{
+            background-color: $hover-color;
+            border-color: $hover-color;
+            color: $white;
+
+        }
+
+        &.slick-next{
+            right: 20px;
+            left: auto;
+        }
+
+        &.slick-prev{
+            left: 20px;
+            right: auto;
+        }
+    }
+
+    .slick-dots{
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        margin-left: -20px;
+
+        @media #{$extra-small-mobile}{
+            bottom: 30px;
+        }
+        
+        li{
+            display: inline-block;
+            margin-right: 10px;
+            button{
+                background: none;
+                font-size: 0;
+                width: 15px;
+                height: 15px;
+                background-color: #e3e3e3;
+                border-radius: 50%;
+                border: 2px solid transparent;
+                padding: 0; 
+
+                &:hover{
+                    border: 2px solid $hover-color;
+                }
+            }
+
+
+
+            &.slick-active{
+                button{
+                    border: 2px solid $theme-color;
+                }
+            }
+
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+
+    &:hover{
+        .slick-arrow{
+            visibility: visible;
+            opacity: 1;
+            &.slick-next{
+                right: 30px;
+            }
+            &.slick-prev{
+                left: 30px;
+            }
+        }
+    }
+}
+
+
+
+/*----------  feature area  ----------*/
+
+.feature-area{
+    display: flex;
+    justify-content: space-around;
+    
+
+    @media #{$tablet-device}{
+        flex-wrap: wrap;
+    }
+    @media #{$large-mobile}{
+        flex-wrap: wrap;
+    }
+
+    .single-feature{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding-left: 40px;
+        flex-basis: 25%;
+        @media #{$laptop-device}{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media #{$desktop-device}{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media #{$tablet-device}{
+            flex-basis: 50%;
+            display: block;
+        }
+        @media #{$large-mobile}{
+            flex-basis: 50%;
+            display: block;
+        }
+        @media #{$extra-small-mobile}{
+            flex-basis: 100%;
+        }
+        .icon{
+            position: absolute;
+            top: 50%;
+            font-size: 28px;
+            line-height: 28px;
+            margin-top: -15px;
+            left: 40px;
+
+            @media #{$laptop-device}{
+                left: 40px;
+            }
+            @media #{$desktop-device}{
+                left: 20px;
+            }
+            @media #{$tablet-device}{
+                left: 0;
+            }
+            @media #{$large-mobile}{
+                left: 0;
+            }
+        }
+
+        p{
+            font-size: 14px;
+            line-height: 15px;
+            font-weight: 500;
+            color: #1e1e1e;
+            span{
+                display: block;
+                font-size: 12px;
+                line-height: 24px;
+                color: #727272;
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+
+
+/*=====  04. End of Hero  ======*/
+

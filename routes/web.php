@@ -1,0 +1,95 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
+/*
+ * to make new conttoller command
+php artisan make:controller Frontend/IndexController --resource
+*/
+
+
+Auth::routes();
+
+
+
+
+Route::name('backend.')
+    ->namespace('Backend')
+    ->prefix('admin')
+    ->middleware('auth')
+    ->group(function (){
+
+        //write your routes for backend
+        Route::get('/', 'DashboardController@index')->name('dashboard');
+
+        Route::get('login', function () {
+            return view('backend.pages.login');
+        });
+        Route::get('register', function () {
+            return view('backend.pages.register');
+        });
+
+});
+
+
+Route::name('frontend.')
+    ->namespace('Frontend')
+    ->group(function (){
+
+        //write your routes for frontend
+        Route::get('/','IndexController@index' )->name('index');
+
+        Route::get('/shop', function () {
+            return view('frontend.pages.shop');
+        });
+        Route::get('/about', function () {
+            return view('frontend.pages.about');
+        });
+        Route::get('/cart', function () {
+            return view('frontend.pages.cart');
+        });
+        Route::get('/checkout', function () {
+            return view('frontend.pages.checkout');
+        });
+        Route::get('/compare', function () {
+            return view('frontend.pages.compare');
+        });
+        Route::get('/blog', function () {
+            return view('frontend.pages.blog');
+        });
+        Route::get('/post', function () {
+            return view('frontend.pages.post');
+        });
+        Route::get('/contact', function () {
+            return view('frontend.pages.contact');
+        });
+        Route::get('/faq', function () {
+            return view('frontend.pages.faq');
+        });
+        Route::get('/login', function () {
+            return view('frontend.pages.login');
+        });
+        Route::get('/register', function () {
+            return view('frontend.pages.register');
+        });
+        Route::get('/myaccount', function () {
+            return view('frontend.pages.myaccount');
+        });
+        Route::get('/wishlist', function () {
+            return view('frontend.pages.wishlist');
+        });
+        Route::get('/product', function () {
+            return view('frontend.pages.product');
+        });
+    });
+

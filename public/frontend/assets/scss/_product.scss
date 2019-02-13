@@ -1,0 +1,725 @@
+/*=============================================
+=            07. Product            =
+=============================================*/
+
+
+
+/*=============================================
+=            home two style            =
+=============================================*/
+
+
+.home-two-wrapper{
+    .ptk-product { 
+        position: relative;
+    
+        .image {
+            position: relative;
+            margin-bottom: 20px;
+    
+            a {
+                display: block;
+    
+                img {
+                    width: 100%;
+                }
+    
+                &.hover-icon {
+                    position: absolute;
+                    display: inline-block;
+                    right: 10px;
+                    width: 35px;
+                    height: 35px;
+                    background-color: $white;
+                    border-radius: 50%;
+                    text-align: center;
+                    visibility: hidden;
+                    opacity: 0;
+                    font-size: 14px;
+                    
+                    &:hover{
+                        i.lnr{
+                            color: $theme-color-2;
+                        }
+                    }
+    
+    
+                    i.lnr{
+                        line-height: 35px;
+                        color: #727272;
+                    }
+                }
+    
+                &.active{
+                    i.lnr{
+                        color: $theme-color-2;
+                    }
+                }
+    
+                &:nth-child(2){
+                    top: 20px;
+                }
+                &:nth-child(3){
+                    top: 65px;
+                }
+                &:nth-child(4){
+                    bottom: -20px;
+                    border: 2px solid $theme-color-2;
+                    i.lnr{
+                        line-height: 35px; 
+                    }
+    
+                    &:hover{
+                        background-color: $theme-color-2;
+                        border-color: $theme-color-2;
+                        i.lnr{
+                            color: $white;
+                        }
+                    }
+    
+                    &.active{
+                        background-color: $theme-color-2;
+                        border-color: $theme-color-2;
+                        i.lnr{
+                            color: $white;
+                        }
+                    }
+                }
+    
+                
+    
+            }
+    
+            .product-badge{
+                position: absolute;
+                left: 20px;
+                top: 20px;
+                display: inline-block;
+                span{
+                    display: block;
+                    background: #1e1e1e;
+                    color: #fff;
+                    font-size: 11px;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    line-height: 20px;
+                    text-align: center;
+                    width: 40px;
+                    height: 20px;
+    
+                    &.new-badge{
+                        margin-bottom: 5px;
+                    }
+    
+                    &.discount-badge{
+                        background-color: $theme-color-2;
+                    }
+                }
+            }
+        }
+    
+        .content {
+            p{
+                &.product-title{
+                    margin-bottom: 10px;
+                    a{
+    
+                        font-size: 14px;
+                        line-height: 20px;
+                        font-weight: 300;
+                        color: #1e1e1e;
+                        &:hover{
+                            color: $hover-color-2;
+                        }
+                    }
+    
+                }
+    
+                &.product-price{
+                    span{
+                        &.main-price{
+                            
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: $theme-color-2;
+                            
+                        }
+                        &.discounted{
+                            font-size: 13px;
+                            line-height: 13px;
+                            color: #999999;
+                            padding-right: 5px;
+                            text-decoration: line-through;
+                        }
+                        &.discounted-price{
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: $theme-color-2; 
+                        }
+                    }
+                }
+            }
+        }
+    
+        .rating {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            visibility: hidden;
+            opacity: 0;
+            
+            i.lnr{
+                color: #e5e5e5;
+    
+                &.active{
+                    color: $theme-color-2;
+                }
+            }
+        }
+
+        .rating-product-style-2{
+            position: relative;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        
+    
+        &:hover{
+            .rating{
+                visibility: visible;
+                opacity: 1;
+            }
+    
+            .image{
+                
+                .hover-icon{
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+/*----------  tab slider product  ----------*/ 
+    
+    .single-tab-slider-product{
+        margin-bottom: 30px;
+        .single-tab-slider-product-wrapper{
+            .image{
+                max-width: 80px;
+                width: 100%;
+                margin-right: 15px;
+                margin-bottom: 0;
+            }
+
+            .content{
+                margin-top: 6px;
+                flex-basis: 100%;
+            }
+        }
+    }
+
+/*=====  End of home two style  ======*/
+
+
+
+
+/*=============================================
+=            Home three style            =
+=============================================*/
+
+.home-three-wrapper{ 
+    .ptk-product { 
+        position: relative;
+    
+        .image {
+            position: relative;
+            margin-bottom: 20px;
+    
+            a {
+                display: block;
+    
+                img {
+                    width: 100%;
+                }
+    
+                &.hover-icon {
+                    position: absolute;
+                    display: inline-block;
+                    right: 10px;
+                    width: 35px;
+                    height: 35px;
+                    background-color: $white;
+                    border-radius: 50%;
+                    text-align: center;
+                    visibility: hidden;
+                    opacity: 0;
+                    font-size: 14px;
+                    
+                    &:hover{
+                        i.lnr{
+                            color: $theme-color-3;
+                        }
+                    }
+    
+    
+                    i.lnr{
+                        line-height: 35px;
+                        color: #727272;
+                    }
+                }
+    
+                &.active{
+                    i.lnr{
+                        color: $theme-color-3;
+                    }
+                }
+    
+                &:nth-child(2){
+                    top: 20px;
+                }
+                &:nth-child(3){
+                    top: 65px;
+                }
+                &:nth-child(4){
+                    bottom: -20px;
+                    border: 2px solid $theme-color-3;
+                    i.lnr{
+                        line-height: 35px; 
+                    }
+    
+                    &:hover{
+                        background-color: $theme-color-3;
+                        border-color: $theme-color-3;
+                        i.lnr{
+                            color: $white;
+                        }
+                    }
+    
+                    &.active{
+                        background-color: $theme-color-3;
+                        border-color: $theme-color-3;
+                        i.lnr{
+                            color: $white;
+                        }
+                    }
+                }
+    
+                
+    
+            }
+    
+            .product-badge{
+                position: absolute;
+                left: 20px;
+                top: 20px;
+                display: inline-block;
+                span{
+                    display: block;
+                    background: #1e1e1e;
+                    color: #fff;
+                    font-size: 11px;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    line-height: 20px;
+                    text-align: center;
+                    width: 40px;
+                    height: 20px;
+    
+                    &.new-badge{
+                        margin-bottom: 5px;
+                    }
+    
+                    &.discount-badge{
+                        background-color: $theme-color-3;
+                    }
+                }
+            }
+        }
+    
+        .content {
+            p{
+                &.product-title{
+                    margin-bottom: 10px;
+                    a{
+    
+                        font-size: 14px;
+                        line-height: 20px;
+                        font-weight: 300;
+                        color: #1e1e1e;
+                        &:hover{
+                            color: $hover-color-3;
+                        }
+                    }
+    
+                }
+    
+                &.product-price{
+                    span{
+                        &.main-price{
+                            
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: $theme-color-3;
+                            
+                        }
+                        &.discounted{
+                            font-size: 13px;
+                            line-height: 13px;
+                            color: #999999;
+                            padding-right: 5px;
+                            text-decoration: line-through;
+                        }
+                        &.discounted-price{
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: $theme-color-3; 
+                        }
+                    }
+                }
+            }
+        }
+    
+        .rating {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            visibility: hidden;
+            opacity: 0;
+            
+            i.lnr{
+                color: #e5e5e5;
+                font-size: 11px;
+    
+                &.active{
+                    color: $theme-color-3;
+                }
+            }
+        }
+
+        .rating-product-style-2{
+            position: relative;
+            visibility: visible;
+            opacity: 1;
+        } 
+    
+        &:hover{
+            .rating{
+                visibility: visible;
+                opacity: 1;
+            }
+    
+            .image{
+                
+                .hover-icon{
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+
+/*----------  popular product  ----------*/
+
+.popular-product-slider-one-column{
+    margin-bottom: -20px;
+    .ptk-product{
+        margin-bottom: 20px;
+        .image{
+            width: 130px;   
+            margin-bottom: 0;
+
+        }
+
+        .content{
+            margin-left: 15px;
+            flex-basis: 80%;
+            .product-price{
+                .discounted-price{
+                    color: #727272;
+                }
+
+                .main-price{
+                    color: #727272;
+                }
+            }
+        }
+    }
+}
+/*=====  End of Home three style  ======*/
+
+
+
+
+
+
+
+
+.ptk-product {
+    position: relative;
+
+    .image {
+        position: relative;
+        margin-bottom: 20px;
+
+        a {
+            display: block;
+
+            img {
+                width: 100%;
+            }
+
+            &.hover-icon {
+                position: absolute;
+                display: inline-block;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                background-color: $white;
+                border-radius: 50%;
+                text-align: center;
+                visibility: hidden;
+                opacity: 0;
+                font-size: 14px;
+                
+                &:hover{
+                    i.lnr{
+                        color: $theme-color;
+                    }
+                }
+
+
+                i.lnr{
+                    line-height: 35px;
+                    color: #727272;
+                }
+            }
+
+            &.active{
+                i.lnr{
+                    color: $theme-color;
+                }
+            }
+
+            &:nth-child(2){
+                top: 20px;
+            }
+            &:nth-child(3){
+                top: 65px;
+            }
+            &:nth-child(4){
+                bottom: -20px;
+                border: 2px solid $theme-color;
+                i.lnr{
+                    line-height: 35px; 
+                }
+
+                &:hover{
+                    background-color: $theme-color;
+                    border-color: $theme-color;
+                    i.lnr{
+                        color: $white;
+                    }
+                }
+
+                &.active{
+                    background-color: $theme-color;
+                    border-color: $theme-color;
+                    i.lnr{
+                        color: $white;
+                    }
+                }
+            }
+
+            
+
+        }
+
+        .product-badge{
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            display: inline-block;
+            span{
+                display: block;
+                background: #1e1e1e;
+                color: #fff;
+                font-size: 11px;
+                text-transform: uppercase;
+                font-weight: 500;
+                line-height: 20px;
+                text-align: center;
+                width: 40px;
+                height: 20px;
+
+                &.new-badge{
+                    margin-bottom: 5px;
+                }
+
+                &.discount-badge{
+                    background-color: $theme-color;
+                }
+            }
+        }
+    }
+
+    .content {
+        p{
+            &.product-title{
+                margin-bottom: 10px;
+                a{
+
+                    font-size: 14px;
+                    line-height: 20px;
+                    font-weight: 300;
+                    color: #1e1e1e;
+                    &:hover{
+                        color: $hover-color;
+                    }
+                }
+
+            }
+
+            &.product-price{
+                span{
+                    &.main-price{
+                        
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: $theme-color;
+                        
+                    }
+                    &.discounted{
+                        font-size: 13px;
+                        line-height: 13px;
+                        color: #999999;
+                        padding-right: 5px;
+                        text-decoration: line-through;
+                    }
+                    &.discounted-price{
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: $theme-color; 
+                    }
+                }
+            }
+        }
+    }
+
+    .rating {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        visibility: hidden;
+        opacity: 0;
+        
+        i.lnr{
+            color: #e5e5e5;
+
+            &.active{
+                color: $theme-color;
+            }
+        }
+    }
+
+    .rating-product-style-2{
+        position: relative;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &:hover{
+        .rating{
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .image{
+            
+            .hover-icon{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+
+/*----------  countdown product  ----------*/
+
+.deal-slider-container{
+    .ptk-product{
+        .content{
+            .product-price{
+                .discounted-price{
+                    color: #727272;
+                }
+
+                .main-price{
+                    color: #727272;
+                }
+            }
+        }
+    }
+}
+
+.product-countdown{
+    display: flex;
+    border: 1px solid #f0f0f0;
+    padding: 15px 0;
+    margin-bottom: 10px;
+    .single-countdown{
+        flex-basis: 25%;
+        text-align: center;
+        span{
+            display: block;
+
+            &.single-countdown-time{
+                font-size: 18px;
+                font-weight: 500;
+                margin-bottom: 5px; 
+            }
+
+            &.single-countdown-text{
+                font-weight: 300;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+
+
+/*----------  popular product  ----------*/
+
+.popular-product-slider{
+    margin-bottom: -20px;
+    .ptk-product{
+        margin-bottom: 20px;
+        .image{
+            width: 130px;   
+            margin-bottom: 0;
+
+        }
+
+        .content{
+            margin-left: 15px;
+            flex-basis: 80%;
+            .product-price{
+                .discounted-price{
+                    color: #727272;
+                }
+
+                .main-price{
+                    color: #727272;
+                }
+            }
+        }
+    }
+}
+/*=====  End of 07. Product  ======*/

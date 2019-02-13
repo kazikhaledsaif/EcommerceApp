@@ -1,0 +1,326 @@
+
+/*=============================================
+=            09. Sidebar            =
+=============================================*/
+
+.single-sidebar-widget{
+    border: 1px solid #efefef;
+    padding: 25px 20px;
+
+    h3.sidebar-title{
+        font-size: 20px;
+        line-height: 20px;
+        color: #1e1e1e;
+        font-weight: 500;
+        font-family: $font-family-name;
+        margin-bottom: 20px;
+    }
+
+    .category-dropdown{
+        &>li{
+            position: relative;
+            border-bottom: 1px solid #efefef;
+            &:last-child{
+                border-bottom: 0;
+            }
+            a{
+                font-size: 14px;
+                line-height: 48px;
+                &:hover{
+                    color: $hover-color;
+                }
+                
+                &.expand-icon{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+
+                    &:hover{
+                        color: $hover-color;
+                    }
+                }
+            }
+            &>ul{
+                display: none;
+                padding-left: 10px;
+                &>li{
+                    &>a{
+                        font-size: 12px;
+                        line-height: 30px;
+                        color: #333;
+                        font-weight: 400;
+
+                        &:hover{
+                            color: $hover-color;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .sub-widget{
+        h3{
+            &.sidebar-title{
+                font-size: 18px;
+            }
+        }
+        .category-container{
+            ul{
+                li{
+                    label.checkbox-container { 
+                        display: block;
+                        position: relative;
+                        padding-left: 25px;
+                        margin-bottom: 12px;
+                        cursor: pointer;
+                        font-size: 14px;
+                        line-height: 20px;
+                        font-weight: 400;
+                        color: #232323;
+                        user-select: none;
+                        a{
+                            &:hover{
+                                color: $hover-color;
+                            }
+                        }
+                        input {
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                            height: 0;
+                            width: 0;
+
+                            &:checked ~ .checkmark:after {
+                                display: block;
+                              }
+                          }
+                          .checkmark {
+                            position: absolute;
+                            top: 2px; 
+                            left: 0;
+                            height: 15px;
+                            width: 15px;
+                            border: 1px solid #ddd;
+
+                            &:after {
+                                    content: "\f00c";
+                                    font-family: fontAwesome;
+                                    position: absolute;
+                                    display: none;
+                                    top: -3px;
+                                  }
+                           
+                          }
+                      }
+
+                      label.radio-container{
+                        display: block;
+                        position: relative;
+                        padding-left: 35px;
+                        margin-bottom: 12px;
+                        cursor: pointer;
+                        font-size: 14px;
+                        line-height: 19px;
+                        font-weight: 400; 
+                        color: #232323;
+                        user-select: none;
+
+                        a{
+                            &:hover{
+                                color: $hover-color;
+                            }
+                        }
+
+                        input{
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+
+                            &:checked ~ .checkmark:after {
+                                display: block;
+                            }
+                        }
+
+                        .checkmark{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 20px;
+                            width: 20px;
+                            background-color: #fff;
+                            border-radius: 50%;
+                            border: 2px solid #7a7a7a;
+
+                            &:after{
+                                content: "";
+                                position: absolute;
+                                display: none;
+                                height: 10px;
+                                width: 10px;
+                                background-color: $theme-color;
+                                border-radius: 50%;
+                                left: 50%;
+                                top: 50%;
+                                margin-top: -5px;
+                                margin-left: -5px;
+                                
+                            }
+                        }
+                      }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/*----------  category dropdown  ----------*/
+
+
+
+/*----------  Sidebar search box  ----------*/
+
+.sidebar-search-box{
+    border: 1px solid #e0e0e0; 
+    position: relative;
+    padding-right: 10px;
+    input{
+        border: none;
+        padding: 10px;
+        padding-left: 10px;
+        width: 100%;
+    }
+    button{
+        position: absolute;
+        top: 10px;
+        right: 0;
+        background: none;
+        border: none;
+
+        &:hover{
+            color: $theme-color;
+        }
+    }
+} 
+.sidebar-container{
+
+    /*----------  single block  ----------*/
+    
+    .single-block{
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+    
+        &:first-child{
+            padding-top:0; 
+        }
+    
+        &:last-child{
+            padding-bottom:0;
+            border-bottom: 0; 
+        }
+        .image{
+            flex-basis: 100px;
+            margin-right: 5px;
+            a{
+                border: 2px solid transparent;
+                display: block;
+    
+                img{
+                    width: 100%;
+                }
+    
+                &:hover{
+                    border: 2px solid $theme-color;
+                }
+            }
+            
+        }
+    
+        .content{
+            flex-basis: 100%;
+            p{
+                margin-bottom: 0;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 20px; 
+                color: #323232;
+    
+                a{
+                    &:hover{
+                        color: $hover-color;
+                    }
+                }
+    
+                span{
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #999;
+                    font-weight: 400;
+                    margin-top: 5px;
+                    display: block;
+                }
+            }
+        }
+    
+        &.comment-block{
+            .image{
+                flex-basis: 80px;
+            }
+            .content{
+                p{
+                    span{
+                        font-size: 14px;
+                        line-height: 20px;
+                        color: #666666;
+                    }
+    
+                    a{
+                        font-size: 12px;
+                        line-height: 16px;
+                        font-weight: 400;
+                        color: #808080;
+                        &:hover{
+                            color: $hover-color;
+                        }
+    
+                    }
+                }
+            }
+        }
+    } 
+}
+
+
+/*----------  tag container  ----------*/
+
+ul.tag-container {
+    li {
+        display: inline-block;
+
+        a {
+            display: block;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border: 1px solid #999999;
+            text-transform: uppercase;
+            border-radius: 5px;
+            color: #999999;
+            font-size: 13px;
+            text-align: center;
+
+            &:hover {
+                background-color: $hover-color;
+                color: #fff;
+                border-color: $hover-color;
+            }
+        }
+    }
+}
+
+/*=====  End of 09. Sidebar  ======*/
+
