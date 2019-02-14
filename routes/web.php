@@ -26,18 +26,18 @@ Auth::routes();
 Route::name('backend.')
     ->namespace('Backend')
     ->prefix('admin')
-    ->middleware('auth')
+    ->middleware('role:admin')
     ->group(function (){
 
         //write your routes for backend
         Route::get('/', 'DashboardController@index')->name('dashboard');
 
-        Route::get('login', function () {
+     /*   Route::get('login', function () {
             return view('backend.pages.login');
         });
         Route::get('register', function () {
             return view('backend.pages.register');
-        });
+        });*/
 
 });
 
@@ -75,12 +75,6 @@ Route::name('frontend.')
         });
         Route::get('/faq', function () {
             return view('frontend.pages.faq');
-        });
-        Route::get('/login', function () {
-            return view('frontend.pages.login');
-        });
-        Route::get('/register', function () {
-            return view('frontend.pages.register');
         });
         Route::get('/myaccount', function () {
             return view('frontend.pages.myaccount');

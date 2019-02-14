@@ -34,7 +34,9 @@
             <div class="row">
 
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12 mx-auto">
-                    <form action="#">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
 
                         <div class="login-form">
                             <h4 class="login-title">Register</h4>
@@ -42,7 +44,14 @@
                             <div class="row">
                                 <div class="col-md-6 col-12 mb-20">
                                     <label>First Name</label>
-                                    <input class="mb-0" type="text" placeholder="First Name">
+
+                                    <input  placeholder="First Name"  type="text" class="mb-0 form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 col-12 mb-20">
                                     <label>Last Name</label>
@@ -50,15 +59,30 @@
                                 </div>
                                 <div class="col-md-12 mb-20">
                                     <label>Email Address*</label>
-                                    <input class="mb-0" type="email" placeholder="Email Address">
+
+                                    <input type="email" placeholder="Email Address" class="mb-0 form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 mb-20">
                                     <label>Password</label>
-                                    <input class="mb-0" type="password" placeholder="Password">
+
+                                    <input placeholder="Password" type="password" class="mb-0 form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 mb-20">
                                     <label>Confirm Password</label>
-                                    <input class="mb-0" type="password" placeholder="Confirm Password">
+
+                                    <input  placeholder="Confirm Password" type="password" class="mb-0 form-control" name="password_confirmation" required>
                                 </div>
                                 <div class="col-12">
                                     <button class="register-button mt-0">Register</button>

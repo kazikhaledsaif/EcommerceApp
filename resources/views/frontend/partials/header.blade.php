@@ -16,6 +16,7 @@
 
                         <!--=======  single dropdown  =======-->
 
+{{--
 
                         <div class="single-dropdown">
                             <a href="#" id="changeAccount"><span id="accountMenuName">My Account <i class="fa fa-angle-down"></i></span></a>
@@ -27,7 +28,39 @@
                                 </ul>
                             </div>
                         </div>
+--}}
 
+                        <div class="single-dropdown">
+                            @guest
+                                <a href="#" id="changeAccount"><span id="accountMenuName">Login <i class="fa fa-angle-down"></i></span></a>
+                                <div class="language-currency-list hidden" id="accountList">
+                                    <ul>
+                                        <li><a href="{{ route('login') }}">Login</a></li>
+                                        <li><a href="{{ route('register') }}">Registration</a></li>
+
+
+                                    </ul>
+                                </div>
+
+                            @else
+                                <a href="#" id="changeAccount"><span id="accountMenuName">{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></span></a>
+                                <div class="language-currency-list hidden" id="accountList">
+                                    <ul>
+                                        <li><a href="">My Account</a></li>
+                                        <li><a href="">Checkout</a></li>
+                                        <li><a href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                Logout</a></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </ul>
+                                </div>
+                            @endguest
+
+
+                        </div>
                         <span class="separator pl-15 pr-15">|</span>
 
                         <!--=======  End of single dropdown  =======-->
