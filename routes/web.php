@@ -31,6 +31,7 @@ Route::name('backend.')
 
         //write your routes for backend
         Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::get('/product', 'ProductController@index')->name('product');
 
      /*   Route::get('login', function () {
             return view('backend.pages.login');
