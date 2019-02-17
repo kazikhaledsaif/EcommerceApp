@@ -101,6 +101,7 @@ desired effect
 
     @include('flashy::message')
 
+@yield('script')
 @stack('scripts')
 </body>
 </html>

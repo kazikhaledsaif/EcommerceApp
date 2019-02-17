@@ -26,8 +26,11 @@
 <script src="{{asset('backend/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 <!-- datepicker -->
 <script src="{{asset('backend/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+{{--ck editor--}}
+<script src="{{ asset('backend/bower_components/ckeditor/ckeditor.js') }}"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset('backend/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+
 <!-- Slimscroll -->
 <script src="{{asset('backend/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->

@@ -29,18 +29,13 @@
                         <div class="form-group">
                             <label for="inputProductName" class="col-sm-2 control-label">Product Name</label>
 
-                            <div class="col-sm-10">
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="inputProductName" placeholder="New Product.." required>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPrice" class="col-sm-2 control-label">Price</label>
+                            <label for="inputProductSlug" class="col-sm-1 control-label">Slug</label>
 
-                            <div class="col-sm-5">
-                                <input type="number" class="form-control" id="inputPrice" min="1" placeholder="Present Price (required)" required>
-                            </div>
-                            <div class="col-sm-5">
-                                <input type="number" class="form-control" id="inputPrice" placeholder="Discount Price">
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="inputProductSlug" placeholder="Slug (auto generate)" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,10 +46,22 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputPrice" class="col-sm-2 control-label">Price</label>
+
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="inputPrice" min="1" placeholder="Present Price (required)" required>
+                            </div>
+                            <label for="inputPrice" class="col-sm-2 control-label">Discount Price</label>
+
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="inputPrice" placeholder="Discount Price">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="inputStock" class="col-sm-2 control-label">Stock</label>
 
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputStock" placeholder="Stock" required>
+                                <input type="number" min="0" class="form-control" id="inputStock" placeholder="Stock" required>
                             </div>
 
                                 <label for="inputCategory" class="col-sm-2 control-label">Category</label>
@@ -73,12 +80,19 @@
                             <label for="inputPercentage" class="col-sm-2 control-label">Discount Percentage</label>
 
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="inputPercentage" placeholder="Percentage off">
+                                <input type="number" min="0" class="form-control" id="inputPercentage" placeholder="Percentage off">
                             </div>
                             <label for="inputBadge" class="col-sm-2 control-label">Badge</label>
 
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" id="inputBadge" placeholder="Badge">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+
+                            <div class="col-sm-10">
+                                <textarea name="" class="form-control" id="inputDescription"   placeholder="Product Description"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -137,4 +151,16 @@
     </section>
     <!-- /.content -->
 
+@endsection
+
+@section('script')
+    <script>
+    $(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('inputDescription')
+        //bootstrap WYSIHTML5 - text editor
+        $('.textarea').wysihtml5()
+    })
+    </script>
 @endsection
