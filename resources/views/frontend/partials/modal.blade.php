@@ -15,32 +15,32 @@
                             <!--Modal Tab Content Start-->
                             <div class="tab-content product-large-image-list quickview-product-large-image-list">
                                 <div class="tab-pane fade show active" id="single-slide-quick-1" role="tabpanel" aria-labelledby="single-slide-tab-quick-1">
-                                    <!--Single Product Image Start-->
+                                    <!--Single product Image Start-->
                                     <div class="single-product-img img-full">
                                         <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }} " class="img-fluid" alt="">
                                     </div>
-                                    <!--Single Product Image End-->
+                                    <!--Single product Image End-->
                                 </div>
                                 <div class="tab-pane fade" id="single-slide-quick-2" role="tabpanel" aria-labelledby="single-slide-tab-quick-2">
-                                    <!--Single Product Image Start-->
+                                    <!--Single product Image Start-->
                                     <div class="single-product-img img-full">
                                         <img src="{{ asset('frontend/assets/images/single-product-slider/02.jpg') }} " class="img-fluid" alt="">
                                     </div>
-                                    <!--Single Product Image End-->
+                                    <!--Single product Image End-->
                                 </div>
                                 <div class="tab-pane fade" id="single-slide-quick-3" role="tabpanel" aria-labelledby="single-slide-tab-quick-3">
-                                    <!--Single Product Image Start-->
+                                    <!--Single product Image Start-->
                                     <div class="single-product-img img-full">
                                         <img src="{{ asset('frontend/assets/images/single-product-slider/03.jpg') }} " class="img-fluid" alt="">
                                     </div>
-                                    <!--Single Product Image End-->
+                                    <!--Single product Image End-->
                                 </div>
                                 <div class="tab-pane fade" id="single-slide-quick-4" role="tabpanel" aria-labelledby="single-slide-tab-quick-4">
-                                    <!--Single Product Image Start-->
+                                    <!--Single product Image Start-->
                                     <div class="single-product-img img-full">
                                         <img src="{{ asset('frontend/assets/images/single-product-slider/04.jpg') }} " class="img-fluid" alt="">
                                     </div>
-                                    <!--Single Product Image End-->
+                                    <!--Single product Image End-->
                                 </div>
                             </div>
                             <!--Modal Content End-->

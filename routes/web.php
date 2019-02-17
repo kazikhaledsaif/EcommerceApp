@@ -32,7 +32,7 @@ Route::name('backend.')
         //write your routes for backend
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::get('/products', 'ProductController@index')->name('product.list');
-        Route::get('/product-add', 'ProductController@create')->name('product.add');
+        Route::get('/product-add', 'ProductController@addProduct')->name('product.add');
         Route::get('/product-update', 'ProductController@edit')->name('product.update');
 //        Route::get('/product-update', 'ProductController@index')->name('product.delete');
 

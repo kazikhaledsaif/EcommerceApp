@@ -44,7 +44,7 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -98,6 +98,8 @@ desired effect
 
 <!-- REQUIRED JS SCRIPTS -->
     @include('backend.partials.script')
+
+    @include('flashy::message')
 
 @stack('scripts')
 </body>

@@ -14,10 +14,10 @@
     04. Hero
     05. Slider
     06. Banner
-    07. Product
+    07. product
     08. Shop
     09. Sidebar
-    10. Single Product
+    10. Single product
     11. Blog
     12. Blog Post
     13. Cart & wishlist
@@ -4425,7 +4425,7 @@ a#more-btn {
 
 /*=====  End of 06. Banner  ======*/
 /*=============================================
-=            07. Product            =
+=            07. product            =
 =============================================*/
 /*=============================================
 =            home two style            =
@@ -4844,7 +4844,7 @@ a#more-btn {
       .popular-product-slider .ptk-product .content .product-price .main-price {
         color: #727272; }
 
-/*=====  End of 07. Product  ======*/
+/*=====  End of 07. product  ======*/
 /*=============================================
 =           08. Shop            =
 =============================================*/
@@ -5231,7 +5231,7 @@ ul.tag-container li {
 
 /*=====  End of 09. Sidebar  ======*/
 /*=============================================
-=           10.  Single Product            =
+=           10.  Single product            =
 =============================================*/
 /*----------  product feature details  ----------*/
 .single-product-details-container p.product-title {
@@ -5390,7 +5390,7 @@ ul.tag-container li {
 /*----------  single product tab section  ----------*/
 .single-product-tab-section {
   /*----------  tab table style  ----------*/
-  /*-- Single Product Rating --*/
+  /*-- Single product Rating --*/
   /*-- Ratting Form Wrap --*/
   /*-- Ratting Form --*/ }
   .single-product-tab-section .nav-tabs {
@@ -5604,7 +5604,7 @@ ul.tag-container li {
 .product-image-gallery .single-product-img {
   border: 1px solid #ddd; }
 
-/*=====  End of 10. Single Product  ======*/
+/*=====  End of 10. Single product  ======*/
 /*=============================================
 =            11. Blog            =
 =============================================*/

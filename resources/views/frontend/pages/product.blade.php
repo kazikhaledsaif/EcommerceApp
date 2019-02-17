@@ -39,36 +39,36 @@
                         <!--product large image start -->
                         <div class="tab-content product-large-image-list pts-product-large-image-list pts1-product-large-image-list" id="myTabContent">
                             <div class="tab-pane fade show active" id="single-slide-1" role="tabpanel" aria-labelledby="single-slide-tab-1">
-                                <!--Single Product Image Start-->
+                                <!--Single product Image Start-->
                                 <div class="single-product-img img-full">
                                     <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="img-fluid" alt="">
                                     <a href="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
                                 </div>
-                                <!--Single Product Image End-->
+                                <!--Single product Image End-->
                             </div>
                             <div class="tab-pane fade" id="single-slide-2" role="tabpanel" aria-labelledby="single-slide-tab-2">
-                                <!--Single Product Image Start-->
+                                <!--Single product Image Start-->
                                 <div class="single-product-img img-full">
                                     <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="img-fluid" alt="">
                                     <a href="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
                                 </div>
-                                <!--Single Product Image End-->
+                                <!--Single product Image End-->
                             </div>
                             <div class="tab-pane fade" id="single-slide-3" role="tabpanel" aria-labelledby="single-slide-tab-3">
-                                <!--Single Product Image Start-->
+                                <!--Single product Image Start-->
                                 <div class="single-product-img img-full">
                                     <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="img-fluid" alt="">
                                     <a href="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
                                 </div>
-                                <!--Single Product Image End-->
+                                <!--Single product Image End-->
                             </div>
                             <div class="tab-pane fade" id="single-slide-4" role="tabpanel" aria-labelledby="single-slide-tab-4">
-                                <!--Single Product Image Start-->
+                                <!--Single product Image Start-->
                                 <div class="single-product-img img-full">
                                     <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="img-fluid" alt="">
                                     <a href="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
                                 </div>
-                                <!--Single Product Image End-->
+                                <!--Single product Image End-->
                             </div>
                         </div>
                         <!--product large image End-->

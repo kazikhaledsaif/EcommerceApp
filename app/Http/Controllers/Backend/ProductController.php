@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use MercurySeries\Flashy\Flashy;
 
 class ProductController extends Controller
 {
@@ -18,6 +19,13 @@ class ProductController extends Controller
         //
     }
 
+
+    public function addProduct()
+    {
+        Flashy::primary('Create new product','');
+        return view('backend.pages.product.add');
+
+    }
     /**
      * Show the form for creating a new resource.
      *

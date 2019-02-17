@@ -862,7 +862,7 @@
 	});
 
 	
-	/*----------  Product tabstyle image gallery active  ----------*/
+	/*----------  product tabstyle image gallery active  ----------*/
 	
 	$('.pts-small-image-slider').slick({
 		prevArrow: '<i class="fa fa-angle-up slick-prev"></i>',

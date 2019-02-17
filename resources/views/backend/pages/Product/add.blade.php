@@ -30,30 +30,103 @@
                             <label for="inputProductName" class="col-sm-2 control-label">Product Name</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputProductName" placeholder="New Product..">
+                                <input type="text" class="form-control" id="inputProductName" placeholder="New Product.." required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                            <label for="inputPrice" class="col-sm-2 control-label">Price</label>
+
+                            <div class="col-sm-5">
+                                <input type="number" class="form-control" id="inputPrice" min="1" placeholder="Present Price (required)" required>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="number" class="form-control" id="inputPrice" placeholder="Discount Price">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDetail" class="col-sm-2 control-label">Details</label>
 
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                <input type="text" class="form-control" id="inputDetail" placeholder="Details" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Remember me
-                                    </label>
+                            <label for="inputStock" class="col-sm-2 control-label">Stock</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="inputStock" placeholder="Stock" required>
+                            </div>
+
+                                <label for="inputCategory" class="col-sm-2 control-label">Category</label>
+                                <div class="col-sm-4">
+                                <select class="form-control " id="inputCategory">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                    <option>option 5</option>
+                                </select>
                                 </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPercentage" class="col-sm-2 control-label">Discount Percentage</label>
+
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="inputPercentage" placeholder="Percentage off">
+                            </div>
+                            <label for="inputBadge" class="col-sm-2 control-label">Badge</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="inputBadge" placeholder="Badge">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="inputFName" class="col-sm-2 control-label">Feature Name</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="inputFName" placeholder="Feature Name">
+                            </div>
+                            <label for="inputColor" class="col-sm-2 control-label">Feature Color</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="inputColor" placeholder="Color">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="thumbImg" class="col-sm-2 control-label">Thumbnail Image</label>
+
+                            <div class="col-sm-6">
+                                <input type="file" class="form-control" id="thumbImg" placeholder="Thumbnail Image">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="galleryImg" class="col-sm-2 control-label">Gallery Image</label>
+
+                            <div class="col-sm-4">
+                                <input type="file" class="form-control" id="galleryImg" placeholder="Gallery Image">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="file" class="form-control" id="galleryImg" placeholder="Gallery Image">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                        <div class="col-sm-2  control-label"> </div>
+
+                            <div class="col-sm-4">
+                                <input type="file" class="form-control" id="galleryImg" placeholder="Gallery Image">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="file" class="form-control" id="galleryImg" placeholder="Gallery Image">
+                            </div>
+                        </div>
+
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
                         <button type="submit" class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                        <button type="submit" class="btn btn-info pull-right">Create</button>
                     </div>
                     <!-- /.box-footer -->
                 </form>
@@ -63,21 +136,5 @@
 
     </section>
     <!-- /.content -->
-@endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @endsection
