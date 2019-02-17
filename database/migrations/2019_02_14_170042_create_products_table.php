@@ -24,14 +24,14 @@ class CreateProductsTable extends Migration
             $table->string('feature_name');
             $table->string('feature_color');
             $table->integer('category_id');
+            $table->integer('stock');
+            $table->integer('percentage');
+            $table->string('badge');
             $table->string('product_image');
             $table->string('gallery_image1');
             $table->string('gallery_image2');
             $table->string('gallery_image3');
             $table->string('gallery_image4');
-            $table->integer('stock');
-            $table->integer('percentage');
-            $table->string('badge');
             $table->timestamps();
         });
     }
