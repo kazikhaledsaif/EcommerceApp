@@ -9,7 +9,6 @@
     right: 20px;
     font-size: 16px;
     color: #fff;
-    z-index: 900;
 }
 
 .flashy--success {
@@ -77,8 +76,10 @@
 @media only screen and (max-width:1050px) {
     .flashy {
         text-align: center;
+        vertical-align: middle;
         right: 0;
-        left: 50%;
+        top: 80px;
+        left: 70%;
         width: 300px;
         margin-left: -150px;
     }
@@ -102,7 +103,7 @@
 <script id="flashy-template" type="text/template">
     <div class="flashy flashy--{{ Session::get('flashy_notification.type') }}">
         <i class="material-icons">done</i>
-        <a class="flashy__body" target=""></a>
+        <a class="flashy__body" target=""></a>  {{-- modified for link attachment --}}
     </div>
 </script>
 

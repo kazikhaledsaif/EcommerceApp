@@ -16,11 +16,7 @@
  * to make new conttoller command
 php artisan make:controller Frontend/IndexController --resource
 */
-
-
 Auth::routes();
-
-
 
 
 Route::name('backend.')
@@ -34,14 +30,12 @@ Route::name('backend.')
         Route::get('/products', 'ProductController@index')->name('product.list');
         Route::get('/product-add', 'ProductController@addProduct')->name('product.add');
         Route::get('/product-update', 'ProductController@edit')->name('product.update');
-//        Route::get('/product-update', 'ProductController@index')->name('product.delete');
 
-     /*   Route::get('login', function () {
-            return view('backend.pages.login');
-        });
-        Route::get('register', function () {
-            return view('backend.pages.register');
-        });*/
+//        for slug generation
+        Route::get('/check_slug', 'ProductController@check_slug')->name('product.slug');
+//        product create
+        Route::post('/product-create', 'ProductController@store')->name('product.create');
+
 
 });
 
