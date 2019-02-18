@@ -6,7 +6,7 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Data Table With Full Features</h3>
+            <h3 class="box-title">Product list</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -18,7 +18,8 @@
                     <th>Present Price</th>
                     <th>Discount Price</th>
                     <th>Stock</th>
-                    <th>Updated</th>
+                    <th>Last Update</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,11 @@
                     <td>{{ $product->discount_price }}</td>
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->updated_at }}</td>
+                    <td>
+                        <a href="#"><i class="fa fa-search-plus" style="color:green" aria-hidden="true"></i> </a>
+                        <a href="##"><i class="fa fa-pencil-square" style="color:dodgerblue" aria-hidden="true"></i> </a>
+                        <a href="###"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i> </a>
+                    </td>
 
                 </tr>
                 @endforeach
@@ -43,6 +49,7 @@
                     <th>Discount Price</th>
                     <th>Stock</th>
                     <th>Updated</th>
+                    <th>Action</th>
                 </tr>
                 </tfoot>
             </table>
