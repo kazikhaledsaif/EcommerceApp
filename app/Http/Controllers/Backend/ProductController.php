@@ -15,20 +15,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $product_list = Product::all();
         return view('backend.pages.product.list')->with([
             'products' => $product_list
         ]);
-
-    }
-
-
-    public function addProduct()
-    {
-        Flashy::primary('Create new product','');
-        return view('backend.pages.product.add');
 
     }
 
@@ -38,22 +29,13 @@ class ProductController extends Controller
         return response()->json(['slug' => $slug]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+
+    public function create() {
+        return view('backend.pages.product.add');
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         // create product with model method
@@ -77,51 +59,71 @@ class ProductController extends Controller
         $product->gallery_image3= $request->productG3;
         $product->gallery_image4= $request->productG4;
         $product->save();
-        dd($product);
+
+
+        Flashy::success(' Product '. $request->productName.' created.');
+//        return view('backend.pages.product.list');
+        return $this->index();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
+
+    public function show(Product $product) {
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
+
+    public function edit($id) {
+        $product = Product::where('id',$id)->firstOrFail();
+
+        return view('backend.pages.product.edit')->with([
+            'product' => $product
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
+
+    public function update(Request $request) {
+        $product = Product::find($request->id);
+
+        $product->name = $request->productName;
+        $product->slug = $request->productSlug;
+        $product->details = $request->productDetail;
+        $product->description = $request->productDescription;
+        $product->present_price = $request->productPresentPrice;
+        $product->discount_price = $request->productDiscountPrice;
+        $product->stock = $request->productStock;
+        $product->category_id = $request->productCategory;
+        $product->percentage = $request->productDiscountPercentage;
+        $product->badge= $request->productBadge;
+        $product->feature_name= $request->productFeatureName;
+        $product->feature_color= $request->productFeatureColor;
+        $product->badge= $request->productBadge;
+
+        if($request->productThumbImg){
+            $product->product_image= $request->productThumbImg;
+        }
+        if($request->productG1){
+            $product->gallery_image1= $request->productG1;
+        }
+        if($request->productG2){
+            $product->gallery_image2= $request->productG2;
+        }
+        if($request->productG3){
+            $product->gallery_image3= $request->productG3;
+        }
+        if($request->productG4){
+            $product->gallery_image4= $request->productG4;
+        }
+//            dd($request->productThumbImg);
+
+        $product->save();
+
+        Flashy::success(' Product '. $request->productName.' updated.');
+        return $this->index();
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
-    {
-        //
+
+    public function destroy($id) {
+
     }
 }

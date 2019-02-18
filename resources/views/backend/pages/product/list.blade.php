@@ -33,7 +33,7 @@
                     <td>{{ $product->updated_at }}</td>
                     <td>
                         <a href="#"><i class="fa fa-search-plus" style="color:green" aria-hidden="true"></i> </a>
-                        <a href="##"><i class="fa fa-pencil-square" style="color:dodgerblue" aria-hidden="true"></i> </a>
+                        <a href="{{ route('backend.product.edit',['id'=> $product->id]) }}"><i class="fa fa-pencil-square" style="color:dodgerblue" aria-hidden="true"></i> </a>
                         <a href="###"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i> </a>
                     </td>
 
