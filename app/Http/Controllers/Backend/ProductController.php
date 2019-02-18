@@ -17,7 +17,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product_list = Product::all();
+        return view('backend.pages.product.list')->with([
+            'products' => $product_list
+        ]);
+
     }
 
 

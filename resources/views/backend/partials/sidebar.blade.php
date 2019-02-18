@@ -39,10 +39,9 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Product List</a></li>
-                    <li><a href="#">Add Product</a></li>
-                    <li><a href="#">Update Product</a></li>
-                    <li><a href="#">Delete Product</a></li>
+                    <li><a href=" {{ route('backend.product.list') }}">Product List</a></li>
+                    <li><a href="{{ route('backend.product.add') }}">Add Product</a></li>
+
                 </ul>
             </li>
             <li><a href="#"><i class="fa fa-pencil-square"></i> <span>Slider</span></a></li>

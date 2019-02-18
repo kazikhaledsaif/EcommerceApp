@@ -27,10 +27,12 @@ Route::name('backend.')
 
         //write your routes for backend
         Route::get('/', 'DashboardController@index')->name('dashboard');
+//        products route
         Route::get('/products', 'ProductController@index')->name('product.list');
         Route::get('/product-add', 'ProductController@addProduct')->name('product.add');
-        Route::get('/product-update', 'ProductController@edit')->name('product.update');
+        Route::get('/product-add', 'ProductController@addProduct')->name('product.add');
 
+        Route::get('/product-update', 'ProductController@edit')->name('product.update');
 //        for slug generation
         Route::get('/check_slug', 'ProductController@check_slug')->name('product.slug');
 //        product create
