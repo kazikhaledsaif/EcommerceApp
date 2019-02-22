@@ -31,9 +31,6 @@ Route::name('backend.')
         Route::get('/products', 'ProductController@index')->name('product.list');
         Route::get('/product-add', 'ProductController@create')->name('product.add');
         Route::get('/product-edit/{id}', 'ProductController@edit')->name('product.edit');
-
-
-
 //        for slug generation
         Route::get('/check_slug', 'ProductController@check_slug')->name('product.slug');
 //        product create
@@ -41,7 +38,19 @@ Route::name('backend.')
         Route::post('/product-update', 'ProductController@update')->name('product.update');
 
 
-});
+//        category route
+        Route::get('/category', 'CategoryController@index')->name('category.list');
+        Route::get('/category-add', 'CategoryController@create')->name('category.add');
+        Route::post('/category-create', 'CategoryController@store')->name('category.create');
+        Route::get('/category-edit/{id}', 'CategoryController@edit')->name('category.edit');
+        Route::post('/category-update', 'CategoryController@update')->name('category.update');
+        Route::get('/category_slug', 'CategoryController@check_slug')->name('category.slug');
+
+
+
+
+
+    });
 
 
 Route::name('frontend.')

@@ -18,7 +18,6 @@
                     <th>Present Price</th>
                     <th>Discount Price</th>
                     <th>Stock</th>
-                    <th>Last Update</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -30,11 +29,10 @@
                     <td>{{ $product->present_price }}</td>
                     <td>{{ $product->discount_price }}</td>
                     <td>{{ $product->stock }}</td>
-                    <td>{{ $product->updated_at }}</td>
-                    <td>
-                        <a href="#"><i class="fa fa-search-plus" style="color:green" aria-hidden="true"></i> </a>
-                        <a href="{{ route('backend.product.edit',['id'=> $product->id]) }}"><i class="fa fa-pencil-square" style="color:dodgerblue" aria-hidden="true"></i> </a>
-                        <a href="###"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i> </a>
+                    <td style="font-size: ">
+                        <a href="#"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a>
+                        <a href="{{ route('backend.product.edit',['id'=> $product->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a>
+                        <a href="###"><i class="fa fa-trash fa-lg" style="color:red" aria-hidden="true"></i> </a>
                     </td>
 
                 </tr>

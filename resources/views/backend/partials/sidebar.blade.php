@@ -44,6 +44,18 @@
 
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#"><i class="fa  fa-bandcamp"></i> <span>Category</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ route('backend.category.list') }}">Category List</a></li>
+                    <li><a href="{{ route('backend.category.add') }}">Add Category</a></li>
+
+                </ul>
+            </li>
             <li><a href="#"><i class="fa fa-pencil-square"></i> <span>Slider</span></a></li>
 
         </ul>

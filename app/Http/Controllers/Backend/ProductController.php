@@ -18,7 +18,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $product_list = Product::all();
+        $product_list = Product::all('id','name','slug','stock','present_price','discount_price','badge');
         return view('backend.pages.product.list')->with([
             'products' => $product_list
         ]);
@@ -131,8 +131,6 @@ class ProductController extends Controller
 
 
     public function update(Request $request) {
-
-
         $product = Product::find($request->id);
 
         $product->name = $request->productName;
