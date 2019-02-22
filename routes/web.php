@@ -51,9 +51,11 @@ Route::name('frontend.')
         //write your routes for frontend
         Route::get('/','IndexController@index' )->name('index');
 
-        Route::get('/shop', function () {
-            return view('frontend.pages.shop');
-        });
+      // shop route
+        Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
+        Route::get('/shop', 'ShopController@index')->name('shop.index');
+
+
         Route::get('/about', function () {
             return view('frontend.pages.about');
         });
