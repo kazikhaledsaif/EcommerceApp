@@ -16,7 +16,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $product_list = Product::all();
+        $product_list = Product::all('id','name','slug','stock','present_price','discount_price','badge');
         return view('backend.pages.product.list')->with([
             'products' => $product_list
         ]);
@@ -58,11 +58,12 @@ class ProductController extends Controller
         $product->gallery_image2= $request->productG2;
         $product->gallery_image3= $request->productG3;
         $product->gallery_image4= $request->productG4;
+
         $product->save();
 
 
         Flashy::success(' Product '. $request->productName.' created.');
-//        return view('backend.pages.product.list');
+
         return $this->index();
     }
 
@@ -113,11 +114,10 @@ class ProductController extends Controller
         if($request->productG4){
             $product->gallery_image4= $request->productG4;
         }
-//            dd($request->productThumbImg);
 
         $product->save();
 
-        Flashy::success(' Product '. $request->productName.' updated.');
+        Flashy::success(' Product updated.');
         return $this->index();
 
     }
