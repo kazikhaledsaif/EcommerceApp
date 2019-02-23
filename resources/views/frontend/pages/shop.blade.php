@@ -253,1058 +253,157 @@
                     <!--=======  shop product wrap   =======-->
 
                     <div class="shop-product-wrap grid row">
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
 
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product01.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
+                        @foreach($products as $product)
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <!--=======  grid view product  =======-->
 
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
+                                <div class="ptk-product shop-grid-view-product">
+                                    <div class="image">
+                                        <form action="" id="link-cart{{ $product->id }}" method="POST">
+                                            <a href="{{route('frontend.shop.show',$product->slug)}}">
+                                                <img src="{{ asset('uploads/'.$product->product_image)  }}" class="img-fluid shop-thumb" alt="{{ $product->name }}">
+                                            </a>
+                                            <!--=======  hover icons  =======-->
+                                            <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $product->id }}"><i class="lnr lnr-eye"></i></a>
+                                            <!-- <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a> -->
+                                            <a class="hover-icon" href="javascript:{}"
+                                               onclick="document.getElementById('link-wish{{ $product->id }}').submit()"><i class="lnr lnr-heart"></i></a>
 
-                                    <!--=======  End of hover icons  =======-->
+                                            <a class="hover-icon"  href="javascript:{}"
+                                               onclick="document.getElementById('link-cart{{ $product->id }}').submit()"><i class="lnr lnr-cart"></i></a>
+                                            <!-- <a class="hover-icon"  href="javascript:{}" onclick="form.submit();"><i class="lnr lnr-cart"></i></a> -->
 
-                                    <!--=======  badge  =======-->
 
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="id" value="{{ $product->id }}">
+                                            <input type="hidden" name="name" value="{{ $product->name }}">
+
+                                            @if($product->discount_price == 0)
+                                                <input type="hidden" name="price" value="{{ $product->present_price }}">
+                                            @else
+                                                <input type="hidden" name="price" value="{{ $product->discount_price }}">
+
+                                            @endif
+                                            <input type="hidden" name="quantity" id="quantity"  min="1"  value="1" >
+                                        </form>
+
+                                        <form  id="link-wish{{ $product->id }}" action="" method="POST">
+                                            {{csrf_field()}}
+
+                                            @if (auth()->user())
+                                                <input type="hidden" name="user_id" value="{{  auth()->user()->id }}  ">
+                                            @endif
+
+                                            <input type="hidden" name="id" value="{{ $product->id }}">
+                                            <input type="hidden" name="name" value="{{ $product->name }}">
+
+                                            @if($product->discount_price == 0)
+                                                <input type="hidden" name="price" value="{{ $product->present_price }}">
+                                            @else
+                                                <input type="hidden" name="price" value="{{ $product->discount_price }}">
+
+                                            @endif
+                                            {{--      <button  id="submit" type="submit"><i class="fa fa-heart"></i> Add to wishlist</button>--}}
+                                        </form>
+
+                                        <!--=======  End of hover icons  =======-->
+
+                                        <!--=======  badge  =======-->
+
+                                        <div class="product-badge">
+                                            @if ($product->badge)
+                                                <span class="new-badge">{{ $product->badge}}</span>
+                                            @endif
+                                            @if ($product->percentige > 0)
+                                                <span class="discount-badge">
+                                        -{{ $product->percentige }}%
+                                    </span>@endif
+                                        </div>
+
+                                        <!--=======  End of badge  =======-->
+
                                     </div>
+                                    <div class="content">
+                                        <p class="product-title"><a href="{{route('frontend.shop.show',$product->slug)}}">{{$product->name}}</a></p>
+                                        <p class="product-price">
+                                            @if( $product->discount_price == 0 )
+                                                <span class="main-price"> ${{ $product->present_price }}</span>
+                                            @else
+                                                <span class="main-price discounted">${{ $product->present_price }}</span>
+                                                <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                            @endif
 
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product01.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
+                                        </p>
                                     </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <div class="rating ">
+                                    <!-- <div class="rating">
                                         <i class="lnr lnr-star active"></i>
                                         <i class="lnr lnr-star active"></i>
                                         <i class="lnr lnr-star active"></i>
                                         <i class="lnr lnr-star active"></i>
                                         <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorum architecto adipisci.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
+                                    </div> -->
                                 </div>
 
+                                <!--=======  End of grid view product  =======-->
+
+                                <!--=======  product list view  =======-->
+
+                                <div class="ptk-product shop-list-view-product">
+                                    <div class="image">
+                                        <a href="{{route('frontend.shop.show',$product->slug)}}">
+                                            <img src="{{ asset('uploads/'.$product->product_image)  }}" class="img-fluid shop-thumb" alt="">
+                                        </a>
+
+                                        <!--=======  badge  =======-->
+
+                                        <div class="product-badge">
+                                            @if ($product->badge)
+                                                <span class="new-badge">{{ $product->badge}}</span>
+                                            @endif
+                                            @if ($product->percentage > 0)
+                                                <span class="discount-badge">
+                                        -{{ $product->percentage }}
+                                    </span>@endif
+                                        </div>
+
+                                        <!--=======  End of badge  =======-->
+
+                                    </div>
+                                    <div class="content">
+                                        <p class="product-title"><a href="{{route('frontend.shop.show',$product->slug)}}">{{$product->name}}</a></p>
+
+                                        <p class="product-price">
+                                            @if( $product->discount_price == 0 )
+                                                <span class="main-price"> ${{ $product->present_price }}</span>
+                                            @else
+                                                <span class="main-price discounted">${{ $product->present_price }}</span>
+                                                <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                            @endif
+
+                                        </p>
+                                        <p class="product-description">{{$product->details}}</p>
+                                        <!--=======  hover icons  =======-->
+                                        <div class="hover-icons">
+                                                   <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $product->id }}"><i class="lnr lnr-eye"></i></a>
+
+                                            <a class="hover-icon" href="javascript:{}"
+                                               onclick="document.getElementById('link-wish{{ $product->id }}').submit()"><i class="lnr lnr-heart"></i></a>
+
+                                            <a class="hover-icon"  href="javascript:{}"
+                                               onclick="document.getElementById('link-cart{{ $product->id }}').submit()"><i class="lnr lnr-cart"></i></a>
+                                            <!-- <a class="hover-icon"  href="javascript:{}" onclick="form.submit();"><i class="lnr lnr-cart"></i></a> -->
+
+                                        </div>
+                                        <!--=======  End of hover icons  =======-->
+                                    </div>
+
+                                </div>
+
+                                <!--=======  End of product list view  =======-->
                             </div>
+                        @endforeach
 
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product02.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Printed Chair</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product02.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-
-
-
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Printed Chair</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product03.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Lorem ipsum dolor</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product03.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Lorem ipsum dolor</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product04.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Teton Pullover Hoo</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product04.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Teton Pullover Hoo</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product05.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product05.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product06.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Aim Analog</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product06.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Aim Analog</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product07.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product07.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product08.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product08.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product09.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product09.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product10.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product10.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product05.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product05.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <!--=======  grid view product  =======-->
-
-                            <div class="ptk-product shop-grid-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product03.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of grid view product  =======-->
-
-                            <!--=======  product list view  =======-->
-
-                            <div class="ptk-product shop-list-view-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product03.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <div class="rating ">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                    <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, doloremque.</p>
-                                    <!--=======  hover icons  =======-->
-                                    <div class="hover-icons">
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-                                    </div>
-                                    <!--=======  End of hover icons  =======-->
-                                </div>
-
-                            </div>
-
-                            <!--=======  End of product list view  =======-->
-                        </div>
                     </div>
 
                     <!--=======  End of shop product wrap    =======-->

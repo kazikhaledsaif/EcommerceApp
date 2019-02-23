@@ -24,7 +24,8 @@
             <!-- Horizontal Form -->
             <div class="box box-info">
                 <!-- form start -->
-                <form class="form-horizontal" action="{{ route('backend.product.update') }}" method="post">
+                <form class="form-horizontal" action="{{ route('backend.product.update') }}" method="post"
+                      enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" class="form-control"  name="id" value="{{ $product->id }}" >
 
