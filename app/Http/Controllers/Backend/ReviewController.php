@@ -44,15 +44,13 @@ class ReviewController extends Controller
     }
 
 
-    public function edit(Review $review)
-    {
-        //
+    public function edit(Review $review) {
+
     }
 
 
-    public function update(Request $request, Review $review)
-    {
-        //
+    public function update(Request $request, Review $review) {
+
     }
 
 
