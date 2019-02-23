@@ -69,7 +69,7 @@ Route::name('frontend.')
             return view('frontend.pages.about');
         });
         Route::get('/cart', function () {
-            return view('frontend.pages.cart');
+            return view('frontend.pages.cart')->name('cart');
         });
         Route::get('/checkout', function () {
             return view('frontend.pages.checkout');
@@ -93,7 +93,7 @@ Route::name('frontend.')
             return view('frontend.pages.myaccount');
         });
         Route::get('/wishlist', function () {
-            return view('frontend.pages.wishlist');
+            return view('frontend.pages.wishlist')->name('wishlist');
         });
         Route::get('/product', function () {
             return view('frontend.pages.product');
