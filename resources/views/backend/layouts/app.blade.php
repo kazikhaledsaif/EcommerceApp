@@ -101,6 +101,9 @@ desired effect
 
     @include('flashy::message')
 
+@include('sweetalert::cdn')
+@include('sweetalert::view')
+
 @yield('script')
 @stack('scripts')
 </body>

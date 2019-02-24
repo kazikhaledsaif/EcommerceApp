@@ -213,7 +213,11 @@ class ProductController extends Controller
     }
 
 
-    public function destroy($id) {
+    public function destroy(Request $request) {
+        Product::find($request->id)->delete();
+
+        Flashy::danger(' Product id#'. $request->id.' Deleted.');
+        return redirect()->route('backend.product.list');
 
     }
 }

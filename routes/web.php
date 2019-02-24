@@ -39,6 +39,7 @@ Route::name('backend.')
 //        product create
         Route::post('/product-create', 'ProductController@store')->name('product.create');
         Route::post('/product-update', 'ProductController@update')->name('product.update');
+        Route::post('/product-destroy', 'ProductController@destroy')->name('product.destroy');
 
 
 //        category route
