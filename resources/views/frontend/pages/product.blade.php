@@ -35,63 +35,95 @@
             <div class="row">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">
                     <!-- single product tabstyle one image gallery -->
-                    <div class="product-image-slider pts-product-image-slider pts1-product-image-slider flex-row-reverse">
+                    <div class="product-image-slider pts1-product-image-slider pts-product-image-slider pts1-product-image-slider flex-row-reverse">
                         <!--product large image start -->
                         <div class="tab-content product-large-image-list pts-product-large-image-list pts1-product-large-image-list" id="myTabContent">
                             <div class="tab-pane fade show active" id="single-slide-1" role="tabpanel" aria-labelledby="single-slide-tab-1">
-                                <!--Single product Image Start-->
+                                <!--Single Product Image Start-->
                                 <div class="single-product-img img-full">
-                                    <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="img-fluid" alt="">
-                                    <a href="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+                                    <img src="{{ asset('uploads/'.$product->product_image)  }}" class="img-fluid" alt="">
+                                    <a href="{{ asset('uploads/'.$product->product_image)  }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
                                 </div>
-                                <!--Single product Image End-->
+                                <!--Single Product Image End-->
                             </div>
-                            <div class="tab-pane fade" id="single-slide-2" role="tabpanel" aria-labelledby="single-slide-tab-2">
-                                <!--Single product Image Start-->
-                                <div class="single-product-img img-full">
-                                    <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="img-fluid" alt="">
-                                    <a href="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+
+                            @if($product->gallery_image1 != "")
+                                <div class="tab-pane fade" id="single-slide-2" role="tabpanel" aria-labelledby="single-slide-tab-2">
+                                    <!--Single Product Image Start-->
+                                    <div class="single-product-img img-full">
+                                        <img src="{{ asset('uploads/'.$product->gallery_image1)  }}" class="img-fluid" alt="">
+                                        <a href="{{ asset('uploads/'.$product->gallery_image1)  }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+                                    </div>
+                                    <!--Single Product Image End-->
                                 </div>
-                                <!--Single product Image End-->
-                            </div>
-                            <div class="tab-pane fade" id="single-slide-3" role="tabpanel" aria-labelledby="single-slide-tab-3">
-                                <!--Single product Image Start-->
-                                <div class="single-product-img img-full">
-                                    <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="img-fluid" alt="">
-                                    <a href="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+                            @endif
+                            @if($product->gallery_image2 != "")
+                                <div class="tab-pane fade" id="single-slide-3" role="tabpanel" aria-labelledby="single-slide-tab-3">
+                                    <!--Single Product Image Start-->
+                                    <div class="single-product-img img-full">
+                                        <img src="{{ asset('uploads/'.$product->gallery_image2)  }}" class="img-fluid" alt="">
+                                        <a href="{{ asset('uploads/'.$product->gallery_image2)  }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+                                    </div>
+                                    <!--Single Product Image End-->
                                 </div>
-                                <!--Single product Image End-->
-                            </div>
-                            <div class="tab-pane fade" id="single-slide-4" role="tabpanel" aria-labelledby="single-slide-tab-4">
-                                <!--Single product Image Start-->
-                                <div class="single-product-img img-full">
-                                    <img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="img-fluid" alt="">
-                                    <a href="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+                            @endif
+                            @if($product->gallery_image3 != "")
+                                <div class="tab-pane fade" id="single-slide-4" role="tabpanel" aria-labelledby="single-slide-tab-4">
+                                    <!--Single Product Image Start-->
+                                    <div class="single-product-img img-full">
+                                        <img src="{{ asset('uploads/'.$product->gallery_image3)  }}" class="img-fluid" alt="">
+                                        <a href="{{ asset('uploads/'.$product->gallery_image3)  }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+                                    </div>
+                                    <!--Single Product Image End-->
                                 </div>
-                                <!--Single product Image End-->
-                            </div>
+                            @endif
+                            @if($product->gallery_image4 != "")
+                                <div class="tab-pane fade" id="single-slide-5" role="tabpanel" aria-labelledby="single-slide-tab-5">
+                                    <!--Single Product Image Start-->
+                                    <div class="single-product-img img-full">
+                                        <img src="{{ asset('uploads/'.$product->gallery_image4)  }}" class="img-fluid" alt="">
+                                        <a href="{{ asset('uploads/'.$product->gallery_image4)  }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+                                    </div>
+                                    <!--Single Product Image End-->
+                                </div>
+                            @endif
                         </div>
                         <!--product large image End-->
 
                         <!--product small image slider Start-->
                         <div class="product-small-image-list pts-product-small-image-list pts1-product-small-image-list">
                             <div class="nav small-image-slider pts-small-image-slider pts1-small-image-slider" role="tablist">
+
+
                                 <div class="single-small-image img-full">
-                                    <a data-toggle="tab" id="single-slide-tab-1" href="#single-slide-1"><img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}"
+                                    <a data-toggle="tab" id="single-slide-tab-1" href="#single-slide-1"><img src="{{ asset('uploads/'.$product->product_image)  }}"
                                                                                                              class="img-fluid" alt=""></a>
                                 </div>
-                                <div class="single-small-image img-full">
-                                    <a data-toggle="tab" id="single-slide-tab-2" href="#single-slide-2"><img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}"
-                                                                                                             class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="single-small-image img-full">
-                                    <a data-toggle="tab" id="single-slide-tab-3" href="#single-slide-3"><img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}"
-                                                                                                             class="img-fluid" alt=""></a>
-                                </div>
-                                <div class="single-small-image img-full">
-                                    <a data-toggle="tab" id="single-slide-tab-4" href="#single-slide-4"><img src="{{ asset('frontend/assets/images/single-product-slider/01.jpg') }}"
-                                                                                                             alt=""></a>
-                                </div>
+
+                                @if($product->gallery_image1 != "")
+                                    <div class="single-small-image img-full">
+                                        <a data-toggle="tab" id="single-slide-tab-2" href="#single-slide-2"><img src="{{ asset('uploads/'.$product->gallery_image1)  }}"
+                                                                                                                 class="img-fluid" alt=""></a>
+                                    </div>
+                                @endif
+                                @if($product->gallery_image2 != "")
+                                    <div class="single-small-image img-full">
+                                        <a data-toggle="tab" id="single-slide-tab-3" href="#single-slide-3"><img src="{{ asset('uploads/'.$product->gallery_image2)  }}"
+                                                                                                                 class="img-fluid" alt=""></a>
+                                    </div>
+                                @endif
+                                @if($product->gallery_image3 != "")
+                                    <div class="single-small-image img-full">
+                                        <a data-toggle="tab" id="single-slide-tab-4" href="#single-slide-4"><img src="{{ asset('uploads/'.$product->gallery_image3)  }}"
+                                                                                                                 alt=""></a>
+                                    </div>
+                                @endif
+                                @if($product->gallery_image4 != "")
+                                    <div class="single-small-image img-full">
+                                        <a data-toggle="tab" id="single-slide-tab-5" href="#single-slide-5"><img src="{{ asset('uploads/'.$product->gallery_image4)  }}"
+                                                                                                                 alt=""></a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <!--product small image slider End-->
@@ -103,65 +135,87 @@
 
                     <div class="single-product-details-container">
 
-                        <p class="product-title mb-15">Teton Pullover Hoo</p>
-                        <p class="reference-text mb-15">Reference: demo_13</p>
-                        <div class="rating d-inline-block mb-15">
-                            <i class="lnr lnr-star active"></i>
-                            <i class="lnr lnr-star active"></i>
-                            <i class="lnr lnr-star active"></i>
-                            <i class="lnr lnr-star active"></i>
-                            <i class="lnr lnr-star"></i>
-                        </div>
-                        <p class="review-links d-inline-block">
-                            <a href="#"><i class="fa fa-comment-o"></i> Read reviews (1) </a>
-                            <a href="#"><i class="fa fa-pencil"></i> Write a review</a>
-                        </p>
+                        <p class="product-title mb-15">{{ $product->name }}</p>
+                        <!-- <p class="reference-text mb-15">Reference: demo_13</p> -->
+
                         <p class="product-price mb-30">
-                            <span class="main-price discounted">$75.90</span>
-                            <span class="discounted-price">$69.83</span>
+                            @if( $product->discount_price == 0 )
+                                <span class="main-price"> ${{ $product->present_price }}</span>
+                            @else
+                                <span class="main-price discounted">${{ $product->present_price }}</span>
+                                <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                            @endif
                         </p>
                         <p class="product-description mb-15">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum nemo at a amet eaque adipisci, repellat aspernatur tempora corrupti cupiditate?
+                            {!! $product->details !!}
                         </p>
-                        <div class="size mb-15">
-                            Size: <br>
-                            <select name="chooseSize" id="chooseSize">
-                                <option value="0">XXL</option>
-                                <option value="0">L</option>
-                                <option value="0">M</option>
-                                <option value="0">S</option>
-                            </select>
-                        </div>
 
-                        <div class="color mb-15">
-                            Color: <br>
-                            <a href="#"><span class="color-block color-choice-1"></span></a>
-                            <a href="#"><span class="color-block color-choice-2"></span></a>
-                            <a href="#"><span class="color-block color-choice-3 active"></span></a>
-                        </div>
-                        <div class="cart-buttons mb-30">
-                            <p class="mb-15">Quantity</p>
-                            <div class="pro-qty mr-10">
-                                <input type="text" value="1">
+                        <form action="" method="POST">
+                            {{csrf_field()}}
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="name" value="{{ $product->name }}">
+
+
+                            @if($product->discount_price == 0)
+                                <input type="hidden" name="price" value="{{ $product->present_price }}">
+                            @else
+                                <input type="hidden" name="price" value="{{ $product->discount_price }}">
+
+                            @endif
+
+
+                            <div id="quantity_card" class="cart-buttons mb-30">
+                                @if ($product->stock != 0)
+                                    <p class="mb-15">Quantity : <span id="stock" > {{$product->stock }}</span></p>
+                                    <div class="pro-qty mr-10">
+                                        <input type="text" name="quantity" id="quantity" min="1" value="1" max="{{$product->stock}}" required="">
+
+                                    </div>
+                                    <a>
+                                        <button type="submit" class="pataku-btn">  <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                    </a>
+
+                                @else
+                                    <p class="mb-15 text-danger"> Out of Stock</p>
+                                @endif
+
+
                             </div>
-                            <a href="#" class="pataku-btn"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                        </div>
-                        <p class="wishlist-link mb-30"><a href="#"> <i class="fa fa-heart"></i> Add to wishlist</a></p>
+                        </form>
+                        <p class="wishlist-link mb-30">
+                        <form action="" method="POST">
+                            {{csrf_field()}}
+
+                            @if (auth()->user())
+                                <input type="hidden" name="user_id" value="{{  auth()->user()->id }}  ">
+                            @endif
+
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="name" value="{{ $product->name }}">
+
+                            @if($product->discount_price == 0)
+                                <input type="hidden" name="price" value="{{ $product->present_price }}">
+                            @else
+                                <input type="hidden" name="price" value="{{ $product->discount_price }}">
+
+                            @endif
+                            <button  id="submit" type="submit"><i class="fa fa-heart"></i> Add to wishlist</button>
+                        </form>
+                        </p>
                         <div class="social-share-buttons mb-30">
                             <p>Share</p>
                             <ul>
-                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a target="_blank" class="twitter" href="https://twitter.com/home?status=check+this+amazing+furniture+http://furniturevilletexas.com/shop/{{ $product->slug }}"><i class="fa fa-twitter"></i></a></li>
+                                <li><a target="_blank" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=furniturevilletexas.com/shop/{{ $product->slug }}"><i class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank" class="google-plus" href="https://plus.google.com/share?url=furniturevilletexas.com/shop/{{ $product->slug }}"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                         <div class="policy-list">
-                            <ul>
-                                <li> <img src="{{ asset('frontend/assets/images/icons/shield.png') }} " alt=""> Security policy (edit with Customer reassurance module)</li>
-                                <li> <img src="{{ asset('frontend/assets/images/icons/truck.png') }}" alt=""> Delivery policy (edit with Customer reassurance module)</li>
-                                <li> <img src="{{ asset('frontend/assets/images/icons/compare.png') }} " alt=""> Return policy (edit with Customer reassurance module)</li>
-                            </ul>
+                         {{--   <ul>
+                                <li> <img src="{{ asset('frontend/images/icons/shield.png') }} " alt=""><a href="{{ route('pages.privacy')}}"> Please read our Security Policy ! </a> </li>
+                                <li> <img src="{{ asset('frontend/images/icons/truck.png') }} " alt=""> <a href="{{ route('pages.delivery')}}"> Please read our Delivery Policy ! </a> </li>
+                                <li> <img src="{{ asset('frontend/images/icons/compare.png') }} " alt=""> <a href="{{ route('pages.refund')}}"> Please read our Return Policy ! </a> </li>
+                            </ul>--}}
                         </div>
                     </div>
 
@@ -170,7 +224,6 @@
             </div>
         </div>
     </div>
-
     <!--=====  End of single product page content  ======-->
 
 
@@ -195,20 +248,20 @@
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                                <p class="product-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque obcaecati tempore reiciendis neque facere! Eos, necessitatibus? Fugit iure veritatis quidem velit quaerat quos qui pariatur dolore facilis, aliquid quae voluptatibus dicta. Quae harum velit hic molestias, eius ab cum quidem voluptates modi maiores laboriosam iusto excepturi ex, recusandae aut, facere earum ad vero aperiam. Minima dolores dignissimos ab ipsam atque placeat sapiente officia debitis nobis porro at quia veritatis, quidem id repudiandae ex tempore non. Enim soluta explicabo atque adipisci itaque.</p>
-                            </div>
+                                <p class="product-desc">{!! $product->description !!}</p>
+                               </div>
                             <div class="tab-pane fade" id="features" role="tabpanel" aria-labelledby="features-tab">
                                 <table class="table-data-sheet">
                                     <tbody>
                                     <tr class="odd">
 
                                         <td>Name</td>
-                                        <td>Kaoreet lobortis sagittis laoreet</td>
+                                        <td>{{ $product->feature_name }}</td>
                                     </tr>
                                     <tr class="even">
 
                                         <td>Color</td>
-                                        <td>Yellow</td>
+                                        <td>{{ $product->feature_color }}</td>
                                     </tr>
 
                                     </tbody>
@@ -386,227 +439,52 @@
 
                     <div class="ptk-slider related-product-slider-container">
 
-                        <div class="col">
-                            <!--=======  single product  =======-->
+                        @foreach($mightLikeProduct as $alikeProducts)
+                            <div class="col">
+                                <!--=======  single product  =======-->
 
-                            <div class="ptk-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product01.jpg') }} " class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
+                                <div class="ptk-product">
+                                    <div class="image">
+                                        <a href="{{ $alikeProducts->slug }}">
+                                            <img src="{{ asset('uploads/'.$alikeProducts->product_image)  }}" class="img-fluid" alt="">
+                                        </a>
+                                        <!--=======  hover icons  =======-->
 
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
+                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
+                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
+                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
 
-                                    <!--=======  End of hover icons  =======-->
+                                        <!--=======  End of hover icons  =======-->
 
-                                    <!--=======  badge  =======-->
+                                        <!--=======  badge  =======-->
 
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
+                                        <div class="product-badge">
+                                            <span class="new-badge">{{$alikeProducts->badge }} </span>
+                                            <span class="discount-badge"> {{$alikeProducts->discount }}</span>
+                                        </div>
+
+                                        <!--=======  End of badge  =======-->
+
                                     </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Field Messenger</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of single product  =======-->
-                        </div>
-
-                        <div class="col">
-                            <!--=======  single product  =======-->
-
-                            <div class="ptk-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product01.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
+                                    <div class="content">
+                                        <p class="product-title"><a href="single-product.html">{{ $alikeProducts->name }}</a></p>
+                                        <p class="product-price">
+                                            <span class="main-price discounted">${{ $alikeProducts->present_price }}</span>
+                                            <span class="discounted-price">${{ $alikeProducts->discount_price }}</span>
+                                        </p>
                                     </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Teton Pullover Hoo</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price">$75.90</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of single product  =======-->
-                        </div>
-
-                        <div class="col">
-                            <!--=======  single product  =======-->
-
-                            <div class="ptk-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product01.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
+                                    <div class="rating">
+                                        <i class="lnr lnr-star active"></i>
+                                        <i class="lnr lnr-star active"></i>
+                                        <i class="lnr lnr-star active"></i>
+                                        <i class="lnr lnr-star active"></i>
+                                        <i class="lnr lnr-star"></i>
                                     </div>
+                                </div>
 
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Hummingbird printed t-shirt</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
+                                <!--=======  End of single product  =======-->
                             </div>
-
-                            <!--=======  End of single product  =======-->
-                        </div>
-
-                        <div class="col">
-                            <!--=======  single product  =======-->
-
-                            <div class="ptk-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product01.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                        <span class="new-badge">NEW</span>
-                                        <span class="discount-badge">-8%</span>
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Aim Analog</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of single product  =======-->
-                        </div>
-
-                        <div class="col">
-                            <!--=======  single product  =======-->
-
-                            <div class="ptk-product">
-                                <div class="image">
-                                    <a href="single-product.html">
-                                        <img src="{{ asset('frontend/assets/images/products/product01.jpg') }}" class="img-fluid" alt="">
-                                    </a>
-                                    <!--=======  hover icons  =======-->
-
-                                    <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                    <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
-
-                                    <!--=======  End of hover icons  =======-->
-
-                                    <!--=======  badge  =======-->
-
-                                    <div class="product-badge">
-                                    </div>
-
-                                    <!--=======  End of badge  =======-->
-
-                                </div>
-                                <div class="content">
-                                    <p class="product-title"><a href="single-product.html">Mug Today is a good day</a></p>
-                                    <p class="product-price">
-                                        <span class="main-price discounted">$75.90</span>
-                                        <span class="discounted-price">$69.83</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star active"></i>
-                                    <i class="lnr lnr-star"></i>
-                                </div>
-                            </div>
-
-                            <!--=======  End of single product  =======-->
-                        </div>
-
+                        @endforeach
                     </div>
 
                     <!--=======  End of top selling product slider container  =======-->

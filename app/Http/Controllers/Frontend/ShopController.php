@@ -52,9 +52,26 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
+        $product = Product::where('slug',$slug)->firstOrFail();
+
+        //$review = Review::where('pid', $product->id)->get();
+       // $review_count = Review::where('pid', $product->id)->count();
+       // $review_sum = Review::where('pid', $product->id)->sum('rating');
+
+
+        $mightLikeProduct = Product::where('slug','!=',$slug)->inRandomOrder()->take(8)->get();
+        return view('frontend.pages.product')->with([
+                'product'=> $product,
+              //  'count' => $review_count,
+             //   'review' => $review,
+           //     'review_sum'=>$review_sum,
+                'mightLikeProduct' => $mightLikeProduct
+            ]
+
+        );
     }
 
     /**
