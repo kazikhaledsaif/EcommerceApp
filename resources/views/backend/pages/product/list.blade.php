@@ -80,34 +80,43 @@
             swal({
                     title: "Are you sure!",
                     text:"Delete "+name + " ?",
-                    type: "error",
+                    type: "warning",
                     confirmButtonClass: "btn-danger",
                     confirmButtonText: "Yes!",
                     showCancelButton: true,
                     dangerMode: true,
-                }).then(function (isConfirm) {
-                    if(isConfirm){
+                }).then(function() {
+                    if(willDelete){
                         swal({
                             title: 'Successful!',
                             text: 'Product has been deleted!',
+                            type: "success",
                             icon: 'success'
                         }).then(function() {
-                            $.ajax({
-                                type: "POST",
-                                url: "{{ route('backend.product.destroy') }}",
-                                data: {id:id, _token:token},
-                                success: function (data) {
-                                    if(data.success == true){ // if true (1)
-                                        setTimeout(function(){// wait for 5 secs(2)
-                                            location.reload(); // then reload the page.(3)
-                                        }, 5000);
-                                    }
-                                }
-                            });
+                            {{--$.ajax({--}}
+                                {{--type: "POST",--}}
+                                {{--url: "{{ route('backend.product.destroy') }}",--}}
+                                {{--data: {id:id, _token:token},--}}
+                                {{--success: function (data) {--}}
+                                    {{--if(data.success == true){ // if true (1)--}}
+                                        {{--setTimeout(function(){  // wait for 5 secs(2)--}}
+                                            {{--location.reload();  // then reload the page.(3)--}}
+                                        {{--}, 5000);--}}
+                                    {{--}--}}
+                                {{--}--}}
+                            {{--});--}}
+                            console.log('deleted');
                         });
                     }
-                
-            })
+
+            }, function (dismiss) {
+                if(dismiss == 'cancel'){
+                    swal("Canceled!", "Delete canceled!",'error', "error");
+                    console.log(' canceled deleted');
+
+                    }
+                }
+            )
         });
     </script>
 @endpush
