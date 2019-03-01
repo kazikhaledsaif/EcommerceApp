@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->integer('percentage')->nullable();
             $table->string('badge')->nullable();
             $table->dateTime('weekly_deal')->nullable();
+            $table->decimal('rating',8,2)->nullable();
             $table->string('product_image')->nullable();
             $table->string('gallery_image1')->nullable();
             $table->string('gallery_image2')->nullable();
