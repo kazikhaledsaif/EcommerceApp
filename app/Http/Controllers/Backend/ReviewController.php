@@ -35,6 +35,10 @@ class ReviewController extends Controller
 
         $review->save();
 
+        Flashy::success(' Review added.');
+
+        return redirect()->back();
+
     }
 
 
@@ -57,6 +61,7 @@ class ReviewController extends Controller
 
         $review->save();
 
+        Flashy::success(' Product '. $request->productName.' created.');
 
     }
 
