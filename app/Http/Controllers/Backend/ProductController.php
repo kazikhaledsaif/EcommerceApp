@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Category;
 use App\Product;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use function GuzzleHttp\Psr7\str;
@@ -33,7 +34,11 @@ class ProductController extends Controller
 
 
     public function create() {
-        return view('backend.pages.product.add');
+        $category = Category::all();
+
+        return view('backend.pages.product.add')->with([
+            'category' => $category
+        ]);
 
     }
 
@@ -122,10 +127,13 @@ class ProductController extends Controller
 
 
     public function edit($id) {
+
         $product = Product::where('id',$id)->firstOrFail();
+        $category = Category::all();
 
         return view('backend.pages.product.edit')->with([
-            'product' => $product
+            'product' => $product,
+            'category' => $category
         ]);
     }
 

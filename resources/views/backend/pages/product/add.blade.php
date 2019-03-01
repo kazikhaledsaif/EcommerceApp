@@ -68,11 +68,9 @@
                                 <label for="inputCategory" class="col-sm-2 control-label">Category</label>
                                 <div class="col-sm-4">
                                 <select class="form-control " id="inputCategory" name="productCategory">
-                                    <option value="1">option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
+                                    @foreach($category as $cat)
+                                        <option value="{{ $cat['id'] }}">{{ $cat['name'] }}</option>
+                                    @endforeach 
                                 </select>
                                 </div>
 
