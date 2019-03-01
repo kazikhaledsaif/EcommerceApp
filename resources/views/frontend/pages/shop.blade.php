@@ -280,7 +280,7 @@
                                             <input type="hidden" name="name" value="{{ $product->name }}">
 
                                             @if($product->discount_price == 0)
-                                                <input type="hidden" name="price" value="{{ $product->present_price }}">
+                                                <input type="hidden" name="price" value="{{ $product->regular_price }}">
                                             @else
                                                 <input type="hidden" name="price" value="{{ $product->discount_price }}">
 
@@ -328,9 +328,9 @@
                                         <p class="product-title"><a href="{{route('frontend.shop.show',$product->slug)}}">{{$product->name}}</a></p>
                                         <p class="product-price">
                                             @if( $product->discount_price == 0 )
-                                                <span class="main-price"> ${{ $product->present_price }}</span>
+                                                <span class="main-price"> ${{ $product->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $product->present_price }}</span>
+                                                <span class="main-price discounted">${{ $product->regular_price }}</span>
                                                 <span class="discounted-price"> ${{ $product->discount_price }}</span>
                                             @endif
 
@@ -375,9 +375,9 @@
 
                                         <p class="product-price">
                                             @if( $product->discount_price == 0 )
-                                                <span class="main-price"> ${{ $product->present_price }}</span>
+                                                <span class="main-price"> ${{ $product->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $product->present_price }}</span>
+                                                <span class="main-price discounted">${{ $product->regular_price }}</span>
                                                 <span class="discounted-price"> ${{ $product->discount_price }}</span>
                                             @endif
 

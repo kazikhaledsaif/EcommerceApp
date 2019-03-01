@@ -50,7 +50,7 @@
                             <label for="inputPrice" class="col-sm-2 control-label">Price</label>
 
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="inputPrice" min="1" name="productPresentPrice" placeholder="Present Price (required)" required>
+                                <input type="number" class="form-control" id="inputPrice" min="1" name="productPresentPrice" placeholder="Regular Price (required)" required>
                             </div>
                             <label for="inputPrice" class="col-sm-2 control-label">Discount Price</label>
 
@@ -68,11 +68,9 @@
                                 <label for="inputCategory" class="col-sm-2 control-label">Category</label>
                                 <div class="col-sm-4">
                                 <select class="form-control " id="inputCategory" name="productCategory">
-                                    <option value="1">option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                    <option>option 5</option>
+                                    @foreach($category as $cat)
+                                        <option value="{{ $cat['id'] }}">{{ $cat['name'] }}</option>
+                                    @endforeach
                                 </select>
                                 </div>
 
@@ -96,16 +94,22 @@
                                 <textarea class="form-control" id="inputDescription" name="productDescription"  placeholder="Product Description"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group date">
                             <label for="inputFName" class="col-sm-2 control-label">Feature Name</label>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-2">
                                 <input type="text" class="form-control" id="inputFName" name="productFeatureName" placeholder="Feature Name">
                             </div>
                             <label for="inputColor" class="col-sm-2 control-label">Feature Color</label>
 
-                            <div class="col-sm-4">
+                            <div class="col-sm-2">
                                 <input type="text" class="form-control" id="inputColor" placeholder="Color" name="productFeatureColor">
+                            </div>
+
+                            <label for="datepicker" class="col-sm-2 control-label">Weekly Deal</label>
+
+                            <div class="col-sm-2 ">
+                                <input type="date" class="form-control" id="datepicker" placeholder="Weekly deal" name="productWeeklyDeal">
                             </div>
                         </div>
                         <div class="form-group">

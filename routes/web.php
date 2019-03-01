@@ -16,6 +16,9 @@
  * to make new conttoller command
 php artisan make:controller Frontend/IndexController --resource
 */
+
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 
 
@@ -36,6 +39,7 @@ Route::name('backend.')
 //        product create
         Route::post('/product-create', 'ProductController@store')->name('product.create');
         Route::post('/product-update', 'ProductController@update')->name('product.update');
+        Route::post('/product-destroy', 'ProductController@destroy')->name('product.destroy');
 
 
 //        category route
@@ -46,7 +50,8 @@ Route::name('backend.')
         Route::post('/category-update', 'CategoryController@update')->name('category.update');
         Route::get('/category_slug', 'CategoryController@check_slug')->name('category.slug');
 
-
+//        review
+        Route::post('/review-add','ReviewController@store')->name('review.create');
 
 
 

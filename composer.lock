@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70a16eea74338f01923d23d19b47eaf0",
+    "content-hash": "0ad5d348a828da77a0a76e2cb53d5f70",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2179,6 +2179,62 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "softon/sweetalert",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/softon/sweetalert.git",
+                "reference": "685896b0d46aeea761938c0fca45bc869e55126d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/softon/sweetalert/zipball/685896b0d46aeea761938c0fca45bc869e55126d",
+                "reference": "685896b0d46aeea761938c0fca45bc869e55126d",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~5.0|~6.0",
+                "illuminate/support": "~5.0|~6.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Softon\\SweetAlert\\SweetAlertServiceProvider"
+                    ],
+                    "aliases": {
+                        "SWAL": "Softon\\SweetAlert\\Facades\\SWAL"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Softon\\SweetAlert\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shiburaj",
+                    "email": "powerupneo@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Package for SweetAlert2. Use this package to easily show sweetalert2 prompts in your laravel app.",
+            "keywords": [
+                "POPUP BOXES",
+                "laravel 5",
+                "sweetalert2"
+            ],
+            "time": "2017-12-03T14:34:40+00:00"
         },
         {
             "name": "spatie/laravel-permission",

@@ -164,6 +164,7 @@ return [
 
         /*Debug tool*/
         Barryvdh\Debugbar\ServiceProvider::class,
+        Softon\SweetAlert\SweetAlertServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -227,6 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'SWAL' => Softon\SweetAlert\Facades\SWAL::class,
     ],
 
 ];

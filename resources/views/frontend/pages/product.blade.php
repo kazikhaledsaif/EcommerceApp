@@ -14,8 +14,9 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="index.html">Home</a> <span class="separator">/</span></li>
-                            <li class="active">Single Product</li>
+                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>
+                            <li><a href="{{ route('frontend.shop.index') }}">Shop</a> <span class="separator">/</span></li>
+                            <li class="active"> {{ $product->name }}</li>
                         </ul>
                     </div>
                 </div>
@@ -375,31 +376,40 @@
                                         </div>
 
                                     </div>
+                                    @guest
+                                        <div class="ratting-form-wrapper fix">
+                                            <h3>Login first to review</h3>
+                                        </div>
+                                    @else
+
                                     <div class="ratting-form-wrapper fix">
                                         <h3>Add your Comments</h3>
-                                        <form action="#">
+                                        <form action="{{ route('backend.review.create') }}">
+                                            @csrf
+                                            <input type="hidden" name="pid" value="{{ $product->id }}">
+                                            <input type="hidden" name="uid" value="{{  auth()->user()->id  }}">
+
                                             <div class="ratting-form row">
                                                 <div class="col-12 mb-15">
                                                     <h5>Rating:</h5>
                                                     <div class="ratting-star fix">
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <i class="fa fa-star-o"></i>
+                                                        <fieldset class="rating">
+                                                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                                            <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Good 4 stars"></label>
+                                                            <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Above Average 3.5 stars"></label>
+                                                            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Average 3 stars"></label>
+                                                            <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Below Average 2.5 stars"></label>
+                                                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title=" 2 stars"></label>
+                                                            <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="1.5 stars"></label>
+                                                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title=" 1 star"></label>
+                                                            <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title=" 0.5 stars"></label>
+                                                        </fieldset>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 col-12 mb-15">
-                                                    <label for="name">Name:</label>
-                                                    <input id="name" placeholder="Name" type="text">
-                                                </div>
-                                                <div class="col-md-6 col-12 mb-15">
-                                                    <label for="email">Email:</label>
-                                                    <input id="email" placeholder="Email" type="text">
                                                 </div>
                                                 <div class="col-12 mb-15">
                                                     <label for="your-review">Your Review:</label>
-                                                    <textarea name="review" id="your-review"
+                                                    <textarea name="comment" id="your-review"
                                                               placeholder="Write a review"></textarea>
                                                 </div>
                                                 <div class="col-12">
@@ -408,6 +418,8 @@
                                             </div>
                                         </form>
                                     </div>
+
+                                    @endguest
                                 </div>
                             </div>
                         </div>

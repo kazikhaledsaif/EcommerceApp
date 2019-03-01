@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('details')->nullable();
-            $table->decimal('present_price', 8, 2);
+            $table->decimal('regular_price', 8, 2);
             $table->decimal('discount_price', 8, 2)->default(0);
             $table->text('description');
             $table->string('feature_name')->nullable();
@@ -27,6 +27,8 @@ class CreateProductsTable extends Migration
             $table->integer('stock')->default(0);
             $table->integer('percentage')->nullable();
             $table->string('badge')->nullable();
+            $table->dateTime('weekly_deal')->nullable();
+            $table->decimal('rating',8,2)->nullable();
             $table->string('product_image')->nullable();
             $table->string('gallery_image1')->nullable();
             $table->string('gallery_image2')->nullable();

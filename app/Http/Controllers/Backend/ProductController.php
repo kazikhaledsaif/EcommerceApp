@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Category;
 use App\Product;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use function GuzzleHttp\Psr7\str;
@@ -18,7 +19,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $product_list = Product::all('id','name','slug','stock','present_price','discount_price','badge');
+        $product_list = Product::all('id','name','slug','stock','regular_price','discount_price','badge');
         return view('backend.pages.product.list')->with([
             'products' => $product_list
         ]);
@@ -33,7 +34,11 @@ class ProductController extends Controller
 
 
     public function create() {
-        return view('backend.pages.product.add');
+        $category = Category::all();
+
+        return view('backend.pages.product.add')->with([
+            'category' => $category
+        ]);
 
     }
 
@@ -93,7 +98,7 @@ class ProductController extends Controller
 //        $product->slug = $request->productSlug;
         $product->details = $request->productDetail;
         $product->description = $request->productDescription;
-        $product->present_price = $request->productPresentPrice;
+        $product->regular_price = $request->productPresentPrice;
         $product->discount_price = $request->productDiscountPrice;
         $product->stock = $request->productStock;
         $product->category_id = $request->productCategory;
@@ -112,7 +117,7 @@ class ProductController extends Controller
 
         Flashy::success(' Product '. $request->productName.' created.');
 //        return view('backend.pages.product.list');
-        return $this->index();
+        return redirect()->route('backend.product.list');
     }
 
 
@@ -122,10 +127,13 @@ class ProductController extends Controller
 
 
     public function edit($id) {
+
         $product = Product::where('id',$id)->firstOrFail();
+        $category = Category::all();
 
         return view('backend.pages.product.edit')->with([
-            'product' => $product
+            'product' => $product,
+            'category' => $category
         ]);
     }
 
@@ -137,7 +145,7 @@ class ProductController extends Controller
         $product->slug = $request->productSlug;
         $product->details = $request->productDetail;
         $product->description = $request->productDescription;
-        $product->present_price = $request->productPresentPrice;
+        $product->regular_price = $request->productPresentPrice;
         $product->discount_price = $request->productDiscountPrice;
         $product->stock = $request->productStock;
         $product->category_id = $request->productCategory;
@@ -213,7 +221,11 @@ class ProductController extends Controller
     }
 
 
-    public function destroy($id) {
+    public function destroy(Request $request) {
+        Product::find($request->id)->delete();
+
+        Flashy::danger(' Product id#'. $request->id.' Deleted.');
+        return redirect()->route('backend.product.list');
 
     }
 }
