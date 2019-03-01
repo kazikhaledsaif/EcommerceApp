@@ -501,6 +501,5 @@
 
 
 @section('modal')
-
     @include('frontend.partials.modal')
 @endsection()
