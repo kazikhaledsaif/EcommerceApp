@@ -64,13 +64,13 @@ Route::name('frontend.')
         Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
         Route::get('/shop', 'ShopController@index')->name('shop.index');
 
+        // cart route
+        Route::get('/cart', 'CartController@index')->name('cart.index');
 
         Route::get('/about', function () {
             return view('frontend.pages.about');
         });
-        Route::get('/cart', function () {
-            return view('frontend.pages.cart')->name('cart');
-        });
+
         Route::get('/checkout', function () {
             return view('frontend.pages.checkout');
         });
