@@ -19,7 +19,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $product_list = Product::all('id','name','slug','stock','present_price','discount_price','badge');
+        $product_list = Product::all('id','name','slug','stock','regular_price','discount_price','badge');
         return view('backend.pages.product.list')->with([
             'products' => $product_list
         ]);
@@ -98,7 +98,7 @@ class ProductController extends Controller
 //        $product->slug = $request->productSlug;
         $product->details = $request->productDetail;
         $product->description = $request->productDescription;
-        $product->present_price = $request->productPresentPrice;
+        $product->regular_price = $request->productPresentPrice;
         $product->discount_price = $request->productDiscountPrice;
         $product->stock = $request->productStock;
         $product->category_id = $request->productCategory;
@@ -117,7 +117,7 @@ class ProductController extends Controller
 
         Flashy::success(' Product '. $request->productName.' created.');
 //        return view('backend.pages.product.list');
-        return $this->index();
+        return redirect()->route('backend.product.list');
     }
 
 
@@ -145,7 +145,7 @@ class ProductController extends Controller
         $product->slug = $request->productSlug;
         $product->details = $request->productDetail;
         $product->description = $request->productDescription;
-        $product->present_price = $request->productPresentPrice;
+        $product->regular_price = $request->productPresentPrice;
         $product->discount_price = $request->productDiscountPrice;
         $product->stock = $request->productStock;
         $product->category_id = $request->productCategory;

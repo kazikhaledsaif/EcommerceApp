@@ -3,11 +3,22 @@
 @section('title', 'Category list')
 
 @section('content')
+    <section class="content-header">
+        <h1>
+            Category
+            <small>Category list</small>
+            <small>            <a href="#" class="btn btn-success">Add Category</a>
+            </small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Category</a></li>
+        </ol>
+    </section>
 
     <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">Category list</h3>
-        </div>
+
+
         <!-- /.box-header -->
         <div class="box-body">
             <table id="category-list" class="table table-bordered table-striped table-responsive table-hover" >

@@ -54,7 +54,7 @@
                             <label for="inputPrice" class="col-sm-2 control-label">Price</label>
 
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="inputPrice" min="1" name="productPresentPrice" value="{{ $product->present_price }}" >
+                                <input type="number" class="form-control" id="inputPrice" min="1" name="productPresentPrice" value="{{ $product->regular_price }}" >
                             </div>
                             <label for="inputDPrice" class="col-sm-2 control-label">Discount Price</label>
 

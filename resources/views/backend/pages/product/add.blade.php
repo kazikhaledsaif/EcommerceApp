@@ -50,7 +50,7 @@
                             <label for="inputPrice" class="col-sm-2 control-label">Price</label>
 
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="inputPrice" min="1" name="productPresentPrice" placeholder="Present Price (required)" required>
+                                <input type="number" class="form-control" id="inputPrice" min="1" name="productPresentPrice" placeholder="Regular Price (required)" required>
                             </div>
                             <label for="inputPrice" class="col-sm-2 control-label">Discount Price</label>
 
@@ -70,7 +70,7 @@
                                 <select class="form-control " id="inputCategory" name="productCategory">
                                     @foreach($category as $cat)
                                         <option value="{{ $cat['id'] }}">{{ $cat['name'] }}</option>
-                                    @endforeach 
+                                    @endforeach
                                 </select>
                                 </div>
 

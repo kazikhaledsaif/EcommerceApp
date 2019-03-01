@@ -6,7 +6,13 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Product list</h3>
+            <div class="col-md-3">
+                <h3 class="box-title">Product list</h3>
+            </div>
+
+            <div class="col-md-6 ">
+                <a href="#" class="btn btn-success">Add Product</a>
+            </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -15,7 +21,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Slug</th>
-                    <th>Present Price</th>
+                    <th>Regular Price</th>
                     <th>Discount Price</th>
                     <th>Stock</th>
                     <th>Action</th>
@@ -26,7 +32,7 @@
                 <tr>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->slug }}</td>
-                    <td>{{ $product->present_price }}</td>
+                    <td>{{ $product->regular_price }}</td>
                     <td>{{ $product->discount_price }}</td>
                     <td>{{ $product->stock }}</td>
                     <td>
@@ -44,7 +50,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Slug</th>
-                    <th>Present Price</th>
+                    <th>Regular Price</th>
                     <th>Discount Price</th>
                     <th>Stock</th>
                     <th>Updated</th>
@@ -78,45 +84,38 @@
             var token = $(this).data('token');
             var name = $(this).data('name');
             swal({
-                    title: "Are you sure!",
-                    text:"Delete "+name + " ?",
-                    type: "warning",
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes!",
-                    showCancelButton: true,
-                    dangerMode: true,
-                }).then(function() {
-                    if(willDelete){
-                        swal({
-                            title: 'Successful!',
-                            text: 'Product has been deleted!',
-                            type: "success",
-                            icon: 'success'
-                        }).then(function() {
-                            {{--$.ajax({--}}
-                                {{--type: "POST",--}}
-                                {{--url: "{{ route('backend.product.destroy') }}",--}}
-                                {{--data: {id:id, _token:token},--}}
-                                {{--success: function (data) {--}}
-                                    {{--if(data.success == true){ // if true (1)--}}
-                                        {{--setTimeout(function(){  // wait for 5 secs(2)--}}
-                                            {{--location.reload();  // then reload the page.(3)--}}
-                                        {{--}, 5000);--}}
-                                    {{--}--}}
-                                {{--}--}}
-                            {{--});--}}
-                            console.log('deleted');
-                        });
-                    }
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'Danger',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('backend.product.destroy') }}",
+                        data: {id:id, _token:token},
+                        success: function (data) {
+                            if(data.success == true){ // if true (1)
+                                setTimeout(function(){  // wait for 5 secs(2)
+                                    location.reload();  // then reload the page.(3)
+                                }, 500);
+                            }
+                        }
+                    });
 
-            }, function (dismiss) {
-                if(dismiss == 'cancel'){
-                    swal("Canceled!", "Delete canceled!",'error', "error");
-                    console.log(' canceled deleted');
-
-                    }
+                    swal(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
                 }
-            )
+            });
+
         });
+
+
     </script>
 @endpush
