@@ -317,63 +317,27 @@
                                         </div>
                                     </div>
                                     <div class="rattings-wrapper">
+                                        @php
+                                            $alreadyReviewed = \App\Review::where('uid',auth()->user()->id);
+                                        @endphp
 
+                                        @foreach($review as $rating)
                                         <div class="sin-rattings">
                                             <div class="ratting-author">
-                                                <h3>Cristopher Lee</h3>
+                                                <h3>{{ $rating->name }}</h3>
                                                 <div class="ratting-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <span>(5)</span>
+                                                    @for($i=1; $i<=$rating->rating; $i++)
+                                                        <i class="fa fa-star"></i>
+                                                    @endfor
+                                                    @if($rating->rating != round($rating->rating))
+                                                            <i class="fa fa-star-half"></i>
+                                                    @endif
+                                                    <span>({{ $rating->rating }})</span>
                                                 </div>
                                             </div>
-                                            <p>enim ipsam voluptatem quia voluptas sit
-                                                aspernatur aut odit aut fugit, sed quia res eos
-                                                qui ratione voluptatem sequi Neque porro
-                                                quisquam est, qui dolorem ipsum quia dolor sit
-                                                amet, consectetur, adipisci veli</p>
+                                            <p> {{ $rating->comment }}</p>
                                         </div>
-
-                                        <div class="sin-rattings">
-                                            <div class="ratting-author">
-                                                <h3>Nirob Khan</h3>
-                                                <div class="ratting-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <span>(5)</span>
-                                                </div>
-                                            </div>
-                                            <p>enim ipsam voluptatem quia voluptas sit
-                                                aspernatur aut odit aut fugit, sed quia res eos
-                                                qui ratione voluptatem sequi Neque porro
-                                                quisquam est, qui dolorem ipsum quia dolor sit
-                                                amet, consectetur, adipisci veli</p>
-                                        </div>
-
-                                        <div class="sin-rattings">
-                                            <div class="ratting-author">
-                                                <h3>Rashed Mahmud</h3>
-                                                <div class="ratting-star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <span>(5)</span>
-                                                </div>
-                                            </div>
-                                            <p>enim ipsam voluptatem quia voluptas sit
-                                                aspernatur aut odit aut fugit, sed quia res eos
-                                                qui ratione voluptatem sequi Neque porro
-                                                quisquam est, qui dolorem ipsum quia dolor sit
-                                                amet, consectetur, adipisci veli</p>
-                                        </div>
+                                        @endforeach
 
                                     </div>
                                     @guest
@@ -382,44 +346,51 @@
                                         </div>
                                     @else
 
-                                    <div class="ratting-form-wrapper fix">
-                                        <h3>Add your Comments</h3>
-                                        <form action="{{ route('backend.review.create') }}">
-                                            @csrf
-                                            <input type="hidden" name="pid" value="{{ $product->id }}">
-                                            <input type="hidden" name="uid" value="{{  auth()->user()->id  }}">
 
-                                            <div class="ratting-form row">
-                                                <div class="col-12 mb-15">
-                                                    <h5>Rating:</h5>
-                                                    <div class="ratting-star fix">
-                                                        <fieldset class="rating">
-                                                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                                            <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Good 4 stars"></label>
-                                                            <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Above Average 3.5 stars"></label>
-                                                            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Average 3 stars"></label>
-                                                            <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Below Average 2.5 stars"></label>
-                                                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title=" 2 stars"></label>
-                                                            <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="1.5 stars"></label>
-                                                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title=" 1 star"></label>
-                                                            <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title=" 0.5 stars"></label>
-                                                        </fieldset>
+                                        @if($alreadyReviewed)
+
+                                        @else
+                                            <div class="ratting-form-wrapper fix">
+                                                <h3>Add your Comments</h3>
+                                                <form action="{{ route('backend.review.store') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="pid" value="{{ $product->id }}">
+                                                    <input type="hidden" name="uid" value="{{  auth()->user()->id  }}">
+
+                                                    <div class="ratting-form row">
+                                                        <div class="col-12 mb-15">
+                                                            <h5>Rating:</h5>
+                                                            <div class="ratting-star fix">
+                                                                <fieldset class="rating">
+                                                                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                                                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Good 4 stars"></label>
+                                                                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Above Average 3.5 stars"></label>
+                                                                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Average 3 stars"></label>
+                                                                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Below Average 2.5 stars"></label>
+                                                                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title=" 2 stars"></label>
+                                                                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="1.5 stars"></label>
+                                                                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title=" 1 star"></label>
+                                                                    <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title=" 0.5 stars"></label>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 mb-15">
+                                                            <label for="your-review">Your Review:</label>
+                                                            <textarea name="comment" id="your-review"
+                                                                      placeholder="Write a review"></textarea>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <input value="add review" type="submit">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-12 mb-15">
-                                                    <label for="your-review">Your Review:</label>
-                                                    <textarea name="comment" id="your-review"
-                                                              placeholder="Write a review"></textarea>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input value="add review" type="submit">
-                                                </div>
+                                                </form>
                                             </div>
-                                        </form>
-                                    </div>
+                                        @endif
 
-                                    @endguest
+
+
+                                        @endguest
                                 </div>
                             </div>
                         </div>

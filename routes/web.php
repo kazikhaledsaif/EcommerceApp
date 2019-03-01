@@ -51,7 +51,7 @@ Route::name('backend.')
         Route::get('/category_slug', 'CategoryController@check_slug')->name('category.slug');
 
 //        review
-        Route::post('/review-add','ReviewController@store')->name('review.create');
+        Route::post('/review-add','ReviewController@store')->name('review.store');
 
 
 

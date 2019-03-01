@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Product;
+use App\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -57,8 +58,10 @@ class ShopController extends Controller
         //
         $product = Product::where('slug',$slug)->firstOrFail();
 
-        //$review = Review::where('pid', $product->id)->get();
-       // $review_count = Review::where('pid', $product->id)->count();
+//        $review = Review::where('pid', $product->id)->get();
+        $review = Review::join('users','reviews.uid', '=','users.id')->where('pid', $product->id)->get();
+
+        // $review_count = Review::where('pid', $product->id)->count();
        // $review_sum = Review::where('pid', $product->id)->sum('rating');
 
 
@@ -66,7 +69,7 @@ class ShopController extends Controller
         return view('frontend.pages.product')->with([
                 'product'=> $product,
               //  'count' => $review_count,
-             //   'review' => $review,
+                'review' => $review,
            //     'review_sum'=>$review_sum,
                 'mightLikeProduct' => $mightLikeProduct
             ]
