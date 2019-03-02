@@ -143,60 +143,67 @@
                         <!--=======  single icon  =======-->
 
                         <div class="single-icon mr-20">
-                            <a href="wishlist.html">
+                {{--            <a href="{{route('frontend.wishlist.index')}}">     --}}
+                                <a href="{{route('frontend.wishlist.index')}}">
                                 <i class="lnr lnr-heart"></i>
                                 <span class="text">Wishlist</span>
-                                <span class="count">0</span>
+                                <span class="count">{{Cart::instance('wishlist')->count()}}</span>
                             </a>
                         </div>
-
                         <!--=======  End of single icon  =======-->
 
                         <!--=======  single icon  =======-->
+
 
                         <div class="single-icon">
                             <a href="javascript:void(0)" id="cart-icon">
                                 <i class="lnr lnr-cart"></i>
                                 <span class="text">My Cart</span>
-                                <span class="count">0</span>
+                                <span class="count">{{Cart::instance('default')->count()}}</span>
                             </a>
                             <!-- cart floating box -->
                             <div class="cart-floating-box hidden" id="cart-floating-box">
                                 <div class="cart-items">
-                                    <div class="cart-float-single-item d-flex">
-                                        <span class="remove-item" id="remove-item"><a href="#"><i class="fa fa-times"></i></a></span>
-                                        <div class="cart-float-single-item-image">
-                                            <a href="single-product.html"><img src="{{ asset('frontend/assets/images/products/product01.jpg') }} " class="img-fluid" alt=""></a>
+                                    @foreach(Cart::content() as $item)
+                                        <div class="cart-float-single-item d-flex">
+                                            <span class="remove-item" id="remove-item"><a href="{{route('frontend.cart.destroy', $item->rowId)}}"><i class="fa fa-times"></i></a></span>
+                                            <div class="cart-float-single-item-image">
+                                                <a href="{{ route('frontend.shop.show',$item->model->slug) }}"><img src="{{ asset('storage/'.$item->model->product_image)  }} " class="img-fluid" alt=""></a>
+                                            </div>
+                                            <div class="cart-float-single-item-desc">
+                                                <p class="product-title"> <a href="{{ route('frontend.shop.show',$item->model->slug) }}">{{$item->model->name}} </a></p>
+                                                <p class="price"><span class="quantity">{{$item->qty}} x</span>$
+                                                    @if( $item->model->discount_price == 0 )
+                                                        {{ $item->model->present_price }}
+                                                    @else
+
+                                                        {{ $item->model->discount_price }}
+                                                    @endif
+
+
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div class="cart-float-single-item-desc">
-                                            <p class="product-title"> <a href="single-product.html">Duis pulvinar obortis eleifend </a></p>
-                                            <p class="price"><span class="quantity">1 x</span> $20.50</p>
-                                        </div>
-                                    </div>
-                                    <div class="cart-float-single-item d-flex">
-                                        <span class="remove-item"><a href="#"><i class="fa fa-times"></i></a></span>
-                                        <div class="cart-float-single-item-image">
-                                            <a href="single-product.html"><img src="{{ asset('frontend/assets/images/products/product02.jpg') }} " class="img-fluid" alt=""></a>
-                                        </div>
-                                        <div class="cart-float-single-item-desc">
-                                            <p class="product-title"> <a href="single-product.html">Fusce ultricies dolor vitae</a></p>
-                                            <p class="price"><span class="quantity">1 x</span> $20.50</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="cart-calculation">
                                     <div class="calculation-details">
-                                        <p class="total">Subtotal <span>$22</span></p>
+                                        <p class="total">Subtotal <span>${{Cart::subtotal()}}</span></p>
                                     </div>
                                     <div class="floating-cart-btn text-center">
-                                        <a class="floating-cart-btn" href="checkout.html">Checkout</a>
-                                        <a class="floating-cart-btn" href="cart.html">View Cart</a>
+                                        @if(Cart::instance('default')->count() ==0 )
+                                            <p class="total">No item in cart</p>
+                                        @else
+                                            <a class="floating-cart-btn" href="{{route('frontend.checkout.index')}}">Checkout</a>
+                                            <a class="floating-cart-btn" href="{{route('frontend.cart.index')}}">View Cart</a>
+                                        @endif
+
+
                                     </div>
                                 </div>
                             </div>
                             <!-- end of cart floating box -->
                         </div>
-
                         <!--=======  End of single icon  =======-->
                     </div>
 

@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>
+                            <li><a href="">Home</a> <span class="separator">/</span></li>
                             <li><a href="{{ route('frontend.shop.index') }}">Shop</a> <span class="separator">/</span></li>
                             <li class="active"> {{ $product->name }}</li>
                         </ul>
@@ -151,7 +151,7 @@
                             {!! $product->details !!}
                         </p>
 
-                        <form action="" method="POST">
+                        <form action="{{route('frontend.cart.store')}}" method="POST">
                             {{csrf_field()}}
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <input type="hidden" name="name" value="{{ $product->name }}">
@@ -184,7 +184,7 @@
                             </div>
                         </form>
                         <p class="wishlist-link mb-30">
-                        <form action="" method="POST">
+                        <form action="{{route('frontend.wishlist.store')}}" method="POST">
                             {{csrf_field()}}
 
                             @if (auth()->user())
@@ -384,7 +384,7 @@
 
                                     <div class="ratting-form-wrapper fix">
                                         <h3>Add your Comments</h3>
-                                        <form action="{{ route('backend.review.create') }}">
+                                        <form action="{{ route('backend.review.create') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="pid" value="{{ $product->id }}">
                                             <input type="hidden" name="uid" value="{{  auth()->user()->id  }}">

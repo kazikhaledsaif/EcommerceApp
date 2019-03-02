@@ -63,16 +63,34 @@ Route::name('frontend.')
     ->group(function (){
 
         //write your routes for frontend
-        Route::get('/','IndexController@index' )->name('index');
+       /* Route::get('/','IndexController@index' )->name('index');*/
 
       // shop route
         Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
         Route::get('/shop', 'ShopController@index')->name('shop.index');
 
         // cart route
-        Route::get('/cart', 'CartController@index')->name('cart.index');
 
-        Route::get('/about', function () {
+        Route::get('/cart', 'CartController@index')->name('cart.index');
+        Route::post('/cart', 'CartController@store')->name('cart.store');
+        Route::get('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+        Route::post('/cart/{product}', 'CartController@update')->name('cart.update');
+
+
+        ///wish list
+
+        Route::post('/wishlist', 'WishlistController@store')->name('wishlist.store');
+        Route::get('/wishlist', 'WishlistController@index')->name('wishlist.index');
+        Route::get('/wishlist/{product}', 'WishlistController@destroy')->name('wishlist.destroy');
+
+        //checkout
+        Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+        Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+
+
+
+
+   /*     Route::get('/about', function () {
             return view('frontend.pages.about');
         });
 
@@ -102,6 +120,6 @@ Route::name('frontend.')
         });
         Route::get('/product', function () {
             return view('frontend.pages.product');
-        });
+        });*/
     });
 

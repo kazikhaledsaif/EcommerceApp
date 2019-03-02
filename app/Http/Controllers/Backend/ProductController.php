@@ -53,43 +53,57 @@ class ProductController extends Controller
 
         $photo_productThumbImg = $request->file('productThumbImg');
 
+        if (isset($photo_productThumbImg)){
+            if ($photo_productThumbImg->isValid()){
+                $file_name =
+                    uniqid('thumb_',true).str_random(5).'.'.$photo_productThumbImg->getClientOriginalExtension();
+                $productThumbImg =$photo_productThumbImg->storeAs('products',$file_name);
+            }
 
-        if ($photo_productThumbImg->isValid()){
-            $file_name =
-                uniqid('thumb_',true).str_random(5).'.'.$photo_productThumbImg->getClientOriginalExtension();
-            $productThumbImg =$photo_productThumbImg->storeAs('products',$file_name);
         }
+
 
         $photo_productG1 = $request->file('productG1');
 
+        if (isset($photo_productG1)) {
+            if ($photo_productG1->isValid()) {
+                $file_name =
+                    uniqid('gallery_', true) . str_random(5) . '.' . $photo_productG1->getClientOriginalExtension();
+                $productG1 = $photo_productG1->storeAs('products', $file_name);
+            }
 
-        if ($photo_productG1->isValid()){
-            $file_name =
-                uniqid('gallery_',true).str_random(5).'.'.$photo_productG1->getClientOriginalExtension();
-            $productG1 =$photo_productG1->storeAs('products',$file_name);
         }
+
+
         $photo_productG2 = $request->file('productG2');
 
-
-        if ($photo_productG2->isValid()){
-            $file_name =
-                uniqid('gallery_',true).str_random(5).'.'.$photo_productG2->getClientOriginalExtension();
-            $productG2 =$photo_productG2->storeAs('products',$file_name);
+        if (isset($photo_productG2)) {
+            if ($photo_productG2->isValid()) {
+                $file_name =
+                    uniqid('gallery_', true) . str_random(5) . '.' . $photo_productG2->getClientOriginalExtension();
+                $productG2 = $photo_productG2->storeAs('products', $file_name);
+            }
         }
+
+
         $photo_productG3 = $request->file('productG3');
 
-
+            if (isset($photo_productG3)) {
         if ($photo_productG3->isValid()){
             $file_name =
                 uniqid('gallery_',true).str_random(5).'.'.$photo_productG3->getClientOriginalExtension();
             $productG3 =$photo_productG3->storeAs('products',$file_name);
-        }
-        $photo_productG4 = $request->file('productG4');
-        $file_name =
-            uniqid('gallery_',true).str_random(5).'.'.$photo_productG4->getClientOriginalExtension();
+          }
+            }
 
-        if ($photo_productG4->isValid()){
-            $productG4 =$photo_productG4->storeAs('products',$file_name);
+
+        $photo_productG4 = $request->file('productG4');
+        if (isset($photo_productG4)) {
+            if ($photo_productG4->isValid()){
+                $file_name =
+                    uniqid('gallery_',true).str_random(5).'.'.$photo_productG4->getClientOriginalExtension();
+                $productG4 =$photo_productG4->storeAs('products',$file_name);
+            }
         }
 
         // create product with model method
