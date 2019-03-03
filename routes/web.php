@@ -53,6 +53,13 @@ Route::name('backend.')
 //        review
         Route::post('/review-add','ReviewController@store')->name('review.create');
 
+//        Slider route
+        Route::get('/slider', 'SliderController@index')->name('slider.list');
+        Route::get('/slider-add', 'SliderController@create')->name('slider.add');
+        Route::post('/slider-create', 'SliderController@store')->name('slider.create');
+        Route::get('/slider-edit/{id}', 'SliderController@edit')->name('slider.edit');
+        Route::post('/slider-update', 'SliderController@update')->name('slider.update');
+        Route::post('/slider-destroy', 'SliderController@destroy')->name('slider.destroy');
 
 
     });
@@ -63,7 +70,7 @@ Route::name('frontend.')
     ->group(function (){
 
         //write your routes for frontend
-       /* Route::get('/','IndexController@index' )->name('index');*/
+       Route::get('/','IndexController@index' )->name('index');
 
       // shop route
         Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
