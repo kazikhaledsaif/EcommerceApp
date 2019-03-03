@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title', $product->name )
+
 @section('content')
 
 
@@ -244,7 +246,7 @@
                                 <a class="nav-item nav-link" id="features-tab" data-toggle="tab" href="#features" role="tab"
                                    aria-selected="false">Features</a>
                                 <a class="nav-item nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab"
-                                   aria-selected="false">Reviews (3)</a>
+                                   aria-selected="false">Reviews ({{ $review_count }})</a>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
@@ -271,57 +273,37 @@
                             <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                                 <div class="product-ratting-wrap">
                                     <div class="pro-avg-ratting">
-                                        <h4>4.5 <span>(Overall)</span></h4>
-                                        <span>Based on 9 Comments</span>
+                                        <h4>{{ $product->rating }} <span>(Overall)</span></h4>
+                                        <span>Based on {{ $review_count }} Comments</span>
                                     </div>
-                                    <div class="ratting-list">
-                                        <div class="sin-list float-left">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <span>(5)</span>
-                                        </div>
-                                        <div class="sin-list float-left">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <span>(3)</span>
-                                        </div>
-                                        <div class="sin-list float-left">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <span>(1)</span>
-                                        </div>
-                                        <div class="sin-list float-left">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <span>(0)</span>
-                                        </div>
-                                        <div class="sin-list float-left">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <span>(0)</span>
-                                        </div>
-                                    </div>
+                                    {{--<div class="ratting-list">--}}
+                                        {{--<div class="sin-list float-left">--}}
+                                            {{--<i class="fa fa-star"></i>--}}
+                                            {{--<i class="fa fa-star"></i>--}}
+                                            {{--<i class="fa fa-star"></i>--}}
+                                            {{--<i class="fa fa-star"></i>--}}
+                                            {{--<i class="fa fa-star"></i>--}}
+                                            {{--<span>(5)</span>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="sin-list float-left">--}}
+                                            {{--<i class="fa fa-star"></i>--}}
+                                            {{--<i class="fa fa-star"></i>--}}
+                                            {{--<i class="fa fa-star-o"></i>--}}
+                                            {{--<i class="fa fa-star-o"></i>--}}
+                                            {{--<i class="fa fa-star-o"></i>--}}
+                                            {{--<span>(0)</span>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                     <div class="rattings-wrapper">
-                                        @php
-                                            $alreadyReviewed = \App\Review::where('uid',auth()->user()->id);
-                                        @endphp
 
                                         @foreach($review as $rating)
+                                            @auth
+                                                @if( $rating->uid == auth()->user()->id )
+                                                    @php($already_rated = 'true')
+                                                @else
+                                                    @php($already_rated = 'false')
+                                                @endif
+                                            @endauth
                                         <div class="sin-rattings">
                                             <div class="ratting-author">
                                                 <h3>{{ $rating->name }}</h3>
@@ -347,38 +329,38 @@
                                     @else
 
 
-                                        @if($alreadyReviewed)
+                                        @if($already_rated == 'true')
 
-                                        @else
+                                        @elseif($already_rated == 'false')
                                             <div class="ratting-form-wrapper fix">
                                                 <h3>Add your Comments</h3>
-                                                <form action="{{ route('backend.review.store') }}" method="POST">
+                                                <form action="{{ route('backend.review.store') }} " method="post">
                                                     @csrf
                                                     <input type="hidden" name="pid" value="{{ $product->id }}">
-                                                    <input type="hidden" name="uid" value="{{  auth()->user()->id  }}">
-
+                                                    <input type="hidden" name="uid" value="{{ Auth::id() }}">
                                                     <div class="ratting-form row">
                                                         <div class="col-12 mb-15">
                                                             <h5>Rating:</h5>
                                                             <div class="ratting-star fix">
                                                                 <fieldset class="rating">
                                                                     <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                                                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                                                    <!-- <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label> -->
                                                                     <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Good 4 stars"></label>
-                                                                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Above Average 3.5 stars"></label>
+                                                                    <!-- <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Above Average 3.5 stars"></label> -->
                                                                     <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Average 3 stars"></label>
-                                                                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Below Average 2.5 stars"></label>
+                                                                    <!-- <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Below Average 2.5 stars"></label> -->
                                                                     <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title=" 2 stars"></label>
-                                                                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="1.5 stars"></label>
+                                                                    <!-- <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="1.5 stars"></label> -->
                                                                     <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title=" 1 star"></label>
-                                                                    <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title=" 0.5 stars"></label>
-                                                                </fieldset>
+                                                                    <!-- <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title=" 0.5 stars"></label>
+         -->                                                    </fieldset>
                                                             </div>
                                                         </div>
+
                                                         <div class="col-12 mb-15">
                                                             <label for="your-review">Your Review:</label>
                                                             <textarea name="comment" id="your-review"
-                                                                      placeholder="Write a review"></textarea>
+                                                                      placeholder="Write a review" ></textarea>
                                                         </div>
                                                         <div class="col-12">
                                                             <input value="add review" type="submit">

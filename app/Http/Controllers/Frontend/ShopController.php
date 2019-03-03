@@ -61,14 +61,14 @@ class ShopController extends Controller
 //        $review = Review::where('pid', $product->id)->get();
         $review = Review::join('users','reviews.uid', '=','users.id')->where('pid', $product->id)->get();
 
-        // $review_count = Review::where('pid', $product->id)->count();
+         $review_count = Review::where('pid', $product->id)->count();
        // $review_sum = Review::where('pid', $product->id)->sum('rating');
 
 
         $mightLikeProduct = Product::where('slug','!=',$slug)->inRandomOrder()->take(8)->get();
         return view('frontend.pages.product')->with([
                 'product'=> $product,
-              //  'count' => $review_count,
+                'review_count' => $review_count,
                 'review' => $review,
            //     'review_sum'=>$review_sum,
                 'mightLikeProduct' => $mightLikeProduct
