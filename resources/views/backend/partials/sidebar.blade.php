@@ -71,7 +71,18 @@
             <li class=""><a href="{{ route('backend.coupon.list') }}"><i class="fa fa-barcode"></i> <span>Coupon</span></a></li>
             <li class=""><a href="{{ route('backend.reviews.list') }}"><i class="fa fa-star-o"></i> <span>Product Reviews</span></a></li>
 
+            <li class="treeview">
+                <a href="#"><i class="fa  fa-bandcamp"></i> <span>Featured Category</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ route('backend.featuredcategories.list') }}">Featured Category List</a></li>
+                    <li><a href="{{ route('backend.featuredcategories.add') }}">Add Featured Category</a></li>
 
+                </ul>
+            </li>
 
         </ul>
         <!-- /.sidebar-menu -->

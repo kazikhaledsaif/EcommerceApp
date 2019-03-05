@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Slider;
+use App\FeaturedCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use MercurySeries\Flashy\Flashy;
 
-class SliderController extends Controller
+class FeaturedCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class SliderController extends Controller
     public function index()
     {
         //
-        $slider_list = Slider::all('id','title1','title2','detail','img','slug');
-        return view('backend.pages.slider.list')->with([
-            'sliders' => $slider_list
+        $featuredcategorylist = FeaturedCategory::all('id','name','slug','image');
+        return view('backend.pages.featuredcategory.list')->with([
+            'featuredcategories' => $featuredcategorylist
         ]);
     }
 
@@ -28,11 +28,10 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-
-
-        return view('backend.pages.slider.add');
-
+    public function create()
+    {
+        //
+        return view('backend.pages.featuredcategory.add');
     }
 
     /**
@@ -43,32 +42,30 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $sliderimg="";
-        $photo_productG4 = $request->file('slider');
+        $photo_productG4 = $request->file('image');
         if (isset($photo_productG4)) {
             if ($photo_productG4->isValid()){
                 $file_name =
-                    uniqid('slider_',true).str_random(5).'.'.$photo_productG4->getClientOriginalExtension();
-                $sliderimg =$photo_productG4->storeAs('slider',$file_name);
+                    uniqid('featuredcategory_',true).str_random(5).'.'.$photo_productG4->getClientOriginalExtension();
+                $sliderimg =$photo_productG4->storeAs('featuredcategory',$file_name);
             }
         }
         // create product with model method
-           $slider =  new Slider();
-          $slider->title1 = $request->title1;
-           $slider->title2 = $request->title2;
-           $slider->detail = $request->detail;
-           $slider->slug = $request->slug;
-        $slider->img = $sliderimg;
+        $fcatgory =  new FeaturedCategory();
+        $fcatgory->name = $request->name;
+        $fcatgory->slug = $request->slug;
+        $fcatgory->image = $sliderimg;
 
-        $slider->save();
+        $fcatgory->save();
 
 
 
-        Flashy::success('Slider created.');
+        Flashy::success('Featured Category created.');
 
 //        return view('backend.pages.product.list');
-        return redirect()->route('backend.slider.list');
-
+        return redirect()->route('backend.featuredcategories.list');
     }
 
     /**
@@ -91,13 +88,6 @@ class SliderController extends Controller
     public function edit($id)
     {
         //
-
-        $slider = Slider::where('id',$id)->firstOrFail();
-
-
-        return view('backend.pages.slider.edit')->with([
-            'slider' => $slider,
-        ]);
     }
 
     /**
@@ -121,9 +111,9 @@ class SliderController extends Controller
     public function destroy(Request $request)
     {
         //
-        Slider::find($request->id)->delete();
+        FeaturedCategory::find($request->id)->delete();
 
-        Flashy::danger(' Slider id#'. $request->id.' Deleted.');
-        return redirect()->route('backend.slider.list');
+        Flashy::danger(' Category id#'. $request->id.' Deleted.');
+        return redirect()->route('backend.featuredcategories.list');
     }
 }

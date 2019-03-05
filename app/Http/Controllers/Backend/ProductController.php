@@ -167,7 +167,7 @@ class ProductController extends Controller
         $product->badge= $request->productBadge;
         $product->feature_name= $request->productFeatureName;
         $product->feature_color= $request->productFeatureColor;
-        $product->badge= $request->productBadge;
+        $product->weekly_deal= $request->productWeeklyDeal;
 
         if($request->productThumbImg){
             $photo_productThumbImg = $request->file('productThumbImg');
