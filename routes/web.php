@@ -62,6 +62,14 @@ Route::name('backend.')
         Route::post('/slider-destroy', 'SliderController@destroy')->name('slider.destroy');
 
 
+        //        Fetured Categories route
+        Route::get('/featuredcategories', 'FeaturedCategoryController@index')->name('featuredcategories.list');
+        Route::get('/featuredcategories-add', 'FeaturedCategoryController@create')->name('featuredcategories.add');
+        Route::post('/featuredcategories-create', 'FeaturedCategoryController@store')->name('featuredcategories.create');
+        Route::get('/featuredcategories-edit/{id}', 'FeaturedCategoryController@edit')->name('featuredcategories.edit');
+        Route::post('/featuredcategories-update', 'FeaturedCategoryController@update')->name('featuredcategories.update');
+        Route::post('/featuredcategories-destroy', 'FeaturedCategoryController@destroy')->name('featuredcategories.destroy');
+
     });
 
 

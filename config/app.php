@@ -168,7 +168,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,6 +229,7 @@ return [
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'SWAL' => Softon\SweetAlert\Facades\SWAL::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
     ],
 
 ];

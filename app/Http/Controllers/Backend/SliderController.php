@@ -48,8 +48,8 @@ class SliderController extends Controller
         if (isset($photo_productG4)) {
             if ($photo_productG4->isValid()){
                 $file_name =
-                    uniqid('gallery_',true).str_random(5).'.'.$photo_productG4->getClientOriginalExtension();
-                $sliderimg =$photo_productG4->storeAs('products',$file_name);
+                    uniqid('slider_',true).str_random(5).'.'.$photo_productG4->getClientOriginalExtension();
+                $sliderimg =$photo_productG4->storeAs('slider',$file_name);
             }
         }
         // create product with model method
