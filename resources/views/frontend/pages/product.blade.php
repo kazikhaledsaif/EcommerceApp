@@ -153,7 +153,7 @@
                             {!! $product->details !!}
                         </p>
 
-                        <form action="" method="POST">
+                        <form action="{{route('frontend.cart.store')}}" method="POST">
                             {{csrf_field()}}
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <input type="hidden" name="name" value="{{ $product->name }}">
@@ -295,7 +295,7 @@
                                         {{--</div>--}}
                                     {{--</div>--}}
                                     <div class="rattings-wrapper">
-
+                                        @php($already_rated = 'false')
                                         @foreach($review as $rating)
                                             @auth
                                                 @if( $rating->uid == auth()->user()->id )
@@ -329,12 +329,12 @@
                                     @else
 
 
-                                        @if($already_rated == 'true')
+                                        {{--@if($already_rated == 'true')--}}
 
-                                        @elseif($already_rated == 'false')
+                                        @if($already_rated == 'false')
                                             <div class="ratting-form-wrapper fix">
                                                 <h3>Add your Comments</h3>
-                                                <form action="{{ route('backend.review.store') }} " method="post">
+                                                <form action="{{ route('frontend.review.store') }} " method="post">
                                                     @csrf
                                                     <input type="hidden" name="pid" value="{{ $product->id }}">
                                                     <input type="hidden" name="uid" value="{{ Auth::id() }}">
@@ -344,16 +344,16 @@
                                                             <div class="ratting-star fix">
                                                                 <fieldset class="rating">
                                                                     <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                                                    <!-- <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label> -->
+                                                                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
                                                                     <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Good 4 stars"></label>
-                                                                    <!-- <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Above Average 3.5 stars"></label> -->
+                                                                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Above Average 3.5 stars"></label>
                                                                     <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Average 3 stars"></label>
-                                                                    <!-- <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Below Average 2.5 stars"></label> -->
+                                                                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Below Average 2.5 stars"></label>
                                                                     <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title=" 2 stars"></label>
-                                                                    <!-- <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="1.5 stars"></label> -->
+                                                                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="1.5 stars"></label>
                                                                     <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title=" 1 star"></label>
-                                                                    <!-- <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title=" 0.5 stars"></label>
-         -->                                                    </fieldset>
+                                                                    <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title=" 0.5 stars"></label>
+                                                                   </fieldset>
                                                             </div>
                                                         </div>
 
@@ -369,8 +369,6 @@
                                                 </form>
                                             </div>
                                         @endif
-
-
 
                                         @endguest
                                 </div>

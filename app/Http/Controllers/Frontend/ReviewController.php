@@ -1,34 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
-
+namespace App\Http\Controllers\Frontend;
 
 use App\Product;
 use App\Review;
 use Illuminate\Http\Request;
-use MercurySeries\Flashy\Flashy;
 use App\Http\Controllers\Controller;
-use Spatie\Permission\Traits\HasRoles;
+use MercurySeries\Flashy\Flashy;
 
 class ReviewController extends Controller
 {
-    use HasRoles;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-
-    public function create()
-    {
-        //
-    }
-
 
     public function store(Request $request) {
 
@@ -53,7 +34,7 @@ class ReviewController extends Controller
 
         Flashy::success(' Review added.');
 
-        return redirect()->route('frontend.shop');
+        return redirect()->back();
 
     }
 

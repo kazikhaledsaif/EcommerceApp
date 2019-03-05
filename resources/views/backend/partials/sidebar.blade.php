@@ -56,7 +56,22 @@
 
                 </ul>
             </li>
-            <li><a href="#"><i class="fa fa-pencil-square"></i> <span>Slider</span></a></li>
+            <li class="treeview">
+                <a href="#"><i class="fa  fa-camera-retro"></i> <span>Slider</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=" {{ route('backend.slider.list') }}">Slider List</a></li>
+                    <li><a href="{{ route('backend.slider.add') }}">Add Slider</a></li>
+
+                </ul>
+            </li>
+            <li class=""><a href="{{ route('backend.coupon.list') }}"><i class="fa fa-barcode"></i> <span>Coupon</span></a></li>
+            <li class=""><a href="{{ route('backend.reviews.list') }}"><i class="fa fa-star-o"></i> <span>Product Reviews</span></a></li>
+
+
 
         </ul>
         <!-- /.sidebar-menu -->

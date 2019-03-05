@@ -50,9 +50,26 @@ Route::name('backend.')
         Route::post('/category-update', 'CategoryController@update')->name('category.update');
         Route::get('/category_slug', 'CategoryController@check_slug')->name('category.slug');
 
-//        review
-        Route::post('/review-add','ReviewController@store')->name('review.store');
+//        Slider route
+        Route::get('/slider', 'SliderController@index')->name('slider.list');
+        Route::get('/slider-add', 'SliderController@create')->name('slider.add');
+        Route::post('/slider-create', 'SliderController@store')->name('slider.create');
+        Route::get('/slider-edit/{id}', 'SliderController@edit')->name('slider.edit');
+        Route::post('/slider-update', 'SliderController@update')->name('slider.update');
+        Route::post('/slider-destroy', 'SliderController@destroy')->name('slider.destroy');
 
+//        coupon route
+        Route::get('coupon','CouponController@index')->name('coupon.list');
+        Route::get('coupon/new','CouponController@new')->name('coupon.add');
+        Route::post('coupon/create','CouponController@create')->name('coupon.create');
+        Route::get('coupon/edit/{id}','CouponController@edit')->name('coupon.edit');
+        Route::post('coupon/update','CouponController@update')->name('coupon.update');
+        Route::post('coupon/destroy','CouponController@destroy')->name('coupon.destroy');
+
+//        reviews controller for admin
+        Route::get('reviews', 'AdminReviewController@index')->name('reviews.list');
+        Route::get('reviews/show/{id}', 'AdminReviewController@show')->name('reviews.show');
+        Route::post('/review-destroy', 'AdminReviewController@destroy')->name('reviews.destroy');
 
 
     });
@@ -63,19 +80,41 @@ Route::name('frontend.')
     ->group(function (){
 
         //write your routes for frontend
-        Route::get('/','IndexController@index' )->name('index');
+       Route::get('/','IndexController@index' )->name('index');
 
       // shop route
         Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
         Route::get('/shop', 'ShopController@index')->name('shop.index');
 
+        // cart route
 
-        Route::get('/about', function () {
+        Route::get('/cart', 'CartController@index')->name('cart.index');
+        Route::post('/cart', 'CartController@store')->name('cart.store');
+        Route::get('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+        Route::post('/cart/{product}', 'CartController@update')->name('cart.update');
+
+
+        ///wish list
+
+        Route::post('/wishlist', 'WishlistController@store')->name('wishlist.store');
+        Route::get('/wishlist', 'WishlistController@index')->name('wishlist.index');
+        Route::get('/wishlist/{product}', 'WishlistController@destroy')->name('wishlist.destroy');
+
+        //checkout
+        Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+        Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+
+        // coupon route
+        Route::post('/coupon', 'CouponsController@store')->name('coupon.store');
+        Route::delete('/coupon', 'CouponsController@destroy')->name('coupon.destroy');
+
+        //        review
+        Route::post('/review-add','ReviewController@store')->name('review.store');
+
+   /*     Route::get('/about', function () {
             return view('frontend.pages.about');
         });
-        Route::get('/cart', function () {
-            return view('frontend.pages.cart')->name('cart');
-        });
+
         Route::get('/checkout', function () {
             return view('frontend.pages.checkout');
         });
@@ -102,6 +141,6 @@ Route::name('frontend.')
         });
         Route::get('/product', function () {
             return view('frontend.pages.product');
-        });
+        });*/
     });
 
