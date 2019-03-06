@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="index.html">Home</a> <span class="separator">/</span></li>
+                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>
                             <li class="active">Contact</li>
                         </ul>
                     </div>
@@ -54,7 +54,8 @@
 
                         <div class="single-contact-block">
                             <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon1.png') }}" alt=""> Address</h4>
-                            <p>123 Main Street, Anytown, CA 12345 – USA</p>
+                            <p>Haji Khalek Gamsa Super Market, Shekherchar Bazar, Mosjid road,</p>
+                            <p> Gamsa potti,Madhabdi,Narsingdi</p>
                         </div>
 
                         <!--=======  End of single contact block  =======-->
@@ -63,8 +64,8 @@
 
                         <div class="single-contact-block">
                             <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon2.png') }}" alt=""> Phone</h4>
-                            <p>Mobile: (08) 123 456 789</p>
-                            <p>Hotline: 1009 678 456</p>
+                            <p>Mobile: +88 017 11 227 959</p>
+                            <p>Hotline: +88 019 24 707 806</p>
                         </div>
 
                         <!--=======  End of single contact block  =======-->
@@ -73,8 +74,9 @@
 
                         <div class="single-contact-block">
                             <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon3.png') }} " alt=""> Email</h4>
-                            <p>yourmail@domain.com</p>
-                            <p>support@hastech.company</p>
+                            <p>jh.jahangir227@gmail.com</p>
+                            <p> ja.jahangir227@gmail.com
+                            </p>
                         </div>
 
                         <!--=======  End of single contact block  =======-->
@@ -90,7 +92,8 @@
                         <h3 class="contact-page-title">Tell Us Your Message</h3>
 
                         <div class="contact-form">
-                            <form  id="contact-form" action="assets/php/mail.php" method="post">
+                            <form  id="contact-form" action="{{ route('frontend.feedback.add') }}" method="post">
+                                @csrf
                                 <div class="form-group">
                                     <label>Your Name <span class="required">*</span></label>
                                     <input type="text" name="customerName" id="customername" required>

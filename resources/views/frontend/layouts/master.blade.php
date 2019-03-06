@@ -116,6 +116,13 @@
 <!-- Main JS -->
 <script src="{{ asset('frontend/assets/js/main.js') }} "></script>
 
+@include('flashy::message')
+
+    @include('sweetalert::cdn')
+    @include('sweetalert::view')
+
+
+@stack('scripts')
 @stack('js')
 
 </body>

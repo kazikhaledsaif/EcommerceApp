@@ -12,7 +12,7 @@
 
                         <div class="single-block mb-35">
                             <h3 class="footer-title">Need Help?</h3>
-                            <p>Call: 1-800-345-6789</p>
+                            <p>Call: +88 017 11 227 959</p>
                         </div>
 
                         <!--=======  End of Single block  =======-->
@@ -20,7 +20,7 @@
 
                         <div class="single-block mb-35">
                             <h3 class="footer-title">Products & Sales</h3>
-                            <p>Call: 1-877-345-6789</p>
+                            <p>Call: +88 019 24 707 806</p>
                         </div>
 
                         <!--=======  End of Single block  =======-->
@@ -80,17 +80,17 @@
                         <h3 class="footer-title mb-20">Newsletter</h3>
 
                         <div class="newsletter-form mb-20">
-                            <form id="mc-form" class="mc-form subscribe-form">
-                                <input type="email" placeholder="Your email address">
+                            <form  class="mc-form subscribe-form" action="{{ route('frontend.newsletter.add') }}">
+                                <input type="email" name="email" placeholder="Your email address">
                                 <button type="submit" value="submit"><i class="lnr lnr-envelope"></i></button>
                             </form>
                         </div>
                         <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts mb-20">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div><!-- mailchimp-alerts end -->
+                        {{--<div class="mailchimp-alerts mb-20">--}}
+                            {{--<div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->--}}
+                            {{--<div class="mailchimp-success"></div><!-- mailchimp-success end -->--}}
+                            {{--<div class="mailchimp-error"></div><!-- mailchimp-error end -->--}}
+                        {{--</div><!-- mailchimp-alerts end -->--}}
 
                     </div>
 
@@ -100,8 +100,8 @@
 
                     <div class="single-footer">
                         <h3 class="footer-title mb-20">Address</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi corporis, necessitatibus officiis dolor facere ipsum rem sed itaque ea eos.</p>
-                        <p>New York</p>
+                        <p>Haji Khalek Gamsa Super Market, Shekherchar Bazar, Mosjid road, Gamsa potti,Madhabdi.</p>
+                        <p>Narsingdi</p>
                     </div>
 
                     <!--=======  End of single footer  =======-->
@@ -120,7 +120,7 @@
                     <!--=======  app download area  =======-->
 
                     <div class="app-download-area">
-                        <span class="title">Free App:</span>
+                        <span class="title">Free App (Coming Soon):</span>
                         <a target="_blank" href="#" class="app-download-btn apple-store"><i class="fa fa-apple"></i> Apple Store</a>
                         <a target="_blank" href="#" class="app-download-btn google-play"><i class="fa fa-android"></i> Google play</a>
                     </div>
@@ -131,11 +131,8 @@
                     <div class="social-link">
                         <span class="title">Follow Us:</span>
                         <ul>
-                            <li><a target="_blank" href="//www.twitter.com"><i class="fa fa-twitter"></i></a></li>
                             <li><a target="_blank" href="//www.rss.com"><i class="fa fa-rss"></i></a></li>
-                            <li><a target="_blank" href="//plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a target="_blank" href="//www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-                            <li><a target="_blank" href="//www.youtube.com"><i class="fa fa-youtube"></i></a></li>
+                            <li><a target="_blank" href="//www.facebook.com/jahangirenterprisebd"><i class="fa fa-facebook"></i></a></li>
                             <li><a target="_blank" href="//www.instagram.com"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
@@ -182,7 +179,9 @@
                 <div class="col-lg-12">
                     <!--=======  Copyright text  =======-->
 
-                    <p class="copyright-text">Copyright @ 2018 <a href="index.html">Pataku</a>. All Rights Reserved</p>
+                    <p class="copyright-text">Copyright &copy;<?php echo date("Y"); ?> <strong style="color: #7d9f51"> <a href="#"> {{ config('app.name', 'Laravel') }}</a></strong>. All Rights Reserved ||
+                        <span> Developed by </span>
+                        <a href="#" style="color: #7d9f51">Ok</a></p>
 
                     <!--=======  End of Copyright text  =======-->
                 </div>

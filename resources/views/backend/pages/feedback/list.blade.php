@@ -1,52 +1,55 @@
 @extends('backend.layouts.app')
 
-@section('title', 'coupon')
+@section('title', 'Feedback list')
 
 @section('content')
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Coupon
-            <small><a href="{{ route('backend.coupon.add') }}" class="btn btn-success">New Coupon</a></small>
+            Feedback
+            <small> </small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li class="active">Coupon</li>
+            <li><a href="{{ route('backend.dashboard') }}"><i class="fa fa-dashboard"></i> Admin</a></li>
+            <li class="active">Feedback</li>
         </ol>
     </section>
 
     <div class="box">
-        <!-- /.box-header -->
+        <div class="box-header">
 
+
+            <div class="col-md-6 ">
+                <a href="#" class="btn btn-success">Download csv</a>
+            </div>
+        </div>
+        <!-- /.box-header -->
         <div class="box-body">
-            <table id="coupon-list" class="table table-bordered table-striped table-responsive table-hover" >
+            <table id="list" class="table table-bordered table-striped table-responsive table-hover" >
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Coupon code</th>
-                    <th>Type</th>
-                    <th>Fixed value</th>
-                    <th>Percentage value</th>
-                    <th>Created at</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Posted at</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($coupons as $coupon)
+                @foreach($feedback as $feedback)
                     <tr>
-                        <td>{{ $coupon->id }}</td>
-                        <td>{{ $coupon->code }}</td>
-                        <td>{{ $coupon->type }}</td>
-                        <td>{{ $coupon->value }}</td>
-                        <td>{{ $coupon->percent_off }}</td>
-                        <td>{{ $coupon->created_at }}</td>
-                        <td>{{ $coupon->id }}</td>
-                        {{--<td>--}}
-                            {{--<a href="{{ route('frontend.shop.show',['id'=> $product->slug]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;--}}
-                            {{--<a href="{{ route('backend.product.edit',['id'=> $product->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;--}}
-                            {{--<a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $product->id }}"--}}
-                                          {{--data-name="{{ $product->name }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>--}}
-                        {{--</td>--}}
+                        <td>{{ $feedback->id }}</td>
+                        <td>{{ $feedback->name }}</td>
+                        <td>{{ $feedback->email }}</td>
+                        <td>{{ $feedback->subject }}</td>
+                        <td>{{ $feedback->created_at }}</td>
+                        <td>
+                            <a href="{{ route('backend.feedback.show',['id'=> $feedback->id]) }}"><i class="fa fa-envelope-open fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a>&nbsp;&nbsp;
+                            <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $feedback->id }}"
+                                          data-name="{{ $feedback->mail }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>
+                        </td>
 
                     </tr>
                 @endforeach
@@ -55,18 +58,20 @@
                 <tfoot>
                 <tr>
                     <th>#</th>
-                    <th>Coupon code</th>
-                    <th>Type</th>
-                    <th>Fixed value</th>
-                    <th>Percentage value</th>
-                    <th>Created at</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Posted at</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
             </table>
-
         </div>
+        <!-- /.box-body -->
     </div>
+
+
+
 
 @endsection
 
@@ -79,7 +84,7 @@
     <script src="{{asset('backend/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
     <script>
         $(function () {
-            $('#coupon-list').DataTable();
+            $('#list').DataTable();
         });
 
         $(document).on('click', '.deletebtn', function (e) {
@@ -99,7 +104,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.product.destroy') }}",
+                        url: "{{ route('backend.featuredcategories.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
                             if(data.success == true){ // if true (1)

@@ -50,6 +50,12 @@ Route::name('backend.')
         Route::post('/category-update', 'CategoryController@update')->name('category.update');
         Route::get('/category_slug', 'CategoryController@check_slug')->name('category.slug');
 
+//        Order's route
+        Route::get('/order','OrderController@index')->name('order.list');
+        Route::get('/order/{id}','OrderController@show')->name('order.show');
+        Route::get('/order-edit/{id}','OrderController@edit')->name('order.edit');
+        Route::post('/order-update','OrderController@update')->name('order.update');
+
 //        Slider route
         Route::get('/slider', 'SliderController@index')->name('slider.list');
         Route::get('/slider-add', 'SliderController@create')->name('slider.add');
@@ -80,6 +86,12 @@ Route::name('backend.')
         Route::post('/featuredcategories-update', 'FeaturedCategoryController@update')->name('featuredcategories.update');
         Route::post('/featuredcategories-destroy', 'FeaturedCategoryController@destroy')->name('featuredcategories.destroy');
 
+//        sales report
+        Route::get('/sales-report', 'ReportController@index')->name('report.index');
+
+        Route::get('/feedback', 'FeedbackController@index')->name('feedback.list');
+        Route::get('/feedback/{id}', 'FeedbackController@show')->name('feedback.show');
+        Route::get('/newsletter', 'NewsletterController@index')->name('newsletter.index');
     });
 
 
@@ -118,7 +130,13 @@ Route::name('frontend.')
 
         //        review
         Route::post('/review-add','ReviewController@store')->name('review.store');
+//        newsletter
+        Route::get('/newsletter-add', 'IndexController@newsletter')->name('newsletter.add');
+        Route::post('/feedback-add', 'IndexController@feedback')->name('feedback.add');
 
+        Route::get('/contact', function () {
+            return view('frontend.pages.contact');
+        });
    /*     Route::get('/about', function () {
             return view('frontend.pages.about');
         });
@@ -135,9 +153,7 @@ Route::name('frontend.')
         Route::get('/post', function () {
             return view('frontend.pages.post');
         });
-        Route::get('/contact', function () {
-            return view('frontend.pages.contact');
-        });
+
         Route::get('/faq', function () {
             return view('frontend.pages.faq');
         });

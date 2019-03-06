@@ -37,8 +37,8 @@
                 <td>{{ $category->slug }}</td>
                 <td>{{ $category->banner }}</td>
                 <td >
-                <a href="#"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a>
-                <a href="{{ route('backend.category.edit',['id'=> $category->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a>
+                <a href="#"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;
+                <a href="{{ route('backend.category.edit',['id'=> $category->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;
                 <a href="###"><i class="fa fa-trash fa-lg" style="color:red" aria-hidden="true"></i> </a>
                 </td>
 

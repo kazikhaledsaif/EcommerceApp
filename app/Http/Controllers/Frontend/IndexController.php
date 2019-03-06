@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 
 
 use App\FeaturedCategory;
+use App\Feedback;
+use App\newsletter;
 use App\Product;
 use App\Slider;
 use App\User;
@@ -121,12 +123,29 @@ class IndexController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public  function feedback(Request $request){
+
+        $feedback = new Feedback();
+        $feedback->name= $request->customerName;
+        $feedback->email= $request->customerEmail;
+        $feedback->subject= $request->contactSubject;
+        $feedback->message= $request->contactMessage;
+
+        $feedback->save();
+
+        return redirect()->back();
+    }
+    public function newsletter(Request $request){
+
+        echo $request->email;
+        $newsletter = new newsletter();
+        $newsletter->mail = $request->email;
+        $newsletter->save();
+
+        return redirect()->back();
+    }
+
+
     public function destroy($id)
     {
         //

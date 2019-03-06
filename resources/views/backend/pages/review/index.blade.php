@@ -42,7 +42,7 @@
                         <td>{{ $review->created_at }}</td>
 
                         <td>
-                        <a href="{{ route('backend.reviews.show',['id'=> $review->id]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a>
+                        <a href="{{ route('backend.reviews.show',['id'=> $review->id]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;
                         <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $review->id }}"
                         data-name="{{ $review->productName }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>
                         </td>

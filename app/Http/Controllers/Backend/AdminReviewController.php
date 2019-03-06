@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Product;
 use App\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -57,7 +58,20 @@ class AdminReviewController extends Controller
 
     public function destroy(Request $request)
     {
+
+        $rev = Review::find($request->id);
+
+        $review_count = Review::where('pid', $rev->pid)->count();
+        $review_sum = Review::where('pid', $rev->pid)->sum('rating');
+        $rating = $review_sum / $review_count ;
+
+        $product = Product::find($rev->pid);
+        $product->rating = $rating;
+
+        $product->save();
+
         Review::find($request->id)->delete();
+    return redirect()->back();
 //
 //        return redirect()->route('backend.reviews.list');
     }
