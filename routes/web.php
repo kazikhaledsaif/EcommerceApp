@@ -125,8 +125,8 @@ Route::name('frontend.')
         Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
         // coupon route
-        Route::post('/coupon', 'CouponsController@store')->name('coupon.store');
-        Route::delete('/coupon', 'CouponsController@destroy')->name('coupon.destroy');
+        Route::post('/coupon', 'CartController@storeCoupon')->name('coupon.store');
+        Route::delete('/coupon', 'CartController@destroyCoupon')->name('coupon.destroy');
 
         //        review
         Route::post('/review-add','ReviewController@store')->name('review.store');

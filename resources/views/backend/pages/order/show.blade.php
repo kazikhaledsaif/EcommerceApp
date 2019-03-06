@@ -130,15 +130,15 @@
                         <table class="table">
                             <tr>
                                 <th style="width:50%">Subtotal:</th>
-                                <td  >৳{{ $order->billing_subtotal }}</td>
+                                <td>৳{{ $order->billing_subtotal }}</td>
                             </tr>
                             <tr>
                                 <th>Shipping:</th>
-                                <td  >৳{{ $order->shipping_fee }}</td>
+                                <td>৳{{ $order->shipping_fee }}</td>
                             </tr>
                             <tr>
                                 <th>Total:</th>
-                                <td  ">৳{{ $order->billing_otal }}</td>
+                                <td>৳{{ $order->billing_total }}</td>
                             </tr>
                         </table>
                     </div>
