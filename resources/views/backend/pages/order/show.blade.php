@@ -41,8 +41,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="page-header">
-                        <i class="fa fa-globe"></i> {{ config('app.name', 'Laravel') }}
-                        <small class="pull-right">Date: 2/10/2014</small>
+                        <i class="fa fa-globe"></i> {{ config('app.name', 'JahangirEnterprice') }}
+                        <small class="pull-right">Date: {{ date('F j, Y, g:i:s a', strtotime( $order->created_at)) }}</small>
                     </h2>
                 </div>
                 <!-- /.col -->
@@ -52,31 +52,30 @@
                 <div class="col-sm-4 invoice-col">
                     From
                     <address>
-                        <strong>Admin, Inc.</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
-                        Phone: (804) 123-5432<br>
-                        Email: info@almasaeedstudio.com
+                        <strong>JahangirEnterprice</strong><br>
+                        Haji Khalek Gamsa Super Market,<br>
+                        Shekherchar Bazar, Mosjid road, <br>
+                        Gamsa potti,Madhabdi. <br>
+                        Phone: +88 017 11 227 959<br>
+                        Email: jh.jahangir227@gmail.com
                     </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                     To
                     <address>
-                        <strong>John Doe</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
-                        Phone: (555) 539-1037<br>
-                        Email: john.doe@example.com
-                    </address>
+                        <strong>{{ $order->billing_first_name }} {{ $order->billing_last_name }}</strong><br>
+                        {{ $order->billing_address }}<br>
+                        {{ $order->billing_town }}, {{ $order->billing_city}} &nbsp;
+                        {{ $order->billing_zip_code }} <br>
+                        Phone: {{ $order->billing_phone_no }}<br>
+                        Email: {{ $order->billing_email }}
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                     <b>Invoice #007612</b><br>
                     <br>
                     <b>Order ID:</b> 4F3S8J<br>
-                    <b>Payment Due:</b> 2/22/2014<br>
-                    <b>Account:</b> 968-34567
                 </div>
                 <!-- /.col -->
             </div>
@@ -88,42 +87,24 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th>Product Name</th>
+                            <th>Product slug</th>
                             <th>Qty</th>
-                            <th>Product</th>
-                            <th>Serial #</th>
-                            <th>Description</th>
+                            <th>Rate</th>
                             <th>Subtotal</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($products as $product)
                         <tr>
-                            <td>1</td>
-                            <td>Call of Duty</td>
-                            <td>455-981-221</td>
-                            <td>El snort testosterone trophy driving gloves handsome</td>
-                            <td>$64.50</td>
+                            <td>{{ $product->productName }}</td>
+                            <td>{{ $product->slug }}</td>
+                            <td>{{ $product->amount }}</td>
+                            <td>{{ $product->rate }}</td>
+                            <td>{{ $product->rate * $product->amount }} ৳</td>
+
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Need for Speed IV</td>
-                            <td>247-925-726</td>
-                            <td>Wes Anderson umami biodiesel</td>
-                            <td>$50.00</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Monsters DVD</td>
-                            <td>735-845-642</td>
-                            <td>Terry Richardson helvetica tousled street art master</td>
-                            <td>$10.70</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Grown Ups Blue Ray</td>
-                            <td>422-568-642</td>
-                            <td>Tousled lomo letterpress</td>
-                            <td>$25.99</td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -135,10 +116,6 @@
                 <!-- accepted payments column -->
                 <div class="col-xs-6">
                     <p class="lead">Payment Methods:</p>
-                    <img src="../../dist/img/credit/visa.png" alt="Visa">
-                    <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-                    <img src="../../dist/img/credit/american-express.png" alt="American Express">
-                    <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
 
                     <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                         Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
@@ -153,19 +130,15 @@
                         <table class="table">
                             <tr>
                                 <th style="width:50%">Subtotal:</th>
-                                <td>$250.30</td>
-                            </tr>
-                            <tr>
-                                <th>Tax (9.3%)</th>
-                                <td>$10.34</td>
+                                <td  >৳{{ $order->billing_subtotal }}</td>
                             </tr>
                             <tr>
                                 <th>Shipping:</th>
-                                <td>$5.80</td>
+                                <td  >৳{{ $order->shipping_fee }}</td>
                             </tr>
                             <tr>
                                 <th>Total:</th>
-                                <td>$265.24</td>
+                                <td  ">৳{{ $order->billing_otal }}</td>
                             </tr>
                         </table>
                     </div>
