@@ -67,6 +67,8 @@ class CheckoutController extends Controller
                     'order_id' => $order->id,
                     'product_id' => $item->model->id,
                     'quantity' => $item->qty,
+                    'price' => $item->price,
+
                 ]);
                 $product = Product::find($item->model->id);
                 $product->stock = $product->stock - $item->qty;

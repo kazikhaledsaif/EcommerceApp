@@ -37,7 +37,7 @@ class OrderController extends Controller
 
         $products = OrderProduct::select('order_products.quantity as amount', 'products.name as productName',
             'products.slug as slug','products.discount_price as rate')
-            ->join('products','order_products.product.id','=','products.id')
+            ->join('products','order_products.product_id','=','products.id')
             ->where('order_products.order_id', $id)
             ->get();
 

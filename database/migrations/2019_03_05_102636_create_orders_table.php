@@ -26,11 +26,11 @@ class CreateOrdersTable extends Migration
             $table->string('billing_town')->nullable();
             $table->string('billing_city')->nullable();
             $table->string('billing_zip_code')->nullable();
-            $table->integer('billing_discount')->default(0)->nullable();
+            $table->double('billing_discount')->default(0)->nullable();
             $table->string('billing_discount_code')->nullable();
-            $table->integer('billing_subtotal');
-            $table->integer('billing_shipping_fee')->nullable();
-            $table->integer('billing_total');
+            $table->double('billing_subtotal');
+            $table->double('billing_shipping_fee')->nullable();
+            $table->double('billing_total');
             $table->string('billing_payment_gateway')->default('paypal')->nullable();
             $table->boolean('shipped')->default(false);
             $table->string('status')->nullable();
