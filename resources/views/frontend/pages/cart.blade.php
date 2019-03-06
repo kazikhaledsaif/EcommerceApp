@@ -162,18 +162,18 @@
                                 @if(!session()->has('coupon'))
                                     <div class="discount-coupon">
                                         <h4>Discount Coupon Code</h4>
-                                    {{--    <form action="{{ route('frontend.coupon.store') }}" method="POST">--}}
+                                       <form action="{{ route('frontend.coupon.store') }}" method="POST">
                                             <div class="row">
                                                 {{ csrf_field() }}
                                                 <div class="col-md-6 col-12 mb-25">
                                                     <input type="text" name="coupon_code" id="coupon_code" placeholder="Coupon Code" required>
-                                                    {{--      <input type="hidden" name="total" value="{{ Cart::instance('default')->total() }}">--}}
+                                                    <input type="hidden" name="total" value="{{ Cart::instance('default')->total() }}">
                                                 </div>
                                                 <div class="col-md-6 col-12 mb-25">
                                                     <input type="submit" value="Apply Code">
                                                 </div>
                                             </div>
-                              {{--          </form>--}}
+                                      </form>
 
 
                                     </div>
@@ -197,11 +197,11 @@
                                             <p>Discount  [ {{ session()->get('coupon')['name'] }} ]
 
                                                 <span>-${{ session()->get('coupon')['amount'] }}</span></p>
-                                        {{--    <form action="{{ route('coupon.destroy') }}" method="POST">--}}
+                                     <form action="{{ route('frontend.coupon.destroy') }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
                                                 <button type="submit" style="background: black; color: white; border: none; margin-bottom: 2px;">Remove coupon</button>
-                                       {{--     </form>--}}
+                                            </form>
 
                                         @endif
 
