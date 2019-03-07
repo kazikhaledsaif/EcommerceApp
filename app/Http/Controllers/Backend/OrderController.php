@@ -7,6 +7,7 @@ use App\OrderProduct;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use MercurySeries\Flashy\Flashy;
 
 class OrderController extends Controller
 {
@@ -61,14 +62,29 @@ class OrderController extends Controller
     }
 
 
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+
+        $order = Order::find($id);
+
+        return view('backend.pages.order.edit')->with([
+            'order' => $order
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $order = Order::find($request->id);
+
+        $order->status = $request->status;
+        $order->billing_address = $request->address;
+        $order->billing_town = $request->town;
+        $order->billing_phone_no = $request->number;
+
+        $order->save();
+
+        Flashy::success('Order update successful', '');
+        return redirect()->route('backend.order.list');
+
     }
 
 

@@ -47,19 +47,19 @@
                         <td>{{ $order->billing_total }}</td>
                         <td>
                             @if($order->status == 'Pending')
-                                <span class=" badge badge-info">&nbsp; {{ $order->status }} &nbsp;</span>
+                                <span class=" badge alert-info">&nbsp; {{ $order->status }} &nbsp;</span>
                             @elseif($order->status == 'Declined')
-                                <span class=" badge badge-error">&nbsp; {{ $order->status }} &nbsp;</span>
+                                <span class=" badge alert-error">&nbsp; {{ $order->status }} &nbsp;</span>
                             @elseif($order->status == 'Payment_failed')
-                                <span class="badge badge-dark">&nbsp; {{ $order->status }} &nbsp;</span>
+                                <span class="badge alert-dark">&nbsp; {{ $order->status }} &nbsp;</span>
                             @elseif($order->status == 'Approved')
-                                <span class="badge badge-success">&nbsp; {{ $order->status }} &nbsp;</span>
+                                <span class="badge alert-success">&nbsp; {{ $order->status }} &nbsp;</span>
                             @elseif($order->status == 'Refund Request')
-                                <span class="badge badge-warning"> &nbsp;{{ $order->status }} &nbsp;</span>
+                                <span class="badge alert-warning"> &nbsp;{{ $order->status }} &nbsp;</span>
                             @elseif($order->status == 'Refunded')
-                                <span class="badge badge-secondary">&nbsp; {{ $order->status }} &nbsp;</span>
+                                <span class="badge alert-secondary">&nbsp; {{ $order->status }} &nbsp;</span>
                             @elseif($order->status == 'Delivered')
-                                <span class="badge badge-success">&nbsp; {{ $order->status }} &nbsp;</span>
+                                <span class="badge alert-success">&nbsp; {{ $order->status }} &nbsp;</span>
                             @endif
                         </td>
                         <td>{{ $order->created_at }}</td>
