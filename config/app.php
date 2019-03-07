@@ -165,6 +165,8 @@ return [
         /*Debug tool*/
         Barryvdh\Debugbar\ServiceProvider::class,
         Softon\SweetAlert\SweetAlertServiceProvider::class,
+        /*PDF */
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -230,6 +232,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'SWAL' => Softon\SweetAlert\Facades\SWAL::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

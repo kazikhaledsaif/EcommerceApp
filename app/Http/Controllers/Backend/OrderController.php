@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Order;
 use App\OrderProduct;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,8 +27,20 @@ class OrderController extends Controller
     }
 
 
-    public function store(Request $request) {
+    public function pdf($id) {
+        $order = Order::find($id);
+        $products = OrderProduct::select('order_products.quantity as amount', 'products.name as productName',
+            'products.slug as slug','order_products.price as rate')
+            ->join('products','order_products.product_id','=','products.id')
+            ->where('order_products.order_id', $id)
+            ->get();
 
+
+        $pdf = PDF::loadView('backend.pages.order.invoice', [
+            'order' => $order,
+            'products' => $products
+        ]);
+        return $pdf->stream('invoice.pdf');
     }
 
 
@@ -36,7 +49,7 @@ class OrderController extends Controller
         $order = Order::find($id);
 
         $products = OrderProduct::select('order_products.quantity as amount', 'products.name as productName',
-            'products.slug as slug','products.discount_price as rate')
+            'products.slug as slug','order_products.price as rate')
             ->join('products','order_products.product_id','=','products.id')
             ->where('order_products.order_id', $id)
             ->get();
