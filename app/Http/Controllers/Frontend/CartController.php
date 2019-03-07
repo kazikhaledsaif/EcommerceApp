@@ -100,7 +100,7 @@ class CartController extends Controller
     {
         //
         Cart::instance('default')->update($id,$request->quantity);
-        return redirect()->route('cart.index')->with('alert_massage','Item is updated');
+        return redirect()->route('frontend.cart.index')->with('alert_massage','Item is updated');
     }
 
     /**
@@ -121,13 +121,13 @@ class CartController extends Controller
         $code = Coupon::where('code', $request->coupon_code)->first();
 
         if(!$code){
-            return redirect()->route('cart.index')->with('success_message', 'Invalid coupon !');
+            return redirect()->route('frontend.cart.index')->with('success_message', 'Invalid coupon !');
         }
         session()->put('coupon', [
             'name' => $code->code,
             'amount' =>$code->discount(Cart::subtotal())
         ]);
-        return redirect()->route('cart.index')->with('success_message', 'coupon Applied ');
+        return redirect()->route('frontend.cart.index')->with('success_message', 'coupon Applied ');
     }
 
     public function destroyCoupon()
