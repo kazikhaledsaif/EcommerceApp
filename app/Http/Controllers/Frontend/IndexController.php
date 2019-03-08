@@ -46,14 +46,14 @@ class IndexController extends Controller
         // $products_weekly = Product::whereDate('weekly','$current')->get();
         $products_weekly = DB::select("SELECT * FROM `products` WHERE `weekly_deal` > '$current' ");
         $featuredCategory = FeaturedCategory::take(4)->get();
-   /*     $top_sell = DB::select("SELECT  `product_id`,`name`,`slug`,`details`,`present_price`,`discount_price`,`product_image`,
-                                    `badge`,`percentige`,
+     $top_sell = DB::select("SELECT  `product_id`,`name`,`slug`,`details`,`regular_price`,`discount_price`,`product_image`,
+                                    `badge`,`percentage`,
                                  COUNT(`product_id`) AS `value_occurrence` 
                         FROM     `order_products` JOIN `products` 
                         ON order_products.product_id = products.id
                         GROUP BY `product_id`
                         ORDER BY `value_occurrence` DESC
-                        LIMIT    5;");*/
+                        LIMIT    5;");
 
 
         $sliders = Slider::take(5)->get();
@@ -62,7 +62,7 @@ class IndexController extends Controller
             'new_products'=>$products,
             'random' =>$products_rand,
             'sliders' =>$sliders,
-            'topsell' =>$top_sell=null,
+            'topsell' =>$top_sell,
             'weekly_product'=>$products_weekly,
             'featuredCategory'=>$featuredCategory
         ]);

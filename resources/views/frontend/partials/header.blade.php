@@ -1,3 +1,7 @@
+<!--=============================================
+=            Header One         =
+=============================================-->
+
 <div class="header-container header-sticky">
 
     <!--=======  header top  =======-->
@@ -6,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 text-center text-md-left mb-sm-15">
-                    <span class="header-top-text">Welcome to Pataku Online Shopping Store !</span>
+                    <span class="header-top-text">Welcome to  Online Shopping Store !</span>
                 </div>
                 <div class="col-12 col-md-6">
 
@@ -16,19 +20,6 @@
 
                         <!--=======  single dropdown  =======-->
 
-{{--
-
-                        <div class="single-dropdown">
-                            <a href="#" id="changeAccount"><span id="accountMenuName">My Account <i class="fa fa-angle-down"></i></span></a>
-                            <div class="language-currency-list hidden" id="accountList">
-                                <ul>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="login-register.html">Login</a></li>
-                                </ul>
-                            </div>
-                        </div>
---}}
 
                         <div class="single-dropdown">
                             @guest
@@ -46,10 +37,9 @@
                                 <a href="#" id="changeAccount"><span id="accountMenuName">{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></span></a>
                                 <div class="language-currency-list hidden" id="accountList">
                                     <ul>
-                                        <li><a href="">My Account</a></li>
-                                        <li><a href="">Checkout</a></li>
-                                        <li><a href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
+                                        <li><a href="{{ route('frontend.my-account') }}">My Account</a></li>
+                                        <li><a href="{{ route('frontend.checkout.index') }}">Checkout</a></li>
+                                        <li><a href="{{ route('logout') }}"   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                 Logout</a></li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -66,7 +56,6 @@
                         <!--=======  End of single dropdown  =======-->
 
                         <!--=======  single dropdown  =======-->
-
 
                         <a href="#" id="changeCurrency"><span id="currencyName">BDT ৳ </span></a>
 
@@ -111,8 +100,8 @@
                     <!--=======  logo  =======-->
 
                     <div class="logo">
-                        <a href="index.html">
-                            <img src="{{ asset('frontend/assets/images/logo.png') }} " class="img-fluid" alt="">
+                        <a href="{{ route('frontend.index') }}">
+                            <img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid" alt="">
                         </a>
                     </div>
 
@@ -120,9 +109,12 @@
                 </div>
                 <div class="col-12 col-lg-6 col-md-5 mb-sm-20">
                     <!--=======  Search bar  =======-->
-                    <form action="index.html">
+                    <form action="{{ route('frontend.search') }}" method="get" >
+
                         <div class="search-bar">
-                            <input type="search" placeholder="Search entire store here ...">
+                            <input type="search" placeholder="Search entire store here ..." name="query" id="search"
+                                   value="{{ request()->input('query') }}"
+                            >
                             <button><i class="lnr lnr-magnifier"></i></button>
                         </div>
                     </form>
@@ -136,17 +128,16 @@
                         <!--=======  single icon  =======-->
 
                         <div class="single-icon mr-20">
-                {{--            <a href="{{route('frontend.wishlist.index')}}">     --}}
-                                <a href="{{route('frontend.wishlist.index')}}">
+                            <a href="{{route('frontend.wishlist.index')}}">
                                 <i class="lnr lnr-heart"></i>
                                 <span class="text">Wishlist</span>
                                 <span class="count">{{Cart::instance('wishlist')->count()}}</span>
                             </a>
                         </div>
+
                         <!--=======  End of single icon  =======-->
 
                         <!--=======  single icon  =======-->
-
 
                         <div class="single-icon">
                             <a href="javascript:void(0)" id="cart-icon">
@@ -161,7 +152,7 @@
                                         <div class="cart-float-single-item d-flex">
                                             <span class="remove-item" id="remove-item"><a href="{{route('frontend.cart.destroy', $item->rowId)}}"><i class="fa fa-times"></i></a></span>
                                             <div class="cart-float-single-item-image">
-                                                <a href="{{ route('frontend.shop.show',$item->model->slug) }}"><img src="{{ asset('storage/'.$item->model->product_image)  }} " class="img-fluid" alt=""></a>
+                                                <a href="{{ route('frontend.shop.show',$item->model->slug) }}"><img src="{{ asset('uploads/'.$item->model->product_image)  }} " class="img-fluid" alt=""></a>
                                             </div>
                                             <div class="cart-float-single-item-desc">
                                                 <p class="product-title"> <a href="{{ route('frontend.shop.show',$item->model->slug) }}">{{$item->model->name}} </a></p>
@@ -197,6 +188,7 @@
                             </div>
                             <!-- end of cart floating box -->
                         </div>
+
                         <!--=======  End of single icon  =======-->
                     </div>
 
@@ -226,81 +218,169 @@
                         <!-- Category Menu -->
                         <nav class="category-menu">
                             <ul>
-                                <li><a href="shop-left-sidebar.html">Sofas &amp; Chairs</a></li>
-                                <li class="menu-item-has-children"><a href="shop-left-sidebar.html">Drawing Room</a>
+                                <li class="menu-item-has-children"><a> Bedroom</a>
 
                                     <!-- Mega Category Menu Start -->
                                     <ul class="category-mega-menu">
                                         <li class="menu-item-has-children">
-                                            <a class="megamenu-head" href="shop-left-sidebar.html">Living Chairs</a>
+                                            <a class="megamenu-head" > Bedroom </a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">Sofas</a></li>
-                                                <li><a href="shop-left-sidebar.html">Armchairs</a></li>
-                                                <li><a href="shop-left-sidebar.html">Dining Chairs &amp; Benches</a></li>
-                                                <li><a href="shop-left-sidebar.html">Desk Chairs</a></li>
+                                                <li><a href="/shop?category=bedroom-sets">Bedroom Sets </a></li>
+                                                <li><a href="/shop?category=youth-bedroom">Youth Bedroom </a></li>
+                                                <li><a href="/shop?category=master-bedroom">Master Bedroom </a></li>
+                                                <li><a href="/shop?category=beds-and-headboards">Beds & Headboards</a></li>
+                                                <li><a href="/shop?category=bunk-bed">Bunk Bed</a></li>
+                                                <li><a href="/shop?category=nightstand">Nightstand</a></li>
+                                                <li><a href="/shop?category=day-beds-and-trundies">Day Beds & Trundies</a></li>
+                                                <li><a href="/shop?category=mattress-and-pillows">Mattress & Pillows</a></li>
+                                                <li><a href="/shop?category=bed-rails">Bed Rails</a></li>
+                                                <li><a href="/shop?category=wardrobe">Wardrobe</a></li>
                                             </ul>
                                         </li>
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head" href="shop-left-sidebar.html">Sofa</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Dining Tables</a></li>
-                                                <li><a href="shop-left-sidebar.html">Dining Chairs</a></li>
-                                                <li><a href="shop-left-sidebar.html">Side Boards</a></li>
-                                                <li><a href="shop-left-sidebar.html">Coffee Tables</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head" href="shop-left-sidebar.html">Storage</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Chair &amp; Sofas</a></li>
-                                                <li><a href="shop-left-sidebar.html">Tables</a></li>
-                                                <li><a href="shop-left-sidebar.html">Sets</a></li>
-                                                <li><a href="shop-left-sidebar.html">Loungers</a></li>
-                                            </ul>
-                                        </li>
+
+
                                     </ul><!-- Mega Category Menu End -->
 
                                 </li>
-                                <li class="menu-item-has-children"><a href="shop-left-sidebar.html">Dinning Room</a>
+                                <li class="menu-item-has-children"><a >Dining Room</a>
 
                                     <!-- Mega Category Menu Start -->
                                     <ul class="category-mega-menu">
                                         <li class="menu-item-has-children">
-                                            <a class="megamenu-head" href="shop-left-sidebar.html">Living Chairs</a>
+                                            <a class="megamenu-head" >Dining Room</a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">Sofas</a></li>
-                                                <li><a href="shop-left-sidebar.html">Armchairs</a></li>
-                                                <li><a href="shop-left-sidebar.html">Dining Chairs &amp; Benches</a></li>
-                                                <li><a href="shop-left-sidebar.html">Desk Chairs</a></li>
+                                                <li><a href="/shop?category=formal-dining">Formal Dining</a></li>
+                                                <li><a href="/shop?category=casual-dining">Casual Dining</a></li>
+                                                <li><a href="/shop?category=dining-barstool">Barstool</a></li>
+                                                <li><a href="/shop?category=pub-and-counter-height-tables">Pub and Counter Height Tables</a></li>
+
                                             </ul>
                                         </li>
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head" href="shop-left-sidebar.html">Sofa</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Dining Tables</a></li>
-                                                <li><a href="shop-left-sidebar.html">Dining Chairs</a></li>
-                                                <li><a href="shop-left-sidebar.html">Side Boards</a></li>
-                                                <li><a href="shop-left-sidebar.html">Coffee Tables</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head" href="shop-left-sidebar.html">Storage</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">Chair &amp; Sofas</a></li>
-                                                <li><a href="shop-left-sidebar.html">Tables</a></li>
-                                                <li><a href="shop-left-sidebar.html">Sets</a></li>
-                                                <li><a href="shop-left-sidebar.html">Loungers</a></li>
-                                            </ul>
-                                        </li>
+
+
                                     </ul><!-- Mega Category Menu End -->
 
                                 </li>
-                                <li><a href="shop-left-sidebar.html">Out Door Room</a></li>
-                                <li><a href="shop-left-sidebar.html">Room living</a></li>
-                                <li><a href="shop-left-sidebar.html">Estilo</a></li>
-                                <li><a href="shop-left-sidebar.html">Living Chairs</a></li>
-                                <li class="hidden"><a href="shop-left-sidebar.html">New Sofas</a></li>
-                                <li class="hidden"><a href="shop-left-sidebar.html">Sleight Sofas</a></li>
+                                <li class="menu-item-has-children"><a >Family Room</a>
+
+                                    <!-- Mega Category Menu Start -->
+                                    <ul class="category-mega-menu">
+
+                                        <li class="menu-item-has-children">
+                                            <a class="megamenu-head" >Family Room</a>
+                                            <ul>
+                                                <li><a href="/shop?category=family-sofas">Sofas</a></li>
+                                                <li><a href="/shop?category=sectional">Sectional</a></li>
+                                                <li><a href="/shop?category=sofa-sleeper">Sofa Sleeper</a></li>
+                                                <li><a href="/shop?category=futons-and-adjustable-sofa">Futons & Adjustable Sofa</a></li>
+                                                <li><a href="/shop?category=media-and-tv-storage">Media & TV Storage</a></li>
+                                                <li><a href="/shop?category=occasional-table">Occasional Table</a></li>
+                                                <li><a href="/shop?category=benches-and-ottomans">Benches & Ottomans</a></li>
+                                                <li><a href="/shop?category=youth-furniture">Youth Furniture</a></li>
+                                                <li><a href="/shop?category=special-bays">Special Bays</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul><!-- Mega Category Menu End -->
+
+                                </li>
+                                <li class="menu-item-has-children"><a >Living Room</a>
+
+                                    <!-- Mega Category Menu Start -->
+                                    <ul class="category-mega-menu">
+
+                                        <li class="menu-item-has-children">
+                                            <a class="megamenu-head" >Living Room</a>
+                                            <ul>
+                                                <li><a href="/shop?category=sofas">Sofas</a></li>
+                                                <li><a href="/shop?category=chairs">Chairs</a></li>
+                                                <li><a href="/shop?category=recliners">Recliners</a></li>
+                                                <li><a href="/shop?category=occasional-tables">Occasional Tables</a></li>
+                                                <li><a href="/shop?category=entertainment">Entertainment</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul><!-- Mega Category Menu End -->
+
+                                </li>
+                                <li class="menu-item-has-children"><a > Accents</a>
+
+                                    <!-- Mega Category Menu Start -->
+                                    <ul class="category-mega-menu">
+
+                                        <li class="menu-item-has-children">
+                                            <a class="megamenu-head"  >Accents</a>
+                                            <ul>
+                                                <li><a href="/shop?category=accents-mirror">Mirrors</a></li>
+                                                <li><a href="/shop?category=wall-art">Wall Art</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul><!-- Mega Category Menu End -->
+
+                                </li>
+
+                                <li class="menu-item-has-children"><a > Accessories </a>
+
+                                    <!-- Mega Category Menu Start -->
+                                    <ul class="category-mega-menu">
+
+                                        <li class="menu-item-has-children">
+                                            <a class="megamenu-head"  >Accessories </a>
+                                            <ul>
+                                                <li><a href="/shop?category=accent-chair">Accent Chair</a></li>
+                                                <li><a href="/shop?category=mirrors">Mirrors</a></li>
+                                                <li><a href="/shop?category=clocks">Clocks</a></li>
+                                                <li><a href="/shop?category=curio">Curio</a></li>
+                                                <li><a href="/shop?category=console-table">Console Table</a></li>
+                                                <li><a href="/shop?category=vanity">Vanity</a></li>
+                                                <li><a href="/shop?category=jewelry-armoire">Jewelry Armoire</a></li>
+                                                <li><a href="/shop?category=sink-cabinets">Sink Cabinets</a></li>
+                                                <li><a href="/shop?category=lighting">Lighting</a></li>
+                                                <li><a href="/shop?category=screens">Screens</a></li>
+                                                <li><a href="/shop?category=coat-rack">Coat Rack</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul><!-- Mega Category Menu End -->
+
+                                </li>
+                                <li class="menu-item-has-children"><a> Home Office</a>
+
+                                    <!-- Mega Category Menu Start -->
+                                    <ul class="category-mega-menu">
+
+                                        <li class="menu-item-has-children">
+                                            <a class="megamenu-head"  >Home Office</a>
+                                            <ul>
+                                                <li><a href="/shop?category=desk-and-chairs">Desk & Chairs</a></li>
+                                                <li><a href="/shop?category=shelf-and-rack">Shelf & Rack</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul><!-- Mega Category Menu End -->
+
+                                </li>
+                                <li class="menu-item-has-children"><a> Simon Bedding</a>
+
+                                    <!-- Mega Category Menu Start -->
+                                    <ul class="category-mega-menu">
+
+                                        <li class="menu-item-has-children">
+                                            <a class="megamenu-head"  >Simon Bedding</a>
+                                            <ul>
+                                                <li><a href="/shop?category=bed-frames">Bed Frames</a></li>
+                                                <li><a href="/shop?category=foundations">Foundations</a></li>
+                                                <li><a href="/shop?category=mattresses">Mattresses</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul><!-- Mega Category Menu End -->
+
+                                </li>
+                                <li class="hidden"><a href="/shop?category=finance-options">Finance Options</a></li>
+                                <li class="hidden"><a href="/shop?category=layaway">Layaway</a></li>
+                                <li class="hidden"><a href="/shop?category=bar-and-stools">Bar Stools</a></li>
                                 <li><a href="#" id="more-btn"><span class="lnr lnr-plus-circle"></span> More Categories</a></li>
                             </ul>
                         </nav>
@@ -313,92 +393,18 @@
                     <div class="main-menu">
                         <nav>
                             <ul>
-                                <li class="active menu-item-has-children"><a href="{{ route('frontend.index') }}">HOME</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Home Shop 1</a></li>
-                                        <li><a href="index-2.html">Home Shop 2</a></li>
-                                        <li><a href="index-3.html">Home Shop 3</a></li>
-                                        <li><a href="index-4.html">Home Shop 4</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="{{ route('frontend.shop.index') }}">Shop</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item-has-children"><a href="shop-4-column.html">shop grid</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop-3-column.html">shop 3 column</a></li>
-                                                <li><a href="shop-4-column.html">shop 4 column</a></li>
-                                                <li><a href="shop-left-sidebar.html">shop left sidebar</a></li>
-                                                <li><a href="shop-right-sidebar.html">shop right sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="shop-list.html">shop List</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop-list.html">shop List</a></li>
-                                                <li><a href="shop-list-left-sidebar.html">shop List Left Sidebar</a></li>
-                                                <li><a href="shop-list-right-sidebar.html">shop List Right Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="single-product.html">Single Product</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="single-product.html">Single Product</a></li>
-                                                <li><a href="single-product-variable.html">Single Product variable</a></li>
-                                                <li><a href="single-product-affiliate.html">Single Product affiliate</a></li>
-                                                <li><a href="single-product-group.html">Single Product group</a></li>
-                                                <li><a href="single-product-tabstyle-2.html">Tab Style 2</a></li>
-                                                <li><a href="single-product-tabstyle-3.html">Tab Style 3</a></li>
-                                                <li><a href="single-product-gallery-left.html">Gallery Left</a></li>
-                                                <li><a href="single-product-gallery-right.html">Gallery Right</a></li>
-                                                <li><a href="single-product-sticky-left.html">Sticky Left</a></li>
-                                                <li><a href="single-product-sticky-right.html">Sticky Right</a></li>
-                                                <li><a href="single-product-slider-box.html">Slider Box</a></li>
+                                <li class=""><a href="/">HOME</a>
 
-                                            </ul>
-                                        </li>
-                                    </ul>
                                 </li>
+                                <li class=""><a href="{{route('frontend.shop.index')}}">Shop</a>
 
-                                <li class="menu-item-has-children"><a href="#">PAGES</a>
-                                    <ul class="mega-menu three-column">
-                                        <li><a href="#">Column One</a>
-                                            <ul>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="checkout.html">Checkout</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                {{--</li>--}}
 
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Column Two</a>
-                                            <ul>
-                                                <li><a href="my-account.html">My Account</a></li>
-                                                <li><a href="login-register.html">Login Register</a></li>
-                                                <li><a href="faq.html">FAQ</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Column Three</a>
-                                            <ul>
-                                                <li><a href="compare.html">Compare</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="about.html">About Us</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="#">BLOG</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-3-column.html">Blog 3 column</a></li>
-                                        <li><a href="blog-grid-left-sidebar.html">Blog Grid Left Sidebar</a></li>
-                                        <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a></li>
-                                        <li><a href="blog-list-left-sidebar.html">Blog List Left Sidebar</a></li>
-                                        <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                        <li><a href="blog-post-left-sidebar.html">Blog Post Left Sidebar</a></li>
-                                        <li><a href="blog-post-right-sidebar.html">Blog Post Right Sidebar</a></li>
-                                        <li><a href="blog-post-image-format.html">Blog Post Image Format</a></li>
-                                        <li><a href="blog-post-image-gallery.html">Blog Post Image Gallery Format</a></li>
-                                        <li><a href="blog-post-audio-format.html">Blog Post Audio Format</a></li>
-                                        <li><a href="blog-post-video-format.html">Blog Post Video Format</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">CONTACT</a></li>
+
+                                {{--<li ><a href="{{route('blog.show')}}">BLOG</a>--}}
+
+                                {{--</li>--}}
+                                <li><a href="/contact">CONTACT</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -414,3 +420,5 @@
 
     <!--=======  End of navigation menu  =======-->
 </div>
+
+<!--=====  End of Header One  ======-->

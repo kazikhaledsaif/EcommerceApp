@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Product;
+use App\Category;
 use App\Review;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,12 +19,36 @@ class ShopController extends Controller
     public function index()
     {
         //
+        $categories = Category::inRandomOrder()->take(6)->get();
+        $categorySlug=request()->category;
+        if($categorySlug){
+            $products =   Product::whereHas('category', function ($query) use ($categorySlug) {
+                $query->where('slug', $categorySlug);
+            })->orderBy('id','DESC')->paginate(1);
+        }
+        elseif(request()->sort == 'low_high'){
+            $products = Product::orderBy('regular_price')->orderBy('discount_price')->paginate(9);
+        }
+        elseif (request()->sort == 'high_low') {
+            $products = Product::orderBy('regular_price','DESC')->orderBy('discount_price', 'DESC')->paginate(9);
 
-        $products = Product::all();
+        }
+        elseif(request()->price_min && request()->price_max){
+
+            $products = Product::whereBetween('regular_price',
+                [floatval(request()->price_min), floatval(request()->price_max)])
+                ->whereBetween('discount_price',
+                    [floatval(request()->price_min), floatval(request()->price_max)])
+                ->paginate(9);
+        }
+
+        else{
+            $products = Product::orderBy('id','DESC')->paginate(9);
+        }
 
         return view('frontend.pages.shop')->with([
-            'products'=>$products
-
+            'products'=>$products,
+            'categories'=> $categories
         ]);
     }
 
@@ -55,14 +81,11 @@ class ShopController extends Controller
      */
     public function show($slug)
     {
-        //
         $product = Product::where('slug',$slug)->firstOrFail();
 
-//        $review = Review::where('pid', $product->id)->get();
-        $review = Review::join('users','reviews.uid', '=','users.id')->where('pid', $product->id)->get();
-
-         $review_count = Review::where('pid', $product->id)->count();
-       // $review_sum = Review::where('pid', $product->id)->sum('rating');
+        $review = Review::where('pid', $product->id)->get();
+        $review_count = Review::where('pid', $product->id)->count();
+        $review_sum = Review::where('pid', $product->id)->sum('rating');
 
 
         $mightLikeProduct = Product::where('slug','!=',$slug)->inRandomOrder()->take(8)->get();
@@ -70,11 +93,18 @@ class ShopController extends Controller
                 'product'=> $product,
                 'review_count' => $review_count,
                 'review' => $review,
-           //     'review_sum'=>$review_sum,
+                'review_sum'=>$review_sum,
                 'mightLikeProduct' => $mightLikeProduct
             ]
 
         );
+    }
+
+    public  function search(Request $request){
+        $query = $request->input('query');
+        $products = Product::where('name','like', "%$query%")->paginate(10);
+
+        return view('frontend.pages.search-result')->with('products',$products);
     }
 
     /**

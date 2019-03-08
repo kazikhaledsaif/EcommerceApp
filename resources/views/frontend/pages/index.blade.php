@@ -241,7 +241,7 @@
                                             <input type="hidden" name="id" value="{{ $new->id }}">
                                             <input type="hidden" name="name" value="{{ $new->name }}">
                                             @if($new->discount_price == 0)
-                                                <input type="hidden" name="price" value="{{ $new->present_price }}">
+                                                <input type="hidden" name="price" value="{{ $new->regular_price }}">
                                             @else
                                                 <input type="hidden" name="price" value="{{ $new->discount_price }}">
 
@@ -260,7 +260,7 @@
                                             <input type="hidden" name="name" value="{{ $new->name }}">
 
                                             @if($new->discount_price == 0)
-                                                <input type="hidden" name="price" value="{{ $new->present_price }}">
+                                                <input type="hidden" name="price" value="{{ $new->regular_price }}">
                                             @else
                                                 <input type="hidden" name="price" value="{{ $new->discount_price }}">
 
@@ -275,9 +275,9 @@
                                             @if ($new->badge)
                                                 <span class="new-badge">{{ $new->badge}}</span>
                                             @endif
-                                            @if ($new->percentige != null)
+                                            @if ($new->percentage != null)
                                                 <span class="discount-badge">
-                                        -{{ $new->percentige }}%
+                                        -{{ $new->percentage }}%
                                     </span>@endif
                                         </div>
                                         <!--=======  End of badge  =======-->
@@ -287,9 +287,9 @@
                                         <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}" target="_blank">{{$new->name}}</a></p>
                                         <p class="product-price">
                                             @if( $new->discount_price == 0 )
-                                                <span class="main-price"> ${{ $new->present_price }}</span>
+                                                <span class="main-price"> ${{ $new->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $new->present_price }}</span>
+                                                <span class="main-price discounted">${{ $new->regular_price }}</span>
                                                 <span class="discounted-price"> ${{ $new->discount_price }}</span>
                                             @endif
 
@@ -384,9 +384,9 @@
                                                     @if ($new->badge)
                                                         <span class="new-badge">{{ $new->badge}}</span>
                                                     @endif
-                                                    @if ($new->percentige != null)
+                                                    @if ($new->percentage != null)
                                                         <span class="discount-badge">
-                                        -{{ $new->percentige }}%
+                                        -{{ $new->percentage }}%
                                     </span>@endif
                                                 </div>
 
@@ -397,9 +397,9 @@
                                                 <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}">{{$new->name}}</a></p>
                                                 <p class="product-price">
                                                     @if( $new->discount_price == 0 )
-                                                        <span class="main-price"> ${{ $new->present_price }}</span>
+                                                        <span class="main-price"> ${{ $new->regular_price }}</span>
                                                     @else
-                                                        <span class="main-price discounted">${{ $new->present_price }}</span>
+                                                        <span class="main-price discounted">${{ $new->regular_price }}</span>
                                                         <span class="discounted-price"> ${{ $new->discount_price }}</span>
                                                     @endif
 
@@ -443,9 +443,9 @@
                                                 <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}">{{$new->name}}</a></p>
                                                 <p class="product-price">
                                                     @if( $new->discount_price == 0 )
-                                                        <span class="main-price"> ${{ $new->present_price }}</span>
+                                                        <span class="main-price"> ${{ $new->regular_price }}</span>
                                                     @else
-                                                        <span class="main-price discounted">${{ $new->present_price }}</span>
+                                                        <span class="main-price discounted">${{ $new->regular_price }}</span>
                                                         <span class="discounted-price"> ${{ $new->discount_price }}</span>
                                                     @endif
 
@@ -550,7 +550,7 @@
                                             <input type="hidden" name="id" value="{{ $top->product_id }}">
                                             <input type="hidden" name="name" value="{{ $top->name }}">
                                             @if($top->discount_price == 0)
-                                                <input type="hidden" name="price" value="{{ $top->present_price }}">
+                                                <input type="hidden" name="price" value="{{ $top->regular_price }}">
                                             @else
                                                 <input type="hidden" name="price" value="{{ $top->discount_price }}">
 
@@ -569,7 +569,7 @@
                                             <input type="hidden" name="name" value="{{ $top->name }}">
 
                                             @if($new->discount_price == 0)
-                                                <input type="hidden" name="price" value="{{ $top->present_price }}">
+                                                <input type="hidden" name="price" value="{{ $top->regular_price }}">
                                             @else
                                                 <input type="hidden" name="price" value="{{ $top->discount_price }}">
 
@@ -585,9 +585,9 @@
                                             @if ($top->badge)
                                                 <span class="new-badge">{{ $top->badge}}</span>
                                             @endif
-                                            @if ($top->percentige != null)
+                                            @if ($top->percentage != null)
                                                 <span class="discount-badge">
-                                        -{{ $top->percentige }}%
+                                        -{{ $top->percentage }}%
                                     </span>@endif
                                         </div>
 
@@ -598,9 +598,9 @@
                                         <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}">{{$top->name}}</a></p>
                                         <p class="product-price">
                                             @if( $top->discount_price == 0 )
-                                                <span class="main-price"> ${{ $top->present_price }}</span>
+                                                <span class="main-price"> ${{ $top->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $top->present_price }}</span>
+                                                <span class="main-price discounted">${{ $top->regular_price }}</span>
                                                 <span class="discounted-price"> ${{ $top->discount_price }}</span>
                                             @endif
 
@@ -762,9 +762,9 @@
 
                                     <h2 class="product-price mb-15">
                                         @if( $new->discount_price == 0 )
-                                            <span class="main-price"> ${{ $top->present_price }}</span>
+                                            <span class="main-price"> ${{ $top->regular_price }}</span>
                                         @else
-                                            <span class="main-price discounted">${{ $top->present_price }}</span>
+                                            <span class="main-price discounted">${{ $top->regular_price }}</span>
                                             <span class="discounted-price"> ${{ $top->discount_price }}</span>
                                         @endif
 
@@ -798,7 +798,7 @@
 
 
                                                     @if($top->discount_price == 0)
-                                                        <input type="hidden" name="price" value="{{ $top->present_price }}">
+                                                        <input type="hidden" name="price" value="{{ $top->regular_price }}">
                                                     @else
                                                         <input type="hidden" name="price" value="{{ $top->discount_price }}">
 
@@ -878,9 +878,9 @@
 
                                     <h2 class="product-price mb-15">
                                         @if( $product->discount_price == 0 )
-                                            <span class="main-price"> ${{ $product->present_price }}</span>
+                                            <span class="main-price"> ${{ $product->regular_price }}</span>
                                         @else
-                                            <span class="main-price discounted">${{ $product->present_price }}</span>
+                                            <span class="main-price discounted">${{ $product->regular_price }}</span>
                                             <span class="discounted-price"> ${{ $product->discount_price }}</span>
                                         @endif
 
@@ -910,7 +910,7 @@
                                                     <input type="hidden" name="quantity" value="{{ 1}}">
                                                     <input type="hidden" name="name" value="{{ $product->name }}">
                                                     @if($product->discount_price == 0)
-                                                        <input type="hidden" name="price" value="{{ $product->present_price }}">
+                                                        <input type="hidden" name="price" value="{{ $product->regular_price }}">
                                                     @else
                                                         <input type="hidden" name="price" value="{{ $product->discount_price }}">
 

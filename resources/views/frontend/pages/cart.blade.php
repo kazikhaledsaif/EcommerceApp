@@ -63,7 +63,7 @@
                                         <form action="{{route('frontend.cart.update', $item->rowId)}}" method="POST">
                                             {!! csrf_field() !!}
                                             {{-- <span id="stock{{$item->model->id}}" > {{$item->model->stock }}</span>--}}
-                                            <td class="pro-thumbnail"><a href="{{ route('frontend.shop.show',$item->model->slug) }}"><img src="{{ asset('storage/'.$item->model->product_image)  }} " class="img-fluid" alt="Product"></a></td>
+                                            <td class="pro-thumbnail"><a href="{{ route('frontend.shop.show',$item->model->slug) }}"><img src="{{ asset('uploads/'.$item->model->product_image)  }} " class="img-fluid" alt="Product"></a></td>
                                             <td class="pro-title"><a href="{{ route('frontend.shop.show',$item->model->slug) }}">{{$item->model->name}}</a></td>
 
 
