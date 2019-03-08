@@ -20,11 +20,12 @@
         <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+                <a href="{{ route('backend.order.pdf',['id' => $order->id]) }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
 
-                <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                <a href="{{ route('backend.order.pdf',['id' => $order->id]) }}" class="btn btn-primary pull-right" style="margin-right: 5px;">
                     <i class="fa fa-download"></i> Generate PDF
-                </button>
+                </a>
+
             </div>
         </div>
 
@@ -52,7 +53,7 @@
                 <div class="col-sm-4 invoice-col">
                     From
                     <address>
-                        <strong>JahangirEnterprice</strong><br>
+                        <strong>Jahangir Enterprice</strong><br>
                         Haji Khalek Gamsa Super Market,<br>
                         Shekherchar Bazar, Mosjid road, <br>
                         Gamsa potti,Madhabdi. <br>
@@ -73,7 +74,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                    <b>Invoice #007612</b><br>
+                    <b>Invoice #{{ $order->id + 1000 }}</b><br>
                     <br>
                     <b>Order ID:</b> 4F3S8J<br>
                 </div>
@@ -116,34 +117,39 @@
                 <!-- accepted payments column -->
                 <div class="col-xs-6">
                     <p class="lead">Payment Methods:</p>
+                    <p>Payer name: {{ $order->billing_first_name }} {{ $order->billing_last_name }}</p>
+
 
                     <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
-                        dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                         Payment Method: {{ $order->billing_payment_gateway }} <br>
+                         Paid Amount: {{ $order->billing_total }} <br>
+                         Transection ID: {{ $order->billing_id }} <br>
                     </p>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-6">
-                    <p class="lead">Amount Due 2/22/2014</p>
 
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th style="width:50%">Subtotal:</th>
-                                <td>৳{{ $order->billing_subtotal }}</td>
+                                <td>{{ $order->billing_subtotal }} ৳</td>
                             </tr>
                             <tr>
                                 <th>Shipping:</th>
-                                <td>৳{{ $order->shipping_fee }}</td>
+                                <td>{{ $order->shipping_fee }} ৳</td>
+                            </tr>
+                            <tr>
+                                <th>Discount:</th>
+                                <td>{{ $order->discount }} ৳</td>
                             </tr>
                             <tr>
                                 <th>Total:</th>
-                                <td>৳{{ $order->billing_total }}</td>
+                                <td>{{ $order->billing_total }} ৳</td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <!-- /.col -->
             </div>
             <!-- /.row -->
 

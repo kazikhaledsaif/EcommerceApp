@@ -55,6 +55,8 @@ Route::name('backend.')
         Route::get('/order/{id}','OrderController@show')->name('order.show');
         Route::get('/order-edit/{id}','OrderController@edit')->name('order.edit');
         Route::post('/order-update','OrderController@update')->name('order.update');
+        Route::get('/pdf/{id}','OrderController@pdf')->name('order.pdf');
+
 
 //        Slider route
         Route::get('/slider', 'SliderController@index')->name('slider.list');
