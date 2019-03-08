@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Product;
 use App\Category;
 use App\Review;
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,7 +23,7 @@ class ShopController extends Controller
         if($categorySlug){
             $products =   Product::whereHas('category', function ($query) use ($categorySlug) {
                 $query->where('slug', $categorySlug);
-            })->orderBy('id','DESC')->paginate(1);
+            })->orderBy('id','DESC')->paginate(9);
         }
         elseif(request()->sort == 'low_high'){
             $products = Product::orderBy('regular_price')->orderBy('discount_price')->paginate(9);

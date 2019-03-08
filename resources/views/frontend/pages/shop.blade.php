@@ -137,7 +137,16 @@
 
                                     </select>
                                 </div>
-
+                           {{--     <div class="sort-by-dropdown d-flex align-items-center mb-xs-10">
+                                    <p class="mr-10 mb-0">Sort By: </p>
+                                    <select name="sort-by" id="sort-by" class="nice-select">
+                                        <option value="0">Sort By Popularity</option>
+                                        <option value="0">Sort By Average Rating</option>
+                                        <option value="0">Sort By Newness</option>
+                                        <option value="0">Sort By Price: Low to High</option>
+                                        <option value="0">Sort By Price: High to Low</option>
+                                    </select>
+                                </div>--}}
                                 <!--=======  End of Sort by dropdown  =======-->
 
 

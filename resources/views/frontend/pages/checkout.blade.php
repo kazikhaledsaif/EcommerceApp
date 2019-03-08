@@ -63,20 +63,20 @@
 
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>First Name*</label>
-                                            @if (auth()->user())
+                                       {{--     @if (auth()->user())
                                                 <input type="text" placeholder="First Name" name="fname" value="{{ auth()->user()->name }}" readonly>
-                                            @else
+                                            @else--}}
                                                 <input type="text" placeholder="First Name" name="fname" required>
-                                            @endif
+                                          {{--  @endif--}}
                                         </div>
 
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>Last Name*</label>
-                                            @if (auth()->user())
+                                      {{--      @if (auth()->user())
                                                 <input type="text" placeholder="Last Name" name="lname" value="{{ auth()->user()->lname }}" readonly>
-                                            @else
+                                            @else--}}
                                                 <input type="text" placeholder="Last Name" name="lname" required>
-                                            @endif
+                                         {{--   @endif--}}
                                         </div>
 
 

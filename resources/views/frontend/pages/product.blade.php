@@ -186,7 +186,7 @@
                             </div>
                         </form>
                         <p class="wishlist-link mb-30">
-                        <form action="frontend.wishlist.store" method="POST">
+                        <form action="{{route('frontend.wishlist.store')}} " method="POST">
                             {{csrf_field()}}
 
                             @if (auth()->user())
@@ -214,8 +214,8 @@
                             </ul>
                         </div>
                         <div class="policy-list">
-                         {{--   <ul>
-                                <li> <img src="{{ asset('frontend/images/icons/shield.png') }} " alt=""><a href="{{ route('pages.privacy')}}"> Please read our Security Policy ! </a> </li>
+                       {{--  <ul>
+                                <li> <img src="{{ asset('frontend/images/icons/shield.png') }} " alt=""><a href="{{ route('frontend.pages.privacy')}}"> Please read our Security Policy ! </a> </li>
                                 <li> <img src="{{ asset('frontend/images/icons/truck.png') }} " alt=""> <a href="{{ route('pages.delivery')}}"> Please read our Delivery Policy ! </a> </li>
                                 <li> <img src="{{ asset('frontend/images/icons/compare.png') }} " alt=""> <a href="{{ route('pages.refund')}}"> Please read our Return Policy ! </a> </li>
                             </ul>--}}

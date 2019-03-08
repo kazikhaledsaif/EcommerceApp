@@ -185,7 +185,7 @@
 
 
                     </div>
-                          {{ $products->links() }}
+                {{ $products->appends(request()->query())->links() }}
 
 
                      @endif

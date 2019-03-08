@@ -11,7 +11,7 @@
             </div>
 
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Add Slider</a>
+                <a href="{{ route('backend.slider.add') }}" class="btn btn-success">Add Slider</a>
             </div>
         </div>
         <!-- /.box-header -->

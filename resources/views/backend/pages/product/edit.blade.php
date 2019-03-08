@@ -99,18 +99,25 @@
                                 <textarea class="form-control" id="inputDescription" name="productDescription">{{ $product->description }}</textarea>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group date">
                             <label for="inputFName" class="col-sm-2 control-label">Feature Name</label>
 
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputFName" name="productFeatureName" value="{{ $product->feature_name }}">
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="inputFName" name="productFeatureName" placeholder="Feature Name">
                             </div>
                             <label for="inputColor" class="col-sm-2 control-label">Feature Color</label>
 
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputColor"name="productFeatureColor" value="{{ $product->feature_color }}">
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="inputColor" placeholder="Color" name="productFeatureColor">
+                            </div>
+
+                            <label for="datepicker" class="col-sm-2 control-label">Weekly Deal</label>
+
+                            <div class="col-sm-2 ">
+                                <input type="date" class="form-control" id="datepicker" placeholder="Weekly deal" name="productWeeklyDeal">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="thumbImg" class="col-sm-2 control-label">Thumbnail Image</label>
 

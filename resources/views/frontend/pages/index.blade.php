@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+@section('title' , 'Home')
+
 @section('content')
 
 
@@ -360,7 +362,7 @@
 
                                     @php
 
-                                        $countdown = $new->weekly;
+                                        $countdown = $new->weekly_deal;
                                         $countdown = date('Y-m-d',strtotime($countdown . "+1 days"));
 
                                     @endphp

@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
 
-                            <label for="inputTitle2" class="col-sm-2 control-label">Title 1</label>
+                            <label for="inputTitle2" class="col-sm-2 control-label">Title 2</label>
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="inputTitle2" name="title2" placeholder="Title 2.." required>
