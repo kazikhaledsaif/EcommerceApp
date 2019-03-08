@@ -5,15 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\FeaturedCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use MercurySeries\Flashy\Flashy;
 
 class FeaturedCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
@@ -64,50 +61,48 @@ class FeaturedCategoryController extends Controller
 
         Flashy::success('Featured Category created.');
 
-//        return view('backend.pages.product.list');
         return redirect()->route('backend.featuredcategories.list');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+
+    public function show($id) {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+
+        $fcat = FeaturedCategory::find($id);
+        return view('backend.pages.featuredcategory.edit')->with(['feature' => $fcat]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $fcat = FeaturedCategory::find($request->id);
+
+        $fcat->name = $request->productName;
+        $fcat->slug = $request->productSlug;
+
+        if($request->img){
+            $photo_productThumbImg = $request->file('img');
+            $file_name =
+                uniqid('featuredcategory_',true).str_random(5).'.'.$photo_productThumbImg->getClientOriginalExtension();
+
+            if ($photo_productThumbImg->isValid()){
+                $productThumbImg =$photo_productThumbImg->storeAs('featuredcategory',$file_name);
+            }
+            Storage::delete( $fcat->image);
+            $fcat->image= $productThumbImg;
+        }
+
+        $fcat->save();
+
+        Flashy::success('Featured Category updated', '');
+        return redirect()->route('backend.featuredcategories.list');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Request $request)
     {
         //

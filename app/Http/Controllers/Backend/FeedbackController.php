@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Feedback;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,6 +21,15 @@ class FeedbackController extends Controller
         return view('backend.pages.feedback.list')
             ->with([
                 'feedback' => $feedback
+        ]);
+    }
+
+    public function userList(){
+
+        $user = User::all();
+
+        return view('backend.pages.user')->with([
+            'user' => $user
         ]);
     }
 

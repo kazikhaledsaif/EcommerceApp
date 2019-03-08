@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Order;
+use App\OrderProduct;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use MercurySeries\Flashy\Flashy;
@@ -26,8 +28,57 @@ class DashboardController extends Controller
      */
     public function index()
     {
-//        Flashy::primaryDark('Welcome to Dashbaord, Admin','');
-        return view('backend.pages.dashboard');
+        $currentYear= Date('Y');
+        $currentMonth = Date('m');
+        $currentDate = Date('Y-m-d');
+//        dump($currentDate);
+//        dump($currentMonth);
+//        dump($currentYear);
+
+        $totalsell = Order::where('status', 'Delivered')->sum('billing_subtotal');
+        $totalItem = Order::join('order_products','orders.id','=','order_products.order_id')
+            ->where('status', 'Delivered')->count();
+
+
+        $dailySell = Order::whereDate('created_at', '=', $currentDate)
+            ->where('status', 'Delivered')
+            ->sum('billing_subtotal');
+
+        $dailyItem = Order::whereDate('created_at', '=', $currentDate)
+            ->where('status', 'Delivered')
+            ->count();
+
+        $monthlySell = Order::whereYear('created_at', '=', $currentYear)
+            ->whereMonth('created_at', '=', $currentMonth)
+            ->where('status', 'Delivered')
+            ->sum('billing_subtotal');
+
+        $monthlyItem = Order::whereYear('created_at', '=', $currentYear)
+            ->whereMonth('created_at', '=', $currentMonth)
+            ->where('status', 'Delivered')
+            ->count();
+
+        $lastOrder = Order::OrderBy('created_at', 'DESC')->take(20)->get();
+
+
+
+        $pendingOrder = Order::where('status', '=', 'Pending')->count();
+        $approvedOrder = Order::where('status', '=', 'Approved')->count();
+        $successfulOrder = Order::where('status', '=', 'Delivered')->count();
+
+
+        return view('backend.pages.dashboard')->with([
+            'totalSell' =>$totalsell,
+            'totalItem' =>$totalItem,
+            'dailySell' => $dailySell,
+            'dailyItem' => $dailyItem,
+            'monthlySell' => $monthlySell,
+            'monthlyItem' => $monthlyItem,
+            'lastOrder' =>$lastOrder,
+            'pendingOrder' =>$pendingOrder,
+            'approvedOrder' =>$approvedOrder,
+            'successOrder' =>$successfulOrder,
+        ]);
     }
 
     /**

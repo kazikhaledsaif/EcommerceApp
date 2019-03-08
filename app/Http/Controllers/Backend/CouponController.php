@@ -63,13 +63,30 @@ class CouponController extends Controller
 
     public function edit($id)
     {
-        //
+        $coupon = Coupon::find($id);
+
+
+        return view('backend.pages.coupon.edit')->with([
+            'coupon' => $coupon
+        ]);
     }
 
 
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request) {
+
+        $coupon = Coupon::find($request->id);
+
+        $coupon->code = $request->couponCode;
+        $coupon->type = $request->couponType;
+        $coupon->value = $request->couponValue;
+        $coupon->percent_off = $request->couponPercentage;
+        $coupon->expire = $request->couponExpireDate;
+
+        $coupon->save();
+
+        Flashy::success('  Coupon '. $request->couponCode.' updated.');
+
+        return redirect()->route('backend.coupon.list');
     }
 
 

@@ -40,13 +40,11 @@
                         <td>{{ $coupon->value }}</td>
                         <td>{{ $coupon->percent_off }}</td>
                         <td>{{ $coupon->created_at }}</td>
-                        <td>{{ $coupon->id }}</td>
-                        {{--<td>--}}
-                            {{--<a href="{{ route('frontend.shop.show',['id'=> $product->slug]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;--}}
-                            {{--<a href="{{ route('backend.product.edit',['id'=> $product->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;--}}
-                            {{--<a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $product->id }}"--}}
-                                          {{--data-name="{{ $product->name }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>--}}
-                        {{--</td>--}}
+                        <td>
+                            <a href="{{ route('backend.coupon.edit',['id'=> $coupon->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;
+                            <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $coupon->id }}"
+                                          data-name="{{ $coupon->code }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>
+                        </td>
 
                     </tr>
                 @endforeach

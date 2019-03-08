@@ -3,29 +3,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-        <!-- Sidebar user panel (optional) -->
-        {{--<div class="user-panel">--}}
-            {{--<div class="pull-left image">--}}
-                {{--<img src="{{asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">--}}
-            {{--</div>--}}
-            {{--<div class="pull-left info">--}}
-                {{--<p>Admin</p>--}}
-                {{--<!-- Status -->--}}
-                {{--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
 
-        <!-- search form (Optional) -->
-        {{--<form action="#" method="get" class="sidebar-form">--}}
-            {{--<div class="input-group">--}}
-                {{--<input type="text" name="q" class="form-control" placeholder="Search...">--}}
-                {{--<span class="input-group-btn">--}}
-              {{--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>--}}
-              {{--</button>--}}
-            {{--</span>--}}
-            {{--</div>--}}
-        {{--</form>--}}
-        <!-- /.search form -->
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
@@ -88,7 +66,7 @@
             <li class=""><a href="{{ route('backend.coupon.list') }}"><i class="fa fa-barcode"></i> <span>Coupon</span></a></li>
             <li class=""><a href="{{ route('backend.reviews.list') }}"><i class="fa fa-star-o"></i> <span>Product Reviews</span></a></li>
 
-            <li class=""><a href="{{ route('backend.feedback.list') }}"><i class="fa fa-android"></i> <span>User</span></a></li>
+            <li class=""><a href="{{ route('backend.user.list') }}"><i class="fa fa-android"></i> <span>User</span></a></li>
             <li class=""><a href="{{ route('backend.feedback.list') }}"><i class="fa fa-database"></i> <span>Feedback</span></a></li>
             <li class=""><a href="{{ route('backend.newsletter.index') }}"><i class="fa fa-newspaper-o"></i> <span>Newsletter</span></a></li>
 

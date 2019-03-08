@@ -91,6 +91,7 @@ Route::name('backend.')
 //        sales report
         Route::get('/sales-report', 'ReportController@index')->name('report.index');
 
+        Route::get('/users', 'FeedbackController@userList')->name('user.list');
         Route::get('/feedback', 'FeedbackController@index')->name('feedback.list');
         Route::get('/feedback/{id}', 'FeedbackController@show')->name('feedback.show');
         Route::get('/newsletter', 'NewsletterController@index')->name('newsletter.index');

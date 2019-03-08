@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-
+@section('title' , 'Home')
 @section('content')
 
 
@@ -360,7 +360,7 @@
 
                                     @php
 
-                                        $countdown = $new->weekly;
+                                        $countdown = $new->weekly_deal;
                                         $countdown = date('Y-m-d',strtotime($countdown . "+1 days"));
 
                                     @endphp
@@ -384,9 +384,9 @@
                                                     @if ($new->badge)
                                                         <span class="new-badge">{{ $new->badge}}</span>
                                                     @endif
-                                                    @if ($new->percentige != null)
+                                                    @if ($new->percentage != null)
                                                         <span class="discount-badge">
-                                        -{{ $new->percentige }}%
+                                        -{{ $new->percentage }}%
                                     </span>@endif
                                                 </div>
 
@@ -397,9 +397,9 @@
                                                 <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}">{{$new->name}}</a></p>
                                                 <p class="product-price">
                                                     @if( $new->discount_price == 0 )
-                                                        <span class="main-price"> ${{ $new->present_price }}</span>
+                                                        <span class="main-price"> ${{ $new->regular_price }}</span>
                                                     @else
-                                                        <span class="main-price discounted">${{ $new->present_price }}</span>
+                                                        <span class="main-price discounted">${{ $new->regular_price }}</span>
                                                         <span class="discounted-price"> ${{ $new->discount_price }}</span>
                                                     @endif
 

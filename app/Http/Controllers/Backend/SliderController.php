@@ -107,9 +107,37 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $slider =  Slider::find($request->id);
+
+        $sliderimg="";
+        $photo_productG4 = $request->file('slider');
+        if (isset($photo_productG4)) {
+            if ($photo_productG4->isValid()){
+                $file_name =
+                    uniqid('slider_',true).str_random(5).'.'.$photo_productG4->getClientOriginalExtension();
+                $sliderimg =$photo_productG4->storeAs('slider',$file_name);
+                $slider->img = $sliderimg;
+
+            }
+        }
+        // create product with model method
+        $slider->title1 = $request->title1;
+        $slider->title2 = $request->title2;
+        $slider->detail = $request->detail;
+        $slider->slug = $request->slug;
+
+        $slider->save();
+
+
+
+        Flashy::success('Slider updated.');
+
+//        return view('backend.pages.product.list');
+        return redirect()->route('backend.slider.list');
+
     }
 
     /**
