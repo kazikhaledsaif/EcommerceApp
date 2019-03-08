@@ -3,19 +3,16 @@
 @section('content')
 
 
-
-
     <!--=============================================
     =            Breadcrumb Area         =
     =============================================-->
-
     <div class="breadcrumb-area breadcrumb-bg pt-85 pb-85 mb-80">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="index.html">Home</a> <span class="separator">/</span></li>
+                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>
                             <li class="active">My Account</li>
                         </ul>
                     </div>
@@ -25,6 +22,21 @@
     </div>
 
     <!--=====  End of Breadcrumb Area  ======-->
+
+    @if(session()->has('success_message'))
+        <div class="alert alert-success">
+            <h4> {{session()->get('success_message')}}</h4>
+        </div><br><br>
+
+    @elseif(session()->has('error_massage'))
+        <div class="alert alert-danger">
+            <h4> {{session()->get('error_massage')}}</h4>
+        </div><br><br>
+    @elseif(session()->has('alert_massage'))
+        <div class="alert alert-info">
+            <h4> {{session()->get('alert_massage')}}</h4>
+        </div><br><br>
+    @endif
 
     <!--=============================================
 =            My Account page content         =
@@ -43,19 +55,24 @@
 
                                 <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
 
-                                <a href="#download" data-toggle="tab"><i class="fa fa-cloud-download"></i> Download</a>
 
-                                <a href="#payment-method" data-toggle="tab"><i class="fa fa-credit-card"></i> Payment
-                                    Method</a>
+
 
                                 <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i> address</a>
 
                                 <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
+                                <a href="{{route('frontend.password-update')}}"><i class="fa fa-key"></i> Change Password</a>
 
-                                <a href="login-register.html"><i class="fa fa-sign-out"></i> Logout</a>
+                                <a onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-sign-out"></i> Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                         <!-- My Account Tab Menu End -->
+
 
                         <!-- My Account Tab Content Start -->
                         <div class="col-lg-9 col-12">
@@ -66,10 +83,10 @@
                                         <h3>Dashboard</h3>
 
                                         <div class="welcome mb-20">
-                                            <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong><a href="login-register.html" class="logout"> Logout</a>)</p>
+                                            <p>Hello <strong>{{ Auth::user()->name }}</strong>  ,
                                         </div>
 
-                                        <p class="mb-0">From your account dashboard. you can easily check &amp; view your
+                                        <p class="mb-0">Thanks message here. <br> From your account dashboard. you can easily check &amp; view your
                                             recent orders, manage your shipping and billing addresses and edit your
                                             password and account details.</p>
                                     </div>
@@ -86,39 +103,29 @@
                                                 <thead class="thead-light">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Name</th>
+                                                    <th>Order No.</th>
                                                     <th>Date</th>
-                                                    <th>Status</th>
                                                     <th>Total</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
+
                                                 </tr>
                                                 </thead>
 
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Mostarizing Oil</td>
-                                                    <td>Aug 22, 2018</td>
-                                                    <td>Pending</td>
-                                                    <td>$45</td>
-                                                    <td><a href="cart.html" class="btn">View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Katopeno Altuni</td>
-                                                    <td>July 22, 2018</td>
-                                                    <td>Approved</td>
-                                                    <td>$100</td>
-                                                    <td><a href="cart.html" class="btn">View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Murikhete Paris</td>
-                                                    <td>June 12, 2017</td>
-                                                    <td>On Hold</td>
-                                                    <td>$99</td>
-                                                    <td><a href="cart.html" class="btn">View</a></td>
-                                                </tr>
+                                                @foreach ($orders as $order)
+                                                    <tr>
+                                                        <td>{{ 1+$loop->index }}</td>
+                                                        <td>{{ 1000+$order->id}}</td>
+                                                        <td>{{ $order->created_at}}</td>
+                                                        <td>${{ $order->billing_total}}</td>
+                                                        <td>{{ $order->status}}</td>
+                                                        <td><a class="btn" onclick="window.location.href='/invoice/{{  substr(md5('muaj'.$order->id.'saif'), 16, 31)}}'">View/ Download</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -126,40 +133,7 @@
                                 </div>
                                 <!-- Single Tab Content End -->
 
-                                <!-- Single Tab Content Start -->
-                                <div class="tab-pane fade" id="download" role="tabpanel">
-                                    <div class="myaccount-content">
-                                        <h3>Downloads</h3>
 
-                                        <div class="myaccount-table table-responsive text-center">
-                                            <table class="table table-bordered">
-                                                <thead class="thead-light">
-                                                <tr>
-                                                    <th>Product</th>
-                                                    <th>Date</th>
-                                                    <th>Expire</th>
-                                                    <th>Download</th>
-                                                </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                <tr>
-                                                    <td>Mostarizing Oil</td>
-                                                    <td>Aug 22, 2018</td>
-                                                    <td>Yes</td>
-                                                    <td><a href="#" class="btn">Download File</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Katopeno Altuni</td>
-                                                    <td>Sep 12, 2018</td>
-                                                    <td>Never</td>
-                                                    <td><a href="#" class="btn">Download File</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Single Tab Content End -->
 
                                 <!-- Single Tab Content Start -->
@@ -175,16 +149,22 @@
                                 <!-- Single Tab Content Start -->
                                 <div class="tab-pane fade" id="address-edit" role="tabpanel">
                                     <div class="myaccount-content">
-                                        <h3>Billing Address</h3>
+                                        <form action="{{ route('frontend.my-account.store') }}" method="post">
+                                            {{csrf_field()}}
 
-                                        <address>
-                                            <p><strong>Alex Tuntuni</strong></p>
-                                            <p>1355 Market St, Suite 900 <br>
-                                                San Francisco, CA 94103</p>
-                                            <p>Mobile: (123) 456-7890</p>
-                                        </address>
+                                            <h3>Billing Address</h3>
 
-                                        <a href="#" class="btn d-inline-block edit-address-btn"><i class="fa fa-edit"></i>Edit Address</a>
+                                            <address>
+
+                                                <p>Address: </p>
+                                                <textarea name="address" cols="30" rows="4" class="form-control">{{ Auth::user()->address }}</textarea> <br>
+                                                <p>Mobile:    <input type="text" name="mobile" class="form-control" value="{{ Auth::user()->mobile }}"></p>
+
+                                            </address>
+
+                                            <button class="save-change-btn">Save Changes</button>
+
+                                        </form>
                                     </div>
                                 </div>
                                 <!-- Single Tab Content End -->
@@ -195,37 +175,38 @@
                                         <h3>Account Details</h3>
 
                                         <div class="account-details-form">
-                                            <form action="#">
+                                            <form action="{{ route('frontend.my-account.store') }}" method="post">
+                                                {{csrf_field()}}
+
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12 mb-30">
-                                                        <input id="first-name" placeholder="First Name" type="text">
+                                                        <input id="first-name" name="name" placeholder="First Name" type="text" value="{{ Auth::user()->name }}">
                                                     </div>
 
                                                     <div class="col-lg-6 col-12 mb-30">
-                                                        <input id="last-name" placeholder="Last Name" type="text">
+                                                        <input id="last-name" name="lname" placeholder="Last Name" type="text" value="{{ Auth::user()->lname }}">
                                                     </div>
+
+
 
                                                     <div class="col-12 mb-30">
-                                                        <input id="display-name" placeholder="Display Name" type="text">
+                                                        <input id="email" name="email" placeholder="Email Address" type="email" value="{{ Auth::user()->email }}">
                                                     </div>
 
-                                                    <div class="col-12 mb-30">
-                                                        <input id="email" placeholder="Email Address" type="email">
-                                                    </div>
+                                                    {{--   <div class="col-12 mb-30"><h4>Password change</h4></div>
 
-                                                    <div class="col-12 mb-30"><h4>Password change</h4></div>
+                                                       <div class="col-12 mb-30">
+                                                           <input name="current_password" id="current-pwd" placeholder="Current Password" type="password">
+                                                       </div>
 
-                                                    <div class="col-12 mb-30">
-                                                        <input id="current-pwd" placeholder="Current Password" type="password">
-                                                    </div>
 
-                                                    <div class="col-lg-6 col-12 mb-30">
-                                                        <input id="new-pwd" placeholder="New Password" type="password">
-                                                    </div>
+                                                       <div class="col-lg-6 col-12 mb-30">
+                                                           <input name="new_password" id="new-pwd" placeholder="New Password" type="password">
+                                                       </div>
 
-                                                    <div class="col-lg-6 col-12 mb-30">
-                                                        <input id="confirm-pwd" placeholder="Confirm Password" type="password">
-                                                    </div>
+                                                       <div class="col-lg-6 col-12 mb-30">
+                                                           <input name="verify_password" id="confirm-pwd" placeholder="Confirm Password" type="password">
+                                                       </div>--}}
 
                                                     <div class="col-12">
                                                         <button class="save-change-btn">Save Changes</button>

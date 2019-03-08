@@ -11,7 +11,7 @@
             </div>
 
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Add Featured Category</a>
+                <a href="{{ route('backend.featuredcategories.add') }}" class="btn btn-success">Add Featured Category</a>
             </div>
         </div>
         <!-- /.box-header -->

@@ -125,7 +125,7 @@ class CartController extends Controller
         }
         session()->put('coupon', [
             'name' => $code->code,
-            'amount' =>$code->discount(Cart::subtotal())
+            'amount' =>$code->discount( Cart::subtotal(2,'.',''))
         ]);
         return redirect()->route('frontend.cart.index')->with('success_message', 'coupon Applied ');
     }

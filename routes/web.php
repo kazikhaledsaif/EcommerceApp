@@ -137,37 +137,42 @@ Route::name('frontend.')
         Route::get('/newsletter-add', 'IndexController@newsletter')->name('newsletter.add');
         Route::post('/feedback-add', 'IndexController@feedback')->name('feedback.add');
 
-        Route::get('/contact', function () {
-            return view('frontend.pages.contact');
-        });
-   /*     Route::get('/about', function () {
-            return view('frontend.pages.about');
-        });
 
-        Route::get('/checkout', function () {
-            return view('frontend.pages.checkout');
-        });
-        Route::get('/compare', function () {
-            return view('frontend.pages.compare');
-        });
-        Route::get('/blog', function () {
-            return view('frontend.pages.blog');
-        });
-        Route::get('/post', function () {
-            return view('frontend.pages.post');
-        });
 
-        Route::get('/faq', function () {
-            return view('frontend.pages.faq');
-        });
-        Route::get('/myaccount', function () {
-            return view('frontend.pages.myaccount');
-        });
-        Route::get('/wishlist', function () {
-            return view('frontend.pages.wishlist')->name('wishlist');
-        });
-        Route::get('/product', function () {
-            return view('frontend.pages.product');
-        });*/
+        //my accout
+
+        Route::get('/my-account', 'OrderIndexController@index')->middleware('auth')->name('my-account');
+        Route::post('/my-account', 'OrderIndexController@store')->middleware('auth')->name('my-account.store');
+
+        // password update
+        Route::get('/password-update', 'PasswordController@index')->name('password-update');
+
+        Route::post('update/password', 'PasswordController@update')->name('update-pass');
+
+        Route::get('/search', 'ShopController@search')->name('search');
+
+       Route::get('/about', function () {
+                 return view('frontend.pages.about');
+             });
+
+                Route::get('/contact', function () {
+                return view('frontend.pages.contact');
+            });
+                Route::get('/compare', function () {
+                 return view('frontend.pages.compare');
+             });
+             Route::get('/blog', function () {
+                 return view('frontend.pages.blog');
+             });
+             Route::get('/post', function () {
+                 return view('frontend.pages.post');
+             });
+
+             Route::get('/faq', function () {
+                 return view('frontend.pages.faq');
+             });
+
+
+
     });
 

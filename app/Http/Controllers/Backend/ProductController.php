@@ -120,12 +120,12 @@ class ProductController extends Controller
         $product->badge= $request->productBadge;
         $product->feature_name= $request->productFeatureName;
         $product->feature_color= $request->productFeatureColor;
-        $product->badge= $request->productBadge;
         $product->product_image= $productThumbImg;
         $product->gallery_image1= $productG1;
         $product->gallery_image2= $productG2;
         $product->gallery_image3= $productG3;
         $product->gallery_image4= $productG4;
+        $product->weekly_deal= $request->productWeeklyDeal;
         $product->save();
 
 

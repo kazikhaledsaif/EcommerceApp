@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use Sluggable;
-
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
     public function hasCategory(){
         return $this->hasOne('App\Category');
     }

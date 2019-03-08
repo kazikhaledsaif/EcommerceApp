@@ -143,9 +143,9 @@
 
                         <p class="product-price mb-30">
                             @if( $product->discount_price == 0 )
-                                <span class="main-price"> ${{ $product->present_price }}</span>
+                                <span class="main-price"> ${{ $product->regular_price }}</span>
                             @else
-                                <span class="main-price discounted">${{ $product->present_price }}</span>
+                                <span class="main-price discounted">${{ $product->regular_price }}</span>
                                 <span class="discounted-price"> ${{ $product->discount_price }}</span>
                             @endif
                         </p>
@@ -160,7 +160,7 @@
 
 
                             @if($product->discount_price == 0)
-                                <input type="hidden" name="price" value="{{ $product->present_price }}">
+                                <input type="hidden" name="price" value="{{ $product->regular_price }}">
                             @else
                                 <input type="hidden" name="price" value="{{ $product->discount_price }}">
 
@@ -186,7 +186,7 @@
                             </div>
                         </form>
                         <p class="wishlist-link mb-30">
-                        <form action="" method="POST">
+                        <form action="{{route('frontend.wishlist.store')}} " method="POST">
                             {{csrf_field()}}
 
                             @if (auth()->user())
@@ -197,7 +197,7 @@
                             <input type="hidden" name="name" value="{{ $product->name }}">
 
                             @if($product->discount_price == 0)
-                                <input type="hidden" name="price" value="{{ $product->present_price }}">
+                                <input type="hidden" name="price" value="{{ $product->regular_price }}">
                             @else
                                 <input type="hidden" name="price" value="{{ $product->discount_price }}">
 
@@ -214,8 +214,8 @@
                             </ul>
                         </div>
                         <div class="policy-list">
-                         {{--   <ul>
-                                <li> <img src="{{ asset('frontend/images/icons/shield.png') }} " alt=""><a href="{{ route('pages.privacy')}}"> Please read our Security Policy ! </a> </li>
+                       {{--  <ul>
+                                <li> <img src="{{ asset('frontend/images/icons/shield.png') }} " alt=""><a href="{{ route('frontend.pages.privacy')}}"> Please read our Security Policy ! </a> </li>
                                 <li> <img src="{{ asset('frontend/images/icons/truck.png') }} " alt=""> <a href="{{ route('pages.delivery')}}"> Please read our Delivery Policy ! </a> </li>
                                 <li> <img src="{{ asset('frontend/images/icons/compare.png') }} " alt=""> <a href="{{ route('pages.refund')}}"> Please read our Return Policy ! </a> </li>
                             </ul>--}}
@@ -246,7 +246,7 @@
                                 <a class="nav-item nav-link" id="features-tab" data-toggle="tab" href="#features" role="tab"
                                    aria-selected="false">Features</a>
                                 <a class="nav-item nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab"
-                                   aria-selected="false">Reviews ({{ $review_count }})</a>
+                                aria-selected="false">Reviews ({{ $review_count }})</a>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
@@ -274,7 +274,7 @@
                                 <div class="product-ratting-wrap">
                                     <div class="pro-avg-ratting">
                                         <h4>{{ $product->rating }} <span>(Overall)</span></h4>
-                                        <span>Based on {{ $review_count }} Comments</span>
+                                        {{--<span>Based on {{ $review_count }} Comments</span>--}}
                                     </div>
                                     {{--<div class="ratting-list">--}}
                                         {{--<div class="sin-list float-left">--}}
@@ -408,41 +408,85 @@
 
                                 <div class="ptk-product">
                                     <div class="image">
-                                        <a href="{{ $alikeProducts->slug }}">
-                                            <img src="{{ asset('uploads/'.$alikeProducts->product_image)  }}" class="img-fluid" alt="">
-                                        </a>
-                                        <!--=======  hover icons  =======-->
+                                        <form action="{{route('frontend.cart.store')}}" id="link-cart{{ $alikeProducts->id }}" method="POST">
+                                            <a href="{{route('frontend.shop.show',$alikeProducts->slug)}}">
+                                                <img src="{{ asset('uploads/'.$alikeProducts->product_image)  }}" class="img-fluid shop-thumb" alt="{{ $alikeProducts->name }}">
+                                            </a>
+                                            <!--=======  hover icons  =======-->
 
-                                        <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container"><i class="lnr lnr-eye"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a>
-                                        <a class="hover-icon" href="#"><i class="lnr lnr-cart"></i></a>
+                                            <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $alikeProducts->id }}"><i class="lnr lnr-eye"></i></a>
+                                            <a class="hover-icon" href="javascript:{}"
+                                               onclick="document.getElementById('link-wish{{ $alikeProducts->id }}').submit()"><i class="lnr lnr-heart"></i></a>
 
-                                        <!--=======  End of hover icons  =======-->
+                                            <a class="hover-icon"  href="javascript:{}"
+                                               onclick="document.getElementById('link-cart{{ $alikeProducts->id }}').submit()"><i class="lnr lnr-cart"></i></a>
+
+                                            <!--=======  End of hover icons  =======-->
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="id" value="{{ $alikeProducts->id }}">
+                                            <input type="hidden" name="name" value="{{ $alikeProducts->name }}">
+
+                                            @if($alikeProducts->discount_price == 0)
+                                                <input type="hidden" name="price" value="{{ $alikeProducts->regular_price }}">
+                                            @else
+                                                <input type="hidden" name="price" value="{{ $alikeProducts->discount_price }}">
+
+                                            @endif
+                                            <input type="hidden" name="quantity" id="quantity"  min="1"  value="1" >
+                                        </form>
+
+                                        <form  id="link-wish{{ $alikeProducts->id }}" action="{{route('frontend.wishlist.store')}}" method="POST">
+                                            {{csrf_field()}}
+
+                                            @if (auth()->user())
+                                                <input type="hidden" name="user_id" value="{{  auth()->user()->id }}  ">
+                                            @endif
+
+                                            <input type="hidden" name="id" value="{{ $alikeProducts->id }}">
+                                            <input type="hidden" name="name" value="{{ $alikeProducts->name }}">
+
+                                            @if($alikeProducts->discount_price == 0)
+                                                <input type="hidden" name="price" value="{{ $alikeProducts->regular_price }}">
+                                            @else
+                                                <input type="hidden" name="price" value="{{ $alikeProducts->discount_price }}">
+
+                                            @endif
+                                            {{--      <button  id="submit" type="submit"><i class="fa fa-heart"></i> Add to wishlist</button>--}}
+                                        </form>
 
                                         <!--=======  badge  =======-->
 
                                         <div class="product-badge">
-                                            <span class="new-badge">{{$alikeProducts->badge }} </span>
-                                            <span class="discount-badge"> {{$alikeProducts->discount }}</span>
+                                            @if ($alikeProducts->badge)
+                                                <span class="new-badge">{{ $alikeProducts->badge}}</span>
+                                            @endif
+                                            @if ($alikeProducts->percentage > 0)
+                                                <span class="discount-badge">
+                                        -{{ $alikeProducts->percentage }}%
+                                    </span>@endif
                                         </div>
-
                                         <!--=======  End of badge  =======-->
 
                                     </div>
                                     <div class="content">
-                                        <p class="product-title"><a href="single-product.html">{{ $alikeProducts->name }}</a></p>
+                                        <p class="product-title"><a href="{{route('frontend.shop.show',$alikeProducts->slug)}}">{{$alikeProducts->name}}</a></p>
                                         <p class="product-price">
-                                            <span class="main-price discounted">${{ $alikeProducts->present_price }}</span>
-                                            <span class="discounted-price">${{ $alikeProducts->discount_price }}</span>
+                                            @if( $alikeProducts->discount_price == 0 )
+                                                <span class="main-price"> ${{ $alikeProducts->regular_price }}</span>
+                                            @else
+                                                <span class="main-price discounted">${{ $alikeProducts->regular_price }}</span>
+                                                <span class="discounted-price"> ${{ $alikeProducts->discount_price }}</span>
+                                            @endif
+
                                         </p>
                                     </div>
-                                    <div class="rating">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div>
+                                    {{--    <div class="rating">
+                                            <i class="lnr lnr-star active"></i>
+                                            <i class="lnr lnr-star active"></i>
+                                            <i class="lnr lnr-star active"></i>
+                                            <i class="lnr lnr-star active"></i>
+                                            <i class="lnr lnr-star"></i>
+                                        </div>--}}
                                 </div>
 
                                 <!--=======  End of single product  =======-->
@@ -459,10 +503,109 @@
     <!--=====  End of related product slider  ======-->
 
 
+    <!--=============================================
+    =            Quick view modal         =
+    =============================================-->
+    @foreach($mightLikeProduct as $product)
+        <div class="modal fade quick-view-modal-container" id="quick-view-modal-container{{ $product->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                <!-- product quickview image gallery -->
+                                <div class="product-image-slider quickview-product-image-slider flex-row-reverse">
+                                    <!--Modal Tab Content Start-->
+                                    <div class="tab-content product-large-image-list quickview-product-large-image-list">
+                                        <div class="tab-pane fade show active" id="single-slide-quick-1" role="tabpanel" aria-labelledby="single-slide-tab-quick-1">
+                                            <!--Single Product Image Start-->
+                                            <div class="single-product-img img-full">
+                                                <img src="{{ asset('uploads/'.$product->product_image)  }}"
+                                                     class="img-fluid" alt="{{ $product->name }}">
+                                            </div>
+                                            <!--Single Product Image End-->
+                                        </div>
+                                    </div>
+                                    <!--Modal Content End-->
+                                    <!--Modal Tab Menu Start-->
+                                    <!--Modal Tab Menu End-->
+                                </div>
+                                <!-- end of product quickview image gallery -->
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-xs-12">
+                                <!-- product quick view description -->
+                                <div class="product-feature-details">
+                                    <h2 class="product-title mb-15">{{ $product->name }}</h2>
+
+                                    <h2 class="product-price mb-15">
+                                        @if( $product->discount_price == 0 )
+                                            <span class="main-price"> ${{ $product->regular_price }}</span>
+                                        @else
+                                            <span class="main-price discounted">${{ $product->regular_price }}</span>
+                                            <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                        @endif
+
+                                        {{--<span class="discount-percentage">Save 8%</span>--}}
+                                    </h2>
+
+                                    <p class="product-description mb-20">
+                                        {{ $product->details }}
+                                    </p>
+
+
+                                    <div class="cart-buttons mb-20">
+                                        <form action="{{route('frontend.cart.store')}}" method="POST">
+                                            {{csrf_field()}}
+                                            <div class="pro-qty mr-10">
+                                                <input type="text" value="1">
+                                            </div>
+                                            <div class="add-to-cart-btn">
+
+
+                                                <input type="hidden" name="id" value="{{ $product->id  }}">
+                                                <input type="hidden" name="quantity" value="{{ 1}}">
+                                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                                @if($product->discount_price == 0)
+                                                    <input type="hidden" name="price" value="{{ $product->regular_price }}">
+                                                @else
+                                                    <input type="hidden" name="price" value="{{ $product->discount_price }}">
+
+                                                @endif
+
+
+                                                <button type="submit" class="pataku-btn">  <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+
+                                            </div>
+                                        </form>
+                                    </div>
+
+
+                                    <div class="social-share-buttons">
+                                        <h3>share this product</h3>
+                                        <ul>
+                                            <li><a target="_blank" class="twitter" href="https://twitter.com/home?status=check+this+amazing+furniture+http://furniturevilletexas.com/shop/{{ $product->slug }}"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a target="_blank" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=furniturevilletexas.com/shop/{{ $product->slug }}"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a target="_blank" class="google-plus" href="https://plus.google.com/share?url=furniturevilletexas.com/shop/{{ $product->slug }}"><i class="fa fa-google-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- end of product quick view description -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--=====  End of Quick view modal  ======-->
+    @endforeach
+
 
 @endsection()
 
 
-@section('modal')
-    @include('frontend.partials.modal')
-@endsection()

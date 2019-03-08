@@ -42,10 +42,10 @@
                             <h4 class="login-title">Register</h4>
 
                             <div class="row">
-                                <div class="col-md-6 col-12 mb-20">
-                                    <label>First Name</label>
+                                <div class="col-md-12 mb-20">
+                                    <label>Full Name</label>
 
-                                    <input  placeholder="First Name"  type="text" class="mb-0 form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                    <input  placeholder="Full Name"  type="text" class="mb-0 form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -53,10 +53,7 @@
                                     </span>
                                     @endif
                                 </div>
-                                <div class="col-md-6 col-12 mb-20">
-                                    <label>Last Name</label>
-                                    <input class="mb-0" type="text" placeholder="Last Name">
-                                </div>
+
                                 <div class="col-md-12 mb-20">
                                     <label>Email Address*</label>
 
