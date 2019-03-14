@@ -289,10 +289,10 @@
                                         <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}" target="_blank">{{$new->name}}</a></p>
                                         <p class="product-price">
                                             @if( $new->discount_price == 0 )
-                                                <span class="main-price"> ${{ $new->regular_price }}</span>
+                                                <span class="main-price"> ৳{{ $new->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $new->regular_price }}</span>
-                                                <span class="discounted-price"> ${{ $new->discount_price }}</span>
+                                                <span class="main-price discounted">৳{{ $new->regular_price }}</span>
+                                                <span class="discounted-price"> ৳{{ $new->discount_price }}</span>
                                             @endif
 
                                         </p>
@@ -399,10 +399,10 @@
                                                 <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}">{{$new->name}}</a></p>
                                                 <p class="product-price">
                                                     @if( $new->discount_price == 0 )
-                                                        <span class="main-price"> ${{ $new->regular_price }}</span>
+                                                        <span class="main-price"> ৳{{ $new->regular_price }}</span>
                                                     @else
-                                                        <span class="main-price discounted">${{ $new->regular_price }}</span>
-                                                        <span class="discounted-price"> ${{ $new->discount_price }}</span>
+                                                        <span class="main-price discounted">৳{{ $new->regular_price }}</span>
+                                                        <span class="discounted-price"> ৳{{ $new->discount_price }}</span>
                                                     @endif
 
                                                 </p>
@@ -445,10 +445,10 @@
                                                 <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}">{{$new->name}}</a></p>
                                                 <p class="product-price">
                                                     @if( $new->discount_price == 0 )
-                                                        <span class="main-price"> ${{ $new->regular_price }}</span>
+                                                        <span class="main-price"> ৳{{ $new->regular_price }}</span>
                                                     @else
-                                                        <span class="main-price discounted">${{ $new->regular_price }}</span>
-                                                        <span class="discounted-price"> ${{ $new->discount_price }}</span>
+                                                        <span class="main-price discounted">৳{{ $new->regular_price }}</span>
+                                                        <span class="discounted-price"> ৳{{ $new->discount_price }}</span>
                                                     @endif
 
                                                 </p>
@@ -600,10 +600,10 @@
                                         <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}">{{$top->name}}</a></p>
                                         <p class="product-price">
                                             @if( $top->discount_price == 0 )
-                                                <span class="main-price"> ${{ $top->regular_price }}</span>
+                                                <span class="main-price"> ৳{{ $top->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $top->regular_price }}</span>
-                                                <span class="discounted-price"> ${{ $top->discount_price }}</span>
+                                                <span class="main-price discounted">৳{{ $top->regular_price }}</span>
+                                                <span class="discounted-price"> ৳{{ $top->discount_price }}</span>
                                             @endif
 
                                         </p>
@@ -764,10 +764,10 @@
 
                                     <h2 class="product-price mb-15">
                                         @if( $new->discount_price == 0 )
-                                            <span class="main-price"> ${{ $top->regular_price }}</span>
+                                            <span class="main-price"> ৳{{ $top->regular_price }}</span>
                                         @else
-                                            <span class="main-price discounted">${{ $top->regular_price }}</span>
-                                            <span class="discounted-price"> ${{ $top->discount_price }}</span>
+                                            <span class="main-price discounted">৳{{ $top->regular_price }}</span>
+                                            <span class="discounted-price"> ৳{{ $top->discount_price }}</span>
                                         @endif
 
                                         {{--<span class="discount-percentage">Save 8%</span>--}}
@@ -880,10 +880,10 @@
 
                                     <h2 class="product-price mb-15">
                                         @if( $product->discount_price == 0 )
-                                            <span class="main-price"> ${{ $product->regular_price }}</span>
+                                            <span class="main-price"> ৳{{ $product->regular_price }}</span>
                                         @else
-                                            <span class="main-price discounted">${{ $product->regular_price }}</span>
-                                            <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                            <span class="main-price discounted">৳{{ $product->regular_price }}</span>
+                                            <span class="discounted-price"> ৳{{ $product->discount_price }}</span>
                                         @endif
 
                                         {{--<span class="discount-percentage">Save 8%</span>--}}

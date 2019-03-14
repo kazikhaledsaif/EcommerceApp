@@ -1,11 +1,11 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>VE</b>P</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>Panel</span>
+        <span class="logo-lg"><b>VirtualEchos</b>Panel</span>
     </a>
 
     <!-- Header Navbar -->
@@ -17,7 +17,14 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
+
+                <a class="" href="{{ route('logout') }}"   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    <i class="fa fa-power-off " style="font-size:30px;color:red; padding: 10px" ></i></a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            {{--    <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -112,19 +119,21 @@
                             <a href="#">View all tasks</a>
                         </li>
                     </ul>
-                </li>
+                </li>--}}
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{{asset('backend/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">{{ Auth::user()->name }}</span>
+
                     </a>
+
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
-                        <li class="user-header">
+                     {{--   <li class="user-header">
                             <img src="{{asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                             <p>
@@ -146,22 +155,33 @@
                                 </div>
                             </div>
                             <!-- /.row -->
-                        </li>
+                        </li>--}}
                         <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
+                        <div class="pull-right">
+
+                            <a class="btn btn-default btn-flat" href="{{ route('logout') }}"   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                      {{--  <li class="user-footer">
+                         --}}{{--   <div class="pull-left">
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div>
+                            </div>--}}{{--
                             <div class="pull-right">
                                 <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                            </div>
+                            </div>--}}
                         </li>
                     </ul>
+
+
                 </li>
                 <!-- Control Sidebar Toggle Button -->
-                <li>
+               {{-- <li>
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
+                </li>--}}
             </ul>
         </div>
     </nav>

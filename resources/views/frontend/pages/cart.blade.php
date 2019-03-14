@@ -70,9 +70,9 @@
                                             @if( $item->model->discount_price == 0 )
 
 
-                                                <td class="pro-price"><span>${{$item->model->present_price}}</span></td>
+                                                <td class="pro-price"><span>৳{{$item->model->present_price}}</span></td>
                                             @else
-                                                <td class="pro-price"><span>${{$item->model->discount_price}}</span></td>
+                                                <td class="pro-price"><span>৳{{$item->model->discount_price}}</span></td>
 
                                             @endif
 
@@ -89,10 +89,10 @@
                                             @if( $item->model->discount_price == 0 )
 
 
-                                                <td class="pro-subtotal"><span>${{($item->qty)*$item->model->present_price}}</span></td>
+                                                <td class="pro-subtotal"><span>৳{{($item->qty)*$item->model->present_price}}</span></td>
                                             @else
 
-                                                <td class="pro-subtotal"><span>${{($item->qty)*$item->model->discount_price}}</span></td>
+                                                <td class="pro-subtotal"><span>৳{{($item->qty)*$item->model->discount_price}}</span></td>
 
                                             @endif
 
@@ -190,13 +190,13 @@
                                 <div class="cart-summary">
                                     <div class="cart-summary-wrap">
                                         <h4>Cart Summary</h4>
-                                        <p>Sub Total <span>${{Cart::instance('default')->total()}}</span></p>
-                                        <p>Shipping Cost <span>$00.00</span></p>
+                                        <p>Sub Total <span>৳ {{Cart::instance('default')->total()}}</span></p>
+                                        <p>Shipping Cost <span>৳ 00.00</span></p>
                                         @if(session()->has('coupon'))
 
                                             <p>Discount  [ {{ session()->get('coupon')['name'] }} ]
 
-                                                <span>-${{ session()->get('coupon')['amount'] }}</span></p>
+                                                <span>-৳{{ session()->get('coupon')['amount'] }}</span></p>
                                      <form action="{{ route('frontend.coupon.destroy') }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
@@ -205,7 +205,7 @@
 
                                         @endif
 
-                                        <h2>Grand Total <span>$<?php
+                                        <h2>Grand Total <span>৳<?php
                                                 $num1= (Cart::instance('default')->total());
                                                 $num2= (session()->get('coupon')['amount']);
                                                 $res =  (double)str_replace(',','',$num1)-

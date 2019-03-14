@@ -59,9 +59,9 @@
                                         @if( $item->model->discount_price == 0 )
 
 
-                                            <td class="pro-price"><span>${{$item->model->present_price}}</span></td>
+                                            <td class="pro-price"><span>৳{{$item->model->present_price}}</span></td>
                                         @else
-                                            <td class="pro-price"><span>${{$item->model->discount_price}}</span></td>
+                                            <td class="pro-price"><span>৳{{$item->model->discount_price}}</span></td>
 
                                         @endif
 

@@ -37,28 +37,36 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td>
-                            <a href="{{ route('backend.feedback.show',['id'=> $user->id]) }}"><i class="fa fa-android fa-lg" style="color:dodgerblue" aria-hidden="true"></i> Make Admin </a>&nbsp;&nbsp;
-                        </td>
+    @if($user->hasRole('admin'))
 
-                    </tr>
-                @endforeach
+    Admin
 
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Register on</th>
-                    <th>Action</th>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
+    @else
+
+    <a href="{{ route('backend.user.show',['id'=> $user->id]) }}"><i class="fa fa-unlock fa-lg " style="color:dodgerblue" aria-hidden="true"></i>  Make Admin </a>&nbsp;&nbsp;
+      @endif
+
+</td>
+
+</tr>
+@endforeach
+
+</tbody>
+<tfoot>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Email</th>
+<th>Register on</th>
+<th>Action</th>
+</tr>
+</tfoot>
+</table>
+</div>
 
 
-    </section>
-    <!-- /.content -->
+</section>
+<!-- /.content -->
 
 
 @endsection

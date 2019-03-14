@@ -65,28 +65,28 @@
                                         <li>
                                             <label class="radio-container">
 
-                                                <a href="{{route('frontend.shop.index', ['price_min' => 400,'price_max' => 999 ])}}"> $400.00 - $999.00
+                                                <a href="{{route('frontend.shop.index', ['price_min' => 400,'price_max' => 999 ])}}"> ৳400.00 - ৳999.00
                                                     <input type="radio" name="radio" {{  Request::get('price_min') ==  '400' ? 'checked' : ''  }}>
                                                     <span class="checkmark"></span> </a>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="radio-container">
-                                                <a href="{{route('frontend.shop.index', ['price_min' => 1000,'price_max' => 1499 ])}}"> $1000.00 - $1499.00
+                                                <a href="{{route('frontend.shop.index', ['price_min' => 1000,'price_max' => 1499 ])}}"> ৳1000.00 - ৳1499.00
                                                     <input type="radio" name="radio" {{  Request::get('price_min') ==  '1000' ? 'checked' : ''  }}>
                                                     <span class="checkmark"></span></a>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="radio-container">
-                                                <a href="{{route('frontend.shop.index', ['price_min' => 1500,'price_max' => 1999 ])}}"> $1500.00 - $1999.00
+                                                <a href="{{route('frontend.shop.index', ['price_min' => 1500,'price_max' => 1999 ])}}"> ৳1500.00 - ৳1999.00
                                                     <input type="radio" name="radio" {{  Request::get('price_min') ==  '1500' ? 'checked' : ''  }}>
                                                     <span class="checkmark"></span></a>
                                             </label>
                                         </li>
                                         <li>
                                             <label class="radio-container">
-                                                <a href="{{route('frontend.shop.index', ['price_min' => 2000,'price_max' => 4000 ])}}"> $2000.00 - $4000.00
+                                                <a href="{{route('frontend.shop.index', ['price_min' => 2000,'price_max' => 4000 ])}}"> ৳2000.00 - ৳4000.00
                                                     <input type="radio" name="radio" {{  Request::get('price_min') ==  '2000' ? 'checked' : ''  }}>
                                                     <span class="checkmark"></span></a>
                                             </label>
@@ -234,10 +234,10 @@
                                         <p class="product-title"><a href="{{route('frontend.shop.show',$product->slug)}}">{{$product->name}}</a></p>
                                         <p class="product-price">
                                             @if( $product->discount_price == 0 )
-                                                <span class="main-price"> ${{ $product->regular_price }}</span>
+                                                <span class="main-price"> ৳{{ $product->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $product->regular_price }}</span>
-                                                <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                                <span class="main-price discounted">৳{{ $product->regular_price }}</span>
+                                                <span class="discounted-price"> ৳{{ $product->discount_price }}</span>
                                             @endif
 
                                         </p>
@@ -281,10 +281,10 @@
 
                                         <p class="product-price">
                                             @if( $product->discount_price == 0 )
-                                                <span class="main-price"> ${{ $product->regular_price }}</span>
+                                                <span class="main-price"> ৳{{ $product->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $product->regular_price }}</span>
-                                                <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                                <span class="main-price discounted">৳{{ $product->regular_price }}</span>
+                                                <span class="discounted-price"> ৳{{ $product->discount_price }}</span>
                                             @endif
 
                                         </p>
@@ -379,10 +379,10 @@
 
                                     <h2 class="product-price mb-15">
                                         @if( $product->discount_price == 0 )
-                                            <span class="main-price"> ${{ $product->regular_price }}</span>
+                                            <span class="main-price"> ৳{{ $product->regular_price }}</span>
                                         @else
-                                            <span class="main-price discounted">${{ $product->regular_price }}</span>
-                                            <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                            <span class="main-price discounted">৳{{ $product->regular_price }}</span>
+                                            <span class="discounted-price"> ৳{{ $product->discount_price }}</span>
                                         @endif
 
                                         {{--<span class="discount-percentage">Save 8%</span>--}}

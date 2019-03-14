@@ -92,6 +92,8 @@ Route::name('backend.')
         Route::get('/sales-report', 'ReportController@index')->name('report.index');
 
         Route::get('/users', 'FeedbackController@userList')->name('user.list');
+        Route::get('/users/{id}', 'FeedbackController@userShow')->name('user.show');
+
         Route::get('/feedback', 'FeedbackController@index')->name('feedback.list');
         Route::get('/feedback/{id}', 'FeedbackController@show')->name('feedback.show');
         Route::get('/newsletter', 'NewsletterController@index')->name('newsletter.index');
@@ -136,6 +138,7 @@ Route::name('frontend.')
 //        newsletter
         Route::get('/newsletter-add', 'IndexController@newsletter')->name('newsletter.add');
         Route::post('/feedback-add', 'IndexController@feedback')->name('feedback.add');
+
 
 
 

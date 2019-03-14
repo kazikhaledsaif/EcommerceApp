@@ -50,6 +50,20 @@ class FeedbackController extends Controller
                    'feedback' => $feedback
                 ]);
 
+    } public function userShow($id) {
+
+        $user = User::find($id);
+        $role= $user->removeRole('user');
+        $role1= $user->assignRole('admin');
+        if($role1) {
+            echo "jhi";
+        }
+        else{
+            echo "gpo";
+        }
+
+
+
     }
 
 
