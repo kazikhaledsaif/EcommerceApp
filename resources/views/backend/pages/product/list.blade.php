@@ -98,7 +98,7 @@
                         url: "{{ route('backend.product.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
-                            if(data.success == true){ // if true (1)
+                            if(data.success === true){ // if true (1)
                                 setTimeout(function(){  // wait for 5 secs(2)
                                     location.reload();  // then reload the page.(3)
                                 }, 500);

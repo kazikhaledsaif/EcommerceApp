@@ -169,6 +169,9 @@ class ProductController extends Controller
         $product->feature_color= $request->productFeatureColor;
         $product->weekly_deal= $request->productWeeklyDeal;
 
+
+
+
         if($request->productThumbImg){
             $photo_productThumbImg = $request->file('productThumbImg');
             $file_name =
@@ -180,6 +183,12 @@ class ProductController extends Controller
             Storage::delete( $product->product_image);
             $product->product_image= $productThumbImg;
         }
+
+
+
+
+
+
         if($request->productG1){
             $photo_productG1 = $request->file('productG1');
             $file_name =
@@ -191,6 +200,9 @@ class ProductController extends Controller
             Storage::delete( $product->gallery_image1);
             $product->gallery_image1= $productG1;
         }
+
+
+
         if($request->productG2){
             $photo_productG2 = $request->file('productG2');
             $file_name =
@@ -202,6 +214,10 @@ class ProductController extends Controller
             Storage::delete( $product->gallery_image2);
             $product->gallery_image2= $productG2;
         }
+
+
+
+
         if($request->productG3){
             $photo_productG3 = $request->file('productG3');
             $file_name =
