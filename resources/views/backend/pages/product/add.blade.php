@@ -115,10 +115,18 @@
                         <div class="form-group">
                             <label for="thumbImg" class="col-sm-2 control-label">Thumbnail Image</label>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <input type="file" class="form-control" id="thumbImg" placeholder="Thumbnail Image" name="productThumbImg">
                             </div>
+                            <div class="col-sm-4">
+                                <div id="upload-demo"></div>
+
+
+                                <div id="preview-crop-image" style="background:#9d9d9d;width:300px;padding:50px 50px;height:300px;"></div>
+                            </div>
+
                         </div>
+
                         <div class="form-group">
                             <label for="galleryImg" class="col-sm-2 control-label">Gallery Image</label>
 
@@ -159,6 +167,9 @@
 @endsection
 
 @section('script')
+
+
+
     <script>
         $('#inputProductName').on('input',function (e) {
                 // console.log($(this).val());

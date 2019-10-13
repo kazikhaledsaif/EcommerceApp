@@ -11,7 +11,7 @@
             </div>
 
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Add Product</a>
+                <a href="{{ route('backend.product.add') }}" class="btn btn-success">Add Product</a>
             </div>
         </div>
         <!-- /.box-header -->
@@ -24,6 +24,7 @@
                     <th>Regular Price</th>
                     <th>Discount Price</th>
                     <th>Stock</th>
+                    <th>Image</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -35,6 +36,8 @@
                     <td>{{ $product->regular_price }}</td>
                     <td>{{ $product->discount_price }}</td>
                     <td>{{ $product->stock }}</td>
+                    <td><img height=100 width=100 src="{{ asset('uploads/'.$product->product_image)  }}"> </td>
+
                     <td>
                         <a href="{{ route('frontend.shop.show',['id'=> $product->slug]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;
                         <a href="{{ route('backend.product.edit',['id'=> $product->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;
@@ -53,7 +56,7 @@
                     <th>Regular Price</th>
                     <th>Discount Price</th>
                     <th>Stock</th>
-                    <th>Updated</th>
+                    <th>Image</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
