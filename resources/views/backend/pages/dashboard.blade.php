@@ -6,7 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Admin Panel
+            Admin Panel 
             <small>Everything control over here</small>
         </h1>
         <ol class="breadcrumb">
