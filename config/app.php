@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*Debug tool*/
-        Barryvdh\Debugbar\ServiceProvider::class,
+
         Softon\SweetAlert\SweetAlertServiceProvider::class,
         /*PDF */
         Barryvdh\DomPDF\ServiceProvider::class,
