@@ -171,8 +171,10 @@
                                                 <img src="{{ asset('uploads/'.$product->product_image)  }}" class="img-fluid shop-thumb" alt="{{ $product->name }}">
                                             </a>
                                             <!--=======  hover icons  =======-->
-                                            <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $product->id }}"><i class="lnr lnr-eye"></i></a>
+{{--                                            <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $product->id }}"><i class="lnr lnr-eye"></i></a>--}}
                                             <!-- <a class="hover-icon" href="#"><i class="lnr lnr-heart"></i></a> -->
+{{--                                            <a class="hover-icon" href="{{route('frontend.shop.show',$product->slug)}}" ><i class="lnr lnr-eye"></i></a>--}}
+
                                             <a class="hover-icon" href="javascript:{}"
                                                onclick="document.getElementById('link-wish{{ $product->id }}').submit()"><i class="lnr lnr-heart"></i></a>
 
@@ -197,8 +199,8 @@
                                         <form  id="link-wish{{ $product->id }}" action="{{route('frontend.wishlist.store')}}" method="POST">
                                             {{csrf_field()}}
 
-                                            @if (auth()->user())
-                                                <input type="hidden" name="user_id" value="{{  auth()->user()->id }}  ">
+                                            @if (auth()->guard('user')->user())
+                                                <input type="hidden" name="user_id" value="{{  auth()->guard('user')->user()->id }}  ">
                                             @endif
 
                                             <input type="hidden" name="id" value="{{ $product->id }}">

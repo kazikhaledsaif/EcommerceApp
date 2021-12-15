@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-container">
                     <ul>
-                        <li><a href="index.html">Home</a> <span class="separator">/</span></li>
+                        <li><a href="#">Home</a> <span class="separator">/</span></li>
                         <li class="active">Compare</li>
                     </ul>
                 </div>

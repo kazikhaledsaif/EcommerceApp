@@ -43,7 +43,11 @@
 
             </div>
 
-
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <a href="{{ url()->previous() }}" class="btn btn-default">Cancel</a>
+        </div>
+        <!-- /.box-footer -->
 
 
     </div>

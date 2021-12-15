@@ -18,7 +18,7 @@ class AdminReviewController extends Controller
 
         $review = Review::join('products','reviews.pid','=','products.id')
             ->join('users','reviews.uid','=','users.id')
-            ->select('reviews.id','products.name as productName','slug','users.name as userName', 'reviews.rating as rating' ,
+            ->select('reviews.id','products.name as productName','slug','users.first_name as fName','users.last_name as lName', 'reviews.rating as rating' ,
                 'products.rating as overallRating','comment','email','reviews.created_at as created_at')
             ->get();
 //    dump($review);
@@ -35,8 +35,8 @@ class AdminReviewController extends Controller
         $review = Review::join('products','reviews.pid','=','products.id')
             ->join('users','reviews.uid','=','users.id')
             ->where('reviews.id', $id)
-            ->select('reviews.id as id','products.name as productName','slug','users.name as userName', 'reviews.rating as rating' ,
-                'products.rating as overallRating','comment','email','product_image as productImage',
+            ->select('reviews.id as id','products.name as productName','slug','users.first_name as fName','users.last_name as lName', 'reviews.rating as rating' ,
+                'products.rating as overallRating','comment','email','phone','product_image as productImage',
                 'reviews.created_at as created_at', 'users.created_at as regDate')
             ->first();
 //    dump($review);

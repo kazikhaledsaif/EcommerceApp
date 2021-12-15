@@ -17,7 +17,6 @@ class CreateOrderIndicesTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('order_no');
-            $table->string('order_code');
             $table->string('tracker');
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class newsletter extends Model
+class Newsletter extends Model
 {
     protected $fillable = [ 'mail','status' ];
 }

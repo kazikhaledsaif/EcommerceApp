@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Coupon;
+use App\FeaturedCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use MercurySeries\Flashy\Flashy;
@@ -24,36 +25,35 @@ class CouponController extends Controller
 
     }
     public function create(Request $request) {
+        $rules = [
+            'code' => 'required|unique:coupons',
+            'couponType' => 'required'
+        ];
 
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
         $coupon = new Coupon();
 
-        $coupon->code = $request->couponCode;
+        $coupon->code = $request->code;
         $coupon->type = $request->couponType;
         $coupon->value = $request->couponValue;
         $coupon->percent_off = $request->couponPercentage;
         $coupon->expire = $request->couponExpireDate;
+        $coupon->per_user_limit = $request->couponUserLimit;
+        $coupon->max_limit = $request->couponMaxLimit;
 
         $coupon->save();
 
-        Flashy::success(' New Coupon '. $request->couponCode.' created.');
-        return redirect()->back();
+        Flashy::success('New Coupon '. $request->couponCode.' created.');
+        return redirect()->route('backend.coupon.list');
 
     }
 
 
-    public function store(Request $request)
-    {
-        $code = Coupon::where('code', $request->coupon_code)->first();
 
-        if(!$code){
-            return redirect()->route('cart.index')->with('success_message', 'Invalid coupon !');
-        }
-        session()->put('coupon', [
-            'name' => $code->code,
-            'amount' =>$code->discount(Cart::subtotal())
-        ]);
-        return redirect()->route('cart.index')->with('success_message', 'coupon Applied ');
-    }
 
 
     public function show($id) {
@@ -73,14 +73,26 @@ class CouponController extends Controller
 
 
     public function update(Request $request) {
+        $rules = [
+            'code' => 'required|unique:coupons,code,'.$request->id,
+            'couponType' => 'required'
+        ];
 
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
         $coupon = Coupon::find($request->id);
 
-        $coupon->code = $request->couponCode;
+        $coupon->code = $request->code;
         $coupon->type = $request->couponType;
         $coupon->value = $request->couponValue;
         $coupon->percent_off = $request->couponPercentage;
         $coupon->expire = $request->couponExpireDate;
+        $coupon->per_user_limit = $request->couponUserLimit;
+        $coupon->max_limit = $request->couponMaxLimit;
+
 
         $coupon->save();
 
@@ -90,9 +102,10 @@ class CouponController extends Controller
     }
 
 
-    public function destroy()
+    public function destroy(Request $request)
     {
-        session()->forget('coupon');
+        Coupon::find($request->id)->delete();
+        Flashy::success('Coupon removed.');
         return back()->with('success_message', 'coupon has been removed.');
     }
 }

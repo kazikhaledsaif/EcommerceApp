@@ -1,4 +1,45 @@
-<div class="footer-container pt-60 pb-60">
+<div class="floating-cart menu-top-icons d-flex justify-content-center align-items-center justify-content-md-end">
+    <!--=======  single icon  =======-->
+
+    <div class="single-icon mr-20">
+        <a href="{{route('frontend.wishlist.index')}}">
+            <i class="lnr lnr-heart"></i>
+            <span class="text d-block text-white">Wishlist</span>
+            <span class="count">{{Cart::instance('wishlist')->count()}}</span>
+        </a>
+    </div>
+
+    <!--=======  End of single icon  =======-->
+
+    <!--=======  single icon  =======-->
+
+    <div class="single-icon mr-20">
+        <a href="{{route('frontend.cart.index')}}" >
+            <i class="lnr lnr-cart"></i>
+            <span class="text d-block text-white">My Cart</span>
+            <span class="count">{{Cart::instance('default')->count()}}</span>
+        </a>
+
+    </div>
+    <div class="single-icon  mr-20">
+        <a href="{{route('frontend.checkout.index')}}" >
+            <i class="lnr lnr-store"></i>
+            <span class="text d-block text-white">Checkout</span>
+        </a>
+
+    </div>
+    <div class="single-icon">
+        <a href="{{ route('frontend.my-account') }}" >
+            <i class="lnr lnr-home"></i>
+            <span class="text d-block text-white">My Account</span>
+        </a>
+
+    </div>
+
+    <!--=======  End of single icon  =======-->
+</div>
+
+<div class="footer-container pt-60 pb-100">
     <!--=======  footer navigation container  =======-->
 
     <div class="footer-navigation-container mb-60">
@@ -64,7 +105,7 @@
                             <li><a href="#">Delivery</a></li>
                             <li><a href="#">Legal Notice</a></li>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{route('frontend.contact.index')}}">Contact Us</a></li>
                             <li><a href="#">Sitemap</a></li>
                             <li><a href="#">Stores</a></li>
                         </ul>
@@ -100,8 +141,7 @@
 
                     <div class="single-footer">
                         <h3 class="footer-title mb-20">Address</h3>
-                        <p>Haji Khalek Gamsa Super Market, Shekherchar Bazar, Mosjid road, Gamsa potti,Madhabdi.</p>
-                        <p>Narsingdi</p>
+
                     </div>
 
                     <!--=======  End of single footer  =======-->
@@ -121,8 +161,8 @@
 
                     <div class="app-download-area">
                         <span class="title">Free App (Coming Soon):</span>
-                        <a target="_blank" href="#" class="app-download-btn apple-store"><i class="fa fa-apple"></i> Apple Store</a>
-                        <a target="_blank" href="#" class="app-download-btn google-play"><i class="fa fa-android"></i> Google play</a>
+{{--                        <a target="_blank" href="#" class="app-download-btn apple-store"><i class="fa fa-apple"></i> Apple Store</a>--}}
+                        <a  href="#" class="app-download-btn google-play"><i class="fa fa-android"></i> Google play</a>
                     </div>
 
                     <!--=======  End of app download area  =======-->
@@ -181,7 +221,7 @@
 
                     <p class="copyright-text">Copyright &copy;<?php echo date("Y"); ?> <strong style="color: #7d9f51"> <a href="#"> {{ config('app.name', 'Laravel') }}</a></strong>. All Rights Reserved ||
                         <span> Developed by </span>
-                        <a href="#" style="color: #7d9f51">Ok</a></p>
+                        <a href="#" style="color: #7d9f51">Virtual Echos</a></p>
 
                     <!--=======  End of Copyright text  =======-->
                 </div>
@@ -191,3 +231,5 @@
 
     <!--=======  End of copyright section  =======-->
 </div>
+
+

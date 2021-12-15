@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Category;
 use App\Product;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Redirect;
 use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,10 +17,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index() {
-        $product_list = Product::all('id','name','slug','stock','regular_price','discount_price','badge');
+
+        $product_list = Product::all('id','name','slug','stock','regular_price','discount_price','product_image');
         return view('backend.pages.product.list')->with([
             'products' => $product_list
         ]);
@@ -45,6 +47,21 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        $rules = [
+            'productName' => 'required',
+            'productSlug' => 'required',
+            'productPresentPrice' => 'required',
+            'productCategory' => 'required',
+            'productThumbImg' => 'required',
+            'productStock' => 'required',
+        ];
+
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+           ];
+        $this->validate($request, $rules, $customMessages);
+
         $productThumbImg="";
         $productG1="";
         $productG2="";
@@ -108,6 +125,7 @@ class ProductController extends Controller
 
         // create product with model method
         $product =  new Product();
+        $product->per_user_max_item = $request->inputMaxItem;
         $product->name = $request->productName;
 //        $product->slug = $request->productSlug;
         $product->details = $request->productDetail;
@@ -129,8 +147,7 @@ class ProductController extends Controller
         $product->save();
 
 
-        Flashy::success(' Product '. $request->productName.' created.');
-//        return view('backend.pages.product.list');
+        Flashy::success('Product '. $request->productName.' created.');
         return redirect()->route('backend.product.list');
     }
 
@@ -153,6 +170,19 @@ class ProductController extends Controller
 
 
     public function update(Request $request) {
+        $rules = [
+            'productName' => 'required',
+            'productSlug' => 'required',
+            'productPresentPrice' => 'required',
+            'productCategory' => 'required',
+            'productStock' => 'required',
+        ];
+
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
         $product = Product::find($request->id);
 
         $product->name = $request->productName;
@@ -162,13 +192,13 @@ class ProductController extends Controller
         $product->regular_price = $request->productPresentPrice;
         $product->discount_price = $request->productDiscountPrice;
         $product->stock = $request->productStock;
+        $product->per_user_max_item = $request->inputMaxItem;
         $product->category_id = $request->productCategory;
         $product->percentage = $request->productDiscountPercentage;
         $product->badge= $request->productBadge;
         $product->feature_name= $request->productFeatureName;
         $product->feature_color= $request->productFeatureColor;
         $product->weekly_deal= $request->productWeeklyDeal;
-
 
 
 
@@ -246,7 +276,7 @@ class ProductController extends Controller
         $product->save();
 
         Flashy::success(' Product '. $request->productName.' updated.');
-         return back();
+        return redirect()->route('backend.product.list');
 
     }
 

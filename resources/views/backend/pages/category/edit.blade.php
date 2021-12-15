@@ -8,7 +8,7 @@
     <section class="content-header">
         <h1>
              Category
-            <small>Create a new category</small>
+            <small>Edit Category</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
@@ -25,7 +25,7 @@
             <!-- Horizontal Form -->
             <div class="box box-info">
                 <!-- form start -->
-                <form class="form-horizontal" action="{{ route('backend.category.update') }}" method="post">
+                <form class="form-horizontal" action="{{ route('backend.category.update') }}" method="post"  enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" class="form-control"  name="id" value="{{ $category->id }}" >
 
@@ -36,6 +36,12 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="inputCategoryName" name="categoryName" value="{{ $category->name }}" required>
+
+                                @if ($errors->has('categoryName'))
+                                    <span class="text-red" >
+                                        <strong>{{ $errors->first('categoryName') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group">
@@ -44,6 +50,11 @@
 
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="inputCatSlug" name="categorySlug" value="{{ $category->slug }}" required>
+                                @if ($errors->has('categorySlug'))
+                                    <span class="text-red">
+                                        <strong>{{ $errors->first('categorySlug') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -51,6 +62,8 @@
                             <label for="thumbImg" class="col-sm-2 control-label">Thumbnail Image</label>
 
                             <div class="col-sm-6">
+                                <img height=500 width=500 src="{{ !empty($category->banner)? asset('uploads/'.$category->banner) : asset('backend/dist/img/not-found.jpg')  }}">
+
                                 <input type="file" class="form-control" id="thumbImg" name="categoryThumbImg">
                             </div>
                         </div>
@@ -58,7 +71,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <a href="#" class="btn btn-default">Cancel</a>
+                        <a href="{{ url()->previous() }}" class="btn btn-default">Cancel</a>
                         <button type="submit" class="btn btn-info pull-right">Create</button>
                     </div>
                     <!-- /.box-footer -->

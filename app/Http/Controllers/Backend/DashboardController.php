@@ -4,36 +4,23 @@ namespace App\Http\Controllers\Backend;
 
 use App\Order;
 use App\OrderProduct;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use MercurySeries\Flashy\Flashy;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-    Flashy::info('Message', 'http://your-awesome-link.com')
-    Flashy::success('Message', 'http://your-awesome-link.com')
-    Flashy::error('Message', 'http://your-awesome-link.com')
-    Flashy::warning('Message', 'http://your-awesome-link.com')
-    Flashy::primary('Message', 'http://your-awesome-link.com')
-    Flashy::primaryDark('Message', 'http://your-awesome-link.com')
-    Flashy::muted('Message', 'http://your-awesome-link.com')
-    Flashy::mutedDark('Message', 'http://your-awesome-link.com')
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
 
-     *
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $currentYear= Date('Y');
         $currentMonth = Date('m');
         $currentDate = Date('Y-m-d');
-//        dump($currentDate);
-//        dump($currentMonth);
-//        dump($currentYear);
 
         $totalsell = Order::where('status', 'Delivered')->sum('billing_subtotal');
         $totalItem = Order::join('order_products','orders.id','=','order_products.order_id')
@@ -62,9 +49,10 @@ class DashboardController extends Controller
 
 
 
-        $pendingOrder = Order::where('status', '=', 'Pending')->count();
-        $approvedOrder = Order::where('status', '=', 'Approved')->count();
+        $pendingOrder = Order::where('status', '=', 'Received')->count();
+        $approvedOrder = Order::where('status', '=', 'Shipped')->count();
         $successfulOrder = Order::where('status', '=', 'Delivered')->count();
+        $product = Product::all()->count();
 
 
         return view('backend.pages.dashboard')->with([
@@ -78,6 +66,7 @@ class DashboardController extends Controller
             'pendingOrder' =>$pendingOrder,
             'approvedOrder' =>$approvedOrder,
             'successOrder' =>$successfulOrder,
+            'product' =>$product,
         ]);
     }
 

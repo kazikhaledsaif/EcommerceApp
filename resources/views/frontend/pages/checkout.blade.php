@@ -66,7 +66,8 @@
                                        {{--     @if (auth()->user())
                                                 <input type="text" placeholder="First Name" name="fname" value="{{ auth()->user()->name }}" readonly>
                                             @else--}}
-                                                <input type="text" placeholder="First Name" name="fname" required>
+                                                <input type="text" placeholder="First Name" name="fname" required
+                                                       value="{{ !empty(Auth::guard('user')->user()->first_name) ? Auth::guard('user')->user()->first_name : "" }}">
                                           {{--  @endif--}}
                                         </div>
 
@@ -75,14 +76,15 @@
                                       {{--      @if (auth()->user())
                                                 <input type="text" placeholder="Last Name" name="lname" value="{{ auth()->user()->lname }}" readonly>
                                             @else--}}
-                                                <input type="text" placeholder="Last Name" name="lname" required>
+                                                <input type="text" placeholder="Last Name" name="lname" required
+                                                       value="{{ !empty(Auth::guard('user')->user()->last_name) ? Auth::guard('user')->user()->last_name : "" }}">
                                          {{--   @endif--}}
                                         </div>
 
 
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>Email Address*</label>
-                                            @if (auth()->user())
+                                            @if ( auth()->guard('user')->user())
                                                 <input type="email" placeholder="Email Address"  name="email" value="{{ auth()->user()->email }}" readonly >
                                             @else
                                                 <input type="email" placeholder="Email Address"  name="email"   required>
@@ -91,41 +93,78 @@
 
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>Phone no*</label>
-                                            <input type="text" onkeyup="return getNumber(this)" name="number" placeholder="Phone number" required>
+                                            <input
+                                                value="{{ !empty(Auth::guard('user')->user()->phone) ? Auth::guard('user')->user()->phone : "" }}"
+                                                type="text" onkeyup="return getNumber(this)" name="number" placeholder="Phone number" required>
                                         </div>
 
 
 
                                         <div class="col-12 mb-20">
                                             <label>Address*</label>
-                                            <input id="address" name="address" type="text" placeholder="Address" required>
+                                            <input id="address" name="address" type="text" placeholder="Address"
+                                                   value="{{ !empty(Auth::guard('user')->user()->address) ? Auth::guard('user')->user()->address : "" }}"
+                                                   required>
                                         </div>
 
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>Country*</label>
-                                            <select name="country" class="nice-select" required>
-                                                <option>USA</option>
-                                                <option>China</option>
-
-                                                <option>India</option>
-                                                <option>Japan</option>
-                                            </select>
+                                            <label>Country</label>
+                                            <input type="text"
+                                                   value="Bangladesh" disabled
+                                            >
                                         </div>
 
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>Town/City*</label>
-                                            <input name="city" id="city" type="text" placeholder="Town/City" required>
+                                            <input name="city" id="city" type="text" placeholder="Town/City"
+                                                   value="{{ !empty(Auth::guard('user')->user()->city) ? Auth::guard('user')->user()->city : "" }}"
+                                                   required>
                                         </div>
 
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>State*</label>
-                                            <input name="state" id="state" type="text" placeholder="State" required>
+                                            <input name="state"
+                                                   value="{{ !empty(Auth::guard('user')->user()->state) ? Auth::guard('user')->user()->state : "" }}"
+                                                   id="state" type="text" placeholder="State" required>
                                         </div>
 
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>Zip Code*</label>
-                                            <input name="postcode" onkeyup="return getNumber(this)" id="postalcode" type="text" placeholder="Zip Code" required>
+                                            <input
+                                                value="{{ !empty(Auth::guard('user')->user()->zip) ? Auth::guard('user')->user()->zip : "" }}"
+                                                name="postcode" onkeyup="return getNumber(this)" id="postalcode" type="text" placeholder="Zip Code" required>
                                         </div>
+
+                                        <div class="col-md-12 mb-20">
+                                            @if(!session()->has('coupon'))
+                                                <div class="discount-coupon">
+                                                    <h4>Discount Coupon Code</h4>
+                                                    <form action="{{ route('frontend.coupon.store') }}" method="POST">
+                                                        <div class="row">
+                                                            {{ csrf_field() }}
+                                                            <div class="col-md-6  ">
+                                                                <input type="text" name="coupon_code" id="coupon_code" placeholder="Coupon Code" >
+                                                                <input type="hidden" name="total" value="{{ Cart::instance('default')->total() }}">
+                                                            </div>
+                                                            <div class="col-md-4  ">
+                                                                <input data-token="{{ @csrf_token() }}" class="coupon_apply" type="submit"style="    width: 140px;
+    border-radius: 0;
+
+    border: none;
+    line-height: 24px;
+
+
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #1e1e1e;" value="Apply Code">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+
+                                                </div>
+                                            @endif     </div>
 
 
                                         {{--<div class="col-12 mb-20">--}}
@@ -159,12 +198,12 @@
 
                                             <ul>
                                                 @foreach(Cart::instance('default')->content() as $item)
-                                                    <li>{{$item->model->name}} X {{$item->qty}}<span>$
+                                                    <li>{{$item->model->name}} X {{$item->qty}}<span>৳
 
                                                         @if( $item->model->discount_price == 0 )
 
 
-                                                                {{($item->qty)*$item->model->present_price}}
+                                                                {{($item->qty)*$item->model->regular_price}}
                                                             @else
 
                                                                 {{($item->qty)*$item->model->discount_price}}
@@ -175,17 +214,16 @@
                                                 @endforeach
                                             </ul>
 
-                                            <p>Sub Total <span>${{Cart::instance('default')->total()}}</span></p>
-                                            <p>Shipping Fee <span>$00.00</span></p>
+                                            <p>Sub Total <span>৳ {{  (double)str_replace(',','', Cart::instance('default')->total())}}</span></p>
+                                            <p>Shipping Fee <span>৳ {{empty($settings)? 0: $settings->delivery_cost}}</span></p>
                                             @if(session()->has('coupon'))
 
                                                 <p>Discount  [ {{ session()->get('coupon')['name'] }} ]
 
-                                                    <span>-${{ session()->get('coupon')['amount'] }}</span></p>
+                                                    <span>-৳ {{ session()->get('coupon')['amount'] }}</span></p>
 
 
-                                                <button type="submit" href="javascript:{}"
-                                                        onclick="document.getElementById('coupon').submit()"
+                                                <button   data-token="{{ @csrf_token() }}" data-id="{{ session()->get('coupon')['id'] }}"  class="coupon_remove"
                                                         style="background: black; color: white; border: none; margin-bottom: 2px;">Remove coupon</button>
 
 
@@ -194,17 +232,22 @@
 
 
 
-                                            <h4>Grand Total <span>$<?php
+                                            <h4>Grand Total <span>৳ <?php
+                                                    $shipping= empty($settings)? 0 : $settings->delivery_cost;
                                                     $num1= (Cart::instance('default')->total());
-                                                    $num2= (session()->get('coupon')['amount']);
+                                                    $num2= !empty(session()->get('coupon')['amount']) ? (session()->get('coupon')['amount']) : 0 ;
                                                     $res =  (double)str_replace(',','',$num1)-
-                                                        (double)str_replace(',','',$num2);
+                                                        (double)str_replace(',','',$num2)+
+                                                        (double)str_replace(',','',$shipping) ;
                                                     echo $res;
 
-                                                    ?> </span></h4>
+                                                    ?>
+                                                </span>
+                                            </h4>
                                             <input type="hidden" value="{{$res}}" name="total">
-                                            <input type="hidden" value="{{session()->get('coupon')['amount']}}" name="cupon_amount">
-                                            <input type="hidden" value="{{session()->get('coupon')['name']}}" name="cupon_name">
+                                            <input type="hidden" value="{{!empty(session()->get('coupon')['amount']) ? (session()->get('coupon')['amount']) : 0 }}" name="cupon_amount">
+                                            <input type="hidden" value="{{!empty(session()->get('coupon')['name']) ? (session()->get('coupon')['name']) : 0 }}" name="cupon_name">
+                                            <input type="hidden" value="{{!empty(session()->get('coupon')['id']) ? (session()->get('coupon')['id']) : null }}" name="cupon_id">
 
                                         </div>
 
@@ -229,30 +272,30 @@
                                             {{--<p data-method="bank">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>--}}
                                             {{--</div>--}}
 
-                                            {{--<div class="single-method">--}}
-                                            {{--<input type="radio" id="payment_cash" name="payment-method" value="cash">--}}
-                                            {{--<label for="payment_cash">Cash on Delivery</label>--}}
-                                            {{--<p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>--}}
-                                            {{--</div>--}}
-
                                             <div class="single-method">
-                                                <div class="col-12 mb-20">
-                                                    <label>Card Holder Name</label>
-                                                    <input name="name_on_card" id="name_on_card" type="text" placeholder="Card Holder Name">
-                                                </div>
-                                                <div   class="col-12 mb-20">
-                                                    <label for="card-element">
-                                                        Credit or debit card
-                                                    </label>
-                                                    <div id="card-element">
-                                                        <!-- A Stripe Element will be inserted here. -->
-                                                    </div>
-
-                                                    <!-- Used to display form errors. -->
-                                                    <div id="card-errors" role="alert"></div>
-                                                </div>
-
+                                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                                            <label for="payment_cash">Cash on Delivery</label>
+                                            <p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
                                             </div>
+
+{{--                                            <div class="single-method">--}}
+{{--                                                <div class="col-12 mb-20">--}}
+{{--                                                    <label>Card Holder Name</label>--}}
+{{--                                                    <input name="name_on_card" id="name_on_card" type="text" placeholder="Card Holder Name">--}}
+{{--                                                </div>--}}
+{{--                                                <div   class="col-12 mb-20">--}}
+{{--                                                    <label for="card-element">--}}
+{{--                                                        Credit or debit card--}}
+{{--                                                    </label>--}}
+{{--                                                    <div id="card-element">--}}
+{{--                                                        <!-- A Stripe Element will be inserted here. -->--}}
+{{--                                                    </div>--}}
+
+{{--                                                    <!-- Used to display form errors. -->--}}
+{{--                                                    <div id="card-errors" role="alert"></div>--}}
+{{--                                                </div>--}}
+
+{{--                                            </div>--}}
 
                                             {{--    <div class="single-method">
                                                     <input type="radio" id="stripe" name="stripe" value="stripe">
@@ -292,88 +335,86 @@
 
 
 
-    <script>
-        // Create a Stripe client.
-        var stripe = Stripe('pk_test_OaOKX8xeQpsVBIaGald34Hd0');
-
-        // Create an instance of Elements.
-        var elements = stripe.elements();
-
-        // Custom styling can be passed to options when creating an Element.
-        // (Note that this demo uses a wider set of styles than the guide below.)
-        var style = {
-            base: {
-                color: '#32325d',
-                lineHeight: '18px',
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSmoothing: 'antialiased',
-                fontSize: '16px',
-                '::placeholder': {
-                    color: '#aab7c4'
-                }
-            },
-            invalid: {
-                color: '#fa755a',
-                iconColor: '#fa755a'
-            }
-        };
-
-        // Create an instance of the card Element.
-        var card = elements.create('card', {style: style,
-            hidePostalCode : true
-        });
-
-        // Add an instance of the card Element into the `card-element` <div>.
-        card.mount('#card-element');
-
-        // Handle real-time validation errors from the card Element.
-        card.addEventListener('change', function(event) {
-            var displayError = document.getElementById('card-errors');
-            if (event.error) {
-                displayError.textContent = event.error.message;
-            } else {
-                displayError.textContent = '';
-            }
-        });
-
-        // Handle form submission.
-        var form = document.getElementById('payment-form');
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            var  options = {
-                name: document.getElementById('name_on_card').value,
-                address_line1: document.getElementById('address').value,
-                address_city: document.getElementById('city').value,
-                address_state: document.getElementById('state').value,
-                address_zip: document.getElementById('postalcode').value
-            }
-
-            stripe.createToken(card,options).then(function(result) {
-                if (result.error) {
-                    // Inform the user if there was an error.
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    // Send the token to your server.
-                    stripeTokenHandler(result.token);
-                }
-            });
-        });
-
-        // Submit the form with the token ID.
-        function stripeTokenHandler(token) {
-            // Insert the token ID into the form so it gets submitted to the server
-            var form = document.getElementById('payment-form');
-            var hiddenInput = document.createElement('input');
-            hiddenInput.setAttribute('type', 'hidden');
-            hiddenInput.setAttribute('name', 'stripeToken');
-            hiddenInput.setAttribute('value', token.id);
-            form.appendChild(hiddenInput);
-
-            // Submit the form
-            form.submit();
-        }
-    </script>
 
 @endsection()
+@push('scripts')
+
+
+     <script>
+         $( function () {
+                 if (sessionStorage.reloadAfterPageLoad == true) {
+                     flashy();
+                    // console.log(sessionStorage.reloadAfterPageLoadResponse)
+                    //  if (sessionStorage.reloadAfterPageLoadResponse){
+                    //
+                    //
+                    //  }
+                     //sessionStorage.reloadAfterPageLoadResponse = null;
+                     sessionStorage.reloadAfterPageLoad = false;
+
+                 }
+             }
+         );
+        $(document).on('click', '.coupon_apply', function (e) {
+            e.preventDefault();
+            var coupon_code = $('#coupon_code').val();
+            var token = $(this).data('token');
+
+            console.log(token);
+            console.log(coupon_code);
+
+                if (coupon_code) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('frontend.coupon.store')  }}",
+                        data: {coupon_code:coupon_code, _token:token},
+                        success:function(response){
+                            console.log(response.msg);
+                            if(response) {
+                                console.log(response.msg)
+                                sessionStorage.reloadAfterPageLoad = true;
+                                //sessionStorage.reloadAfterPageLoadResponse = response.msg;
+                                window.location.reload();
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+                    });
+
+
+                }
+
+        });
+         $(document).on('click', '.coupon_remove', function (e) {
+             e.preventDefault();
+             var token = $(this).data('token');
+             var id = $(this).data('id');
+
+             console.log(token);
+
+             if (token) {
+                 $.ajax({
+                     type: "delete",
+                     url: "{{ route('frontend.coupon.destroy') }}",
+                     data: { id:id,_token:token},
+                     success:function(response){
+                         console.log(response.msg);
+                         if(response) {
+                             console.log(response.msg)
+
+                             window.location.reload();
+                         }
+                     },
+                     error: function(error) {
+                         console.log(error);
+                     }
+                 });
+
+
+             }
+
+         });
+
+    </script>
+@endpush

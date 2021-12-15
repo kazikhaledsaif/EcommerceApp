@@ -32,15 +32,15 @@
                     <div class="box-body">
                         <div class="form-group">
 
-                            <label for="inputProductName" class="col-sm-2 control-label">F. Category Name</label>
+                            <label for="inputProductName" class="col-sm-2 control-label">Category </label>
 
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" id="inputProductName" name="productName" value="{{ $feature->name }}" >
-                            </div>
-                            <label for="inputProductSlug" class="col-sm-1 control-label">Slug</label>
+                            <div class="col-sm-4">
+                                <select class="form-control " id="inputCategory" name="productCategory">
+                                    @foreach($category as $cat)
+                                        <option  {{  $cat['slug'] == $feature->slug ?  "selected": ""  }} value="{{ $cat['id'] }}">{{ $cat['name'] }}</option>
 
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control" id="inputProductSlug" name="productSlug" value="{{ $feature->slug }}" >
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
@@ -48,6 +48,9 @@
                             <label for="thumbImg" class="col-sm-2 control-label">Thumbnail Image</label>
 
                             <div class="col-sm-6">
+                                <img height=300 width=300 src="{{ !empty($feature->image)? asset('uploads/'.$feature->image) : asset('backend/dist/img/not-found.jpg')  }}">
+
+
                                 <input type="file" class="form-control" id="thumbImg" name="img">
                             </div>
                         </div>
@@ -55,7 +58,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <a href="#" class="btn btn-default">Cancel</a>
+                        <a href="{{ url()->previous() }}" class="btn btn-default">Cancel</a>
                         <button type="submit" class="btn btn-info pull-right">Update</button>
                     </div>
                     <!-- /.box-footer -->

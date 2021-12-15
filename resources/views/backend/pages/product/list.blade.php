@@ -19,6 +19,7 @@
             <table id="product-list" class="table table-bordered table-striped table-responsive table-hover" >
                 <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Slug</th>
                     <th>Regular Price</th>
@@ -29,17 +30,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($products as $product)
+                @foreach($products as $key=>$product)
                 <tr>
+
+                    <td>{{ $key+1}}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->slug }}</td>
                     <td>{{ $product->regular_price }}</td>
                     <td>{{ $product->discount_price }}</td>
-                    <td>{{ $product->stock }}</td>
-                    <td><img height=100 width=100 src="{{ asset('uploads/'.$product->product_image)  }}"> </td>
+                    <td>{{ $product->stock  }}</td>
+                    <td>
+                    <img height=100 width=100 src="{{ !empty($product->product_image)? asset('uploads/'.$product->product_image) : asset('backend/dist/img/not-found.jpg')  }}">
 
                     <td>
-                        <a href="{{ route('frontend.shop.show',['id'=> $product->slug]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;
+                        <a target="_blank" href="{{ route('frontend.shop.show',['id'=> $product->slug]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;
                         <a href="{{ route('backend.product.edit',['id'=> $product->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;
                         <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $product->id }}"
                                       data-name="{{ $product->name }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>
@@ -51,6 +55,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Slug</th>
                     <th>Regular Price</th>
@@ -79,6 +84,7 @@
     <script>
         $(function () {
             $('#product-list').DataTable();
+            $('.product').addClass('active');
         });
 
         $(document).on('click', '.deletebtn', function (e) {
@@ -89,7 +95,7 @@
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                type: 'Danger',
+
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -101,11 +107,7 @@
                         url: "{{ route('backend.product.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
-                            if(data.success === true){ // if true (1)
-                                setTimeout(function(){  // wait for 5 secs(2)
-                                    location.reload();  // then reload the page.(3)
-                                }, 500);
-                            }
+                            location.reload();
                         }
                     });
 

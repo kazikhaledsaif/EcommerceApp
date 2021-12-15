@@ -13,7 +13,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="index.html">Home</a> <span class="separator">/</span></li>
+                            <li><a href="#">Home</a> <span class="separator">/</span></li>
                             <li class="active">Login</li>
                         </ul>
                     </div>
@@ -34,7 +34,7 @@
             <div class="row ">
                 <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30 mx-auto">
                     <!-- Login Form s-->
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('frontend.login') }}">
                         @csrf
 
                         <div class="login-form">

@@ -21,8 +21,36 @@
 
 
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Download csv</a>
+{{--                <a href="#" class="btn btn-success">Download csv</a>--}}
             </div>
+            <div class="col-md-6">
+
+                <form action="{{ route('backend.order.list') }}" method="GET">
+                    <div class="col-md-2">
+                        <span> Order Status</span>
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <select  class="form-control" name="status" id="input">
+                            <option value="">All</option>
+                            <option value="Received" >Received</option>
+                            <option   value="Processing" >Processing</option>
+                            <option  value="Cancelled" style=" color: #b83400">Cancelled</option>
+                            <option value="Shipped" style=" color: #00cc66">Shipped</option>
+                            <option  value="Delivered" style=" color: #00cc66">Delivered</option>
+
+
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-info " value="Filter">
+                    </div>
+
+
+                </form>
+            </div>
+
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -46,23 +74,20 @@
                         <td>{{ $order->billing_town }}, {{ $order->billing_city }}</td>
                         <td>{{ $order->billing_total }}</td>
                         <td>
-                            @if($order->status == 'Pending')
+                            @if($order->status == 'Received')
                                 <span class=" badge alert-info">&nbsp; {{ $order->status }} &nbsp;</span>
-                            @elseif($order->status == 'Declined')
-                                <span class=" badge alert-error">&nbsp; {{ $order->status }} &nbsp;</span>
-                            @elseif($order->status == 'Payment_failed')
+                            @elseif($order->status == 'Cancelled')
+                                <span class=" badge alert-error">&nbsp; {{ $order->status }} &nbsp;</span><br>
+                                <span>{{empty($order->cancelReason)?"":$order->cancelReason->reasons}}</span>
+                            @elseif($order->status == 'Processing')
                                 <span class="badge alert-dark">&nbsp; {{ $order->status }} &nbsp;</span>
-                            @elseif($order->status == 'Approved')
+                            @elseif($order->status == 'Shipped')
                                 <span class="badge alert-success">&nbsp; {{ $order->status }} &nbsp;</span>
-                            @elseif($order->status == 'Refund Request')
-                                <span class="badge alert-warning"> &nbsp;{{ $order->status }} &nbsp;</span>
-                            @elseif($order->status == 'Refunded')
-                                <span class="badge alert-secondary">&nbsp; {{ $order->status }} &nbsp;</span>
                             @elseif($order->status == 'Delivered')
                                 <span class="badge alert-success">&nbsp; {{ $order->status }} &nbsp;</span>
                             @endif
                         </td>
-                        <td>{{ $order->created_at }}</td>
+                        <td>{{ date('F j, Y, g:i:s a', strtotime( $order->created_at) ) }}</td>
                         <td>
                             <a href="{{ route('backend.order.show',['id'=> $order->id]) }}"><i class="fa fa-envelope-open fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a>&nbsp;&nbsp;
                             <a href="{{ route('backend.order.edit',['id'=> $order->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:forestgreen" aria-hidden="true"></i> </a>&nbsp;&nbsp;
@@ -104,6 +129,7 @@
     <script>
         $(function () {
             $('#list').DataTable();
+            $('.order').addClass('active');
         });
 
     </script>

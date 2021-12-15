@@ -20,4 +20,7 @@ class Order extends Model
     public function products(){
         return $this->belongsToMany('App\Product')->withPivot('quantity');
     }
+    public function cancelReason(){
+        return $this->hasOne('App\CancelReason');
+    }
 }

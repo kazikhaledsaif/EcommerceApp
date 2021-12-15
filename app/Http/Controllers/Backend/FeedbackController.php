@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Category;
 use App\Feedback;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use MercurySeries\Flashy\Flashy;
 
 class FeedbackController extends Controller
 {
@@ -79,8 +81,11 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request) {
+        Feedback::find($request->id)->delete();
+
+        Flashy::error('Feedback deleted');
+        return redirect()->route('backend.feedback.list');
+
     }
 }

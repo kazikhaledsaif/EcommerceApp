@@ -132,21 +132,24 @@
                 @if(!$featuredCategory->isEmpty())
                     <div class="col-lg-6 col-md-6 mb-sm-30">
 
-                        <div class="banner">
-                            <a href="/shop?category={{$featuredCategory[0]->slug}}">
-                                <img src="{{ asset('uploads/'.$featuredCategory[0]->image) }}" class="img-fluid" alt="">
-                            </a>
-                            <span class="banner-category-title">
+                        @if(!empty($featuredCategory[0]))
+                            <div class="banner">
+                                <a href="/shop?category={{$featuredCategory[0]->slug}}">
+                                    <img src="{{ asset('uploads/'.$featuredCategory[0]->image) }}" class="img-fluid" alt="">
+                                </a>
+                                <span class="banner-category-title">
 							<a href="/shop?category={{$featuredCategory[0]->slug}}">{{$featuredCategory[0]->name}}</a>
 						</span>
-                        </div>
+                            </div>
+                        @endif
+
 
 
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 mb-30">
-
+                                @if(!empty($featuredCategory[1]))
                                 <div class="banner">
                                     <a href="/shop?category={{$featuredCategory[1]->slug}}">
                                         <img src="{{ asset('uploads/'.$featuredCategory[1]->image) }}" class="img-fluid extra_image" alt="">
@@ -155,13 +158,13 @@
 									<a href="/shop?category={{$featuredCategory[1]->slug}}">{{$featuredCategory[1]->name}}</a>
 								</span>
                                 </div>
-
+                                @endif
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6">
 
-
+                                @if(!empty($featuredCategory[2]))
                                 <div class="banner">
                                     <a href="/shop?category={{$featuredCategory[2]->slug}}">
                                         <img  src="{{ asset('uploads/'.$featuredCategory[2]->image) }}" class="img-fluid " alt="">
@@ -170,10 +173,10 @@
 									<a href="/shop?category={{$featuredCategory[2]->slug}}">{{$featuredCategory[2]->name}}</a>
 								</span>
                                 </div>
-
+                                @endif
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-
+                                @if(!empty($featuredCategory[3]))
                                 <div class="banner">
                                     <a href="/shop?category={{$featuredCategory[3]->slug}}">
                                         <img src="{{ asset('uploads/'.$featuredCategory[3]->image) }}" class="img-fluid" alt="">
@@ -182,7 +185,7 @@
 									<a href="/shop?category={{$featuredCategory[3]->slug}}">{{$featuredCategory[3]->name}}</a>
 								</span>
                                 </div>
-
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -231,9 +234,9 @@
                                             </a>
                                             <!--=======  hover icons  =======-->
 
-                                            <a class="hover-icon" data-target="#quick-view-modal-container{{ $new->id }}" data-toggle="modal"
-                                               href="#"><i class="lnr lnr-eye"></i></a>
-
+{{--                                            <a class="hover-icon" data-target="#quick-view-modal-container{{ $new->id }}" data-toggle="modal"--}}
+{{--                                               href="#"><i class="lnr lnr-eye"></i></a>--}}
+{{--                                            <a class="hover-icon" href="{{route('frontend.shop.show',$new->slug)}}" ><i class="lnr lnr-eye"></i></a>--}}
                                             <a class="hover-icon" href="javascript:{}"
                                                onclick="document.getElementById('link-wish{{ $new->id }}').submit()"><i class="lnr lnr-heart"></i></a>
                                             <a class="hover-icon" href="javascript:{}"
@@ -254,8 +257,8 @@
                                         <form  id="link-wish{{ $new->id }}" action="{{route('frontend.wishlist.store')}}" method="POST">
                                             {{csrf_field()}}
 
-                                            @if (auth()->user())
-                                                <input type="hidden" name="user_id" value="{{  auth()->user()->id }}  ">
+                                            @if (auth()->guard('user')->user())
+                                                <input type="hidden" name="user_id" value="{{ auth()->guard('user')->user()->id }}  ">
                                             @endif
 
                                             <input type="hidden" name="id" value="{{ $new->id }}">
@@ -540,8 +543,9 @@
 
                                             <!--=======  hover icons  =======-->
 
-                                            <a class="hover-icon" data-target="#quick-view-modal-container{{ $top->product_id }}" data-toggle="modal"
-                                               href="#"><i class="lnr lnr-eye"></i></a>
+{{--                                            <a class="hover-icon" data-target="#quick-view-modal-container{{ $top->product_id }}" data-toggle="modal"--}}
+{{--                                               href="#"><i class="lnr lnr-eye"></i></a>--}}
+{{--                                            <a class="hover-icon" href="{{route('frontend.shop.show',$top->slug)}}" ><i class="lnr lnr-eye"></i></a>--}}
 
                                             <a class="hover-icon" href="javascript:{}"
                                                onclick="document.getElementById('link-wish{{ $top->product_id }}').submit()"><i class="lnr lnr-heart"></i></a>
@@ -563,8 +567,8 @@
                                         <form  id="link-wish{{ $top->product_id }}" action="{{route('frontend.wishlist.store')}}" method="POST">
                                             {{csrf_field()}}
 
-                                            @if (auth()->user())
-                                                <input type="hidden" name="user_id" value="{{  auth()->user()->id }}  ">
+                                            @if (auth()->guard('user')->user())
+                                                <input type="hidden" name="user_id" value="{{ auth()->guard('user')->user()->id }}  ">
                                             @endif
 
                                             <input type="hidden" name="id" value="{{ $top->product_id }}">
@@ -929,7 +933,7 @@
 
                                     <div class="social-share-buttons">
                                         <h3>share this product</h3>
-                                   
+
                                     </div>
                                 </div>
                                 <!-- end of product quick view description -->
@@ -943,7 +947,47 @@
         <!--=====  End of Quick view modal  ======-->
     @endforeach
 
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+{{--                <div class="modal-header">--}}
+{{--                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>--}}
+{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                        <span aria-hidden="true">&times;</span>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+                <div class="modal-body">
+                    <div class="calculate-shipping text-center">
+                        <h4 style=" text-decoration: none">Choose your area</h4>
+                        <form action="#">
+                            <div class="row text-center">
 
+                                <div class="col-md-12 mb-10">
+                                    <select class="nice-select">
+                                        <option>Dhaka</option>
+                                        <option>Barisal</option>
+                                        <option>Khulna</option>
+                                        <option>Comilla</option>
+                                        <option>Chittagong</option>
+                                    </select>
+
+                                </div>
+                                </div>
+                            <div class="row text-center">
+                                <div class="col-md-12">
+                                    <input type="submit" id="submit_area" value="Submit">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+{{--                <div class="modal-footer">--}}
+{{--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+{{--                    <button type="button" class="btn btn-primary">Understood</button>--}}
+{{--                </div>--}}
+            </div>
+        </div>
+    </div>
 @section('modal')
 
     @include('frontend.partials.modal')
@@ -951,8 +995,42 @@
 
 
 
+@push('scripts')
+    <style>
 
 
+        @media (min-width: 576px){
+            .modal-dialog {
+                max-width: 350px;
+                margin: 1.75rem auto;
+            }
+        }
+
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            if (sessionStorage.getItem('#staticBackdrop') !== 'true') {
+                setTimeout(function(){
+                    $('#staticBackdrop').modal('show');
+                }, 2000);
+            }
+            $("#submit_area").click(function(event) {
+                event.preventDefault();
+
+                sessionStorage.setItem('#staticBackdrop','true');
+                $('#staticBackdrop').modal('hide');
+            });
+
+        });
+
+    </script>
+
+    </script>
+@endpush
 
 
 

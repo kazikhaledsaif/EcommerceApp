@@ -1,12 +1,13 @@
 @extends('backend.layouts.app')
 
-@section('title', 'coupon')
+@section('title', 'Coupon list')
 
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Coupon
+            <small>Coupon list</small>
             <small><a href="{{ route('backend.coupon.add') }}" class="btn btn-success">New Coupon</a></small>
         </h1>
         <ol class="breadcrumb">
@@ -27,7 +28,10 @@
                     <th>Type</th>
                     <th>Fixed value</th>
                     <th>Percentage value</th>
-                    <th>Created at</th>
+                    <th>Expired</th>
+                    <th>Per user limit</th>
+                    <th>Max limit</th>
+                    <th>Created</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -36,9 +40,34 @@
                     <tr>
                         <td>{{ $coupon->id }}</td>
                         <td>{{ $coupon->code }}</td>
-                        <td>{{ $coupon->type }}</td>
+
+                        @if($coupon->type== "percent_off")
+                            <td>Percent Off</td>
+                        @else
+                            <td>Fixed Amount</td>
+                        @endif
+
+
                         <td>{{ $coupon->value }}</td>
                         <td>{{ $coupon->percent_off }}</td>
+                        @if( $coupon->expire)
+                            <td>{{ date('F j, Y, g:i:s a', strtotime($coupon->expire) ) }}</td>
+                        @else
+                            <td>No expiry</td>
+                       @endif
+
+                        @if( $coupon->per_user_limit)
+                            <td>{{ $coupon->per_user_limit }}</td>
+                        @else
+                            <td>No limit</td>
+                        @endif
+                        @if( $coupon->max_limit)
+                            <td>{{ $coupon->max_limit }}</td>
+                        @else
+                            <td>No limit</td>
+                        @endif
+
+
                         <td>{{ $coupon->created_at }}</td>
                         <td>
                             <a href="{{ route('backend.coupon.edit',['id'=> $coupon->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;
@@ -78,6 +107,8 @@
     <script>
         $(function () {
             $('#coupon-list').DataTable();
+            $('.coupon').addClass('active');
+
         });
 
         $(document).on('click', '.deletebtn', function (e) {
@@ -88,7 +119,7 @@
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                type: 'Danger',
+
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -97,14 +128,10 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.product.destroy') }}",
+                        url: "{{ route('backend.coupon.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
-                            if(data.success == true){ // if true (1)
-                                setTimeout(function(){  // wait for 5 secs(2)
-                                    location.reload();  // then reload the page.(3)
-                                }, 500);
-                            }
+                            location.reload();
                         }
                     });
 

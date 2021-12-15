@@ -43,6 +43,20 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'title1' => 'required',
+            'title2' => 'required',
+            'detail' => 'required',
+            'slider' => 'required',
+        ];
+
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
+
+
         $sliderimg="";
         $photo_productG4 = $request->file('slider');
         if (isset($photo_productG4)) {
@@ -57,7 +71,7 @@ class SliderController extends Controller
           $slider->title1 = $request->title1;
            $slider->title2 = $request->title2;
            $slider->detail = $request->detail;
-           $slider->slug = $request->slug;
+           $slider->slug = empty($request->slug) ? "#" :$request->slug ;
         $slider->img = $sliderimg;
 
         $slider->save();
@@ -109,7 +123,17 @@ class SliderController extends Controller
      */
     public function update(Request $request)
     {
+        $rules = [
+            'title1' => 'required',
+            'title2' => 'required',
+            'detail' => 'required',
+        ];
 
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
         $slider =  Slider::find($request->id);
 
         $sliderimg="";
@@ -127,8 +151,7 @@ class SliderController extends Controller
         $slider->title1 = $request->title1;
         $slider->title2 = $request->title2;
         $slider->detail = $request->detail;
-        $slider->slug = $request->slug;
-
+        $slider->slug = empty($request->slug) ? "#" :$request->slug ;
         $slider->save();
 
 
@@ -151,7 +174,6 @@ class SliderController extends Controller
         //
         Slider::find($request->id)->delete();
 
-        Flashy::danger(' Slider id#'. $request->id.' Deleted.');
         return redirect()->route('backend.slider.list');
     }
 }

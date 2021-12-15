@@ -171,7 +171,7 @@
                                 @if ($product->stock != 0)
                                     <p class="mb-15">Quantity : <span id="stock" > {{$product->stock }}</span></p>
                                     <div class="pro-qty mr-10">
-                                        <input type="text" name="quantity" id="quantity" min="1" value="1" max="{{$product->stock}}" required="">
+                                        <input type="text " name="quantity" id="quantity" min="1" value="1" max="{{$product->stock}}" readonly="readonly">
 
                                     </div>
                                     <a>
@@ -189,8 +189,8 @@
                         <form action="{{route('frontend.wishlist.store')}} " method="POST">
                             {{csrf_field()}}
 
-                            @if (auth()->user())
-                                <input type="hidden" name="user_id" value="{{  auth()->user()->id }}  ">
+                            @if (auth()->guard('user')->user())
+                                <input type="hidden" name="user_id" value="{{  auth()->guard('user')->user()->id }}  ">
                             @endif
 
                             <input type="hidden" name="id" value="{{ $product->id }}">
@@ -276,34 +276,17 @@
                                         <h4>{{ $product->rating }} <span>(Overall)</span></h4>
                                         {{--<span>Based on {{ $review_count }} Comments</span>--}}
                                     </div>
-                                    {{--<div class="ratting-list">--}}
-                                        {{--<div class="sin-list float-left">--}}
-                                            {{--<i class="fa fa-star"></i>--}}
-                                            {{--<i class="fa fa-star"></i>--}}
-                                            {{--<i class="fa fa-star"></i>--}}
-                                            {{--<i class="fa fa-star"></i>--}}
-                                            {{--<i class="fa fa-star"></i>--}}
-                                            {{--<span>(5)</span>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="sin-list float-left">--}}
-                                            {{--<i class="fa fa-star"></i>--}}
-                                            {{--<i class="fa fa-star"></i>--}}
-                                            {{--<i class="fa fa-star-o"></i>--}}
-                                            {{--<i class="fa fa-star-o"></i>--}}
-                                            {{--<i class="fa fa-star-o"></i>--}}
-                                            {{--<span>(0)</span>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
+
                                     <div class="rattings-wrapper">
                                         @php($already_rated = 'false')
                                         @foreach($review as $rating)
-                                            @auth
-                                                @if( $rating->uid == auth()->user()->id )
+                                            @if(auth()->guard('user')->user())
+                                                @if( $rating->uid == auth()->guard('user')->user()->id )
                                                     @php($already_rated = 'true')
                                                 @else
                                                     @php($already_rated = 'false')
                                                 @endif
-                                            @endauth
+                                            @endif
                                         <div class="sin-rattings">
                                             <div class="ratting-author">
                                                 <h3>{{ $rating->name }}</h3>
@@ -322,12 +305,9 @@
                                         @endforeach
 
                                     </div>
-                                    @guest
-                                        <div class="ratting-form-wrapper fix">
-                                            <h3>Login first to review</h3>
-                                        </div>
-                                    @else
 
+
+                                        @if(auth()->guard('user')->user())
 
                                         {{--@if($already_rated == 'true')--}}
 
@@ -337,7 +317,7 @@
                                                 <form action="{{ route('frontend.review.store') }} " method="post">
                                                     @csrf
                                                     <input type="hidden" name="pid" value="{{ $product->id }}">
-                                                    <input type="hidden" name="uid" value="{{ Auth::id() }}">
+                                                    <input type="hidden" name="uid" value="{{ auth()->guard('user')->user()->id }}">
                                                     <div class="ratting-form row">
                                                         <div class="col-12 mb-15">
                                                             <h5>Rating:</h5>
@@ -369,8 +349,11 @@
                                                 </form>
                                             </div>
                                         @endif
-
-                                        @endguest
+                                        @else
+                                            <div class="ratting-form-wrapper fix">
+                                                <h3>Login first to review</h3>
+                                            </div>
+                                        @endif
                                 </div>
                             </div>
                         </div>
@@ -414,7 +397,8 @@
                                             </a>
                                             <!--=======  hover icons  =======-->
 
-                                            <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $alikeProducts->id }}"><i class="lnr lnr-eye"></i></a>
+{{--                                            <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $alikeProducts->id }}"><i class="lnr lnr-eye"></i></a>--}}
+{{--                                            <a class="hover-icon" href="{{route('frontend.shop.show',$alikeProducts->slug)}}" ><i class="lnr lnr-eye"></i></a>--}}
                                             <a class="hover-icon" href="javascript:{}"
                                                onclick="document.getElementById('link-wish{{ $alikeProducts->id }}').submit()"><i class="lnr lnr-heart"></i></a>
 
@@ -438,10 +422,11 @@
                                         <form  id="link-wish{{ $alikeProducts->id }}" action="{{route('frontend.wishlist.store')}}" method="POST">
                                             {{csrf_field()}}
 
-                                            @if (auth()->user())
-                                                <input type="hidden" name="user_id" value="{{  auth()->user()->id }}  ">
+                                            @if (auth()->guard('user')->user())
+                                                <input type="hidden" name="user_id" value="{{  auth()->guard('user')->user()->id }}  ">
                                             @endif
 
+                                            <input type="hidden" name="id" value="{{ $alikeProducts->id }}">
                                             <input type="hidden" name="id" value="{{ $alikeProducts->id }}">
                                             <input type="hidden" name="name" value="{{ $alikeProducts->name }}">
 
@@ -506,8 +491,8 @@
     <!--=============================================
     =            Quick view modal         =
     =============================================-->
-    @foreach($mightLikeProduct as $product)
-        <div class="modal fade quick-view-modal-container" id="quick-view-modal-container{{ $product->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    @foreach($mightLikeProduct as $mllikeproduct)
+        <div class="modal fade quick-view-modal-container" id="quick-view-modal-container{{ $mllikeproduct->id }}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -525,8 +510,8 @@
                                         <div class="tab-pane fade show active" id="single-slide-quick-1" role="tabpanel" aria-labelledby="single-slide-tab-quick-1">
                                             <!--Single Product Image Start-->
                                             <div class="single-product-img img-full">
-                                                <img src="{{ asset('uploads/'.$product->product_image)  }}"
-                                                     class="img-fluid" alt="{{ $product->name }}">
+                                                <img src="{{ asset('uploads/'.$mllikeproduct->product_image)  }}"
+                                                     class="img-fluid" alt="{{ $mllikeproduct->name }}">
                                             </div>
                                             <!--Single Product Image End-->
                                         </div>
@@ -540,21 +525,21 @@
                             <div class="col-lg-6 col-md-6 col-xs-12">
                                 <!-- product quick view description -->
                                 <div class="product-feature-details">
-                                    <h2 class="product-title mb-15">{{ $product->name }}</h2>
+                                    <h2 class="product-title mb-15">{{ $mllikeproduct->name }}</h2>
 
                                     <h2 class="product-price mb-15">
-                                        @if( $product->discount_price == 0 )
-                                            <span class="main-price"> ${{ $product->regular_price }}</span>
+                                        @if( $mllikeproduct->discount_price == 0 )
+                                            <span class="main-price"> ${{ $mllikeproduct->regular_price }}</span>
                                         @else
-                                            <span class="main-price discounted">${{ $product->regular_price }}</span>
-                                            <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                            <span class="main-price discounted">${{ $mllikeproduct->regular_price }}</span>
+                                            <span class="discounted-price"> ${{ $mllikeproduct->discount_price }}</span>
                                         @endif
 
                                         {{--<span class="discount-percentage">Save 8%</span>--}}
                                     </h2>
 
                                     <p class="product-description mb-20">
-                                        {{ $product->details }}
+                                        {{ $mllikeproduct->details }}
                                     </p>
 
 
@@ -567,13 +552,13 @@
                                             <div class="add-to-cart-btn">
 
 
-                                                <input type="hidden" name="id" value="{{ $product->id  }}">
+                                                <input type="hidden" name="id" value="{{ $mllikeproduct->id  }}">
                                                 <input type="hidden" name="quantity" value="{{ 1}}">
-                                                <input type="hidden" name="name" value="{{ $product->name }}">
-                                                @if($product->discount_price == 0)
-                                                    <input type="hidden" name="price" value="{{ $product->regular_price }}">
+                                                <input type="hidden" name="name" value="{{ $mllikeproduct->name }}">
+                                                @if($mllikeproduct->discount_price == 0)
+                                                    <input type="hidden" name="price" value="{{ $mllikeproduct->regular_price }}">
                                                 @else
-                                                    <input type="hidden" name="price" value="{{ $product->discount_price }}">
+                                                    <input type="hidden" name="price" value="{{ $mllikeproduct->discount_price }}">
 
                                                 @endif
 
@@ -608,4 +593,45 @@
 
 @endsection()
 
+@push('scripts')
+    <script>
+        $('.qty-btn').on('click', function (e) {
 
+            e.preventDefault();
+
+            var $button = $(this);
+            var oldValue = $button.parent().find('input').val();
+            var max;
+            var stock =  parseInt({{$product->stock}}) ;
+            var maxperuser =  parseInt({{$product->per_user_max_item}}) ;
+
+            if (isNaN(maxperuser) || maxperuser < 1  ){
+                max = stock;
+            }
+            else{
+                max = maxperuser;
+            }
+            if ($button.hasClass('inc')) {
+
+
+                if (oldValue < max) {
+                    var newVal = parseFloat(oldValue) + 1;
+                }
+                else {
+                    var newVal = oldValue
+                }
+
+
+            } else {
+                // Don't allow decrementing below zero
+                if (oldValue > 1) {
+                    var newVal = parseFloat(oldValue) - 1;
+                } else {
+                    newVal = 1;
+                }
+            }
+            $button.parent().find('input').val(newVal);
+
+        });
+    </script>
+@endpush

@@ -1,14 +1,15 @@
 <style>
 .flashy {
     font-family: "Source Sans Pro", Arial, sans-serif;
-    padding: 11px 20px;
+    padding: 8px 30px 16px 20px;
     border-radius: 4px;
     font-weight: 400;
     position: fixed;
-    top: 50px;
+    top: 60px;
     right: 20px;
     font-size: 16px;
     color: #fff;
+    z-index: 5000000;
 }
 
 .flashy--success {
@@ -78,7 +79,7 @@
         text-align: center;
         vertical-align: middle;
         right: 0;
-        top: 80px;
+        top: 120px;
         left: 70%;
         width: 300px;
         margin-left: -150px;
@@ -93,7 +94,7 @@
         template.find(".flashy__body").html(message).attr("href", link || "#").end()
          .appendTo("body").hide().fadeIn(300).delay(2800).animate({
             marginRight: "-100%"
-        }, 300, "swing", function() {
+        }, 500, "swing", function() {
             $(this).remove();
         });
     }

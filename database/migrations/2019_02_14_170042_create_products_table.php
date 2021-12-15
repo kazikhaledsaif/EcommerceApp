@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->text('details')->nullable();
             $table->decimal('regular_price', 8, 2);
-            $table->decimal('discount_price', 8, 2)->default(0);
-            $table->text('description');
+            $table->decimal('discount_price', 8, 2)->nullable();
+            $table->text('description')->nullable();
             $table->string('feature_name')->nullable();
             $table->string('feature_color')->nullable();
             $table->integer('category_id');

@@ -179,6 +179,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class
 
     ],
 
@@ -228,7 +229,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'SWAL' => Softon\SweetAlert\Facades\SWAL::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,

@@ -1,11 +1,4 @@
-<h1>Jahangir Enterprice</h1>
-<pre>
-    Haji Khalek Gamsa Super Market,
-    Shekherchar Bazar, Mosjid road,
-    Gamsa potti,Madhabdi.
 
-Mobile: +88 017 11 227 959
-Email: jh.jahangir227@gmail.com </pre>
 <div class="clearfix"></div>
 <div class="row">
     <div align="right">
@@ -70,7 +63,7 @@ Email: jh.jahangir227@gmail.com </pre>
     Email: {{ $order->billing_email}}
     Phone: {{ $order->billing_phone_no}}
 
-Shipping Details:    
+Shipping Details:
     Shipping Address: {{ $order->billing_address}}
     Town : {{ $order->billing_town}}
     City : {{ $order->billing_city}}

@@ -6,13 +6,16 @@ namespace App\Http\Controllers\Frontend;
 
 use App\FeaturedCategory;
 use App\Feedback;
-use App\newsletter;
+use App\Newsletter;
+use App\Order;
+use App\OrderIndex;
 use App\Product;
 use App\Slider;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use MercurySeries\Flashy\Flashy;
 
 
 class IndexController extends Controller
@@ -45,11 +48,11 @@ class IndexController extends Controller
         $products_rand = Product::inRandomOrder()->take(8)->get();
         // $products_weekly = Product::whereDate('weekly','$current')->get();
         $products_weekly = DB::select("SELECT * FROM `products` WHERE `weekly_deal` > '$current' ");
-        $featuredCategory = FeaturedCategory::take(4)->get();
+        $featuredCategory = FeaturedCategory::take(4)->orderBy('id', 'Asc')->get();
      $top_sell = DB::select("SELECT  `product_id`,`name`,`slug`,`details`,`regular_price`,`discount_price`,`product_image`,
                                     `badge`,`percentage`,
-                                 COUNT(`product_id`) AS `value_occurrence` 
-                        FROM     `order_products` JOIN `products` 
+                                 COUNT(`product_id`) AS `value_occurrence`
+                        FROM     `order_products` JOIN `products`
                         ON order_products.product_id = products.id
                         GROUP BY `product_id`
                         ORDER BY `value_occurrence` DESC
@@ -122,8 +125,11 @@ class IndexController extends Controller
     {
         //
     }
+    public function contact(){
 
-    public  function feedback(Request $request){
+        return view('frontend.pages.contact');
+    }
+    public function feedback(Request $request){
 
         $feedback = new Feedback();
         $feedback->name= $request->customerName;
@@ -132,19 +138,49 @@ class IndexController extends Controller
         $feedback->message= $request->contactMessage;
 
         $feedback->save();
-
+        Flashy::success('Feedback Sent.');
         return redirect()->back();
     }
     public function newsletter(Request $request){
 
         echo $request->email;
-        $newsletter = new newsletter();
+        $newsletter = new Newsletter();
         $newsletter->mail = $request->email;
         $newsletter->save();
+        Flashy::success('Newsletter Sent.');
 
         return redirect()->back();
     }
 
+    public function getOrderStatus(Request $request){
+
+        $rules = [
+            'tracking_id' => 'required',
+        ];
+
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
+
+        $order_indices= OrderIndex::where("tracker",$request->tracking_id)->latest('created_at')->first();
+
+        if ($order_indices){
+            $order = Order::where("id",$order_indices->order_no)->latest('created_at')->first();
+
+            return view('frontend.pages.order-status')->with([
+                'order'=> $order,
+                'tracker'=>$request->tracking_id]);
+
+        }
+
+        return redirect()->back()->with('message', 'Not Found');
+    }
+    public function orderCheck(){
+
+        return view('frontend.pages.order-status');
+    }
 
     public function destroy($id)
     {

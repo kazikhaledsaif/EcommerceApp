@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="page-header">
-                        <i class="fa fa-globe"></i> {{ config('app.name', 'JahangirEnterprice') }}
+                        <i class="fa fa-gflobe"></i>
                         <small class="pull-right">Date: {{ date('F j, Y, g:i:s a', strtotime( $order->created_at)) }}</small>
                     </h2>
                 </div>
@@ -50,18 +50,7 @@
             </div>
             <!-- info row -->
             <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
-                    From
-                    <address>
-                        <strong>Jahangir Enterprice</strong><br>
-                        Haji Khalek Gamsa Super Market,<br>
-                        Shekherchar Bazar, Mosjid road, <br>
-                        Gamsa potti,Madhabdi. <br>
-                        Phone: +88 017 11 227 959<br>
-                        Email: jh.jahangir227@gmail.com
-                    </address>
-                </div>
-                <!-- /.col -->
+
                 <div class="col-sm-4 invoice-col">
                     To
                     <address>
@@ -74,9 +63,9 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                    <b>Invoice #{{ $order->id + 1000 }}</b><br>
+                    <b>Order ID # {{ $order->id  }}</b><br>
                     <br>
-                    <b>Order ID:</b> 4F3S8J<br>
+                    <b>Shipping ID:</b> 4F3S8J<br>
                 </div>
                 <!-- /.col -->
             </div>

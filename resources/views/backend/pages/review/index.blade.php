@@ -22,8 +22,8 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>User Name</th>
-                    <th>Product slug</th>
+                    <th>Customer name</th>
+                    <th>Product</th>
                     <th>User's Rating</th>
                     <th>Overall Rating</th>
                     <th>Review Time</th>
@@ -34,12 +34,12 @@
                 @foreach($reviews as $review)
                     <tr>
                         <td>{{ $review->id }}</td>
-                        <td>{{ $review->userName }}</td>
+                        <td>{{ $review->fName . " ". $review->lName}}</td>
                         <td> <a href="{{ route('frontend.shop.show',['id'=> $review->slug]) }}">
-                                {{ $review->slug }} </a></td>
+                                {{ $review->productName }} </a></td>
                         <td>{{ $review->rating }}</td>
                         <td>{{ $review->overallRating }}</td>
-                        <td>{{ $review->created_at }}</td>
+                        <td>{{  date('F j, Y, g:i:s a', strtotime( $review->created_at))  }}</td>
 
                         <td>
                         <a href="{{ route('backend.reviews.show',['id'=> $review->id]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;
@@ -79,6 +79,8 @@
     <script>
         $(function () {
             $('#review-list').DataTable();
+            $('.review').addClass('active');
+
         });
 
         $(document).on('click', '.deletebtn', function (e) {
@@ -88,7 +90,6 @@
             swal({
                 title: 'Are you sure?',
                 text: "Delete this review forever!",
-                type: 'Warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -100,11 +101,7 @@
                         url: "{{ route('backend.reviews.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
-                            if(data.success == true){ // if true (1)
-                                setTimeout(function(){  // wait for 5 secs(2)
-                                    location.reload();  // then reload the page.(3)
-                                }, 500);
-                            }
+                            location.reload();
                         }
                     });
 

@@ -7,7 +7,7 @@
     <div class="box">
         <div class="box-header">
             <div class="col-md-3">
-                <h3 class="box-title">Featured Category list</h3>
+                <h3 class="box-title">Featured Category list (Maximum 4)</h3>
             </div>
 
             <div class="col-md-6 ">
@@ -69,6 +69,8 @@
     <script>
         $(function () {
             $('#product-list').DataTable();
+            $('.featuredcategories').addClass('active');
+
         });
 
         $(document).on('click', '.deletebtn', function (e) {
@@ -79,7 +81,7 @@
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                type: 'Danger',
+
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -91,11 +93,8 @@
                         url: "{{ route('backend.featuredcategories.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
-                            if(data.success == true){ // if true (1)
-                                setTimeout(function(){  // wait for 5 secs(2)
-                                    location.reload();  // then reload the page.(3)
-                                }, 500);
-                            }
+                            console.log("SSSS")
+                            location.reload();
                         }
                     });
 

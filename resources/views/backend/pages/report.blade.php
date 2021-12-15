@@ -65,7 +65,7 @@
                         <p>Successful Order</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-windows"></i>
+                        <i class="fa fa-shopping-bag"></i>
                     </div>
                     <a href="#" class="small-box-footer">
                         More info <i class="fa fa-arrow-circle-right"></i>
@@ -77,12 +77,12 @@
                 <!-- small box -->
                 <div class="small-box bg-orange">
                     <div class="inner">
-                        <h3>250</h3>
+                        <h3>{{$product}}</h3>
 
                         <p>Product</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-address-book-o"></i>
+                        <i class="fa fa-shopping-basket"></i>
                     </div>
                     <a href="#" class="small-box-footer">
                         More info <i class="fa fa-arrow-circle-right"></i>
@@ -250,6 +250,8 @@
     <script>
         $(function () {
             $('#dataTable').DataTable();
+            $('.sales').addClass('active');
+
         });
     </script>
 @endpush

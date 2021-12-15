@@ -7,6 +7,7 @@ use App\OrderIndex;
 use App\OrderProduct;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class OrderIndexController extends Controller
 {
@@ -17,7 +18,8 @@ class OrderIndexController extends Controller
      */
     public function index()
     {
-        $uid = Auth()->user()->id;
+
+        $uid =Auth::guard('user')->user()->id;
 
         $orders = Order::where('user_id', $uid)->orderBy('orders.id','DESC')->get();
 

@@ -36,7 +36,6 @@
                     <td><img height=100 width=100 src="{{ asset('uploads/'.$slider->img)  }}"> </td>
                     <td>{{ $slider->slug }}</td>
                     <td>
-                        <a href="{{ route('frontend.shop.show',['id'=> $slider->id]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a>
                         <a href="{{ route('backend.slider.edit',['id'=> $slider->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a>
                         <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $slider->id }}"
                                       data-name="{{ $slider->id }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>
@@ -75,6 +74,8 @@
     <script>
         $(function () {
             $('#product-list').DataTable();
+            $('.slider').addClass('active');
+
         });
 
         $(document).on('click', '.deletebtn', function (e) {
@@ -85,7 +86,7 @@
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                type: 'Danger',
+
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -97,11 +98,7 @@
                         url: "{{ route('backend.slider.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
-                            if(data.success == true){ // if true (1)
-                                setTimeout(function(){  // wait for 5 secs(2)
-                                    location.reload();  // then reload the page.(3)
-                                }, 500);
-                            }
+                            location.reload();
                         }
                     });
 

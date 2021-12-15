@@ -25,7 +25,8 @@
             <!-- Horizontal Form -->
             <div class="box box-info">
                 <!-- form start -->
-                <form class="form-horizontal" action="{{ route('backend.category.create') }}" method="post">
+                <form class="form-horizontal" action="{{ route('backend.category.create') }}" method="post"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">
                         <div class="form-group">
@@ -33,7 +34,12 @@
                             <label for="inputCategoryName" class="col-sm-2 control-label">Category Name</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="inputCategoryName" name="categoryName" placeholder="New Category.." required>
+                                <input  required type="text" class="form-control" id="inputCategoryName" name="categoryName" placeholder="New Category.." >
+                                @if ($errors->has('categoryName'))
+                                    <span class="text-red" >
+                                        <strong>{{ $errors->first('categoryName') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group">
@@ -41,7 +47,12 @@
                         <label for="inputCatSlug" class="col-sm-2 control-label">Slug</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="inputCatSlug" name="categorySlug" placeholder="Slug (auto generate)" required>
+                                <input required type="text" class="form-control" id="inputCatSlug" name="categorySlug" placeholder="Slug (auto generate)" >
+                                @if ($errors->has('categorySlug'))
+                                    <span class="text-red">
+                                        <strong>{{ $errors->first('categorySlug') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -56,7 +67,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <a href="#" class="btn btn-default">Cancel</a>
+                        <a href="{{ url()->previous() }}" class="btn btn-default">Cancel</a>
                         <button type="submit" class="btn btn-info pull-right">Create</button>
                     </div>
                     <!-- /.box-footer -->

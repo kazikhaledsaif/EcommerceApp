@@ -22,32 +22,35 @@
 
 
                         <div class="single-dropdown">
-                            @guest
-                                <a href="#" id="changeAccount"><span id="accountMenuName">Login <i class="fa fa-angle-down"></i></span></a>
-                                <div class="language-currency-list hidden" id="accountList">
-                                    <ul>
-                                        <li><a href="{{ route('login') }}">Login</a></li>
-                                        <li><a href="{{ route('register') }}">Registration</a></li>
+                            @auth('user')
 
 
-                                    </ul>
-                                </div>
 
-                            @else
-                                <a href="#" id="changeAccount"><span id="accountMenuName">{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></span></a>
+                                <a href="#" id="changeAccount"><span id="accountMenuName">{{ Auth::guard('user')->user()->first_name  }} <i class="fa fa-angle-down"></i></span></a>
                                 <div class="language-currency-list hidden" id="accountList">
                                     <ul>
                                         <li><a href="{{ route('frontend.my-account') }}">My Account</a></li>
                                         <li><a href="{{ route('frontend.checkout.index') }}">Checkout</a></li>
-                                        <li><a href="{{ route('logout') }}"   onclick="event.preventDefault();
+                                        <li><a href="{{ route('frontend.logout') }}"   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                 Logout</a></li>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('frontend.logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
                                     </ul>
                                 </div>
-                            @endguest
+                            @else
+                                <a href="#" id="changeAccount"><span id="accountMenuName">Login <i class="fa fa-angle-down"></i></span></a>
+                                <div class="language-currency-list hidden" id="accountList">
+                                    <ul>
+                                        <li><a href="{{ route('frontend.login') }}">Login</a></li>
+                                        <li><a href="{{ route('frontend.register') }}">Registration</a></li>
+
+
+                                    </ul>
+                                </div>
+
+                            @endauth
 
 
                         </div>
@@ -60,22 +63,22 @@
                         <a href="#" id="changeCurrency"><span id="currencyName">BDT ৳ </span></a>
 
 
-                        <span class="separator pl-15 pr-15">|</span>
+{{--                        <span class="separator pl-15 pr-15">|</span>--}}
 
                         <!--=======  End of single dropdown  =======-->
 
                         <!--=======  single dropdown  =======-->
 
-                        <div class="single-dropdown">
-                            <img src="{{ asset('frontend/assets/images/flags/1.jpg') }} " alt="">
-                            <a href="#" id="changeLanguage"><span id="languageName">English <i class="fa fa-angle-down"></i></span></a>
-                            <div class="language-currency-list hidden" id="languageList">
-                                <ul>
-                                    <li><a href="#"><img src="{{ asset('frontend/assets/images/flags/1.jpg') }} " alt=""> English</a></li>
-                                    <li><a href="#"><img src="{{ asset('frontend/assets/images/flags/2.jpg') }} " alt=""> Français</a></li>
-                                </ul>
-                            </div>
-                        </div>
+{{--                        <div class="single-dropdown">--}}
+{{--                            <img src="{{ asset('frontend/assets/images/flags/1.jpg') }} " alt="">--}}
+{{--                            <a href="#" id="changeLanguage"><span id="languageName">English <i class="fa fa-angle-down"></i></span></a>--}}
+{{--                            <div class="language-currency-list hidden" id="languageList">--}}
+{{--                                <ul>--}}
+{{--                                    <li><a href="#"><img src="{{ asset('frontend/assets/images/flags/1.jpg') }} " alt=""> English</a></li>--}}
+{{--                                    <li><a href="#"><img src="{{ asset('frontend/assets/images/flags/2.jpg') }} " alt=""> Français</a></li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <!--=======  End of single dropdown  =======-->
 
@@ -156,9 +159,9 @@
                                             </div>
                                             <div class="cart-float-single-item-desc">
                                                 <p class="product-title"> <a href="{{ route('frontend.shop.show',$item->model->slug) }}">{{$item->model->name}} </a></p>
-                                                <p class="price"><span class="quantity">{{$item->qty}} x</span>$
+                                                <p class="price"><span class="quantity">{{$item->qty}} x</span>৳
                                                     @if( $item->model->discount_price == 0 )
-                                                        {{ $item->model->present_price }}
+                                                        {{ $item->model->regular_price }}
                                                     @else
 
                                                         {{ $item->model->discount_price }}
@@ -172,10 +175,10 @@
                                 </div>
                                 <div class="cart-calculation">
                                     <div class="calculation-details">
-                                        <p class="total">Subtotal <span>${{Cart::subtotal()}}</span></p>
+                                        <p class="total">Subtotal <span>৳ {{Cart::subtotal()}}</span></p>
                                     </div>
                                     <div class="floating-cart-btn text-center">
-                                        @if(Cart::instance('default')->count() ==0 )
+                                        @if(Cart::instance('default')->count() == 0 )
                                             <p class="total">No item in cart</p>
                                         @else
                                             <a class="floating-cart-btn" href="{{route('frontend.checkout.index')}}">Checkout</a>
@@ -218,170 +221,170 @@
                         <!-- Category Menu -->
                         <nav class="category-menu">
                             <ul>
-                                <li class="menu-item-has-children"><a> Bedroom</a>
+{{--                                <li class="menu-item-has-children"><a> Bedroom</a>--}}
 
-                                    <!-- Mega Category Menu Start -->
-                                    <ul class="category-mega-menu">
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head" > Bedroom </a>
-                                            <ul>
-                                                <li><a href="/shop?category=bedroom-sets">Bedroom Sets </a></li>
-                                                <li><a href="/shop?category=youth-bedroom">Youth Bedroom </a></li>
-                                                <li><a href="/shop?category=master-bedroom">Master Bedroom </a></li>
-                                                <li><a href="/shop?category=beds-and-headboards">Beds & Headboards</a></li>
-                                                <li><a href="/shop?category=bunk-bed">Bunk Bed</a></li>
-                                                <li><a href="/shop?category=nightstand">Nightstand</a></li>
-                                                <li><a href="/shop?category=day-beds-and-trundies">Day Beds & Trundies</a></li>
-                                                <li><a href="/shop?category=mattress-and-pillows">Mattress & Pillows</a></li>
-                                                <li><a href="/shop?category=bed-rails">Bed Rails</a></li>
-                                                <li><a href="/shop?category=wardrobe">Wardrobe</a></li>
-                                            </ul>
-                                        </li>
-
-
-                                    </ul><!-- Mega Category Menu End -->
-
-                                </li>
-                                <li class="menu-item-has-children"><a >Dining Room</a>
-
-                                    <!-- Mega Category Menu Start -->
-                                    <ul class="category-mega-menu">
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head" >Dining Room</a>
-                                            <ul>
-                                                <li><a href="/shop?category=formal-dining">Formal Dining</a></li>
-                                                <li><a href="/shop?category=casual-dining">Casual Dining</a></li>
-                                                <li><a href="/shop?category=dining-barstool">Barstool</a></li>
-                                                <li><a href="/shop?category=pub-and-counter-height-tables">Pub and Counter Height Tables</a></li>
-
-                                            </ul>
-                                        </li>
+{{--                                    <!-- Mega Category Menu Start -->--}}
+{{--                                    <ul class="category-mega-menu">--}}
+{{--                                        <li class="menu-item-has-children">--}}
+{{--                                            <a class="megamenu-head" > Bedroom </a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="/shop?category=bedroom-sets">Bedroom Sets </a></li>--}}
+{{--                                                <li><a href="/shop?category=youth-bedroom">Youth Bedroom </a></li>--}}
+{{--                                                <li><a href="/shop?category=master-bedroom">Master Bedroom </a></li>--}}
+{{--                                                <li><a href="/shop?category=beds-and-headboards">Beds & Headboards</a></li>--}}
+{{--                                                <li><a href="/shop?category=bunk-bed">Bunk Bed</a></li>--}}
+{{--                                                <li><a href="/shop?category=nightstand">Nightstand</a></li>--}}
+{{--                                                <li><a href="/shop?category=day-beds-and-trundies">Day Beds & Trundies</a></li>--}}
+{{--                                                <li><a href="/shop?category=mattress-and-pillows">Mattress & Pillows</a></li>--}}
+{{--                                                <li><a href="/shop?category=bed-rails">Bed Rails</a></li>--}}
+{{--                                                <li><a href="/shop?category=wardrobe">Wardrobe</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
 
 
-                                    </ul><!-- Mega Category Menu End -->
+{{--                                    </ul><!-- Mega Category Menu End -->--}}
 
-                                </li>
-                                <li class="menu-item-has-children"><a >Family Room</a>
+{{--                                </li>--}}
+{{--                                <li class="menu-item-has-children"><a >Dining Room</a>--}}
 
-                                    <!-- Mega Category Menu Start -->
-                                    <ul class="category-mega-menu">
+{{--                                    <!-- Mega Category Menu Start -->--}}
+{{--                                    <ul class="category-mega-menu">--}}
+{{--                                        <li class="menu-item-has-children">--}}
+{{--                                            <a class="megamenu-head" >Dining Room</a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="/shop?category=formal-dining">Formal Dining</a></li>--}}
+{{--                                                <li><a href="/shop?category=casual-dining">Casual Dining</a></li>--}}
+{{--                                                <li><a href="/shop?category=dining-barstool">Barstool</a></li>--}}
+{{--                                                <li><a href="/shop?category=pub-and-counter-height-tables">Pub and Counter Height Tables</a></li>--}}
 
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head" >Family Room</a>
-                                            <ul>
-                                                <li><a href="/shop?category=family-sofas">Sofas</a></li>
-                                                <li><a href="/shop?category=sectional">Sectional</a></li>
-                                                <li><a href="/shop?category=sofa-sleeper">Sofa Sleeper</a></li>
-                                                <li><a href="/shop?category=futons-and-adjustable-sofa">Futons & Adjustable Sofa</a></li>
-                                                <li><a href="/shop?category=media-and-tv-storage">Media & TV Storage</a></li>
-                                                <li><a href="/shop?category=occasional-table">Occasional Table</a></li>
-                                                <li><a href="/shop?category=benches-and-ottomans">Benches & Ottomans</a></li>
-                                                <li><a href="/shop?category=youth-furniture">Youth Furniture</a></li>
-                                                <li><a href="/shop?category=special-bays">Special Bays</a></li>
-                                            </ul>
-                                        </li>
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
 
-                                    </ul><!-- Mega Category Menu End -->
 
-                                </li>
-                                <li class="menu-item-has-children"><a >Living Room</a>
+{{--                                    </ul><!-- Mega Category Menu End -->--}}
 
-                                    <!-- Mega Category Menu Start -->
-                                    <ul class="category-mega-menu">
+{{--                                </li>--}}
+{{--                                <li class="menu-item-has-children"><a >Family Room</a>--}}
 
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head" >Living Room</a>
-                                            <ul>
-                                                <li><a href="/shop?category=sofas">Sofas</a></li>
-                                                <li><a href="/shop?category=chairs">Chairs</a></li>
-                                                <li><a href="/shop?category=recliners">Recliners</a></li>
-                                                <li><a href="/shop?category=occasional-tables">Occasional Tables</a></li>
-                                                <li><a href="/shop?category=entertainment">Entertainment</a></li>
-                                            </ul>
-                                        </li>
+{{--                                    <!-- Mega Category Menu Start -->--}}
+{{--                                    <ul class="category-mega-menu">--}}
 
-                                    </ul><!-- Mega Category Menu End -->
+{{--                                        <li class="menu-item-has-children">--}}
+{{--                                            <a class="megamenu-head" >Family Room</a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="/shop?category=family-sofas">Sofas</a></li>--}}
+{{--                                                <li><a href="/shop?category=sectional">Sectional</a></li>--}}
+{{--                                                <li><a href="/shop?category=sofa-sleeper">Sofa Sleeper</a></li>--}}
+{{--                                                <li><a href="/shop?category=futons-and-adjustable-sofa">Futons & Adjustable Sofa</a></li>--}}
+{{--                                                <li><a href="/shop?category=media-and-tv-storage">Media & TV Storage</a></li>--}}
+{{--                                                <li><a href="/shop?category=occasional-table">Occasional Table</a></li>--}}
+{{--                                                <li><a href="/shop?category=benches-and-ottomans">Benches & Ottomans</a></li>--}}
+{{--                                                <li><a href="/shop?category=youth-furniture">Youth Furniture</a></li>--}}
+{{--                                                <li><a href="/shop?category=special-bays">Special Bays</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
 
-                                </li>
-                                <li class="menu-item-has-children"><a > Accents</a>
+{{--                                    </ul><!-- Mega Category Menu End -->--}}
 
-                                    <!-- Mega Category Menu Start -->
-                                    <ul class="category-mega-menu">
+{{--                                </li>--}}
+{{--                                <li class="menu-item-has-children"><a >Living Room</a>--}}
 
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head"  >Accents</a>
-                                            <ul>
-                                                <li><a href="/shop?category=accents-mirror">Mirrors</a></li>
-                                                <li><a href="/shop?category=wall-art">Wall Art</a></li>
-                                            </ul>
-                                        </li>
+{{--                                    <!-- Mega Category Menu Start -->--}}
+{{--                                    <ul class="category-mega-menu">--}}
 
-                                    </ul><!-- Mega Category Menu End -->
+{{--                                        <li class="menu-item-has-children">--}}
+{{--                                            <a class="megamenu-head" >Living Room</a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="/shop?category=sofas">Sofas</a></li>--}}
+{{--                                                <li><a href="/shop?category=chairs">Chairs</a></li>--}}
+{{--                                                <li><a href="/shop?category=recliners">Recliners</a></li>--}}
+{{--                                                <li><a href="/shop?category=occasional-tables">Occasional Tables</a></li>--}}
+{{--                                                <li><a href="/shop?category=entertainment">Entertainment</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
 
-                                </li>
+{{--                                    </ul><!-- Mega Category Menu End -->--}}
 
-                                <li class="menu-item-has-children"><a > Accessories </a>
+{{--                                </li>--}}
+{{--                                <li class="menu-item-has-children"><a > Accents</a>--}}
 
-                                    <!-- Mega Category Menu Start -->
-                                    <ul class="category-mega-menu">
+{{--                                    <!-- Mega Category Menu Start -->--}}
+{{--                                    <ul class="category-mega-menu">--}}
 
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head"  >Accessories </a>
-                                            <ul>
-                                                <li><a href="/shop?category=accent-chair">Accent Chair</a></li>
-                                                <li><a href="/shop?category=mirrors">Mirrors</a></li>
-                                                <li><a href="/shop?category=clocks">Clocks</a></li>
-                                                <li><a href="/shop?category=curio">Curio</a></li>
-                                                <li><a href="/shop?category=console-table">Console Table</a></li>
-                                                <li><a href="/shop?category=vanity">Vanity</a></li>
-                                                <li><a href="/shop?category=jewelry-armoire">Jewelry Armoire</a></li>
-                                                <li><a href="/shop?category=sink-cabinets">Sink Cabinets</a></li>
-                                                <li><a href="/shop?category=lighting">Lighting</a></li>
-                                                <li><a href="/shop?category=screens">Screens</a></li>
-                                                <li><a href="/shop?category=coat-rack">Coat Rack</a></li>
-                                            </ul>
-                                        </li>
+{{--                                        <li class="menu-item-has-children">--}}
+{{--                                            <a class="megamenu-head"  >Accents</a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="/shop?category=accents-mirror">Mirrors</a></li>--}}
+{{--                                                <li><a href="/shop?category=wall-art">Wall Art</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
 
-                                    </ul><!-- Mega Category Menu End -->
+{{--                                    </ul><!-- Mega Category Menu End -->--}}
 
-                                </li>
-                                <li class="menu-item-has-children"><a> Home Office</a>
+{{--                                </li>--}}
+{{--                                <li class="menu-item-has-children"><a > Accessories </a>--}}
 
-                                    <!-- Mega Category Menu Start -->
-                                    <ul class="category-mega-menu">
+{{--                                    <!-- Mega Category Menu Start -->--}}
+{{--                                    <ul class="category-mega-menu">--}}
 
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head"  >Home Office</a>
-                                            <ul>
-                                                <li><a href="/shop?category=desk-and-chairs">Desk & Chairs</a></li>
-                                                <li><a href="/shop?category=shelf-and-rack">Shelf & Rack</a></li>
-                                            </ul>
-                                        </li>
+{{--                                        <li class="menu-item-has-children">--}}
+{{--                                            <a class="megamenu-head"  >Accessories </a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="/shop?category=accent-chair">Accent Chair</a></li>--}}
+{{--                                                <li><a href="/shop?category=mirrors">Mirrors</a></li>--}}
+{{--                                                <li><a href="/shop?category=clocks">Clocks</a></li>--}}
+{{--                                                <li><a href="/shop?category=curio">Curio</a></li>--}}
+{{--                                                <li><a href="/shop?category=console-table">Console Table</a></li>--}}
+{{--                                                <li><a href="/shop?category=vanity">Vanity</a></li>--}}
+{{--                                                <li><a href="/shop?category=jewelry-armoire">Jewelry Armoire</a></li>--}}
+{{--                                                <li><a href="/shop?category=sink-cabinets">Sink Cabinets</a></li>--}}
+{{--                                                <li><a href="/shop?category=lighting">Lighting</a></li>--}}
+{{--                                                <li><a href="/shop?category=screens">Screens</a></li>--}}
+{{--                                                <li><a href="/shop?category=coat-rack">Coat Rack</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
 
-                                    </ul><!-- Mega Category Menu End -->
+{{--                                    </ul><!-- Mega Category Menu End -->--}}
 
-                                </li>
-                                <li class="menu-item-has-children"><a> Simon Bedding</a>
+{{--                                </li>--}}
+{{--                                <li class="menu-item-has-children"><a> Home Office</a>--}}
 
-                                    <!-- Mega Category Menu Start -->
-                                    <ul class="category-mega-menu">
+{{--                                    <!-- Mega Category Menu Start -->--}}
+{{--                                    <ul class="category-mega-menu">--}}
 
-                                        <li class="menu-item-has-children">
-                                            <a class="megamenu-head"  >Simon Bedding</a>
-                                            <ul>
-                                                <li><a href="/shop?category=bed-frames">Bed Frames</a></li>
-                                                <li><a href="/shop?category=foundations">Foundations</a></li>
-                                                <li><a href="/shop?category=mattresses">Mattresses</a></li>
-                                            </ul>
-                                        </li>
+{{--                                        <li class="menu-item-has-children">--}}
+{{--                                            <a class="megamenu-head"  >Home Office</a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="/shop?category=desk-and-chairs">Desk & Chairs</a></li>--}}
+{{--                                                <li><a href="/shop?category=shelf-and-rack">Shelf & Rack</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
 
-                                    </ul><!-- Mega Category Menu End -->
+{{--                                    </ul><!-- Mega Category Menu End -->--}}
 
-                                </li>
-                                <li class="hidden"><a href="/shop?category=finance-options">Finance Options</a></li>
-                                <li class="hidden"><a href="/shop?category=layaway">Layaway</a></li>
-                                <li class="hidden"><a href="/shop?category=bar-and-stools">Bar Stools</a></li>
-                                <li><a href="#" id="more-btn"><span class="lnr lnr-plus-circle"></span> More Categories</a></li>
+{{--                                </li>--}}
+{{--                                <li class="menu-item-has-children"><a> Simon Bedding</a>--}}
+
+{{--                                    <!-- Mega Category Menu Start -->--}}
+{{--                                    <ul class="category-mega-menu">--}}
+
+{{--                                        <li class="menu-item-has-children">--}}
+{{--                                            <a class="megamenu-head"  >Simon Bedding</a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li><a href="/shop?category=bed-frames">Bed Frames</a></li>--}}
+{{--                                                <li><a href="/shop?category=foundations">Foundations</a></li>--}}
+{{--                                                <li><a href="/shop?category=mattresses">Mattresses</a></li>--}}
+{{--                                            </ul>--}}
+{{--                                        </li>--}}
+
+{{--                                    </ul><!-- Mega Category Menu End -->--}}
+
+{{--                                </li>--}}
+                                @foreach(\App\Category::orderBy('name', 'Asc')->get() as $cat)
+                                    <li class="menu-item"><a href="/shop?category={{$cat->slug}}">{{$cat->name}}</a></li>
+                                @endforeach
+
+{{--                                <li><a href="#" id="more-btn"><span class="lnr lnr-plus-circle"></span> More Categories</a></li>--}}
                             </ul>
                         </nav>
                     </div>

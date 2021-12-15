@@ -13,8 +13,8 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="index.html">Home</a> <span class="separator">/</span></li>
-                            <li class="active">Login Register</li>
+                            <li><a href="#">Home</a> <span class="separator">/</span></li>
+                            <li class="active">Login </li>
                         </ul>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
             <div class="row ">
                 <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30 mx-auto">
                     <!-- Login Form s-->
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('frontend.login.create') }}">
                         @csrf
 
                         <div class="login-form">
@@ -63,7 +63,7 @@
                                     </span>
                                     @endif
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-6">
 
                                     <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember_me" {{ old('remember') ? 'checked' : '' }}>
@@ -72,13 +72,16 @@
 
                                 </div>
 
-                                <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
-                                    <a href="{{ route('password.request') }}"> Forgotten pasward?</a>
+                                <div class="col-md-6 mt-10 mb-20 text-left text-md-right">
+                                    <a href="{{ route('frontend.password.request') }}"> Forgotten pasward?</a>
+                                    <a class="mt-2" href="{{ route('frontend.register') }}">Don't you have an account?</a>
                                 </div>
 
                                 <div class="col-md-12">
                                     <button class="register-button mt-0">Login</button>
+
                                 </div>
+
 
                             </div>
                         </div>

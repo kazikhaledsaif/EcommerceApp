@@ -21,7 +21,7 @@
 
 
             <div class="col-md-6 ">
-                <a href="#" class="btn btn-success">Download csv</a>
+{{--                <a href="#" class="btn btn-success">Download csv</a>--}}
             </div>
         </div>
         <!-- /.box-header -->
@@ -85,6 +85,8 @@
     <script>
         $(function () {
             $('#list').DataTable();
+            $('.feedback').addClass('active');
+
         });
 
         $(document).on('click', '.deletebtn', function (e) {
@@ -95,7 +97,7 @@
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                type: 'Danger',
+
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -104,14 +106,10 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('backend.featuredcategories.destroy') }}",
+                        url: "{{ route('backend.feedback.destroy') }}",
                         data: {id:id, _token:token},
                         success: function (data) {
-                            if(data.success == true){ // if true (1)
-                                setTimeout(function(){  // wait for 5 secs(2)
-                                    location.reload();  // then reload the page.(3)
-                                }, 500);
-                            }
+                            location.reload();
                         }
                     });
 

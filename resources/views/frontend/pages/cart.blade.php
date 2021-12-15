@@ -16,7 +16,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="index.html">Home</a> <span class="separator">/</span></li>
+                            <li><a href="#">Home</a> <span class="separator">/</span></li>
                             <li class="active">Cart</li>
                         </ul>
                     </div>
@@ -53,7 +53,7 @@
                                     <th class="pro-quantity">Quantity</th>
                                     <th class="pro-subtotal">Total</th>
                                     <th class="pro-remove">Remove</th>
-                                    <th class="pro-remove">Update</th>
+{{--                                    <th class="pro-remove">Update</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,18 +67,18 @@
                                             <td class="pro-title"><a href="{{ route('frontend.shop.show',$item->model->slug) }}">{{$item->model->name}}</a></td>
 
 
-                                            @if( $item->model->discount_price == 0 )
+                                            @if( $item->model->discount_price == 0 || empty($item->model->discount_price) )
 
 
-                                                <td class="pro-price"><span>৳{{$item->model->present_price}}</span></td>
+                                                <td class="pro-price"><span>৳ {{$item->model->regular_price}}</span></td>
                                             @else
-                                                <td class="pro-price"><span>৳{{$item->model->discount_price}}</span></td>
+                                                <td class="pro-price"><span>৳ {{$item->model->discount_price}}</span></td>
 
                                             @endif
 
 
                                             <td class="pro-quantity"><div class="pro-qty">
-                                                    <input type="text" name="quantity" id="quantity" max="{{$item->model->stock}}" value="{{$item->qty}}" >
+                                                    <input type="text" name="quantity" id="quantity"  disabled value="{{$item->qty}}" >
                                                 </div></td>
 
 
@@ -86,13 +86,13 @@
 
 
 
-                                            @if( $item->model->discount_price == 0 )
+                                            @if( $item->model->discount_price == 0 || empty($item->model->discount_price)  )
 
 
-                                                <td class="pro-subtotal"><span>৳{{($item->qty)*$item->model->present_price}}</span></td>
+                                                <td class="pro-subtotal"><span>৳ {{($item->qty)*$item->model->regular_price}}</span></td>
                                             @else
 
-                                                <td class="pro-subtotal"><span>৳{{($item->qty)*$item->model->discount_price}}</span></td>
+                                                <td class="pro-subtotal"><span>৳ {{($item->qty)*$item->model->discount_price}}</span></td>
 
                                             @endif
 
@@ -101,9 +101,9 @@
 
 
                                             <td class="pro-remove"><a href="{{route('frontend.cart.destroy', $item->rowId)}}"><i class="fa fa-trash-o"></i></a></td>
-                                            <td class="pro-remove">
-                                                <button type="submit" class="">  <i class="fa fa-repeat"></i> </button>
-                                            </td>
+{{--                                            <td class="pro-remove">--}}
+{{--                                                <button type="submit" class="">  <i class="fa fa-repeat"></i> </button>--}}
+{{--                                            </td>--}}
                                         </form>
 
                                     </tr>
@@ -116,68 +116,68 @@
                         <!--=======  End of cart table  =======-->
 
 
-                        </form>
+
 
                         <div class="row">
 
                             <div class="col-lg-6 col-12">
                                 <!--=======  Calculate Shipping  =======-->
 
-                                <div class="calculate-shipping">
-                                    <h4>Calculate Shipping</h4>
-                                    <form action="#">
-                                        <div class="row">
-                                            <div class="col-md-6 col-12 mb-25">
-                                                <select class="nice-select">
-                                                    <option>Bangladesh</option>
-                                                    <option>China</option>
-                                                    <option>country</option>
-                                                    <option>India</option>
-                                                    <option>Japan</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6 col-12 mb-25">
-                                                <select class="nice-select">
-                                                    <option>Dhaka</option>
-                                                    <option>Barisal</option>
-                                                    <option>Khulna</option>
-                                                    <option>Comilla</option>
-                                                    <option>Chittagong</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6 col-12 mb-25">
-                                                <input type="text" placeholder="Postcode / Zip">
-                                            </div>
-                                            <div class="col-md-6 col-12 mb-25">
-                                                <input type="submit" value="Estimate">
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+{{--                                <div class="calculate-shipping">--}}
+{{--                                    <h4>Calculate Shipping</h4>--}}
+{{--                                    <form action="#">--}}
+{{--                                        <div class="row">--}}
+{{--                                            <div class="col-md-6 col-12 mb-25">--}}
+{{--                                                <select class="nice-select">--}}
+{{--                                                    <option>Bangladesh</option>--}}
+{{--                                                    <option>China</option>--}}
+{{--                                                    <option>country</option>--}}
+{{--                                                    <option>India</option>--}}
+{{--                                                    <option>Japan</option>--}}
+{{--                                                </select>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-6 col-12 mb-25">--}}
+{{--                                                <select class="nice-select">--}}
+{{--                                                    <option>Dhaka</option>--}}
+{{--                                                    <option>Barisal</option>--}}
+{{--                                                    <option>Khulna</option>--}}
+{{--                                                    <option>Comilla</option>--}}
+{{--                                                    <option>Chittagong</option>--}}
+{{--                                                </select>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-6 col-12 mb-25">--}}
+{{--                                                <input type="text" placeholder="Postcode / Zip">--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-6 col-12 mb-25">--}}
+{{--                                                <input type="submit" value="Estimate">--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </form>--}}
+{{--                                </div>--}}
 
                                 <!--=======  End of Calculate Shipping  =======-->
 
                                 <!--=======  Discount coupon  =======-->
 
-                                @if(!session()->has('coupon'))
-                                    <div class="discount-coupon">
-                                        <h4>Discount Coupon Code</h4>
-                                       <form action="{{ route('frontend.coupon.store') }}" method="POST">
-                                            <div class="row">
-                                                {{ csrf_field() }}
-                                                <div class="col-md-6 col-12 mb-25">
-                                                    <input type="text" name="coupon_code" id="coupon_code" placeholder="Coupon Code" required>
-                                                    <input type="hidden" name="total" value="{{ Cart::instance('default')->total() }}">
-                                                </div>
-                                                <div class="col-md-6 col-12 mb-25">
-                                                    <input type="submit" value="Apply Code">
-                                                </div>
-                                            </div>
-                                      </form>
+{{--                                @if(!session()->has('coupon'))--}}
+{{--                                    <div class="discount-coupon">--}}
+{{--                                        <h4>Discount Coupon Code</h4>--}}
+{{--                                       <form action="{{ route('frontend.coupon.store') }}" method="POST">--}}
+{{--                                            <div class="row">--}}
+{{--                                                {{ csrf_field() }}--}}
+{{--                                                <div class="col-md-6 col-12 mb-25">--}}
+{{--                                                    <input type="text" name="coupon_code" id="coupon_code" placeholder="Coupon Code" required>--}}
+{{--                                                    <input type="hidden" name="total" value="{{ Cart::instance('default')->total() }}">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6 col-12 mb-25">--}}
+{{--                                                    <input type="submit" value="Apply Code">--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                      </form>--}}
 
 
-                                    </div>
-                            @endif
+{{--                                    </div>--}}
+{{--                             @endif--}}
 
                             <!--=======  End of Discount coupon  =======-->
 
@@ -190,24 +190,27 @@
                                 <div class="cart-summary">
                                     <div class="cart-summary-wrap">
                                         <h4>Cart Summary</h4>
-                                        <p>Sub Total <span>৳ {{Cart::instance('default')->total()}}</span></p>
-                                        <p>Shipping Cost <span>৳ 00.00</span></p>
+                                        <p>Sub Total <span>৳ {{  (double)str_replace(',','', Cart::instance('default')->total())}}</span></p>
+                                        <p>Shipping Cost <span>৳ {{empty($settings)? 0: $settings->delivery_cost}}</span></p>
                                         @if(session()->has('coupon'))
 
                                             <p>Discount  [ {{ session()->get('coupon')['name'] }} ]
 
-                                                <span>-৳{{ session()->get('coupon')['amount'] }}</span></p>
-                                     <form action="{{ route('frontend.coupon.destroy') }}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('delete') }}
-                                                <button type="submit" style="background: black; color: white; border: none; margin-bottom: 2px;">Remove coupon</button>
-                                            </form>
+                                                <span>-৳ {{ session()->get('coupon')['amount'] }}</span></p>
+{{--                                     <form action="{{ route('frontend.coupon.destroy') }}" method="POST">--}}
+{{--                                                {{ csrf_field() }}--}}
+{{--                                                {{ method_field('delete') }}--}}
+{{--                                                <button type="submit" style="background: black; color: white; border: none; margin-bottom: 2px;">Remove coupon</button>--}}
+{{--                                            </form>--}}
+                                            <button   data-token="{{ @csrf_token() }}" data-id="{{ session()->get('coupon')['id'] }}"  class="coupon_remove"
+                                                      style="background: black; color: white; border: none; margin-bottom: 2px;">Remove coupon</button>
+
 
                                         @endif
 
                                         <h2>Grand Total <span>৳<?php
                                                 $num1= (Cart::instance('default')->total());
-                                                $num2= (session()->get('coupon')['amount']);
+                                                $num2= !empty(session()->get('coupon')['amount']) ? (session()->get('coupon')['amount']) : 0 ;
                                                 $res =  (double)str_replace(',','',$num1)-
                                                     (double)str_replace(',','',$num2);
                                                 echo $res;
@@ -249,3 +252,40 @@
 
 
 @endsection()
+@push('scripts')
+
+
+    <script>
+      
+        $(document).on('click', '.coupon_remove', function (e) {
+            e.preventDefault();
+            var token = $(this).data('token');
+            var id = $(this).data('id');
+
+            console.log(token);
+
+            if (token) {
+                $.ajax({
+                    type: "delete",
+                    url: "{{ route('frontend.coupon.destroy') }}",
+                    data: { id:id,_token:token},
+                    success:function(response){
+                        console.log(response.msg);
+                        if(response) {
+                            console.log(response.msg)
+
+                            window.location.reload();
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+
+
+            }
+
+        });
+
+    </script>
+@endpush

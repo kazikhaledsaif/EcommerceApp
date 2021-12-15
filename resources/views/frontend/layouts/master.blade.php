@@ -10,6 +10,10 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}">
 
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS
     ============================================ -->
     <!-- Bootstrap CSS -->
@@ -29,39 +33,14 @@
 
     <!-- Main CSS -->
     <link href="{{ asset('frontend/assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/footer.min.css') }}" rel="stylesheet">
 
     @stack('css')
     <!-- Modernizer JS -->
     <script src="{{ asset('frontend/assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <style>
-        /**
- * The CSS shown here will not be introduced in the Quickstart guide, but shows
- * how you can use CSS to style your Element's container.
- */
-        .StripeElement {
-            background-color: white;
-            height: 40px;
-            padding: 10px 12px;
-            border-radius: 4px;
-            border: 1px solid transparent;
-            box-shadow: 0 1px 3px 0 #e6ebf1;
-            -webkit-transition: box-shadow 150ms ease;
-            transition: box-shadow 150ms ease;
-        }
 
-        .StripeElement--focus {
-            box-shadow: 0 1px 3px 0 #cfd7df;
-        }
 
-        .StripeElement--invalid {
-            border-color: #fa755a;
-        }
 
-        .StripeElement--webkit-autofill {
-            background-color: #fefde5 !important;
-        }
-    </style>
 </head>
 
 <body>
@@ -96,7 +75,7 @@
 
 
 <!-- scroll to top  -->
-<a href="#" class="scroll-top"></a>
+{{--<a href="#" class="scroll-top"></a>--}}
 <!-- end of scroll to top -->
 
 <!-- JS
@@ -124,6 +103,8 @@
 
 @stack('scripts')
 @stack('js')
+ 
+
 
 </body>
 

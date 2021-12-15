@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Order;
 use App\OrderProduct;
+use App\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -52,17 +53,17 @@ class ReportController extends Controller
                     ->OrderBy('order_products.created_at','DESC')->take(100)->get();
 
         $hotsell = DB::select("SELECT  `product_id`,`name`,`slug`,`stock`,`regular_price`,`discount_price` ,
-                                 COUNT(`product_id`) AS `occurrence` 
-                        FROM     `order_products` JOIN `products` 
+                                 COUNT(`product_id`) AS `occurrence`
+                        FROM     `order_products` JOIN `products`
                         ON order_products.product_id = products.id
                         GROUP BY `product_id`
                         ORDER BY `occurrence` DESC
                         LIMIT    20");
 
-        $pendingOrder = Order::where('status', '=', 'Pending')->count();
-        $approvedOrder = Order::where('status', '=', 'Approved')->count();
+        $pendingOrder = Order::where('status', '=', 'Received')->count();
+        $approvedOrder = Order::where('status', '=', 'Shipped')->count();
         $successfulOrder = Order::where('status', '=', 'Delivered')->count();
-
+        $product = Product::all()->count();
 
         return view('backend.pages.report')->with([
             'totalSell' =>$totalsell,
@@ -76,6 +77,7 @@ class ReportController extends Controller
             'pendingOrder' =>$pendingOrder,
             'approvedOrder' =>$approvedOrder,
             'successOrder' =>$successfulOrder,
+            'product' =>$product,
         ]);
     }
 

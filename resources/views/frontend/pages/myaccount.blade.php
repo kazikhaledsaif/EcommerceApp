@@ -66,7 +66,7 @@
                                 <a onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     <i class="fa fa-sign-out"></i> Logout</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('frontend.logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -83,7 +83,7 @@
                                         <h3>Dashboard</h3>
 
                                         <div class="welcome mb-20">
-                                            <p>Hello <strong>{{ Auth::user()->name }}</strong>  ,
+                                            <p>Hello <strong>{{ Auth::guard('user')->user()->first_name }}</strong>  ,
                                         </div>
 
                                         <p class="mb-0">Thanks message here. <br> From your account dashboard. you can easily check &amp; view your
@@ -157,8 +157,8 @@
                                             <address>
 
                                                 <p>Address: </p>
-                                                <textarea name="address" cols="30" rows="4" class="form-control">{{ Auth::user()->address }}</textarea> <br>
-                                                <p>Mobile:    <input type="text" name="mobile" class="form-control" value="{{ Auth::user()->mobile }}"></p>
+                                                <textarea name="address" cols="30" rows="4" class="form-control">{{  Auth::guard('user')->user()->address }}</textarea> <br>
+                                                <p>Mobile:    <input type="text" name="mobile" class="form-control" value="{{ Auth::guard('user')->user()->phone }}"></p>
 
                                             </address>
 
@@ -180,17 +180,17 @@
 
                                                 <div class="row">
                                                     <div class="col-lg-6 col-12 mb-30">
-                                                        <input id="first-name" name="name" placeholder="First Name" type="text" value="{{ Auth::user()->name }}">
+                                                        <input id="first-name" name="name" placeholder="First Name" type="text" value="{{  Auth::guard('user')->user()->first_name }}">
                                                     </div>
 
                                                     <div class="col-lg-6 col-12 mb-30">
-                                                        <input id="last-name" name="lname" placeholder="Last Name" type="text" value="{{ Auth::user()->lname }}">
+                                                        <input id="last-name" name="lname" placeholder="Last Name" type="text" value="{{  Auth::guard('user')->user()->lsat_name }}">
                                                     </div>
 
 
 
                                                     <div class="col-12 mb-30">
-                                                        <input id="email" name="email" placeholder="Email Address" type="email" value="{{ Auth::user()->email }}">
+                                                        <input id="email" name="email" placeholder="Email Address" type="email" value="{{  Auth::guard('user')->user()->email }}">
                                                     </div>
 
                                                     {{--   <div class="col-12 mb-30"><h4>Password change</h4></div>

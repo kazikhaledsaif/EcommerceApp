@@ -33,7 +33,12 @@
                             <label for="couponCode" class="col-sm-2 control-label">Coupon Code *</label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="couponCode" name="couponCode" placeholder="New Coupon code.." required>
+                                <input type="text" class="form-control" id="couponCode" name="code" placeholder="New Coupon code.." required>
+                                @if ($errors->has('code'))
+                                    <span class="text-red" >
+                                        <strong>{{ $errors->first('code') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <label for="couponType" class="col-sm-1 control-label">Type</label>
 
@@ -47,10 +52,10 @@
                             <div class="form-group">
                                 <label for="couponValue" class="col-sm-2 control-label">Discount Amount</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="couponValue" name="couponValue" placeholder="For Fixed amout"  >
+                                    <input type="number" class="form-control" id="couponValue" name="couponValue" placeholder="For Fixed amout"  >
                                 </div>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="couponValue" name="couponPercentage" placeholder="For Percentage discount"  >
+                                    <input type="number" class="form-control" id="couponValue" name="couponPercentage" placeholder="For Percentage discount"  >
                                 </div>
                             </div>
 
@@ -59,7 +64,22 @@
                                 <div class="col-sm-5">
                                     <input type="date" class="form-control" id="couponExpire" name="couponExpireDate" placeholder="Expire"  >
                                 </div>
+
                             </div>
+                        <div class="form-group">
+
+                            <label for="couponMaxLimit" class="col-sm-2 control-label">Maximum limit</label>
+
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="couponMaxLimit" name="couponMaxLimit" placeholder="" >
+                            </div>
+
+                            <label for="couponUserLimit" class="col-sm-2 control-label">Per User limit</label>
+
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="couponUserLimit" name="couponUserLimit" placeholder="" >
+                            </div>
+                        </div>
 
 
                     </div>

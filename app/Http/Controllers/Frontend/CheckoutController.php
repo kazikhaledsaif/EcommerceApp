@@ -6,6 +6,8 @@ use App\Order;
 use App\OrderIndex;
 use App\OrderProduct;
 use App\Product;
+use App\Setting;
+use App\User;
 use Barryvdh\DomPDF\PDF;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -17,32 +19,36 @@ class CheckoutController extends Controller
 {
 
     public function index(){
-        return view('frontend.pages.checkout');
+        $settings = Setting::latest('updated_at')->first();
+        return view('frontend.pages.checkout')
+            ->with([
+                'settings' => $settings
+            ]);
+
     }
     public function store (Request $request){
 
-        // dd($request->all());
+        if (Cart::count() < 1){
+            return back()->withErrors("No product is in cart");
+        }
 
         try {
-            $charge = Stripe::charges()->create([
-                'amount' => Cart::instance('default')->subtotal(null,null,''),
-                'currency' => 'USD',
-                'source' => $request->stripeToken,
-                'description' => 'Order',
-                'receipt_email' => $request->email,
-                'metadata' => [
-                    //  'contents' => $contents,
-                    // 'quantity' => Cart::instance('default')->count(),
-                    //  'discount' => collect(session()->get('coupon'))->toJson(),
-                ],
-            ]);
+            $user = User::find(auth()->guard('user')->user()->id);
 
-
+            $user->first_name = $request->fname;
+            $user->email  = $request->email ;
+            $user->last_name = $request->lname;
+            $user->phone = $request->number;
+            $user->address = $request->address;
+            $user->city = $request->city;
+            $user->state = $request->state;
+            $user->zip = $request->postcode;
+            $user->save();
 
             //insert in to order table
             $order = Order::create(
                 [
-                    'user_id' => auth()->user() ? auth()->user()->id : null,
+                    'user_id' =>   auth()->guard('user')->user()->id,
                     'billing_email' => $request->email,
                     'billing_first_name'=> $request->fname,
                     'billing_last_name'=> $request->lname,
@@ -52,11 +58,11 @@ class CheckoutController extends Controller
                     'billing_city'=> $request->city,
                     'billing_zip_code'=> $request->postcode,
                     'billing_discount'=> $request->cupon_amount,
-                    'status' => 'Pending',
-                    'billing_id' => $charge['id'],
+                    'status' => 'Received',
                     'billing_discount_code'=> $request->cupon_name,
                     'billing_subtotal'=> Cart::instance('default')->subtotal(null,null,''),
-                    'billing_shipping_fee'=> 0,
+                    'billing_shipping_fee'=> Setting::latest('updated_at')->first() ? Setting::latest('updated_at')->first()->delivery_cost: 0,
+                    'billing_payment_gateway'=> "Cash on delivery",
                     'billing_total'=> $request->total,
 
                 ]
@@ -75,37 +81,28 @@ class CheckoutController extends Controller
                 $product->save();
             }
 
-            $oid = $order->id;
-            $ocode = substr(md5('muaj'.$oid.'saif'), 0, 15);
-            $otracker = substr(md5('muaj'.$oid.'saif'), 16, 31);
-            $user = auth()->user() ? auth()->user()->id : 'guest';
+
+            $otracker = substr(md5('virtual'. $order->id.'echos'), 16, 31);
+            $user = auth()->guard('user')->user()->id;
 
             $ordered_now = OrderIndex::create([
                 'user_id' => $user,
-                'order_no' => $oid,
-                'order_code' => $ocode,
+                'order_no' => $order->id,
                 'tracker' => $otracker
             ]);
 
 
-            $uid = auth()->user() ? auth()->user()->id : 0;
-            $ocode = 'FVT'. substr(md5('muaj'.$order->id.'saif'), 0, 12) ;
-            $var = DB::table("Insert into `order_index`(`user`,`order_no`,`order_code`) values('$uid','$order->id','$ocode')");
 
 
             Cart::instance('default')->destroy();
+            session()->forget('coupon');
+            return view('frontend.pages.thank-you')
+                ->with([
+                    'tracking' => $otracker
+                ]);
 
-            $mData = array(
-                'name' => $request->fname,
-                'email' => $request->email,
-                'link' => "https://furniturevilletexas.com/invoice/".$otracker
-                // 'link' => "127.0.0.1/invoice/".$otracker
-            );
 
-          /*  return redirect()->route('send')
-                ->with('maildata' , $mData);*/
-
-        } catch (CardErrorException $e) {
+        } catch (\Exception $e) {
 
             return back()->withErrors('Error! ' . $e->getMessage());
         }

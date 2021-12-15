@@ -1,0 +1,30 @@
+.floating-cart{
+    background: #666;
+    height: 60px;
+    line-height: 20px;
+    display: none;
+    text-align: center;
+    color: #fff;
+    font-family: 'FontAwesome';
+    position: fixed;
+    width: 100%;
+    bottom: 20px;
+    z-index: 50000;
+    webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    display: inline-block;
+}
+.floating-cart .single-icon i.lnr {
+    font-size: 30px;
+    color: #fff;
+}
+
+
+@media (min-width: 600px){
+    .floating-cart {
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+}
+

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Category;
 use App\FeaturedCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use MercurySeries\Flashy\Flashy;
 
@@ -27,19 +29,37 @@ class FeaturedCategoryController extends Controller
      */
     public function create()
     {
-        //
-        return view('backend.pages.featuredcategory.add');
+        $categorylist = Category::all();
+        return view('backend.pages.featuredcategory.add')->with([
+            'category' => $categorylist
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        //
+
+        $rules = [
+            'productCategory' => 'required',
+            'image' => 'required',
+        ];
+
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
+        if (FeaturedCategory::count() >= 4){
+            Flashy::success('You Can Only Create 4 Featured Category.');
+
+            return redirect()->route('backend.featuredcategories.list');
+        }
+
         $sliderimg="";
         $photo_productG4 = $request->file('image');
         if (isset($photo_productG4)) {
@@ -49,10 +69,18 @@ class FeaturedCategoryController extends Controller
                 $sliderimg =$photo_productG4->storeAs('featuredcategory',$file_name);
             }
         }
+        $cat = Category::find($request->productCategory);
+        $fa = FeaturedCategory::where('slug', '=', $cat->slug)->first();
+        if ($fa) {
+            Flashy::error('Same Featured Category already added.');
+
+            return Redirect::back();
+        }
+      //  dd($cat);
         // create product with model method
         $fcatgory =  new FeaturedCategory();
-        $fcatgory->name = $request->name;
-        $fcatgory->slug = $request->slug;
+        $fcatgory->name = $cat->name;
+        $fcatgory->slug = $cat->slug;
         $fcatgory->image = $sliderimg;
 
         $fcatgory->save();
@@ -73,16 +101,42 @@ class FeaturedCategoryController extends Controller
     public function edit($id)
     {
 
+
+        $categorylist = Category::all();
         $fcat = FeaturedCategory::find($id);
-        return view('backend.pages.featuredcategory.edit')->with(['feature' => $fcat]);
+        return view('backend.pages.featuredcategory.edit')->with(['feature' => $fcat,
+            'category' => $categorylist
+            ]);
     }
 
     public function update(Request $request)
     {
-        $fcat = FeaturedCategory::find($request->id);
+        $rules = [
+            'productCategory' => 'required'
+        ];
 
-        $fcat->name = $request->productName;
-        $fcat->slug = $request->productSlug;
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
+
+
+        $fcat = FeaturedCategory::find($request->id);
+        $cat = Category::find($request->productCategory);
+        if ($fcat->slug != $cat->slug){
+            $fa = FeaturedCategory::where('slug', '=', $cat->slug)->first();
+            if ($fa) {
+                Flashy::error('Same Featured Category already added.');
+
+                return Redirect::back();
+            }
+        }
+
+
+
+        $fcat->name = $cat->name;
+        $fcat->slug = $cat->slug;
 
         if($request->img){
             $photo_productThumbImg = $request->file('img');
@@ -107,8 +161,7 @@ class FeaturedCategoryController extends Controller
     {
         //
         FeaturedCategory::find($request->id)->delete();
-
-        Flashy::danger(' Category id#'. $request->id.' Deleted.');
+ 
         return redirect()->route('backend.featuredcategories.list');
     }
 }

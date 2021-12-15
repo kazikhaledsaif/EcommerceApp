@@ -16,15 +16,7 @@
         <!-- info row -->
         <div class="row invoice-info">
             <div class="col-sm-4 invoice-col">
-                From
-                <address>
-                    <strong>Jahangir Enterprice</strong><br>
-                    Haji Khalek Gamsa Super Market,<br>
-                    Shekherchar Bazar, Mosjid road, <br>
-                    Gamsa potti,Madhabdi. <br>
-                    Phone: +88 017 11 227 959<br>
-                    Email: jh.jahangir227@gmail.com
-                </address>
+
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">

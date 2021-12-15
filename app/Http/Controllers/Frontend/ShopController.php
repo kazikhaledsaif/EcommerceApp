@@ -18,7 +18,7 @@ class ShopController extends Controller
     public function index()
     {
         //
-        $categories = Category::inRandomOrder()->take(6)->get();
+        $categories = Category::orderBy('name', 'Asc')->get();
         $categorySlug=request()->category;
         if($categorySlug){
             $products =   Product::whereHas('category', function ($query) use ($categorySlug) {

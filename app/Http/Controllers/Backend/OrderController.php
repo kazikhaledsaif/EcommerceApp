@@ -2,26 +2,47 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\CancelReason;
 use App\Order;
 use App\OrderProduct;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use MercurySeries\Flashy\Flashy;
 
 class OrderController extends Controller
 {
 
-    public function index() {
+    public function index(Request $request ){
 
-        $orders = Order::orderBy('id','DESC')->get();
+//        $orders = Order::orderBy('id', 'asc')->get();
+//
+//        return view('backend.pages.order.list')->with([
+//            'orders' => $orders
+//        ]);
+        $orders = Order::where( function($query) use($request){
+            return $request->status ?
+                $query->from('status')->where('status',$request->status) : '';
+        })->orderBy('id', 'asc')->get();
 
         return view('backend.pages.order.list')->with([
             'orders' => $orders
         ]);
     }
 
+    public function filter(Request $request) {
 
+        $orders = Order::where( function($query) use($request){
+            return $request->status ?
+                $query->from('status')->where('status',$request->status) : '';
+        })->orderBy('id', 'asc')->get();
+
+        return view('backend.pages.order.list')->with([
+            'orders' => $orders
+        ]);
+    }
     public function create()
     {
         //
@@ -41,6 +62,7 @@ class OrderController extends Controller
             'order' => $order,
             'products' => $products
         ]);
+        $fileName= 'invoice'.'-'.$order->id. '-'.Str::random(5).'.pdf';
         return $pdf->stream('invoice.pdf');
     }
 
@@ -64,6 +86,7 @@ class OrderController extends Controller
 
     public function edit($id) {
 
+
         $order = Order::find($id);
 
         return view('backend.pages.order.edit')->with([
@@ -73,16 +96,48 @@ class OrderController extends Controller
 
     public function update(Request $request)
     {
+
+        $rules = [
+            'status' => 'required',
+            'town' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'number' => 'required',
+            'reason' => 'required_if:status,Cancelled',
+
+        ];
+
+        $customMessages = [
+        'reason.required_if' => 'You need to give a reason for canceling the order!'
+        ];
+        $this->validate($request, $rules, $customMessages);
+
+
         $order = Order::find($request->id);
 
         $order->status = $request->status;
         $order->billing_address = $request->address;
         $order->billing_town = $request->town;
+        $order->billing_city = $request->city;
+        $order->billing_zip_code = $request->zip;
+        $order->billing_email = $request->email;
         $order->billing_phone_no = $request->number;
+        if ( $request->status == "Cancelled"){
+            $reason =  CancelReason::updateOrCreate(
+                ['admin_id' =>  auth()->guard('admin')->user()->id],
+                ['order_id' => $request->id]
+            );
+            $reason->order_id = $request->id;
+            $reason->admin_id =  auth()->guard('admin')->user()->id;
+            $reason->reasons =  $request->reason;
+            $reason->save();
+        }
+
 
         $order->save();
 
-        Flashy::success('Order update successful', '');
+        Flashy::success('Order update to '. $request->status .' successful');
         return redirect()->route('backend.order.list');
 
     }

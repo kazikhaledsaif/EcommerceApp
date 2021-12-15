@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\newsletter;
+use App\Feedback;
+use App\Newsletter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use MercurySeries\Flashy\Flashy;
 
 class NewsletterController extends Controller
 {
@@ -15,7 +17,7 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        $newsletters = newsletter::all();
+        $newsletters = Newsletter::all();
 
         return view('backend.pages.feedback.newsletter')
             ->with([
@@ -82,10 +84,13 @@ class NewsletterController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Newsletter::find($request->id)->delete();
+
+        Flashy::error('Newsletter deleted');
+        return redirect()->route('backend.newsletter.index');
     }
 }

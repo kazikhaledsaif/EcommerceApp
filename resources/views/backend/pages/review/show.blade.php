@@ -29,8 +29,9 @@
 
                     <h4>User Detail:</h4>
 
-                    Name: {{ $review->userName }} <br>
+                    Name: {{ $review->fName ." ".$review->lName  }} <br>
                     Email: {{ $review->email }} <br>
+                    Email: {{ $review->phone }} <br>
                     Registered on: {{ date('F j, Y', strtotime($review->regDate))  }} <br>
                     <br>
 
@@ -63,6 +64,11 @@
             </div>
 
 
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <a href="{{ url()->previous() }}" class="btn btn-default">Cancel</a>
+        </div>
+        <!-- /.box-footer -->
             </div>
 
 

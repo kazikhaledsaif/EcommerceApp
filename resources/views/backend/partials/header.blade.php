@@ -18,10 +18,10 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
-                <a class="" href="{{ route('logout') }}"   onclick="event.preventDefault();
+                <a class="" href="{{ route('backend.logout') }}"   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                     <i class="fa fa-power-off " style="font-size:30px;color:red; padding: 10px" ></i></a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <form id="logout-form" action="{{ route('backend.logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             {{--    <!-- Messages: style can be found in dropdown.less-->
@@ -127,7 +127,7 @@
                         <!-- The user image in the navbar-->
 
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                        <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
 
                     </a>
 
@@ -156,16 +156,16 @@
                             </div>
                             <!-- /.row -->
                         </li>--}}
-                        <!-- Menu Footer-->
-                        <div class="pull-right">
+{{--                        <!-- Menu Footer-->--}}
+{{--                        <div class="pull-right">--}}
 
-                            <a class="btn btn-default btn-flat" href="{{ route('logout') }}"   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
+{{--                            <a class="btn btn-default btn-flat" href="{{ route('backend.logout') }}"   onclick="event.preventDefault();--}}
+{{--                                                     document.getElementById('logout-form').submit();">--}}
+{{--                                    Logout</a>--}}
+{{--                            <form id="logout-form" action="{{ route('backend.logout') }}" method="POST" style="display: none;">--}}
+{{--                                @csrf--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
                       {{--  <li class="user-footer">
                          --}}{{--   <div class="pull-left">
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
