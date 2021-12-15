@@ -8,7 +8,7 @@
     <meta name="description" content="Grocery | Essentials">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <meta name = "viewport" content = "width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+    <meta name = "viewport" content = "width=device-width, minimum-scale=1, maximum-scale = 1, user-scalable = no">
 
     <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}">
 
