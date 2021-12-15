@@ -32,7 +32,7 @@ class ReviewController extends Controller
         $product->save();
 
 
-        Flashy::success(' Review added.');
+        Flashy::success('Review added.');
 
         return redirect()->back();
 
@@ -61,7 +61,7 @@ class ReviewController extends Controller
 
         $review->save();
 
-        Flashy::success(' Review updated.');
+        Flashy::success('Review updated.');
 
         return redirect()->back();
 

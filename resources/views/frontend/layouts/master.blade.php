@@ -4,10 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title') |  {{ config('app.name', 'Virtualechos') }} </title>
+    <title>@yield('title') |  {{ config('app.name', 'VirtualEchos') }} </title>
     <meta name="description" content="Grocery | Essentials">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
+    <meta name = "viewport" content = "width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+
     <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}">
 
     <!-- Google Font -->

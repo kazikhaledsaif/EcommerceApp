@@ -61,7 +61,7 @@ class CartController extends Controller
 
             else {
                 Cart::instance('default')->add($request->id, $request->name, $request->quantity, $request->price)->associate('App\Product');
-                Flashy::success('Item was added to your cart!');
+                Flashy::success('Item added to your cart!');
 
                 return back()->with('success_message', 'Item added to your cart!');
             }

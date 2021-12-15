@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use MercurySeries\Flashy\Flashy;
+
 class WishlistController extends Controller
 {
     /**
@@ -43,7 +45,7 @@ class WishlistController extends Controller
     public function store(Request $request)
     {
         Cart::instance('wishlist')->add($request->id, $request->name,1,$request->price)->associate('App\Product');
-
+        Flashy::success('Item added to your wish list!');
      /*   Wishlist::create([
             'uid'=> $request->user_id,
             'pid'=>$request->id
