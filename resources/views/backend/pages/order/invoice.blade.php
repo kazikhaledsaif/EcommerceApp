@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="page-header">
-                    <i class="fa fa-globe"></i> {{ config('app.name', 'JahangirEnterprice') }}
+                    <i class="fa fa-globe"></i> {{ config('app.name') }}
                     <small class="pull-right">Date: {{ date('F j, Y, g:i:s a', strtotime( $order->created_at)) }}</small>
                 </h2>
             </div>
@@ -31,10 +31,11 @@
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
-                <b>Invoice #{{ $order->id + 1000 }}</b><br>
+                <b>Invoice #{{ $order->id  }}</b><br>
+                <b>Shipping tracker no:</b> {{$order->shipping->tracker}}<br>
+
                 <br>
-                <b>Order ID:</b> 4F3S8J<br>
-            </div>
+             </div>
             <!-- /.col -->
         </div>
         <!-- /.row -->
@@ -80,7 +81,6 @@
                 <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                     Payment Method: {{ $order->billing_payment_gateway }} <br>
                     Paid Amount: {{ $order->billing_total }} /-<br>
-                    Transection ID:  @php echo substr($order->billing_id,0,3); @endphp****************@php echo substr($order->billing_id,-4); @endphp <br>
 
                 </p>
             </div>

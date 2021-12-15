@@ -44,6 +44,7 @@ class CouponController extends Controller
         $coupon->expire = $request->couponExpireDate;
         $coupon->per_user_limit = $request->couponUserLimit;
         $coupon->max_limit = $request->couponMaxLimit;
+        $coupon->minimum_amount = $request->minimum_amount;
 
         $coupon->save();
 
@@ -92,7 +93,7 @@ class CouponController extends Controller
         $coupon->expire = $request->couponExpireDate;
         $coupon->per_user_limit = $request->couponUserLimit;
         $coupon->max_limit = $request->couponMaxLimit;
-
+        $coupon->minimum_amount = $request->minimum_amount;
 
         $coupon->save();
 

@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Frontend;
 use App\Order;
 use App\OrderIndex;
 use App\OrderProduct;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use MercurySeries\Flashy\Flashy;
 
 class OrderIndexController extends Controller
 {
@@ -47,7 +49,8 @@ class OrderIndexController extends Controller
     public function store(Request $request)
     {
 
-        $user = User::findOrFail(Auth::id());
+
+        $user = User::find( Auth::guard('user')->user()->id);
 
         if ($request->has('email')){
             $user->email = $request->email;
@@ -62,17 +65,17 @@ class OrderIndexController extends Controller
         if ($request->has('address')){
             $user->address = $request->address;
         }
-        if ($request->has('mobile')){
+        if ($request->has('phone')){
             $user->mobile = $request->mobile;
         }
 
-        // $user->password = \Hash::make($request->password);
+
         $user->save();
 
+        Flashy::success('Account Details Update Successfully!');
 
 
-
-        return redirect('/my-account')->with('success_message','Account Details Update Successfully');
+        return redirect()->back()->with('success_message','Account Details Update Successfully');
     }
 
     /**

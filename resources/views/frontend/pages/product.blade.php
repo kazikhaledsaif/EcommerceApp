@@ -185,7 +185,7 @@
 
                             </div>
                         </form>
-                        <p class="wishlist-link mb-30">
+                        <div class="wishlist-link mb-30">
                         <form action="{{route('frontend.wishlist.store')}} " method="POST">
                             {{csrf_field()}}
 
@@ -202,9 +202,20 @@
                                 <input type="hidden" name="price" value="{{ $product->discount_price }}">
 
                             @endif
-                            <button  id="submit" type="submit"><i class="fa fa-heart"></i> Add to wishlist</button>
+                            <button style="box-shadow:none;
+
+border:none;
+
+background-color: #04FDA1;
+
+color:#fff;
+
+padding: 6px 12px;
+
+display:block;"
+                                    id="submit" type="submit"><i class="fa fa-heart"></i> Add to wishlist</button>
                         </form>
-                        </p>
+                        </div>
                         <div class="social-share-buttons mb-30">
                             <p>Share</p>
                             <ul>
@@ -273,8 +284,12 @@
                             <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                                 <div class="product-ratting-wrap">
                                     <div class="pro-avg-ratting">
+                                        @if(!empty($product->rating))
                                         <h4>{{ $product->rating }} <span>(Overall)</span></h4>
                                         {{--<span>Based on {{ $review_count }} Comments</span>--}}
+                                        @else
+                                            <h4> <span>Not Reviewed Yet</span></h4>
+                                        @endif
                                     </div>
 
                                     <div class="rattings-wrapper">
@@ -465,6 +480,23 @@
 
                                         </p>
                                     </div>
+                                    <?php
+                                    $review_2 = \App\Review::where('pid', $alikeProducts->id)->get();
+                                    ?>
+
+
+                                    @foreach($review_2 as $rating)
+
+                                        <div class="rating">
+                                            @for($i=1; $i<=$rating->rating; $i++)
+                                                <i class="lnr lnr-star active"></i>
+                                            @endfor
+                                            @if($rating->rating != round($rating->rating))
+                                                <i class="lnr lnr-star"></i>
+                                            @endif
+                                            <span>({{ $rating->rating }})</span>
+                                        </div>
+                                    @endforeach
                                     {{--    <div class="rating">
                                             <i class="lnr lnr-star active"></i>
                                             <i class="lnr lnr-star active"></i>

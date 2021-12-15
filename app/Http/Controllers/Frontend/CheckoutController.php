@@ -14,6 +14,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use MercurySeries\Flashy\Flashy;
 
 class CheckoutController extends Controller
 {
@@ -29,7 +30,15 @@ class CheckoutController extends Controller
     public function store (Request $request){
 
         if (Cart::count() < 1){
-            return back()->withErrors("No product is in cart");
+            Flashy::error("No product is in cart" );
+
+            return back() ;
+        }
+        if ($request->total < 0){
+            Flashy::error("Please try again" );
+            Cart::instance('default')->destroy();
+            session()->forget('coupon');
+            return back();
         }
 
         try {
@@ -96,6 +105,7 @@ class CheckoutController extends Controller
 
             Cart::instance('default')->destroy();
             session()->forget('coupon');
+            Flashy::success("Thank you for your order" );
             return view('frontend.pages.thank-you')
                 ->with([
                     'tracking' => $otracker

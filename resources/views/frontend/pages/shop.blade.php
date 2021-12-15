@@ -244,13 +244,28 @@
 
                                         </p>
                                     </div>
-                                    <!-- <div class="rating">
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star active"></i>
-                                        <i class="lnr lnr-star"></i>
-                                    </div> -->
+
+                                    <?php
+                                    $review = \App\Review::where('pid', $product->id)->get();
+                                    $review_count = \App\Review::where('pid', $product->id)->count();
+                                    $review_sum = \App\Review::where('pid', $product->id)->sum('rating');
+                                    ?>
+
+
+                                    @foreach($review as $rating)
+
+                                                <div class="rating">
+                                                    @for($i=1; $i<=$rating->rating; $i++)
+                                                        <i class="lnr lnr-star active"></i>
+                                                    @endfor
+                                                    @if($rating->rating != round($rating->rating))
+                                                        <i class="lnr lnr-star"></i>
+                                                    @endif
+                                                    <span>({{ $rating->rating }})</span>
+                                                </div>
+                                    @endforeach
+
+
                                 </div>
 
                                 <!--=======  End of grid view product  =======-->
@@ -300,7 +315,7 @@
                                             {{--data-url="{{ route('dynamicModal',['id'=>$product->id])}}">--}}
                                             {{--<i class="lnr lnr-eye"></i></a>--}}
                                             {{--<a href="{{ route('dynamicModal',['id'=>$product->id])}}" class="btn btn-default modal-global"><i class="lnr lnr-eye"></i></a>--}}
-                                            <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $product->id }}"><i class="lnr lnr-eye"></i></a>
+{{--                                            <a class="hover-icon" href="#" data-toggle = "modal" data-target="#quick-view-modal-container{{ $product->id }}"><i class="lnr lnr-eye"></i></a>--}}
 
                                             <a class="hover-icon" href="javascript:{}"
                                                onclick="document.getElementById('link-wish{{ $product->id }}').submit()"><i class="lnr lnr-heart"></i></a>

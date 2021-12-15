@@ -57,13 +57,14 @@ class OrderController extends Controller
             ->where('order_products.order_id', $id)
             ->get();
 
-
+        $invoice = substr(md5('muaj'.$id.'saif'), 0, 15) ;
+        $invoice = $invoice.'.pdf';
         $pdf = PDF::loadView('backend.pages.order.invoice', [
             'order' => $order,
             'products' => $products
         ]);
-        $fileName= 'invoice'.'-'.$order->id. '-'.Str::random(5).'.pdf';
-        return $pdf->stream('invoice.pdf');
+
+        return $pdf->stream('invoice_'.$invoice);
     }
 
 

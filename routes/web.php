@@ -139,7 +139,6 @@ Route::name('frontend.')
         //write your routes for frontend
         Route::get('/', 'IndexController@index')->name('index');
 
-        Route::get('/contact', 'IndexController@contact')->name('contact.index');
 
         // shop route
         Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
@@ -182,7 +181,12 @@ Route::name('frontend.')
         // password update
         Route::get('/password-update', 'PasswordController@index')->name('password-update');
 
-        Route::post('/update/password', 'PasswordController@update')->name('update-pass');
+        Route::post('/password-update', 'PasswordController@update')->name('update-pass');
+
+        Route::get('forget-password', [App\Http\Controllers\Frontend\PasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+        Route::post('forget-password', [App\Http\Controllers\Frontend\PasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+        Route::get('reset-password/{token}', [App\Http\Controllers\Frontend\PasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+        Route::post('reset-password', [App\Http\Controllers\Frontend\PasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
         Route::get('/search', 'ShopController@search')->name('search');
 
@@ -190,14 +194,14 @@ Route::name('frontend.')
         Route::get('/order-status', 'IndexController@orderCheck')->name('order-check');
         Route::post('/order-status', 'IndexController@getOrderStatus')->name('order-check');
 
+        Route::get('/contact', 'IndexController@contact')->name('contact.index');
+        Route::get('/about', 'IndexController@about')->name('about.index');
+
         //working
         Route::get('/thank-you', function () {
             return view('frontend.pages.thank-you');
         });
 
-        Route::get('/about', function () {
-            return view('frontend.pages.about');
-        });
 
         Route::get('/compare', function () {
             return view('frontend.pages.compare');

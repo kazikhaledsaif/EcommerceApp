@@ -2,11 +2,171 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f37afbf-5046-4b3d-8387-1f12bc1f55a3" name="Changes" comment="Changes update">
-      <change beforePath="$PROJECT_DIR$/.idea/EcommerceApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EcommerceApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_12_16_202912_add_amount_columns_to_coupons.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dozoo.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/doozo-logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/categories/thumb_61ba2d8640af36.65956167HLkRa.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/categories/thumb_61ba2daa87cee2.10139628w57AK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/categories/thumb_61ba2dfcc30dd3.71790680Vy0bX.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61ba2b8459bac5.64760608gHmYX.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61ba2b8bee3ca6.210031624UL0L.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61ba2b96d926a4.64637885YIfMT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61ba2ba1307527.967827409Vjlm.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb70c34e8.89125606zqOad - Copy - Copy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/products/thumb_61ba300d416783.80487981BaB2Q.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/products/thumb_61ba3103c3fe89.038958167u79H.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/products/thumb_61ba31408058b2.08592292J1cam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/products/thumb_61ba315739ead6.37997856Zg1to.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/products/thumb_61ba3167e7f8a0.28904702TCaTP.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/slider/slider_61ba2a3952a397.73408013dcDdu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/slider/slider_61ba2a5c8f1fd7.15603015HjVYc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/email/forgetPassword.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/password-reset-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/password-reset-link.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/password-update.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/CouponController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CheckoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/OrderIndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/OrderIndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/PasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/PasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/OrderProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/OrderProduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/categories/thumb_61a2763a580b65.55358586gD59w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/categories/thumb_61a277a9196273.01314412u0mv5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/categories/thumb_61a277c3a60be4.52041968OULFz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/categories/thumb_61a27831e2d5b0.51118844181B0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/categories/thumb_61a27865b86b18.56573781nDiNE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/categories/thumb_61a27c5be8d721.81876634J0DEe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/categories/thumb_61a27ced283297.613181363bsZZ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/categories/thumb_61a28179a2cb34.88558434SI8lV.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_5c7e9944a91589.90183146mL8JJ.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_5c7e9971b05656.43889419a17rz.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_5c7e998595c217.378768359ulhs.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_5c7e99909c9450.07359828GV1RQ.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_5c820e248c2af3.60730818CQi0b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a7891b844222.46596349owrnC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a78a0c78c136.52033033Qj4rX.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a78aed3d9f97.88701947vMzNy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a78af766cd94.51695956Hs3Jp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a78b5701f757.28596414SHCbd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a78b612f4c53.543574052I6Ht.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a78b6ebdf2a3.20393059Sn686.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a78b7bc76689.286383531CXwy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a78b864d7969.72700808x36U8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a790ba41d407.83432007L69xI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61a790c1c9e312.36803037Zolm8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6c2de437f512.45884472WYD3Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6c2de43c8962.774077913hAEx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6c2de43ce753.29989718I6e87.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6c2de43d1a81.49366713EeSsN.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f92899a2601.15455976Raol9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f92899d8285.81038657u7izv.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f929b5271e6.9965244103iwg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f929b529ad6.42931178tve6L.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f92ce6066b5.66906024tYAgg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f92ce6096f6.40727166gkPoY.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f93549131f2.43071031QE9H6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f9354917ab5.600762495uJHJ.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f93562714c0.15839209ehGRB.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f9356274215.59686701h2MPa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f94fdc97780.22265846B5izW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f94fdc9a0f7.613902621fc22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f94fdc9ef80.12336159Da8rX.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f94fdca4d76.904452171n7tx.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f95721d5eb1.00834859LDWKy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f95721faa48.95684249XcI84.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f9585388aa0.81219555b39aE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f95853bde84.73885408qCiJX.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f95853c7f64.91235189B37nJ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f95853d4378.42324871MyqNW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f95dc038419.83540749Prnn4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f95dc059251.74141263zz6kF.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f95dc060de8.76258586YSDao.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f9755d0e657.610575207Xaqs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f9756be8288.92418521xRBi4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c6f9756bec277.8837678168Dwq.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c790cdc924641.04906720VCQPS.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c790cdc938e48.520743236wg2G.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c790cdc94bbd4.02267550hSiyx.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c790cdc962042.63780639iBjMB.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c794a54a831d2.48439182zMZ7b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c794a54a95c85.11867560t37jY.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c794a54aae114.06638142OxVh3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c794a54ac9a26.63245449Ofq2L.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c7df6b81c7da7.006243962IICn.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c7df6b81e7237.00342058v7DgC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c7df6b8289ef8.77881323jBbyI.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c7df6c9a52a24.65278367bNcmC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c7df6c9a6e446.52251502vw0aC.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c7df6c9a85aa3.91430782Civx9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c820f218c5326.99207819SdOT6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c820f218c8209.09617608zTO8j.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c820f218caec5.229715647ymUF.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_5c820f218cd9f1.68932783qu82A.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_61a289961566a4.82008524JxSx1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_61a28996172fa4.56666678dXq8s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_61a2899617adb6.52026530GbYtF.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_61a28996181736.13784440CzwVV.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb707f421.50561156UDO66.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb707f421.50561156UDO66.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb70b2312.14909237lWz5v.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb70b2312.14909237lWz5v.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb70b9e18.82639148T3j8l.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb70b9e18.82639148T3j8l.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb70c34e8.89125606zqOad.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/products/gallery_61a28eb70c34e8.89125606zqOad.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6c2ba5b69df5.57302395KrVEg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6c2c2717bb03.59758680bbOl7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6c3cca5caee4.262721433075b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6f928986abe3.42654125xn3FG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6f929b4dfa78.64507113qy1Z1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6f92ce5d0bd4.40604146aWXzl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6f935485e798.31764665Fl1N0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6f935625f0e2.040876660bgs2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c6f94fdc7d170.30053140OUpF4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c790cdc419143.79281089wcF3y.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c7947960323c6.20837497qYugj.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c794a54a5a845.409988814VQa6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c7df6b78f6de7.87342033GFbfG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c7df6c99e3096.97299374yMf7L.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c813bd00aec92.50325897MTVMG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c820f218a9493.096807287aNC8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_5c82107451e3d5.101992592z8SG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_61a282ac7f1c40.14579763nCfda.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_61a282e71bf731.95359428Hx34H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_61a2834dec1e18.955072474mfLe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_61a285dd7378d6.44334749KCIst.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_61a28eb705eac2.47015314JMUbO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/products/thumb_61ae14b83f3bc2.20864337zHtAq.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/uploads/products/thumb_61ae14b83f3bc2.20864337zHtAq.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/slider/slider_5c7e4660662749.64768096Wc54r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/slider/slider_5c7e9910565476.63023609uhAKS.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/slider/slider_5c820cd4478fe9.318268688LSJ8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/slider/slider_61a791938ff6b3.55640238uiIyE.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/slider/slider_61a795ac488f56.26868618W2PNl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/slider/slider_61a796023e5ff1.53079247t1HS3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/slider/slider_61a79612aa8da3.57556582zH3Es.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/coupon/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/coupon/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/coupon/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/coupon/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/coupon/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/coupon/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/feedback/newsletter.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/feedback/newsletter.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/pdf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/about.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/about.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/myaccount.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/myaccount.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/order-status.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/order-status.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/shop.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/partials/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/flashy/message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/flashy/message.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,17 +317,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\database\migrations" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\resources\views\frontend\pages" />
+      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\public\frontend\assets\images\theme" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\resources\views\backend\pages" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\app\Http\Controllers\Backend" />
-      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\public\backend\dist\img" />
-      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\app\Http\Controllers\Frontend\Auth" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\public\frontend\assets\images\doozo" />
     </key>
   </component>
   <component name="RunManager">
@@ -210,7 +373,8 @@
       <workItem from="1639299491636" duration="7007000" />
       <workItem from="1639414879544" duration="13783000" />
       <workItem from="1639498383750" duration="7413000" />
-      <workItem from="1639576153245" duration="2128000" />
+      <workItem from="1639576153245" duration="22644000" />
+      <workItem from="1639601132935" duration="1287000" />
     </task>
     <task id="LOCAL-00001" summary="Changes update">
       <created>1639576813879</created>
@@ -219,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639576813879</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Changes update">
+      <created>1639579197440</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1639579197440</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,9 +440,19 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php</url>
-          <line>44</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/resources/views/frontend/partials/header.blade.php</url>
+          <line>108</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php</url>
+          <line>605</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/frontend/pages/password-update.blade.php</url>
+          <line>7</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

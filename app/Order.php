@@ -23,4 +23,18 @@ class Order extends Model
     public function cancelReason(){
         return $this->hasOne('App\CancelReason');
     }
+    public function shipping(){
+        return $this->hasOne('App\OrderIndex','order_no','id');
+    }
+//    public function order_details(){
+//       return OrderProduct::select('order_products.quantity as amount', 'products.name as productName',
+//            'products.slug as slug','order_products.price as rate')
+//            ->join('products','order_products.product_id','=','products.id')
+//            ->where('order_products.order_id', $this->is)
+//            ->get();
+//    }
+
+    public function order_details(){
+        return $this->hasMany('App\OrderProduct','order_id','id');
+    }
 }

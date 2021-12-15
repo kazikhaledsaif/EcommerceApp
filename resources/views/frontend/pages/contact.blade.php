@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title' , 'Contact')
+@section('title' , 'Contact Us')
 @section('content')
 
 
@@ -15,7 +15,7 @@
                     <div class="breadcrumb-container">
                         <ul>
                             <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>
-                            <li class="active">Contact</li>
+                            <li class="active">Contact Us</li>
                         </ul>
                     </div>
                 </div>
@@ -36,13 +36,13 @@
         =            google map container         =
         =============================================-->
 
-        <div class="google-map-container mb-80">
-            <div id="google-map"></div>
-        </div>
+{{--        <div class="google-map-container mb-80">--}}
+{{--            <div id="google-map"></div>--}}
+{{--        </div>--}}
 
         <!--=====  End of google map container  ======-->
 
-        <div class="container">
+        <div class="container mt-80">
             <div class="row">
                 <div class="col-lg-3 col-md-4 mb-sm-70">
                     <!--=======  contact page side content  =======-->
@@ -53,9 +53,9 @@
                         <!--=======  single contact block  =======-->
 
                         <div class="single-contact-block">
-                            <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon1.png') }}" alt=""> Address</h4>
-                            <p>Haji Khalek Gamsa Super Market, Shekherchar Bazar, Mosjid road,</p>
-                            <p> Gamsa potti,Madhabdi,Narsingdi</p>
+                            <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon1.png') }}" alt=""> Support Center</h4>
+                            <p> M.R. View 275/3 (Ground Floor) Khilgaon Tilpapara</p>
+                            <p> Dhaka-1219</p>
                         </div>
 
                         <!--=======  End of single contact block  =======-->
@@ -64,8 +64,8 @@
 
                         <div class="single-contact-block">
                             <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon2.png') }}" alt=""> Phone</h4>
-                            <p>Mobile: +88 017 11 227 959</p>
-                            <p>Hotline: +88 019 24 707 806</p>
+                            <p>Mobile: +09638573540</p>
+
                         </div>
 
                         <!--=======  End of single contact block  =======-->
@@ -74,9 +74,8 @@
 
                         <div class="single-contact-block">
                             <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon3.png') }} " alt=""> Email</h4>
-                            <p>jh.jahangir227@gmail.com</p>
-                            <p> ja.jahangir227@gmail.com
-                            </p>
+                            <p>support@doozo.com</p>
+
                         </div>
 
                         <!--=======  End of single contact block  =======-->

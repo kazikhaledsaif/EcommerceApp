@@ -65,7 +65,7 @@
                 <div class="col-sm-4 invoice-col">
                     <b>Order ID # {{ $order->id  }}</b><br>
                     <br>
-                    <b>Shipping ID:</b> 4F3S8J<br>
+                    <b>Shipping tracker no:</b> {{$order->shipping->tracker}}<br>
                 </div>
                 <!-- /.col -->
             </div>
@@ -112,7 +112,7 @@
                     <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                          Payment Method: {{ $order->billing_payment_gateway }} <br>
                          Paid Amount: {{ $order->billing_total }} <br>
-                         Transection ID: {{ $order->billing_id }} <br>
+
                     </p>
                 </div>
                 <!-- /.col -->
@@ -141,7 +141,11 @@
                 </div>
             </div>
             <!-- /.row -->
-
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <a href="{{  route('backend.order.list') }}" class="btn btn-info">Cancel</a>
+            </div>
+            <!-- /.box-footer -->
 
         </section>
         <!-- /.content -->

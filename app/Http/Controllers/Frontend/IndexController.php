@@ -125,10 +125,7 @@ class IndexController extends Controller
     {
         //
     }
-    public function contact(){
 
-        return view('frontend.pages.contact');
-    }
     public function feedback(Request $request){
 
         $feedback = new Feedback();
@@ -185,5 +182,14 @@ class IndexController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function contact(){
+
+        return view('frontend.pages.contact');
+    }
+    public function about(){
+
+        return view('frontend.pages.about');
     }
 }

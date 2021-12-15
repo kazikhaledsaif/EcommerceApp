@@ -23,20 +23,6 @@
 
     <!--=====  End of Breadcrumb Area  ======-->
 
-    @if(session()->has('success_message'))
-        <div class="alert alert-success">
-            <h4> {{session()->get('success_message')}}</h4>
-        </div><br><br>
-
-    @elseif(session()->has('error_massage'))
-        <div class="alert alert-danger">
-            <h4> {{session()->get('error_massage')}}</h4>
-        </div><br><br>
-    @elseif(session()->has('alert_massage'))
-        <div class="alert alert-info">
-            <h4> {{session()->get('alert_massage')}}</h4>
-        </div><br><br>
-    @endif
 
     <!--=============================================
 =            My Account page content         =
@@ -83,7 +69,7 @@
                                         <h3>Dashboard</h3>
 
                                         <div class="welcome mb-20">
-                                            <p>Hello <strong>{{ Auth::guard('user')->user()->first_name }}</strong>  ,
+                                            <p>Hello <strong>{{ Auth::guard('user')->user()->first_name ." ". Auth::guard('user')->user()->last_name }}</strong>  ,
                                         </div>
 
                                         <p class="mb-0">Thanks message here. <br> From your account dashboard. you can easily check &amp; view your
@@ -99,6 +85,7 @@
                                         <h3>Orders</h3>
 
                                         <div class="myaccount-table table-responsive text-center">
+                                            @if(!empty($orders))
                                             <table class="table table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
@@ -107,27 +94,78 @@
                                                     <th>Date</th>
                                                     <th>Total</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
+                                                    <th>Tracking Id</th>
+                                                    <th scope="col">See Full Order</th>
 
                                                 </tr>
                                                 </thead>
 
                                                 <tbody>
-                                                @foreach ($orders as $order)
-                                                    <tr>
-                                                        <td>{{ 1+$loop->index }}</td>
-                                                        <td>{{ 1000+$order->id}}</td>
+                                                @foreach ($orders as $key=>$order)
+                                                    <tr data-toggle="collapse" data-target="#demo{{ $order->id }}"
+                                                        class="accordion-toggle">
+                                                        <td>{{$key+1}}</td>
+                                                        <td>{{ $order->id}}</td>
                                                         <td>{{ $order->created_at}}</td>
                                                         <td>${{ $order->billing_total}}</td>
                                                         <td>{{ $order->status}}</td>
-                                                        <td><a class="btn" onclick="window.location.href='/invoice/{{  substr(md5('muaj'.$order->id.'saif'), 16, 31)}}'">View/ Download</a>
+                                                        <td>{{ $order->shipping ? $order->shipping->tracker : "" }}</td>
+
+                                                        <td scope="col">
+                                                            <a  class="btn btn-default btn-sm">
+                                                                <i class="fa fa-search-plus"></i>
+                                                            </a>
                                                         </td>
+
+                                                    <tr>
+                                                        <td colspan="8" class="hiddenRow"><div class="accordian-body collapse"
+                                                             id="demo{{$order->id}}">
+
+
+                                                                <div class="table-responsive-lg">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                        <tr  >
+                                                                            <th scope="col">#</th>
+                                                                            <th scope="col">Item Name</th>
+                                                                            <th scope="col">Item Quantity</th>
+                                                                            <th scope="col">Item Price</th>
+                                                                            <th scope="col">Total Amount</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+
+
+                                                                        @if(!empty($order->order_details))
+                                                                            @foreach ($order->order_details as $key=>$order )
+                                                                                <tr>
+
+                                                                                    <td>{{$key+1}}</td>
+                                                                                    <td>{{!empty($order->item) ? $order->item->name : '' }}</td>
+
+                                                                                    <td>{{$order->quantity}}</td>
+                                                                                    <td>{{$order->price}} ৳</td>
+                                                                                    <td>{{ (float)$order->price * (int)$order->quantity }} ৳</td>
+
+
+                                                                                </tr>
+                                                                            @endforeach
+                                                                        @endif
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+
+                                                            </div> </td>
+                                                    </tr>
                                                     </tr>
                                                 @endforeach
 
 
                                                 </tbody>
                                             </table>
+                                            @else
+                                                <p>No Orders available</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +222,7 @@
                                                     </div>
 
                                                     <div class="col-lg-6 col-12 mb-30">
-                                                        <input id="last-name" name="lname" placeholder="Last Name" type="text" value="{{  Auth::guard('user')->user()->lsat_name }}">
+                                                        <input id="last-name" name="lname" placeholder="Last Name" type="text" value="{{  Auth::guard('user')->user()->last_name }}">
                                                     </div>
 
 
@@ -193,20 +231,6 @@
                                                         <input id="email" name="email" placeholder="Email Address" type="email" value="{{  Auth::guard('user')->user()->email }}">
                                                     </div>
 
-                                                    {{--   <div class="col-12 mb-30"><h4>Password change</h4></div>
-
-                                                       <div class="col-12 mb-30">
-                                                           <input name="current_password" id="current-pwd" placeholder="Current Password" type="password">
-                                                       </div>
-
-
-                                                       <div class="col-lg-6 col-12 mb-30">
-                                                           <input name="new_password" id="new-pwd" placeholder="New Password" type="password">
-                                                       </div>
-
-                                                       <div class="col-lg-6 col-12 mb-30">
-                                                           <input name="verify_password" id="confirm-pwd" placeholder="Confirm Password" type="password">
-                                                       </div>--}}
 
                                                     <div class="col-12">
                                                         <button class="save-change-btn">Save Changes</button>

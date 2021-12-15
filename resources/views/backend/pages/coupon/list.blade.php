@@ -31,6 +31,7 @@
                     <th>Expired</th>
                     <th>Per user limit</th>
                     <th>Max limit</th>
+                    <th>Minimum Amount</th>
                     <th>Created</th>
                     <th>Action</th>
                 </tr>
@@ -65,6 +66,11 @@
                             <td>{{ $coupon->max_limit }}</td>
                         @else
                             <td>No limit</td>
+                        @endif
+                        @if( $coupon->minimum_amount)
+                            <td>{{ $coupon->minimum_amount }}</td>
+                        @else
+                            <td>No Minimum</td>
                         @endif
 
 

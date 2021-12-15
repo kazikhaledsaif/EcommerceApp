@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title' , 'About')
+@section('title' , 'About Us')
 @section('content')
 
 
@@ -15,7 +15,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="#">Home</a> <span class="separator">/</span></li>
+                            <li><a href="{{route('frontend.index')}}">Home</a> <span class="separator">/</span></li>
                             <li class="active">About Us</li>
                         </ul>
                     </div>
@@ -42,13 +42,13 @@
                 <div class="about-content col-lg-6">
                     <div class="row">
                         <div class="col-12 mb-50">
-                            <h1>WELCOME TO <span>PATAKU.</span></h1>
-                            <p>PATAKU provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer of the truth, the mer of human.</p>
+                            <h1>WELCOME TO <span>Doozo.</span></h1>
+                            <p>Doozo provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer of the truth, the mer of human.</p>
                         </div>
 
                         <div class="col-12 mb-50">
                             <h4>WIN BEST ONLINE SHOP AT 2018</h4>
-                            <p>PATAKU provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer of the truth, the mer of human.</p>
+                            <p>Doozo provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer of the truth, the mer of human.</p>
                         </div>
 
                     </div>

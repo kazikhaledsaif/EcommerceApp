@@ -43,8 +43,7 @@
         <div class="col-sm-4 invoice-col">
             <b>Order ID #{{ $order->id  }}</b><br>
             <br>
-            <b>Shipping ID:</b> 4F3S8J<br>
-            <br>
+            <b>Shipping tracker no:</b> {{$order->shipping->tracker}}<br>            <br>
         </div>
         <!-- /.col -->
 

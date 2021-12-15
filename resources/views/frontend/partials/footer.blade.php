@@ -51,25 +51,18 @@
                     <div class="single-footer">
                         <!--=======  Single block  =======-->
 
-                        <div class="single-block mb-35">
+                        <div class="single-block mb-25">
                             <h3 class="footer-title">Need Help?</h3>
-                            <p>Call: +88 017 11 227 959</p>
+                            <p> <a href="tel:09638573540" >Call: +09638573540</a></p>
                         </div>
 
                         <!--=======  End of Single block  =======-->
-                        <!--=======  Single block  =======-->
 
-                        <div class="single-block mb-35">
-                            <h3 class="footer-title">Products & Sales</h3>
-                            <p>Call: +88 019 24 707 806</p>
-                        </div>
-
-                        <!--=======  End of Single block  =======-->
                         <!--=======  Single block  =======-->
 
                         <div class="single-block">
                             <h3 class="footer-title">Check Order Status</h3>
-                            <p> <a href="my-account.html">Click here</a> to check Order Status.</p>
+                            <p> <a href="{{route('frontend.order-check')}}">Click here to check Order Status.</a></p>
                         </div>
 
                         <!--=======  End of Single block  =======-->
@@ -85,11 +78,9 @@
                     <div class="single-footer">
                         <h3 class="footer-title mb-20">Products</h3>
                         <ul>
-                            <li><a href="#">Prices Drop</a></li>
-                            <li><a href="#">New Products</a></li>
-                            <li><a href="#">Best Sales</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">My Account</a></li>
+
+                            <li><a href="{{route('frontend.my-account')}}">My Account</a></li>
+                            <li><a href="{{route('frontend.order-check')}}">Order Tracking</a></li>
                         </ul>
                     </div>
 
@@ -102,12 +93,8 @@
                     <div class="single-footer">
                         <h3 class="footer-title mb-20">Our Company</h3>
                         <ul>
-                            <li><a href="#">Delivery</a></li>
-                            <li><a href="#">Legal Notice</a></li>
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="{{route('frontend.about.index')}}">About Us</a></li>
                             <li><a href="{{route('frontend.contact.index')}}">Contact Us</a></li>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">Stores</a></li>
                         </ul>
                     </div>
 
@@ -126,12 +113,6 @@
                                 <button type="submit" value="submit"><i class="lnr lnr-envelope"></i></button>
                             </form>
                         </div>
-                        <!-- mailchimp-alerts Start -->
-                        {{--<div class="mailchimp-alerts mb-20">--}}
-                            {{--<div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->--}}
-                            {{--<div class="mailchimp-success"></div><!-- mailchimp-success end -->--}}
-                            {{--<div class="mailchimp-error"></div><!-- mailchimp-error end -->--}}
-                        {{--</div><!-- mailchimp-alerts end -->--}}
 
                     </div>
 
@@ -140,8 +121,8 @@
                     <!--=======  single footer  =======-->
 
                     <div class="single-footer">
-                        <h3 class="footer-title mb-20">Address</h3>
-
+                        <h3 class="footer-title mb-10">Support Center</h3>
+                        <p>M.R. View 275/3 (Ground Floor) Khilgaon Tilpapara, Dhaka-1219</p>
                     </div>
 
                     <!--=======  End of single footer  =======-->
@@ -171,9 +152,9 @@
                     <div class="social-link">
                         <span class="title">Follow Us:</span>
                         <ul>
-                            <li><a target="_blank" href="//www.rss.com"><i class="fa fa-rss"></i></a></li>
-                            <li><a target="_blank" href="//www.facebook.com/jahangirenterprisebd"><i class="fa fa-facebook"></i></a></li>
-                            <li><a target="_blank" href="//www.instagram.com"><i class="fa fa-instagram"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-rss"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a target="_blank" href="#"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -185,29 +166,29 @@
 
     <!--=======  footer bottom navigation  =======-->
 
-    <div class="footer-bottom-navigation text-center mb-20">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  navigation-container  =======-->
+{{--    <div class="footer-bottom-navigation text-center mb-20">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-12">--}}
+{{--                    <!--=======  navigation-container  =======-->--}}
 
-                    <div class="navigation-container">
-                        <ul>
-                            <li><a href="#">About Us</a> <span class="separator">|</span></li>
-                            <li><a href="#">Blog</a> <span class="separator">|</span></li>
-                            <li><a href="#">My Account</a> <span class="separator">-</span></li>
-                            <li><a href="#">Order Status</a> <span class="separator">-</span></li>
-                            <li><a href="#">Shipping &amp; Returns</a> <span class="separator">-</span></li>
-                            <li><a href="#">Privacy Policy</a> <span class="separator">-</span></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                        </ul>
-                    </div>
+{{--                    <div class="navigation-container">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="#">About Us</a> <span class="separator">|</span></li>--}}
+{{--                            <li><a href="#">Blog</a> <span class="separator">|</span></li>--}}
+{{--                            <li><a href="#">My Account</a> <span class="separator">-</span></li>--}}
+{{--                            <li><a href="#">Order Status</a> <span class="separator">-</span></li>--}}
+{{--                            <li><a href="#">Shipping &amp; Returns</a> <span class="separator">-</span></li>--}}
+{{--                            <li><a href="#">Privacy Policy</a> <span class="separator">-</span></li>--}}
+{{--                            <li><a href="#">Terms &amp; Conditions</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
 
-                    <!--=======  End of navigation-container  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
+{{--                    <!--=======  End of navigation-container  =======-->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <!--=======  End of footer bottom navigation  =======-->
 
@@ -219,9 +200,9 @@
                 <div class="col-lg-12">
                     <!--=======  Copyright text  =======-->
 
-                    <p class="copyright-text">Copyright &copy;<?php echo date("Y"); ?> <strong style="color: #7d9f51"> <a href="#"> {{ config('app.name', 'Laravel') }}</a></strong>. All Rights Reserved ||
+                    <p class="copyright-text">Copyright &copy;<?php echo date("Y"); ?> <strong style="color: #04FDA1"> <a href="#"> {{ config('app.name', 'Laravel') }}</a></strong>. All Rights Reserved ||
                         <span> Developed by </span>
-                        <a href="#" style="color: #7d9f51">Virtual Echos</a></p>
+                        <a href="http://virtualechos.com/" style="color: #04FDA1  ">Virtual Echos</a></p>
 
                     <!--=======  End of Copyright text  =======-->
                 </div>

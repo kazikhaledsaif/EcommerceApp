@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title') - Ecommerce </title>
-    <meta name="description" content="@yield('meta-description')">
+    <title>@yield('title') |  {{ config('app.name', 'Virtualechos') }} </title>
+    <meta name="description" content="Grocery | Essentials">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}">
@@ -103,7 +103,7 @@
 
 @stack('scripts')
 @stack('js')
- 
+
 
 
 </body>

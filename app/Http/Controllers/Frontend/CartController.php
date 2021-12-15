@@ -181,6 +181,38 @@ class CartController extends Controller
 
             }
         }
+        if (Cart::count()  < 1){
+
+                Flashy::error("Sorry! You must cart some item !" );
+                // $msg = "Invalid coupon !";
+
+                return response()->json(200);
+
+        }
+        if (Cart::count()  > 0){
+
+                if (  !empty($code) && $code->type == "fixed" && !empty($code->minimum_amount) &&(double)Cart::instance('default')->subtotal(null,null,'')<   $code->minimum_amount ){
+
+
+                    Flashy::error("Sorry! Coupon will applicable for more than ".$code->minimum_amount." taka!" );
+                    // $msg = "Invalid coupon !";
+
+                    return response()->json(200);
+
+            }
+        }
+        if (Cart::count()  > 0){
+
+            if ( (double)Cart::instance('default')->subtotal(null,null,'') - $code->discount( Cart::subtotal(2,'.','')  <   0 )){
+
+
+                Flashy::error("Sorry! Coupon is not applicable!" );
+                // $msg = "Invalid coupon !";
+
+                return response()->json(200);
+
+            }
+        }
 
 
         UserCoupon::updateOrCreate(

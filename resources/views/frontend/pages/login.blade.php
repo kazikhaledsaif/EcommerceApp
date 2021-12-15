@@ -13,7 +13,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-container">
                         <ul>
-                            <li><a href="#">Home</a> <span class="separator">/</span></li>
+                            <li><a href="{{route('frontend.index')}}">Home</a> <span class="separator">/</span></li>
                             <li class="active">Login </li>
                         </ul>
                     </div>
@@ -73,7 +73,7 @@
                                 </div>
 
                                 <div class="col-md-6 mt-10 mb-20 text-left text-md-right">
-                                    <a href="{{ route('frontend.password.request') }}"> Forgotten pasward?</a>
+                                    <a href="{{ route('frontend.forget.password.get') }}"> Forgotten pasward?</a>
                                     <a class="mt-2" href="{{ route('frontend.register') }}">Don't you have an account?</a>
                                 </div>
 

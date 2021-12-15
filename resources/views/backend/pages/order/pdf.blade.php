@@ -5,9 +5,9 @@
         Order Time:  {{ date('F j, Y, g:i:s a', strtotime( $order->created_at)) }}
     </div>
     <div class="col-md-6">
-        <h1> Order No. #{{ $order->id + 1000 }} </h1>
-        <p>Invoice # FVT{{ substr(md5('muaj'.$order->id.'saif'), 0, 15) }}</p>
-        <p>Tracker : {{ substr(md5('muaj'.$order->id.'saif'), 16, 31) }} </p>
+        <h1> Order No. #{{ $order->id  }} </h1>
+        <p>Shipping tracker no:</p> {{$order->shipping->tracker}}<br>
+
 
     </div>
 

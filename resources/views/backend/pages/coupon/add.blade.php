@@ -61,17 +61,21 @@
 
                             <div class="form-group">
                                 <label for="couponExpire" class="col-sm-2 control-label">Expire Date</label>
-                                <div class="col-sm-5">
+                                <div class="col-sm-4">
                                     <input type="date" class="form-control" id="couponExpire" name="couponExpireDate" placeholder="Expire"  >
                                 </div>
+                                <label for="couponMaxLimit" class="col-sm-2 control-label">Maximum limit</label>
 
+                                <div class="col-sm-4">
+                                    <input type="number" class="form-control" id="couponMaxLimit" name="couponMaxLimit" placeholder="" >
+                                </div>
                             </div>
                         <div class="form-group">
 
-                            <label for="couponMaxLimit" class="col-sm-2 control-label">Maximum limit</label>
+                            <label for="minimum_amount" class="col-sm-2 control-label">Minimum Amount</label>
 
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="couponMaxLimit" name="couponMaxLimit" placeholder="" >
+                                <input type="number" class="form-control" id="minimum_amount" name="minimum_amount" placeholder="" >
                             </div>
 
                             <label for="couponUserLimit" class="col-sm-2 control-label">Per User limit</label>
@@ -96,7 +100,9 @@
 
     <section class="container">
         <cite><h5>* Please use unique coupon code name</h5></cite>
-        <cite><h5>* Expire date feature is not available</h5></cite>
+        <cite><h5>* For using type Fixed , left for percentage discount blank</h5></cite>
+        <cite><h5>* For using type Percentage Off , left for Fixed Amount blank</h5></cite>
+        <cite><h5>* For Expire date, Maximum limit, Minimum Amount, Per User limit  unlimited left those blank</h5></cite>
         <br>
         <h5>Coupon's name already active below</h5>
         <table>
