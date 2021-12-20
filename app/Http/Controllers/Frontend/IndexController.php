@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 
-
 use App\FeaturedCategory;
 use App\Feedback;
+use App\Http\Controllers\Controller;
 use App\Newsletter;
 use App\Order;
 use App\OrderIndex;
 use App\Product;
 use App\Slider;
-use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use MercurySeries\Flashy\Flashy;
 
@@ -23,7 +22,7 @@ class IndexController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     /**
      * Create a new controller instance.
@@ -35,13 +34,10 @@ class IndexController extends Controller
 //        $this->middleware('auth');
 //    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
+
+
         $current = date('Y-m-d');
         // $current->modify('+1 day');
         $products = Product::latest()->take(10)->get();
@@ -49,7 +45,7 @@ class IndexController extends Controller
         // $products_weekly = Product::whereDate('weekly','$current')->get();
         $products_weekly = DB::select("SELECT * FROM `products` WHERE `weekly_deal` > '$current' ");
         $featuredCategory = FeaturedCategory::take(4)->orderBy('id', 'Asc')->get();
-     $top_sell = DB::select("SELECT  `product_id`,`name`,`slug`,`details`,`regular_price`,`discount_price`,`product_image`,
+        $top_sell = DB::select("SELECT  `product_id`,`name`,`slug`,`details`,`regular_price`,`discount_price`,`product_image`,
                                     `badge`,`percentage`,
                                  COUNT(`product_id`) AS `value_occurrence`
                         FROM     `order_products` JOIN `products`
@@ -62,19 +58,26 @@ class IndexController extends Controller
         $sliders = Slider::take(5)->get();
 
         return view('frontend.pages.index')->with([
-            'new_products'=>$products,
-            'random' =>$products_rand,
-            'sliders' =>$sliders,
-            'topsell' =>$top_sell,
-            'weekly_product'=>$products_weekly,
-            'featuredCategory'=>$featuredCategory
+            'new_products' => $products,
+            'random' => $products_rand,
+            'sliders' => $sliders,
+            'topsell' => $top_sell,
+            'weekly_product' => $products_weekly,
+            'featuredCategory' => $featuredCategory
         ]);
     }
 
     /**
+     * Show the application dashboard.
+     *
+     * @return Response
+     */
+
+
+    /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -84,8 +87,8 @@ class IndexController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -95,8 +98,8 @@ class IndexController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show($id)
     {
@@ -106,8 +109,8 @@ class IndexController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit($id)
     {
@@ -117,28 +120,31 @@ class IndexController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
      */
     public function update(Request $request, $id)
     {
         //
     }
 
-    public function feedback(Request $request){
+    public function feedback(Request $request)
+    {
 
         $feedback = new Feedback();
-        $feedback->name= $request->customerName;
-        $feedback->email= $request->customerEmail;
-        $feedback->subject= $request->contactSubject;
-        $feedback->message= $request->contactMessage;
+        $feedback->name = $request->customerName;
+        $feedback->email = $request->customerEmail;
+        $feedback->subject = $request->contactSubject;
+        $feedback->message = $request->contactMessage;
 
         $feedback->save();
         Flashy::success('Feedback Sent.');
         return redirect()->back();
     }
-    public function newsletter(Request $request){
+
+    public function newsletter(Request $request)
+    {
 
         echo $request->email;
         $newsletter = new Newsletter();
@@ -149,7 +155,8 @@ class IndexController extends Controller
         return redirect()->back();
     }
 
-    public function getOrderStatus(Request $request){
+    public function getOrderStatus(Request $request)
+    {
 
         $rules = [
             'tracking_id' => 'required',
@@ -161,20 +168,22 @@ class IndexController extends Controller
         ];
         $this->validate($request, $rules, $customMessages);
 
-        $order_indices= OrderIndex::where("tracker",$request->tracking_id)->latest('created_at')->first();
+        $order_indices = OrderIndex::where("tracker", $request->tracking_id)->latest('created_at')->first();
 
-        if ($order_indices){
-            $order = Order::where("id",$order_indices->order_no)->latest('created_at')->first();
+        if ($order_indices) {
+            $order = Order::where("id", $order_indices->order_no)->latest('created_at')->first();
 
             return view('frontend.pages.order-status')->with([
-                'order'=> $order,
-                'tracker'=>$request->tracking_id]);
+                'order' => $order,
+                'tracker' => $request->tracking_id]);
 
         }
 
         return redirect()->back()->with('message', 'Not Found');
     }
-    public function orderCheck(){
+
+    public function orderCheck()
+    {
 
         return view('frontend.pages.order-status');
     }
@@ -184,11 +193,14 @@ class IndexController extends Controller
         //
     }
 
-    public function contact(){
+    public function contact()
+    {
 
         return view('frontend.pages.contact');
     }
-    public function about(){
+
+    public function about()
+    {
 
         return view('frontend.pages.about');
     }

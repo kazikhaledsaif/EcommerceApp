@@ -106,6 +106,8 @@ Route::name('backend.')
             Route::post('/user-update', 'UserController@update')->name('user.update');
             Route::post('/user-destroy', 'UserController@destroy')->name('user.destroy');
 
+            Route::get('/notification', 'NotificationController@index')->name('notification');
+            Route::post('/notification-create', 'NotificationController@sendNotification')->name('notification.create');
 
         });
 

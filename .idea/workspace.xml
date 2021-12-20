@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f37afbf-5046-4b3d-8387-1f12bc1f55a3" name="Changes" comment="cart flashy">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="1f37afbf-5046-4b3d-8387-1f12bc1f55a3" name="Changes" comment="bug fix">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/NotificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/notification/notification61bb4db64c2b56.81835500egioC.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/notification/notification61bb4ddfb381b5.842889906x7vp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/notification/notification61bb5022a5cab4.7110085212mdg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/slider/notification61bb4d24685ae4.03654004RDc9u.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/notification.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/shop.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/assets/css/footer.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/css/footer.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontend/assets/scss/_banner.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/scss/_banner.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/myaccount.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/myaccount.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,17 +178,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/backend/pages" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\resources\views\backend\pages" />
+      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\app\Http\Controllers\Backend" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\database\migrations" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\resources\views\frontend\pages" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\public\frontend\assets\images\theme" />
-      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\resources\views\backend\pages" />
-      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\app\Http\Controllers\Backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\public\frontend\assets\images\doozo" />
@@ -213,7 +236,13 @@
       <workItem from="1639498383750" duration="7413000" />
       <workItem from="1639576153245" duration="22644000" />
       <workItem from="1639601132935" duration="1423000" />
-      <workItem from="1639602982879" duration="1162000" />
+      <workItem from="1639602982879" duration="1242000" />
+      <workItem from="1639608763121" duration="200000" />
+      <workItem from="1639647173484" duration="3952000" />
+      <workItem from="1639659735400" duration="6243000" />
+      <workItem from="1639830255411" duration="10566000" />
+      <workItem from="1639911993460" duration="727000" />
+      <workItem from="1640010826157" duration="1781000" />
     </task>
     <task id="LOCAL-00001" summary="Changes update">
       <created>1639576813879</created>
@@ -250,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639603827741</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="cart flashy">
+      <created>1639604226976</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1639604226976</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +311,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Changes update" />
     <MESSAGE value="cart flashy" />
-    <option name="LAST_COMMIT_MESSAGE" value="cart flashy" />
+    <MESSAGE value="bug fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -307,13 +344,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php</url>
-          <line>605</line>
+          <line>615</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/frontend/pages/password-update.blade.php</url>
           <line>7</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php</url>
+          <line>141</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

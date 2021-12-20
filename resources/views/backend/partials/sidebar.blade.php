@@ -70,6 +70,7 @@
             <li class="feedback"><a href="{{ route('backend.feedback.list') }}"><i class="fa fa-database"></i> <span>Feedback</span></a></li>
             <li class="newsletter"><a href="{{ route('backend.newsletter.index') }}"><i class="fa fa-newspaper-o"></i> <span>Newsletter</span></a></li>
             <li class="settings"><a href="{{ route('backend.settings.index') }}"><i class="fa fa-address-book-o"></i> <span>Settings</span></a></li>
+            <li class="notification"><a href="{{ route('backend.notification') }}"><i class="fa fa-send"></i> <span>Notification</span></a></li>
 
 
         </ul>

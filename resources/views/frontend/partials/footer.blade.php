@@ -120,10 +120,10 @@
 
                     <!--=======  single footer  =======-->
 
-                    <div class="single-footer">
-                        <h3 class="footer-title mb-10">Support Center</h3>
-                        <p>M.R. View 275/3 (Ground Floor) Khilgaon Tilpapara, Dhaka-1219</p>
-                    </div>
+{{--                    <div class="single-footer">--}}
+{{--                        <h3 class="footer-title mb-10">Support Center</h3>--}}
+{{--                        <p>M.R. View 275/3 (Ground Floor) Khilgaon Tilpapara, Dhaka-1219</p>--}}
+{{--                    </div>--}}
 
                     <!--=======  End of single footer  =======-->
                 </div>
@@ -134,7 +134,7 @@
     <!--=======  End of footer navigation container  =======-->
     <!--=======  footer social link container  =======-->
 
-    <div class="footer-social-link-container pt-15 pb-15 mb-60">
+    <div class="footer-social-link-container pt-15 pb-15 mb-30">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-lg-6 col-md-7 mb-sm-15 text-left text-sm-center text-lg-left">
@@ -200,9 +200,10 @@
                 <div class="col-lg-12">
                     <!--=======  Copyright text  =======-->
 
-                    <p class="copyright-text">Copyright &copy;<?php echo date("Y"); ?> <strong style="color: #04FDA1"> <a href="#"> {{ config('app.name', 'Laravel') }}</a></strong>. All Rights Reserved ||
-                        <span> Developed by </span>
-                        <a href="http://virtualechos.com/" style="color: #04FDA1  ">Virtual Echos</a></p>
+                    <p class="copyright-text">Copyright &copy;<?php echo date("Y"); ?> <strong style="color: #04FDA1"> <a href="#"> {{ config('app.name', 'Laravel') }}</a></strong>. All Rights Reserved
+{{--                        <span> Developed by </span>--}}
+{{--                        <a href="http://virtualechos.com/" style="color: #04FDA1  ">Virtual Echos</a>--}}
+                    </p>
 
                     <!--=======  End of Copyright text  =======-->
                 </div>

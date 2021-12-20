@@ -17,7 +17,8 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "mercuryseries/flashy": "^1.0",
-        "softon/sweetalert": "^1.0"
+        "softon/sweetalert": "^1.0",
+      "ext-curl": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

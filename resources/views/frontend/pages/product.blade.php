@@ -146,7 +146,7 @@
                                 <span class="main-price"> ${{ $product->regular_price }}</span>
                             @else
                                 <span class="main-price discounted">${{ $product->regular_price }}</span>
-                                <span class="discounted-price"> ${{ $product->discount_price }}</span>
+                                <span class="discounted-price"> ৳{{ $product->discount_price }}</span>
                             @endif
                         </p>
                         <p class="product-description mb-15">
@@ -169,7 +169,7 @@
 
                             <div id="quantity_card" class="cart-buttons mb-30">
                                 @if ($product->stock != 0)
-                                    <p class="mb-15">Quantity : <span id="stock" > {{$product->stock }}</span></p>
+{{--                                    <p class="mb-15">Quantity : <span id="stock" > {{$product->stock }}</span></p>--}}
                                     <div class="pro-qty mr-10">
                                         <input type="text " name="quantity" id="quantity" min="1" value="1" max="{{$product->stock}}" readonly="readonly">
 
@@ -474,8 +474,8 @@ display:block;"
                                             @if( $alikeProducts->discount_price == 0 )
                                                 <span class="main-price"> ${{ $alikeProducts->regular_price }}</span>
                                             @else
-                                                <span class="main-price discounted">${{ $alikeProducts->regular_price }}</span>
-                                                <span class="discounted-price"> ${{ $alikeProducts->discount_price }}</span>
+                                                <span class="main-price discounted">৳{{ $alikeProducts->regular_price }}</span>
+                                                <span class="discounted-price"> ৳{{ $alikeProducts->discount_price }}</span>
                                             @endif
 
                                         </p>
@@ -563,8 +563,8 @@ display:block;"
                                         @if( $mllikeproduct->discount_price == 0 )
                                             <span class="main-price"> ${{ $mllikeproduct->regular_price }}</span>
                                         @else
-                                            <span class="main-price discounted">${{ $mllikeproduct->regular_price }}</span>
-                                            <span class="discounted-price"> ${{ $mllikeproduct->discount_price }}</span>
+                                            <span class="main-price discounted">৳{{ $mllikeproduct->regular_price }}</span>
+                                            <span class="discounted-price"> ৳{{ $mllikeproduct->discount_price }}</span>
                                         @endif
 
                                         {{--<span class="discount-percentage">Save 8%</span>--}}

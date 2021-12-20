@@ -25,8 +25,9 @@ class OrderController extends Controller
         $orders = Order::where( function($query) use($request){
             return $request->status ?
                 $query->from('status')->where('status',$request->status) : '';
-        })->orderBy('id', 'asc')->get();
+        })->orderBy('created_at', 'asc')->get();
 
+        //return $orders;
         return view('backend.pages.order.list')->with([
             'orders' => $orders
         ]);

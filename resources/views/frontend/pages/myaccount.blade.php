@@ -107,7 +107,7 @@
                                                         <td>{{$key+1}}</td>
                                                         <td>{{ $order->id}}</td>
                                                         <td>{{ $order->created_at}}</td>
-                                                        <td>${{ $order->billing_total}}</td>
+                                                        <td>৳{{ $order->billing_total}}</td>
                                                         <td>{{ $order->status}}</td>
                                                         <td>{{ $order->shipping ? $order->shipping->tracker : "" }}</td>
 

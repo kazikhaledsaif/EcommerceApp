@@ -88,9 +88,10 @@
                         @foreach($products as $product)
                         <tr>
                             <td>{{ $product->productName }}</td>
-                            <td>{{ $product->slug }}</td>
+                            <td> <a href="{{ route('frontend.shop.show',['id'=> $product->slug]) }}">
+                                    {{ $product->productName }} </a></td>
                             <td>{{ $product->amount }}</td>
-                            <td>{{ $product->rate }}</td>
+                            <td>{{ $product->rate }} ৳</td>
                             <td>{{ $product->rate * $product->amount }} ৳</td>
 
                         </tr>
@@ -111,7 +112,7 @@
 
                     <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                          Payment Method: {{ $order->billing_payment_gateway }} <br>
-                         Paid Amount: {{ $order->billing_total }} <br>
+                         Paid Amount: {{ $order->billing_total }} ৳<br>
 
                     </p>
                 </div>
@@ -126,11 +127,11 @@
                             </tr>
                             <tr>
                                 <th>Shipping:</th>
-                                <td>{{ $order->shipping_fee }} ৳</td>
+                                <td>{{ $order->billing_shipping_fee }} ৳</td>
                             </tr>
                             <tr>
                                 <th>Discount:</th>
-                                <td>{{ $order->discount }} ৳</td>
+                                <td>{{ $order->billing_discount }} ৳</td>
                             </tr>
                             <tr>
                                 <th>Total:</th>

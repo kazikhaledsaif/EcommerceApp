@@ -32,7 +32,7 @@
                     <td>{{ $featuredcategory->slug }}</td>
                     <td><img height=100 width=100 src="{{ asset('uploads/'.$featuredcategory->image)  }}"> </td>
                     <td>
-                        <a href="{{ route('frontend.shop.show',['id'=> $featuredcategory->id]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;
+{{--                        <a href="{{ route('frontend.shop.show',['id'=> $featuredcategory->id]) }}"><i class="fa fa-search-plus fa-lg" style="color:green" aria-hidden="true"></i> </a> &nbsp;--}}
                         <a href="{{ route('backend.featuredcategories.edit',['id'=> $featuredcategory->id]) }}"><i class="fa fa-pencil-square fa-lg" style="color:dodgerblue" aria-hidden="true"></i> </a> &nbsp;
                         <a href=""><i class="fa fa-trash fa-lg deletebtn" data-id="{{ $featuredcategory->id }}"
                                       data-name="{{ $featuredcategory->id }}" data-token="{{ @csrf_token() }}" style="color:red"></i> </a>

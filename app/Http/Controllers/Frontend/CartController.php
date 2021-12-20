@@ -136,60 +136,60 @@ class CartController extends Controller
     public function storeCoupon(Request $request)
     {
 
+        try {
+            $code = Coupon::where('code', $request->coupon_code)->first();
 
-        $code = Coupon::where('code', $request->coupon_code)->first();
+            if(!$code || empty($code)  ){
+                Flashy::error("Sorry! Invalid Coupon.");
+                // $msg = "Invalid coupon !";
 
-        if(!$code || empty($code)  ){
-            Flashy::error("Sorry! Invalid Coupon.");
-          // $msg = "Invalid coupon !";
+                return response()->json(200);
+                // return redirect()->route('frontend.cart.index')->with('success_message', 'Invalid coupon !');
+            }
 
-            return response()->json(200);
-           // return redirect()->route('frontend.cart.index')->with('success_message', 'Invalid coupon !');
-        }
+            if (  !empty($code->expire) && Carbon::now() > $code->expire){
+                Flashy::error("Sorry! Coupon Expired!");
+                // $msg = "Invalid coupon !";
 
-        if (  !empty($code->expire) && Carbon::now() > $code->expire){
-            Flashy::error("Sorry! Coupon Expired!");
-            // $msg = "Invalid coupon !";
+                return response()->json(200);
 
-            return response()->json(200);
+            }
+            $total_redeem= DB::table('user_coupons')->where('coupon_id', '=' , $code->id)->sum('redeemed_number');
+            if (!empty($code->max_limit)){
+                if (!empty($total_redeem)){
+                    if (  !empty($code) && $code->max_limit <= $total_redeem){
+                        Flashy::error("Sorry! Coupon max limit exceeded.");
+                        // $msg = "Invalid coupon !";
 
-        }
-        $total_redeem= DB::table('user_coupons')->where('coupon_id', '=' , $code->id)->sum('redeemed_number');
-        if (!empty($code->max_limit)){
-            if (!empty($total_redeem)){
-                if (  !empty($code) && $code->max_limit <= $total_redeem){
-                    Flashy::error("Sorry! Coupon max limit exceeded.");
+                        return response()->json(200);
+
+                    }
+                }
+
+            }
+
+            $user_coupon =  UserCoupon::where([
+                ['user_id', '=', auth()->guard('user')->user()->id],
+                ['coupon_id', '=', $code->id]
+            ])->get();
+            if (!empty($code->per_user_limit)){
+                if (  !empty($user_coupon) && !empty($user_coupon[0]) && $user_coupon[0]->redeemed_number >= $code->per_user_limit){
+                    Flashy::error("Sorry! Coupon limit exceeded for you.");
                     // $msg = "Invalid coupon !";
 
                     return response()->json(200);
 
                 }
             }
-
-        }
-
-        $user_coupon =  UserCoupon::where([
-                ['user_id', '=', auth()->guard('user')->user()->id],
-                ['coupon_id', '=', $code->id]
-            ])->get();
-        if (!empty($code->per_user_limit)){
-            if (  !empty($user_coupon) && $user_coupon[0]->redeemed_number >= $code->per_user_limit){
-                Flashy::error("Sorry! Coupon limit exceeded for you.");
-                // $msg = "Invalid coupon !";
-
-                return response()->json(200);
-
-            }
-        }
-        if (Cart::count()  < 1){
+            if (Cart::count()  < 1){
 
                 Flashy::error("Sorry! You must cart some item !" );
                 // $msg = "Invalid coupon !";
 
                 return response()->json(200);
 
-        }
-        if (Cart::count()  > 0){
+            }
+            if (Cart::count()  > 0){
 
                 if (  !empty($code) && $code->type == "fixed" && !empty($code->minimum_amount) &&(double)Cart::instance('default')->subtotal(null,null,'')<   $code->minimum_amount ){
 
@@ -199,43 +199,52 @@ class CartController extends Controller
 
                     return response()->json(200);
 
+                }
             }
-        }
-        if (Cart::count()  > 0){
+            if (Cart::count()  > 0){
 
-            if ( (double)Cart::instance('default')->subtotal(null,null,'') - $code->discount( Cart::subtotal(2,'.','')  <   0 )){
+                $try= (double)Cart::instance('default')->subtotal(null,null,'') - (double)$code->discount( Cart::subtotal(2,'.','')) ;
+                if ( (double)$try  <   0 ){
 
 
-                Flashy::error("Sorry! Coupon is not applicable!" );
-                // $msg = "Invalid coupon !";
+                    Flashy::error("Sorry! Coupon is not applicable!" );
+                    // $msg = "Invalid coupon !";
 
-                return response()->json(200);
+                    return response()->json(200);
 
+                }
             }
+
+
+            UserCoupon::updateOrCreate(
+                ['user_id' => auth()->guard('user')->user()->id, 'coupon_id' => $code->id]
+
+            )->Increment('redeemed_number');
+
+            session()->put('coupon', [
+                'name' => $code->code,
+                'id' => $code->id,
+                'amount' =>$code->discount( Cart::subtotal(2,'.',''))
+            ]);
+            Flashy::success("Coupon Applied !");
+            // $msg = "Invalid coupon !";
+
+            return response()->json(200);
+        }
+        catch (\Exception $e){
+            Flashy::success("Try Again! " );
+            return response()->json(['data' => $e],200);
         }
 
 
-        UserCoupon::updateOrCreate(
-            ['user_id' => auth()->guard('user')->user()->id, 'coupon_id' => $code->id]
-
-        )->Increment('redeemed_number');;
-        session()->put('coupon', [
-            'name' => $code->code,
-            'id' => $code->id,
-            'amount' =>$code->discount( Cart::subtotal(2,'.',''))
-        ]);
-        Flashy::success("Coupon Applied !");
-        // $msg = "Invalid coupon !";
-
-        return response()->json(200);
-       // return redirect()->route('frontend.cart.index')->with('success_message', 'coupon Applied ');
+        // return redirect()->route('frontend.cart.index')->with('success_message', 'coupon Applied ');
     }
 
     public function destroyCoupon(Request $request)
     {
         $user_coupon =  UserCoupon::where([
-        ['user_id', '=', auth()->guard('user')->user()->id],
-        ['coupon_id', '=', $request->id]
+            ['user_id', '=', auth()->guard('user')->user()->id],
+            ['coupon_id', '=', $request->id]
         ])->get();
         if ($user_coupon[0] && $user_coupon[0]->redeemed_number > 0){
             $user_coupon[0]->decrement('redeemed_number');
@@ -251,7 +260,7 @@ class CartController extends Controller
         return response()->json(200);
 
 
-     //  return back()->with('success_message', 'coupon has been removed.');
+        //  return back()->with('success_message', 'coupon has been removed.');
     }
 
 

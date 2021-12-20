@@ -57,7 +57,8 @@
                     @foreach($products as $product)
                         <tr>
                             <td>{{ $product->productName }}</td>
-                            <td>{{ $product->slug }}</td>
+                            <td> <a href="{{ route('frontend.shop.show',['id'=> $product->slug]) }}">
+                                    {{ $product->productName }} </a></td>
                             <td>{{ $product->amount }}</td>
                             <td>{{ $product->rate }} /-</td>
                             <td>{{ $product->rate * $product->amount }} /-</td>
@@ -95,11 +96,11 @@
                         </tr>
                         <tr>
                             <th>Shipping:</th>
-                            <td>{{ $order->shipping_fee }}</td>
+                            <td>{{ $order->billing_shipping_fee }}/-</td>
                         </tr>
                         <tr>
                             <th>Discount:</th>
-                            <td>{{ $order->discount }}</td>
+                            <td>{{ $order->billing_discount }} /-</td>
                         </tr>
                         <tr>
                             <th>Total:</th>

@@ -33,13 +33,23 @@
                                 {{-- <div class="hero-slider-item" style="background-image: url({{ asset('uploads/'.$slider->img)  }})"> --}}
                                 {{-- <div class="hero-slider-item" style="background-image: url({{ Voyager::image( $slider->imge ) }})"> --}}
                                 {{-- <div class="hero-slider-item slider-bg-1" > --}}
-                                <div class="hero-slider-item  " style="background-image: url({{ $at }})">
+                                <div class="hero-slider-item  " style="background-image: url({{ $at }}) ;
+                                    background-size: contain;
+                                    background-repeat: no-repeat;
+                                    background-size: 100%;
+                                    background-position: center center;">
                                     <!--=======  slider content  =======-->
 
+{{--                                    <div--}}
+{{--                                        class="slider-content  d-flex flex-column justify-content-center align-items-start h-100">--}}
+{{--                                        <p>{{ $slider->detail}}</p>--}}
+{{--                                        <h1>{{ $slider->title1 }} <span> {{ $slider->title2 }} </span></h1>--}}
+{{--                                        <a href="{{route('frontend.index').'/'. $slider->slug }}" class="pataku-btn slider-btn-1">SHOP NOW</a>--}}
+{{--                                    </div>--}}
                                     <div
                                         class="slider-content  d-flex flex-column justify-content-center align-items-start h-100">
-                                        <p>{{ $slider->detail}}</p>
-                                        <h1>{{ $slider->title1 }} <span> {{ $slider->title2 }} </span></h1>
+                                        <p>	&nbsp;	&nbsp;	&nbsp;</p>
+                                        <h1>	&nbsp;	&nbsp;<span> 	&nbsp;	&nbsp;</span></h1>
                                         <a href="{{route('frontend.index').'/'. $slider->slug }}" class="pataku-btn slider-btn-1">SHOP NOW</a>
                                     </div>
 
@@ -86,7 +96,7 @@
 
                         <div class="single-feature mb-xxs-20">
                             <span class="icon"><i class="lnr lnr-undo"></i></span>
-                            <p>100% Money Back <span>You have 30 days to Return</span></p>
+                            <p>100% Money Back <span>You have 2 days to Return</span></p>
                         </div>
 
                         <!--=======  End of single feature  =======-->
@@ -139,7 +149,7 @@
                                          alt="">
                                 </a>
                                 <span class="banner-category-title">
-							<a href="/shop?category={{$featuredCategory[0]->slug}}">{{$featuredCategory[0]->name}}</a>
+{{--							<a href="/shop?category={{$featuredCategory[0]->slug}}">{{$featuredCategory[0]->name}}</a>--}}
 						</span>
                             </div>
                         @endif
@@ -156,7 +166,7 @@
                                                  class="img-fluid extra_image" alt="">
                                         </a>
                                         <span class="banner-category-title">
-									<a href="/shop?category={{$featuredCategory[1]->slug}}">{{$featuredCategory[1]->name}}</a>
+{{--									<a href="/shop?category={{$featuredCategory[1]->slug}}">{{$featuredCategory[1]->name}}</a>--}}
 								</span>
                                     </div>
                                 @endif
@@ -172,7 +182,7 @@
                                                  class="img-fluid " alt="">
                                         </a>
                                         <span class="banner-category-title">
-									<a href="/shop?category={{$featuredCategory[2]->slug}}">{{$featuredCategory[2]->name}}</a>
+{{--									<a href="/shop?category={{$featuredCategory[2]->slug}}">{{$featuredCategory[2]->name}}</a>--}}
 								</span>
                                     </div>
                                 @endif
@@ -185,7 +195,7 @@
                                                  class="img-fluid" alt="">
                                         </a>
                                         <span class="banner-category-title">
-									<a href="/shop?category={{$featuredCategory[3]->slug}}">{{$featuredCategory[3]->name}}</a>
+{{--									<a href="/shop?category={{$featuredCategory[3]->slug}}">{{$featuredCategory[3]->name}}</a>--}}
 								</span>
                                     </div>
                                 @endif
@@ -1129,7 +1139,7 @@
         <script>
 
             $(document).ready(function () {
-                if (sessionStorage.getItem('#staticBackdrop') !== 'true') {
+                if (localStorage.getItem('#staticBackdrop') !== 'true') {
                     setTimeout(function () {
                         $('#staticBackdrop').modal('show');
                     }, 2000);
@@ -1137,7 +1147,7 @@
                 $("#submit_area").click(function (event) {
                     event.preventDefault();
 
-                    sessionStorage.setItem('#staticBackdrop', 'true');
+                    localStorage.setItem('#staticBackdrop', 'true');
                     $('#staticBackdrop').modal('hide');
                 });
 
