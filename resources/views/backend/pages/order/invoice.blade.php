@@ -79,7 +79,7 @@
                 <p>Payer name: {{ $order->billing_first_name }} {{ $order->billing_last_name }}</p>
 
 
-                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                <p class="text-muted  no-shadow" style="margin-top: 10px;margin-bottom: 40px;">
                     Payment Method: {{ $order->billing_payment_gateway }} <br>
                     Paid Amount: {{ $order->billing_total }} /-<br>
 
@@ -99,8 +99,8 @@
                             <td>{{ $order->billing_shipping_fee }}/-</td>
                         </tr>
                         <tr>
-                            <th>Discount:</th>
-                            <td>{{ $order->billing_discount }} /-</td>
+                            <th>Promo:</th>
+                            <td>-{{ $order->billing_discount }} /- {{empty($order->billing_discount_code) ? "" : " (".$order->billing_discount_code.") "}}</td>
                         </tr>
                         <tr>
                             <th>Total:</th>
