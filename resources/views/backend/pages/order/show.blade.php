@@ -131,7 +131,7 @@
                             </tr>
                             <tr>
                                 <th>Discount:</th>
-                                <td>{{ $order->billing_discount }} ৳</td>
+                                <td>{{ $order->billing_discount }} ৳ {{empty($order->billing_discount_code) ? "" : " (".$order->billing_discount_code.") "}}</td>
                             </tr>
                             <tr>
                                 <th>Total:</th>

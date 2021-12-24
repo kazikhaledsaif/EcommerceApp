@@ -99,15 +99,15 @@
 
     <!--=======  Menu Top  =======-->
 
-    <div class="menu-top pt-15 pb-15 pt-sm-20 pb-sm-20">
+    <div class="menu-top pt-15 pb-15 pt-sm-20 pb-sm-20 no-pt-sm-20">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-12 col-lg-3 col-md-3 text-center text-md-left mb-sm-20">
+                <div class="col-12 col-lg-3 col-md-3 text-center text-md-left mb-sm-20" style="background:#04FDA1">
                     <!--=======  logo  =======-->
 
                     <div class="logo">
                         <a href="{{ route('frontend.index') }}">
-                            <img src="{{ asset('frontend/assets/images/doozo/doozo-logo.svg') }}" class="img-fluid"
+                            <img src="{{ asset('frontend/assets/images/doozo/doozo_logo_inverted.svg') }}" class="img-fluid"
                                  alt="">
                         </a>
                     </div>

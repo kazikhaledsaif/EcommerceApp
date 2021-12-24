@@ -7396,3 +7396,8 @@ span.required {
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #04FDA1;  }
+@media only screen and (max-width: 767px){
+    .no-pt-sm-20 {
+        padding-top: 0px !important;
+    }
+}

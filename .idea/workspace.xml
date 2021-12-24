@@ -2,32 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f37afbf-5046-4b3d-8387-1f12bc1f55a3" name="Changes" comment="bug fix">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/NotificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/notification/notification61bb4db64c2b56.81835500egioC.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/notification/notification61bb4ddfb381b5.842889906x7vp.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/notification/notification61bb5022a5cab4.7110085212mdg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/slider/notification61bb4d24685ae4.03654004RDc9u.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/notification.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/doozo_logo_inverted.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/css/footer.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/css/footer.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/frontend/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/scss/_banner.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/scss/_banner.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/myaccount.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/myaccount.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/partials/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,17 +157,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/backend/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/frontend/assets/images/doozo" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\public\frontend\assets\images\doozo" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\resources\views\backend\pages" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\app\Http\Controllers\Backend" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\database\migrations" />
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\resources\views\frontend\pages" />
-      <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\public\frontend\assets\images\theme" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\VirtualEchos\DealOn Ecommerce\EcommerceApp\public\frontend\assets\images\doozo" />
@@ -242,7 +221,9 @@
       <workItem from="1639659735400" duration="6243000" />
       <workItem from="1639830255411" duration="10566000" />
       <workItem from="1639911993460" duration="727000" />
-      <workItem from="1640010826157" duration="1781000" />
+      <workItem from="1640010826157" duration="2457000" />
+      <workItem from="1640014257186" duration="474000" />
+      <workItem from="1640285448785" duration="1790000" />
     </task>
     <task id="LOCAL-00001" summary="Changes update">
       <created>1639576813879</created>
@@ -286,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639604226976</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="bug fix">
+      <created>1640013287759</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1640013287759</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
