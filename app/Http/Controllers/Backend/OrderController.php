@@ -139,7 +139,42 @@ class OrderController extends Controller
 
         $order->save();
 
-        Flashy::success('Order update to '. $request->status .' successful');
+
+        if (strlen($request->number) == 11){
+            if($request->status == "Processing"){
+                $to= "88".$request->number;
+                $message = "Your DOOZO Order.......(".$order->id.") has been Received. Thanks.";
+                $return = json_decode( $this->sendSMS($to,$message ));
+
+                Flashy::success('Order update to '. $request->status .' SMS sent to : '.$to." Status : " .$return->message );
+            }
+            if($request->status == "Cancelled"){
+                $to= "88".$request->number;
+                $message = "Your DOOZO Order.......(".$order->id.") has been Canceled, to know details please check on your app.";
+                $return = json_decode( $this->sendSMS($to,$message ));
+
+                Flashy::success('Order update to '. $request->status .' SMS sent to : '.$to." Status : " .$return->message );
+            }
+            if($request->status == "Shipped"){
+                $to= "88".$request->number;
+                $message = "Your DOOZO Order.......(".$order->id.") has been Shipped. Thanks.";
+                $return = json_decode( $this->sendSMS($to,$message ));
+
+                Flashy::success('Order update to '. $request->status .' SMS sent to : '.$to." Status : " .$return->message );
+            }
+            if($request->status == "Delivered"){
+                $to= "88".$request->number;
+                $message = "Your DOOZO Order.......(".$order->id.") has been Delivered. Thanks for Choosing DOOZO.";
+                $return = json_decode( $this->sendSMS($to,$message ));
+
+                Flashy::success('Order update to '. $request->status .' SMS sent to : '.$to." Status : " .$return->message );
+            }
+        }
+
+
+
+
+       // Flashy::success('Order update to '. $request->status .' successful');
         return redirect()->route('backend.order.list');
 
     }
@@ -149,4 +184,37 @@ class OrderController extends Controller
     {
         //
     }
+    public function sendSMS($to, $message)
+    {
+        $curl = curl_init();
+        $data =[
+            "username"=> env('SMS_USERNAME'),
+            "password"=>env('SMS_PASSWORD'),
+            "sender"=> env('SMS_SENDER'),
+            "message"=>$message,
+            "to"=>$to
+        ];
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://api.icombd.com/api/v2/sendsms/plaintext",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+          return $err;
+        } else {
+            return $response;
+        }
+    }
+
 }

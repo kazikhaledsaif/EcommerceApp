@@ -47,7 +47,7 @@
                     <thead>
                     <tr>
                         <th>Product Name</th>
-                        <th>Product slug</th>
+{{--                        <th>Product slug</th>--}}
                         <th>Qty</th>
                         <th>Rate</th>
                         <th>Subtotal</th>
@@ -56,7 +56,7 @@
                     <tbody>
                     @foreach($products as $product)
                         <tr>
-                            <td>{{ $product->productName }}</td>
+{{--                            <td>{{ $product->productName }}</td>--}}
                             <td> <a href="{{ route('frontend.shop.show',['id'=> $product->slug]) }}">
                                     {{ $product->productName }} </a></td>
                             <td>{{ $product->amount }}</td>

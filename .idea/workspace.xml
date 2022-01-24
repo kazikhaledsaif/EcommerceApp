@@ -2,53 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f37afbf-5046-4b3d-8387-1f12bc1f55a3" name="Changes" comment="bug fix">
-      <change afterPath="$PROJECT_DIR$/EcommerceApp.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/about-bottom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/about-middle-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/about-middle-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/about-middle-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/about-us-middle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/about-us-top.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/contact-banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/doozo-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/home-banner-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/home-banner-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/homepage-banner-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/shop-banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/frontend/assets/images/doozo/test.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61eead42bef636.75904822GvB0A.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61eead4a016a26.86640957KFysX.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61eead503a7d42.85801794v4VKO.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61eead58c805c4.01280523Payyk.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CheckoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dozoo.sql" beforeDir="false" afterPath="$PROJECT_DIR$/dozoo.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/images/instagram/01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/images/instagram/01.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/images/instagram/02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/images/instagram/02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/images/instagram/03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/images/instagram/03.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/images/instagram/04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/images/instagram/04.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/images/instagram/05.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/images/instagram/05.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontend/assets/scss/_banner.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontend/assets/scss/_banner.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/FeaturedCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/FeaturedCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/about.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/about.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/cart.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/checkout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/layouts/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/myaccount.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/myaccount.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/order-status.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/order-status.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/password-reset-email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/password-reset-email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/password-reset-link.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/password-reset-link.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/password-update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/password-update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/search-result.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/search-result.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/shop.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/thank-you.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/thank-you.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/wishlist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/wishlist.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/partials/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +248,8 @@
       <workItem from="1641218073532" duration="873000" />
       <workItem from="1641471185875" duration="116000" />
       <workItem from="1641647597024" duration="3159000" />
-      <workItem from="1643030881406" duration="314000" />
+      <workItem from="1643030881406" duration="5443000" />
+      <workItem from="1643046530497" duration="1927000" />
     </task>
     <task id="LOCAL-00001" summary="Changes update">
       <created>1639576813879</created>
@@ -340,7 +307,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640326644332</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="bug fix">
+      <created>1643031303172</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1643031303172</updated>
+    </task>
+    <task id="LOCAL-00010" summary="bug fix">
+      <created>1643031367496</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1643031367496</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +379,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php</url>
-          <line>614</line>
+          <line>729</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

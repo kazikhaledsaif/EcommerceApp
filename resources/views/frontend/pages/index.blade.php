@@ -202,7 +202,122 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-12 col-md-12  mt-30">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6  mb-30">
 
+                                @if(!empty($featuredCategory[4]))
+                                    <div class="banner">
+                                        <a href="/shop?category={{$featuredCategory[4]->slug}}">
+                                            <img src="{{ asset('uploads/'.$featuredCategory[4]->image) }}"
+                                                 class="img-fluid " alt="">
+                                        </a>
+                                        <span class="banner-category-title">
+{{--									<a href="/shop?category={{$featuredCategory[2]->slug}}">{{$featuredCategory[2]->name}}</a>--}}
+								</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6  mb-30">
+                                @if(!empty($featuredCategory[5]))
+                                    <div class="banner">
+                                        <a href="/shop?category={{$featuredCategory[5]->slug}}">
+                                            <img src="{{ asset('uploads/'.$featuredCategory[5]->image) }}"
+                                                 class="img-fluid" alt="">
+                                        </a>
+                                        <span class="banner-category-title">
+{{--									<a href="/shop?category={{$featuredCategory[3]->slug}}">{{$featuredCategory[3]->name}}</a>--}}
+								</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6  mb-30">
+
+                                @if(!empty($featuredCategory[6]))
+                                    <div class="banner">
+                                        <a href="/shop?category={{$featuredCategory[6]->slug}}">
+                                            <img src="{{ asset('uploads/'.$featuredCategory[6]->image) }}"
+                                                 class="img-fluid " alt="">
+                                        </a>
+                                        <span class="banner-category-title">
+{{--									<a href="/shop?category={{$featuredCategory[2]->slug}}">{{$featuredCategory[2]->name}}</a>--}}
+								</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6  mb-30">
+                                @if(!empty($featuredCategory[7]))
+                                    <div class="banner">
+                                        <a href="/shop?category={{$featuredCategory[7]->slug}}">
+                                            <img src="{{ asset('uploads/'.$featuredCategory[7]->image) }}"
+                                                 class="img-fluid" alt="">
+                                        </a>
+                                        <span class="banner-category-title">
+{{--									<a href="/shop?category={{$featuredCategory[3]->slug}}">{{$featuredCategory[3]->name}}</a>--}}
+								</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 ">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6  mb-30">
+
+                                @if(!empty($featuredCategory[8]))
+                                    <div class="banner">
+                                        <a href="/shop?category={{$featuredCategory[8]->slug}}">
+                                            <img src="{{ asset('uploads/'.$featuredCategory[8]->image) }}"
+                                                 class="img-fluid " alt="">
+                                        </a>
+                                        <span class="banner-category-title">
+{{--									<a href="/shop?category={{$featuredCategory[2]->slug}}">{{$featuredCategory[2]->name}}</a>--}}
+								</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6  mb-30">
+                                @if(!empty($featuredCategory[9]))
+                                    <div class="banner">
+                                        <a href="/shop?category={{$featuredCategory[9]->slug}}">
+                                            <img src="{{ asset('uploads/'.$featuredCategory[9]->image) }}"
+                                                 class="img-fluid" alt="">
+                                        </a>
+                                        <span class="banner-category-title">
+{{--									<a href="/shop?category={{$featuredCategory[3]->slug}}">{{$featuredCategory[3]->name}}</a>--}}
+								</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6  mb-30">
+
+                                @if(!empty($featuredCategory[10]))
+                                    <div class="banner">
+                                        <a href="/shop?category={{$featuredCategory[10]->slug}}">
+                                            <img src="{{ asset('uploads/'.$featuredCategory[10]->image) }}"
+                                                 class="img-fluid " alt="">
+                                        </a>
+                                        <span class="banner-category-title">
+{{--									<a href="/shop?category={{$featuredCategory[2]->slug}}">{{$featuredCategory[2]->name}}</a>--}}
+								</span>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6  mb-30">
+                                @if(!empty($featuredCategory[11]))
+                                    <div class="banner">
+                                        <a href="/shop?category={{$featuredCategory[11]->slug}}">
+                                            <img src="{{ asset('uploads/'.$featuredCategory[11]->image) }}"
+                                                 class="img-fluid" alt="">
+                                        </a>
+                                        <span class="banner-category-title">
+{{--									<a href="/shop?category={{$featuredCategory[3]->slug}}">{{$featuredCategory[3]->name}}</a>--}}
+								</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 @endif
 
             </div>
