@@ -71,7 +71,7 @@ class CheckoutController extends Controller
                     'billing_discount_code'=> $request->cupon_name,
                     'billing_subtotal'=> Cart::instance('default')->subtotal(null,null,''),
                     'billing_shipping_fee'=> Setting::latest('updated_at')->first() ? Setting::latest('updated_at')->first()->delivery_cost: 0,
-                    'billing_payment_gateway'=> "Cash on delivery",
+                    'billing_payment_gateway'=> " Pay on Delivery",
                     'billing_total'=> $request->total,
 
                 ]

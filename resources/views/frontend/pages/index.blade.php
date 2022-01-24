@@ -222,7 +222,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center mb-40">
                     <div class="section-title">
-                        <h2>New <span>Collections</span> Of Arrivals</h2>
+                        <h2>New <span>Products</span> on DOOZO</h2>
                         <p>Browse the collection of our new products, You will definitely find what you are looking
                             for.</p>
                     </div>
@@ -377,10 +377,9 @@
                     <!--=======  fullwidth banner content  =======-->
 
                     <div class="fullwidth-banner-content">
-                        <p class="fullwidth-banner-title">It's your job to have the idea. It's ours to make it
-                            happen.</p>
-                        <p>We are a Melboume based furniture maker helping people bring their iadeas to life.</p>
-                        <a href="/shop">View our products <i class="fa fa-angle-right"></i></a>
+                        <p class="fullwidth-banner-title">&nbsp;</p>
+                        <p>&nbsp;</p>
+{{--                        <a href="/shop">View our products <i class="fa fa-angle-right"></i></a>--}}
                     </div>
 
                     <!--=======  End of fullwidth banner content  =======-->
@@ -495,7 +494,7 @@
                 <div class="col-lg-6">
                     <div class="section-title mb-40">
                         <h2>Some <span>Popular</span> Products</h2>
-                        <p>We offer the best selection furniture at prices you will love!</p>
+                        <p>We offer the best selection product at prices you will love!</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -579,9 +578,9 @@
                                 <div class="col-lg-4 offset-lg-8 col-md-12">
                                     <div
                                         class="banner-content d-flex flex-column align-items-center align-items-lg-start  justify-content-center h-100">
-                                        <p class="normal-text">Shop With Doozo</p>
-                                        <p class="color-text">Up to 50% Off</p>
-                                        <p class="underline-text">Grab the latest Offers</p>
+                                        <p class="normal-text">&nbsp;&nbsp;&nbsp;</p>
+                                        <p class="color-text">&nbsp;&nbsp;&nbsp;</p>
+                                        <p class="underline-text">&nbsp;&nbsp;&nbsp;</p>
                                     </div>
                                 </div>
                             </div>
@@ -769,8 +768,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center mb-40">
                     <div class="section-title instagram-title">
-                        <h2>#Doozo Instagram</h2>
-                        <p><a href="#" target="_blank">Follow our instagram</a></p>
+                        <h2>#DOOZOFACTS</h2>
+                        <p><a href="https://www.instagram.com/dealonbd/">Follow our instagram</a></p>
                     </div>
                 </div>
             </div>
@@ -1092,11 +1091,36 @@
 
                                 <div class="col-md-12 mb-10">
                                     <select class="nice-select">
-                                        <option>Dhaka</option>
-                                        <option>Barisal</option>
-                                        <option>Khulna</option>
-                                        <option>Comilla</option>
-                                        <option>Chittagong</option>
+                                        <option>Basabo</option>
+                                        <option>Bangsal</option>
+                                        <option>Banani</option>
+                                        <option>Bailey Road</option>
+                                        <option>Dhaka University Area</option>
+                                        <option>Eskaton</option>
+                                        <option>Fakirapool</option>
+                                        <option>Gendaria</option>
+                                        <option>Gulshan 1</option>
+                                        <option>Gulshan 2</option>
+                                        <option>Khilgaon</option>
+                                        <option>Lalbag</option>
+                                        <option>Motijheel</option>
+                                        <option>Mugda</option>
+                                        <option>Malibagh</option>
+                                        <option>Modhubag</option>
+                                        <option>Mogbazar</option>
+                                        <option>Maniknagar</option>
+                                        <option>North Badda</option>
+                                        <option>Paltan</option>
+                                        <option>Ramna</option>
+                                        <option>Rampura</option>
+                                        <option>Rajarbagh</option>
+                                        <option>Shabujbagh</option>
+                                        <option>Shantinagar</option>
+                                        <option>Sahjahanpur</option>
+                                        <option>Segun Baghica</option>
+                                        <option>Tejgaon</option>
+                                        <option>Wari</option>
+
                                     </select>
 
                                 </div>

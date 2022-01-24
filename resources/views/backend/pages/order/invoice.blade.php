@@ -81,7 +81,7 @@
 
                 <p class="text-muted  no-shadow" style="margin-top: 10px;margin-bottom: 40px;">
                     Payment Method: {{ $order->billing_payment_gateway }} <br>
-                    Paid Amount: {{ $order->billing_total }} /-<br>
+                    Amount to Pay: {{ $order->billing_total }} /-<br>
 
                 </p>
             </div>

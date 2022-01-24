@@ -266,10 +266,10 @@ INSERT INTO `orders` (`id`, `user_id`, `billing_email`, `billing_first_name`, `b
 (5, 1, 'saif@user.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala', 'Dhaka', 'Dhaka', '1214', 0, '0', 82000, 0, 82000, 'Cash in delivery', 0, 'Received', NULL, '2021-12-08 01:57:11', '2021-12-08 01:57:11'),
 (6, 1, 'saif@user.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala', 'Dhaka', 'Dhaka', '1214', 0, '0', 0, 0, 0, 'Cash in delivery', 0, 'Received', NULL, '2021-12-08 02:00:03', '2021-12-08 02:00:03'),
 (7, 1, 'saif@user.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala', 'Dhaka', 'Dhaka', '1214', 0, '0', 120, 0, 120, 'Cash in delivery', 0, 'Delivered', NULL, '2021-12-08 02:03:46', '2021-12-14 15:24:40'),
-(8, 1, 'saif@user.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala', 'Dhaka', 'Dhaka', '1214', 240, 'test3', 480, 0, 240, 'Cash on delivery', 0, 'Received', NULL, '2021-12-13 16:06:25', '2021-12-13 16:06:25'),
-(9, 1, 'saif@user.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala', 'Dhaka', 'Dhaka', '1214', 240, 'test3', 120, 0, -120, 'Cash on delivery', 0, 'Received', NULL, '2021-12-13 16:08:35', '2021-12-13 16:08:35'),
-(10, 1, 'kksaif05@gmail.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala/ Dhaka', 'Dhaka', 'Dhaka', '1214', 500, 'virtual', 120, 60, -320, 'Cash on delivery', 0, 'Received', NULL, '2021-12-15 14:23:49', '2021-12-15 14:23:49'),
-(11, 1, 'kksaif05@gmail.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala/ Dhaka', 'Dhaka', 'Dhaka', '1214', 500, 'virtual', 120, 60, -320, 'Cash on delivery', 0, 'Received', NULL, '2021-12-15 14:25:24', '2021-12-15 14:25:24');
+(8, 1, 'saif@user.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala', 'Dhaka', 'Dhaka', '1214', 240, 'test3', 480, 0, 240, ' Pay on Delivery', 0, 'Received', NULL, '2021-12-13 16:06:25', '2021-12-13 16:06:25'),
+(9, 1, 'saif@user.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala', 'Dhaka', 'Dhaka', '1214', 240, 'test3', 120, 0, -120, ' Pay on Delivery', 0, 'Received', NULL, '2021-12-13 16:08:35', '2021-12-13 16:08:35'),
+(10, 1, 'kksaif05@gmail.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala/ Dhaka', 'Dhaka', 'Dhaka', '1214', 500, 'virtual', 120, 60, -320, ' Pay on Delivery', 0, 'Received', NULL, '2021-12-15 14:23:49', '2021-12-15 14:23:49'),
+(11, 1, 'kksaif05@gmail.com', 'Kazi Khaled', 'Saif', '01521330148', '86/1 Kadamtala/ Dhaka', 'Dhaka', 'Dhaka', '1214', 500, 'virtual', 120, 60, -320, ' Pay on Delivery', 0, 'Received', NULL, '2021-12-15 14:25:24', '2021-12-15 14:25:24');
 
 -- --------------------------------------------------------
 
@@ -471,8 +471,8 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `title1`, `title2`, `detail`, `img`, `slug`, `created_at`, `updated_at`) VALUES
-(4, 'Welcome To Doozo', 'Grocery | Essentials', 'Your one stop solution', 'slider/slider_61ba2a3952a397.73408013dcDdu.jpg', '/shop', '2021-12-15 11:47:37', '2021-12-15 11:47:37'),
-(5, 'Welcome To Doozo 2', 'Grocery | Essentials 2', 'Your one stop solution 2', 'slider/slider_61ba2a5c8f1fd7.15603015HjVYc.jpg', '/shop', '2021-12-15 11:48:12', '2021-12-15 11:48:12');
+(4, 'Welcome To DOOZO', 'Grocery | Essentials', 'Your one stop solution', 'slider/slider_61ba2a3952a397.73408013dcDdu.jpg', '/shop', '2021-12-15 11:47:37', '2021-12-15 11:47:37'),
+(5, 'Welcome To DOOZO 2', 'Grocery | Essentials 2', 'Your one stop solution 2', 'slider/slider_61ba2a5c8f1fd7.15603015HjVYc.jpg', '/shop', '2021-12-15 11:48:12', '2021-12-15 11:48:12');
 
 -- --------------------------------------------------------
 

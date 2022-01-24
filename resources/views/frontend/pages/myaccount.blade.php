@@ -6,16 +6,16 @@
     <!--=============================================
     =            Breadcrumb Area         =
     =============================================-->
-    <div class="breadcrumb-area breadcrumb-bg pt-85 pb-85 mb-80">
+    <div class="breadcrumb-area breadcrumb-bg pt-85 pb-85" style="background-image:  url( {{ asset('/frontend/assets/images/doozo/shop-banner.png') }})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-container">
-                        <ul>
-                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>
-                            <li class="active">My Account</li>
-                        </ul>
-                    </div>
+{{--                    <div class="breadcrumb-container">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>--}}
+{{--                            <li class="active">My Account</li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

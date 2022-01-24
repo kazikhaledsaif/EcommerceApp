@@ -112,7 +112,7 @@
 
                     <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                          Payment Method: {{ $order->billing_payment_gateway }} <br>
-                         Paid Amount: {{ $order->billing_total }} ৳<br>
+                         Amount to Pay: {{ $order->billing_total }} ৳<br>
 
                     </p>
                 </div>

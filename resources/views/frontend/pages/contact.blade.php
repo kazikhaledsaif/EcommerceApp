@@ -8,16 +8,16 @@
     =            Breadcrumb Area         =
     =============================================-->
 
-    <div class="breadcrumb-area breadcrumb-bg pt-85 pb-85">
+    <div class="breadcrumb-area breadcrumb-bg pt-85 pb-85" style="background-image:  url( {{ asset('/frontend/assets/images/doozo/contact-banner.png') }})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-container">
-                        <ul>
-                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>
-                            <li class="active">Contact Us</li>
-                        </ul>
-                    </div>
+{{--                    <div class="breadcrumb-container">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>--}}
+{{--                            <li class="active">Contact Us</li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -52,11 +52,11 @@
 
                         <!--=======  single contact block  =======-->
 
-                        <div class="single-contact-block">
-                            <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon1.png') }}" alt=""> Support Center</h4>
-                            <p> M.R. View 275/3 (Ground Floor) Khilgaon Tilpapara</p>
-                            <p> Dhaka-1219</p>
-                        </div>
+{{--                        <div class="single-contact-block">--}}
+{{--                            <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon1.png') }}" alt=""> Support Center</h4>--}}
+{{--                            <p> M.R. View 275/3 (Ground Floor) Khilgaon Tilpapara</p>--}}
+{{--                            <p> Dhaka-1219</p>--}}
+{{--                        </div>--}}
 
                         <!--=======  End of single contact block  =======-->
 
@@ -74,7 +74,7 @@
 
                         <div class="single-contact-block">
                             <h4><img src="{{ asset('frontend/assets/images/icons/contact-icon3.png') }} " alt=""> Email</h4>
-                            <p>support@doozo.com</p>
+                            <p>support@dealon.live</p>
 
                         </div>
 

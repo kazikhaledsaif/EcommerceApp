@@ -104,17 +104,17 @@
                 <div class="col-12 col-lg-4 col-md-6 col-sm-6">
                     <!--=======  single footer  =======-->
 
-                    <div class="single-footer mb-35">
-                        <h3 class="footer-title mb-20">Newsletter</h3>
+{{--                    <div class="single-footer mb-35">--}}
+{{--                        <h3 class="footer-title mb-20">Newsletter</h3>--}}
 
-                        <div class="newsletter-form mb-20">
-                            <form  class="mc-form subscribe-form" action="{{ route('frontend.newsletter.add') }}">
-                                <input type="email" name="email" placeholder="Your email address">
-                                <button type="submit" value="submit"><i class="lnr lnr-envelope"></i></button>
-                            </form>
-                        </div>
+{{--                        <div class="newsletter-form mb-20">--}}
+{{--                            <form  class="mc-form subscribe-form" action="{{ route('frontend.newsletter.add') }}">--}}
+{{--                                <input type="email" name="email" placeholder="Your email address">--}}
+{{--                                <button type="submit" value="submit"><i class="lnr lnr-envelope"></i></button>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
 
-                    </div>
+{{--                    </div>--}}
 
                     <!--=======  End of single footer  =======-->
 
@@ -140,11 +140,11 @@
                 <div class="col-12 col-lg-6 col-md-7 mb-sm-15 text-left text-sm-center text-lg-left">
                     <!--=======  app download area  =======-->
 
-                    <div class="app-download-area">
-                        <span class="title">Free App (Coming Soon):</span>
+{{--                    <div class="app-download-area">--}}
+{{--                        <span class="title">Free App (Coming Soon):</span>--}}
 {{--                        <a target="_blank" href="#" class="app-download-btn apple-store"><i class="fa fa-apple"></i> Apple Store</a>--}}
-                        <a  href="#" class="app-download-btn google-play"><i class="fa fa-android"></i> Google play</a>
-                    </div>
+{{--                        <a  href="#" class="app-download-btn google-play"><i class="fa fa-android"></i> Google play</a>--}}
+{{--                    </div>--}}
 
                     <!--=======  End of app download area  =======-->
                 </div>

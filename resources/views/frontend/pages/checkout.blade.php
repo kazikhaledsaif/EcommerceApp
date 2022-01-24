@@ -7,16 +7,16 @@
     <!--=============================================
     =            Breadcrumb Area         =
     =============================================-->
-    <div class="breadcrumb-area breadcrumb-bg pt-85 pb-85 mb-80">
+    <div class="breadcrumb-area breadcrumb-bg pt-85 pb-85" style="background-image:  url( {{ asset('/frontend/assets/images/doozo/shop-banner.png') }})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-container">
-                        <ul>
-                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>
-                            <li class="active">Checkout</li>
-                        </ul>
-                    </div>
+{{--                    <div class="breadcrumb-container">--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="{{ route('frontend.index') }}">Home</a> <span class="separator">/</span></li>--}}
+{{--                            <li class="active">Checkout</li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -273,41 +273,25 @@
                                             {{--</div>--}}
 
                                             <div class="single-method">
-                                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
-                                            <label for="payment_cash">Cash on Delivery</label>
-                                            <p data-method="cash">Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode, Store Country.</p>
+                                            <input required type="radio" id="payment_cash" name="payment-method" value="cash">
+                                            <label for="payment_cash"> Pay on Delivery</label>
+
                                             </div>
-
-{{--                                            <div class="single-method">--}}
-{{--                                                <div class="col-12 mb-20">--}}
-{{--                                                    <label>Card Holder Name</label>--}}
-{{--                                                    <input name="name_on_card" id="name_on_card" type="text" placeholder="Card Holder Name">--}}
-{{--                                                </div>--}}
-{{--                                                <div   class="col-12 mb-20">--}}
-{{--                                                    <label for="card-element">--}}
-{{--                                                        Credit or debit card--}}
-{{--                                                    </label>--}}
-{{--                                                    <div id="card-element">--}}
-{{--                                                        <!-- A Stripe Element will be inserted here. -->--}}
-{{--                                                    </div>--}}
-
-{{--                                                    <!-- Used to display form errors. -->--}}
-{{--                                                    <div id="card-errors" role="alert"></div>--}}
-{{--                                                </div>--}}
-
-{{--                                            </div>--}}
-
-                                            {{--    <div class="single-method">
-                                                    <input type="radio" id="stripe" name="stripe" value="stripe">
-                                                    <label for="stripe">Stripe</label>
-                                                    <p data-method="stripe">
-                                                        Please send a Check to Store name with Store Street, Store Town, Store State, Store Postcode,
-                                                        Store Country.</p>
-                                                </div>--}}
 
                                             <div class="single-method">
                                                 <input type="checkbox" id="accept_terms" required>
                                                 <label for="accept_terms">I’ve read and accept the terms & conditions</label>
+                                                <div data-method="cash">
+                                                    <ul style="list-style-type:circle; padding: 30px">
+                                                        <li>৬০ মিনিটে ডেলিভারি এটা আপনার এলাকার ক্ষেত্রে প্রযোজ্য নাও হতে পারে</li>
+                                                        <li>আমি পণ্যগুলো জেনে বুঝে কিনতে যাচ্ছি</li>
+                                                        <li>আমার দেওয়া তথ্যগুলো সঠিক ও নির্ভুল</li>
+                                                        <li>পণ্য ডেলিভারি ক্রু থেকে পাওয়ার পর যাচাই করে টাকা পরিশোধ করতে বাধ্য থাকব</li>
+                                                        <li>পণ্য পরিবর্তনের ক্ষেত্রে ডুজো কর্তৃপক্ষের সিদ্ধান্তই ফাইনাল বলে মানতে বাধ্য থাকব</li>
+
+                                                    </ul>
+
+                                                </div>
                                             </div>
 
                                         </div>

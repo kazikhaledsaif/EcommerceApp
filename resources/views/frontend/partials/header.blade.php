@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 text-center text-md-left mb-sm-15">
-                    <span class="header-top-text">Welcome to  Online Shopping Store !</span>
+                    <span class="header-top-text">Welcome to DOOZO !!</span>
                 </div>
                 <div class="col-12 col-md-6">
 
@@ -107,7 +107,7 @@
 
                     <div class="logo">
                         <a href="{{ route('frontend.index') }}">
-                            <img src="{{ asset('frontend/assets/images/doozo/doozo_logo_inverted.svg') }}" class="img-fluid"
+                            <img src="{{ asset('frontend/assets/images/doozo/doozo-logo.png') }}" class="img-fluid"
                                  alt="">
                         </a>
                     </div>
