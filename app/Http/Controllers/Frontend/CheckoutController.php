@@ -101,10 +101,17 @@ class CheckoutController extends Controller
             ]);
 
 
+            if (strlen($request->number) == 11){
 
+                    $to= "88".$request->number;
+                    $message = "Your DOOZO Order.......(".$order->id.") has been Received. Thanks.";
+                     $this->sendSMS($to,$message );
+
+            }
 
             Cart::instance('default')->destroy();
             session()->forget('coupon');
+
             Flashy::success("Thank you for your order" );
             return view('frontend.pages.thank-you')
                 ->with([
@@ -118,7 +125,38 @@ class CheckoutController extends Controller
         }
 
     }
-
+    public function sendSMS($to, $message)
+    {
+        $curl = curl_init();
+        $data =[
+            "username"=> env('SMS_USERNAME'),
+            "password"=>env('SMS_PASSWORD'),
+            "sender"=> env('SMS_SENDER'),
+            "message"=>$message,
+            "to"=>$to
+        ];
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://api.icombd.com/api/v2/sendsms/plaintext",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            return $err;
+        } else {
+            return $response;
+        }
+    }
     public function getPdf(Request $request, $id){
         $order = Order::find($id);
         // $products = $order->products();

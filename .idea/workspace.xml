@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f37afbf-5046-4b3d-8387-1f12bc1f55a3" name="Changes" comment="bug fix">
-      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61eead42bef636.75904822GvB0A.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61eead4a016a26.86640957KFysX.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61eead503a7d42.85801794v4VKO.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/featuredcategory/featuredcategory_61eead58c805c4.01280523Payyk.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/FeaturedCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/FeaturedCategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/order/invoice.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CheckoutController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +23,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -249,7 +248,8 @@
       <workItem from="1641471185875" duration="116000" />
       <workItem from="1641647597024" duration="3159000" />
       <workItem from="1643030881406" duration="5443000" />
-      <workItem from="1643046530497" duration="1927000" />
+      <workItem from="1643046530497" duration="2236000" />
+      <workItem from="1643120131078" duration="5894000" />
     </task>
     <task id="LOCAL-00001" summary="Changes update">
       <created>1639576813879</created>
@@ -321,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643031367496</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="bug fix">
+      <created>1643048774228</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1643048774228</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

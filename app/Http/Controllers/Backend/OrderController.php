@@ -141,13 +141,13 @@ class OrderController extends Controller
 
 
         if (strlen($request->number) == 11){
-            if($request->status == "Processing"){
-                $to= "88".$request->number;
-                $message = "Your DOOZO Order.......(".$order->id.") has been Received. Thanks.";
-                $return = json_decode( $this->sendSMS($to,$message ));
-
-                Flashy::success('Order update to '. $request->status .' SMS sent to : '.$to." Status : " .$return->message );
-            }
+//            if($request->status == "Processing"){
+//                $to= "88".$request->number;
+//                $message = "Your DOOZO Order.......(".$order->id.") has been Received. Thanks.";
+//                $return = json_decode( $this->sendSMS($to,$message ));
+//
+//                Flashy::success('Order update to '. $request->status .' SMS sent to : '.$to." Status : " .$return->message );
+//            }
             if($request->status == "Cancelled"){
                 $to= "88".$request->number;
                 $message = "Your DOOZO Order.......(".$order->id.") has been Canceled, to know details please check on your app.";
