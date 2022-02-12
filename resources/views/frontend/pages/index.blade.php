@@ -332,109 +332,109 @@
     =            Double row product slider          =
     =============================================-->
 
-    <div class="double-row-product-slider mb-80">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-40">
-                    <div class="section-title">
-                        <h2>New <span>Products</span> on DOOZO</h2>
-                        <p>Browse the collection of our new products, You will definitely find what you are looking
-                            for.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  top selling product slider container  =======-->
+{{--    <div class="double-row-product-slider mb-80">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-12 text-center mb-40">--}}
+{{--                    <div class="section-title">--}}
+{{--                        <h2>New <span>Products</span> on DOOZO</h2>--}}
+{{--                        <p>Browse the collection of our new products, You will definitely find what you are looking--}}
+{{--                            for.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-12">--}}
+{{--                    <!--=======  top selling product slider container  =======-->--}}
 
-                    <div class="ptk-slider double-row-slider-container" data-row="2">
+{{--                    <div class="ptk-slider double-row-slider-container" data-row="2">--}}
 
-                        @foreach($new_products as $new)
+{{--                        @foreach($new_products as $new)--}}
 
-                            <div class="col">
-                                <!--=======  single product  =======-->
+{{--                            <div class="col">--}}
+{{--                                <!--=======  single product  =======-->--}}
 
-                                <div class="ptk-product">
-                                    <div class="image">
-                                        <form action="{{route('frontend.cart.store')}}" id="link-cart{{ $new->id }}"
-                                              method="POST">
-                                            <a href="{{route('frontend.shop.show',$new->slug)}}">
-                                                <img src="{{ asset('uploads/'.$new->product_image)  }}"
-                                                     class="img-fluid home-thumb" alt="">
-                                            </a>
-                                            <!--=======  hover icons  =======-->
+{{--                                <div class="ptk-product">--}}
+{{--                                    <div class="image">--}}
+{{--                                        <form action="{{route('frontend.cart.store')}}" id="link-cart{{ $new->id }}"--}}
+{{--                                              method="POST">--}}
+{{--                                            <a href="{{route('frontend.shop.show',$new->slug)}}">--}}
+{{--                                                <img src="{{ asset('uploads/'.$new->product_image)  }}"--}}
+{{--                                                     class="img-fluid home-thumb" alt="">--}}
+{{--                                            </a>--}}
+{{--                                            <!--=======  hover icons  =======-->--}}
 
-                                            {{--                                            <a class="hover-icon" data-target="#quick-view-modal-container{{ $new->id }}" data-toggle="modal"--}}
-                                            {{--                                               href="#"><i class="lnr lnr-eye"></i></a>--}}
-                                            {{--                                            <a class="hover-icon" href="{{route('frontend.shop.show',$new->slug)}}" ><i class="lnr lnr-eye"></i></a>--}}
-                                            <a class="hover-icon" href="javascript:{}"
-                                               onclick="document.getElementById('link-wish{{ $new->id }}').submit()"><i
-                                                    class="lnr lnr-heart"></i></a>
-                                            <a class="hover-icon" href="javascript:{}"
-                                               onclick="document.getElementById('link-cart{{ $new->id }}').submit()"><i
-                                                    class="lnr lnr-cart"></i></a>
+{{--                                            --}}{{--                                            <a class="hover-icon" data-target="#quick-view-modal-container{{ $new->id }}" data-toggle="modal"--}}
+{{--                                            --}}{{--                                               href="#"><i class="lnr lnr-eye"></i></a>--}}
+{{--                                            --}}{{--                                            <a class="hover-icon" href="{{route('frontend.shop.show',$new->slug)}}" ><i class="lnr lnr-eye"></i></a>--}}
+{{--                                            <a class="hover-icon" href="javascript:{}"--}}
+{{--                                               onclick="document.getElementById('link-wish{{ $new->id }}').submit()"><i--}}
+{{--                                                    class="lnr lnr-heart"></i></a>--}}
+{{--                                            <a class="hover-icon" href="javascript:{}"--}}
+{{--                                               onclick="document.getElementById('link-cart{{ $new->id }}').submit()"><i--}}
+{{--                                                    class="lnr lnr-cart"></i></a>--}}
 
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="id" value="{{ $new->id }}">
-                                            <input type="hidden" name="name" value="{{ $new->name }}">
-                                            @if($new->discount_price == 0)
-                                                <input type="hidden" name="price" value="{{ $new->regular_price }}">
-                                            @else
-                                                <input type="hidden" name="price" value="{{ $new->discount_price }}">
+{{--                                            {{csrf_field()}}--}}
+{{--                                            <input type="hidden" name="id" value="{{ $new->id }}">--}}
+{{--                                            <input type="hidden" name="name" value="{{ $new->name }}">--}}
+{{--                                            @if($new->discount_price == 0)--}}
+{{--                                                <input type="hidden" name="price" value="{{ $new->regular_price }}">--}}
+{{--                                            @else--}}
+{{--                                                <input type="hidden" name="price" value="{{ $new->discount_price }}">--}}
 
-                                            @endif
-                                            <input type="hidden" name="quantity" id="quantity" min="1" value="1">
-                                        </form>
+{{--                                            @endif--}}
+{{--                                            <input type="hidden" name="quantity" id="quantity" min="1" value="1">--}}
+{{--                                        </form>--}}
 
-                                        <form id="link-wish{{ $new->id }}" action="{{route('frontend.wishlist.store')}}"
-                                              method="POST">
-                                            {{csrf_field()}}
+{{--                                        <form id="link-wish{{ $new->id }}" action="{{route('frontend.wishlist.store')}}"--}}
+{{--                                              method="POST">--}}
+{{--                                            {{csrf_field()}}--}}
 
-                                            @if (auth()->guard('user')->user())
-                                                <input type="hidden" name="user_id"
-                                                       value="{{ auth()->guard('user')->user()->id }}  ">
-                                            @endif
+{{--                                            @if (auth()->guard('user')->user())--}}
+{{--                                                <input type="hidden" name="user_id"--}}
+{{--                                                       value="{{ auth()->guard('user')->user()->id }}  ">--}}
+{{--                                            @endif--}}
 
-                                            <input type="hidden" name="id" value="{{ $new->id }}">
-                                            <input type="hidden" name="name" value="{{ $new->name }}">
+{{--                                            <input type="hidden" name="id" value="{{ $new->id }}">--}}
+{{--                                            <input type="hidden" name="name" value="{{ $new->name }}">--}}
 
-                                            @if($new->discount_price == 0)
-                                                <input type="hidden" name="price" value="{{ $new->regular_price }}">
-                                            @else
-                                                <input type="hidden" name="price" value="{{ $new->discount_price }}">
+{{--                                            @if($new->discount_price == 0)--}}
+{{--                                                <input type="hidden" name="price" value="{{ $new->regular_price }}">--}}
+{{--                                            @else--}}
+{{--                                                <input type="hidden" name="price" value="{{ $new->discount_price }}">--}}
 
-                                            @endif
-                                            {{--      <button  id="submit" type="submit"><i class="fa fa-heart"></i> Add to wishlist</button>--}}
-                                        </form>
-                                        <!--=======  End of hover icons  =======-->
+{{--                                            @endif--}}
+{{--                                            --}}{{--      <button  id="submit" type="submit"><i class="fa fa-heart"></i> Add to wishlist</button>--}}
+{{--                                        </form>--}}
+{{--                                        <!--=======  End of hover icons  =======-->--}}
 
-                                        <!--=======  badge  =======-->
+{{--                                        <!--=======  badge  =======-->--}}
 
-                                        <div class="product-badge">
-                                            @if ($new->badge)
-                                                <span class="new-badge">{{ $new->badge}}</span>
-                                            @endif
-                                            @if ($new->percentage != null)
-                                                <span class="discount-badge">
-                                        -{{ $new->percentage }}%
-                                    </span>@endif
-                                        </div>
-                                        <!--=======  End of badge  =======-->
+{{--                                        <div class="product-badge">--}}
+{{--                                            @if ($new->badge)--}}
+{{--                                                <span class="new-badge">{{ $new->badge}}</span>--}}
+{{--                                            @endif--}}
+{{--                                            @if ($new->percentage != null)--}}
+{{--                                                <span class="discount-badge">--}}
+{{--                                        -{{ $new->percentage }}%--}}
+{{--                                    </span>@endif--}}
+{{--                                        </div>--}}
+{{--                                        <!--=======  End of badge  =======-->--}}
 
-                                    </div>
-                                    <div class="content">
-                                        <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}"
-                                                                    target="_blank">{{$new->name}}</a></p>
-                                        <p class="product-price">
-                                            @if( $new->discount_price == 0 )
-                                                <span class="main-price"> ৳{{ $new->regular_price }}</span>
-                                            @else
-                                                <span class="main-price discounted">৳{{ $new->regular_price }}</span>
-                                                <span class="discounted-price"> ৳{{ $new->discount_price }}</span>
-                                            @endif
+{{--                                    </div>--}}
+{{--                                    <div class="content">--}}
+{{--                                        <p class="product-title"><a href="{{route('frontend.shop.show',$new->slug)}}"--}}
+{{--                                                                    target="_blank">{{$new->name}}</a></p>--}}
+{{--                                        <p class="product-price">--}}
+{{--                                            @if( $new->discount_price == 0 )--}}
+{{--                                                <span class="main-price"> ৳{{ $new->regular_price }}</span>--}}
+{{--                                            @else--}}
+{{--                                                <span class="main-price discounted">৳{{ $new->regular_price }}</span>--}}
+{{--                                                <span class="discounted-price"> ৳{{ $new->discount_price }}</span>--}}
+{{--                                            @endif--}}
 
-                                        </p>
-                                    </div>
+{{--                                        </p>--}}
+{{--                                    </div>--}}
 
 {{--                                   <div class="rating">--}}
 {{--                                        <i class="lnr lnr-star active"></i>--}}
@@ -445,39 +445,39 @@
 {{--                                    </div>--}}
 {{--                                    --}}
 
-                                    <?php
-                                    $review_1 = \App\Review::where('pid', $new->id)->get();
-                                      ?>
+{{--                                    <?php--}}
+{{--                                    $review_1 = \App\Review::where('pid', $new->id)->get();--}}
+{{--                                      ?>--}}
 
 
-                                    @foreach($review_1 as $rating)
+{{--                                    @foreach($review_1 as $rating)--}}
 
-                                        <div class="rating">
-                                            @for($i=1; $i<=$rating->rating; $i++)
-                                                <i class="lnr lnr-star active"></i>
-                                            @endfor
-                                            @if($rating->rating != round($rating->rating))
-                                                <i class="lnr lnr-star"></i>
-                                            @endif
-                                            <span>({{ $rating->rating }})</span>
-                                        </div>
-                                    @endforeach
+{{--                                        <div class="rating">--}}
+{{--                                            @for($i=1; $i<=$rating->rating; $i++)--}}
+{{--                                                <i class="lnr lnr-star active"></i>--}}
+{{--                                            @endfor--}}
+{{--                                            @if($rating->rating != round($rating->rating))--}}
+{{--                                                <i class="lnr lnr-star"></i>--}}
+{{--                                            @endif--}}
+{{--                                            <span>({{ $rating->rating }})</span>--}}
+{{--                                        </div>--}}
+{{--                                    @endforeach--}}
 
-                                </div>
+{{--                                </div>--}}
 
-                                <!--=======  End of single product  =======-->
-                            </div>
+{{--                                <!--=======  End of single product  =======-->--}}
+{{--                            </div>--}}
 
-                        @endforeach
+{{--                        @endforeach--}}
 
 
-                    </div>
+{{--                    </div>--}}
 
-                    <!--=======  End of top selling product slider container  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
+{{--                    <!--=======  End of top selling product slider container  =======-->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <!--=====  End of Double row product slider   ======-->
 
