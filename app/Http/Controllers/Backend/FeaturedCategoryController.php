@@ -54,8 +54,8 @@ class FeaturedCategoryController extends Controller
 //            'email.required' => 'We need your email address also',
         ];
         $this->validate($request, $rules, $customMessages);
-        if (FeaturedCategory::count() >= 12){
-            Flashy::success('You Can Only Create 8 Featured Category.');
+        if (FeaturedCategory::count() >= 16){
+            Flashy::success('You Can Only Create 16 Featured Category.');
 
             return redirect()->route('backend.featuredcategories.list');
         }
@@ -132,7 +132,6 @@ class FeaturedCategoryController extends Controller
                 return Redirect::back();
             }
         }
-
 
 
         $fcat->name = $cat->name;

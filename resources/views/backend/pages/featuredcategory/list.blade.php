@@ -7,7 +7,7 @@
     <div class="box">
         <div class="box-header">
             <div class="col-md-3">
-                <h3 class="box-title">Featured Category list (Maximum 12)</h3>
+                <h3 class="box-title">Featured Category list (Maximum 16)</h3>
             </div>
 
             <div class="col-md-6 ">

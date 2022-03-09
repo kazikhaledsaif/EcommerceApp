@@ -67,7 +67,7 @@
                             <label for="inputPrice" class="col-sm-2 control-label">Price</label>
 
                             <div class="col-sm-4">
-                                <input type="number"
+                                <input type="number" step="any"
                                        class="form-control {{ $errors->has('productPresentPrice') ? ' has-error' : '' }}"
                                        id="inputPrice" min="1" name="productPresentPrice"
                                        placeholder="Regular Price (required)" required>
@@ -80,7 +80,7 @@
                             <label for="inputPrice" class="col-sm-2 control-label">Discount Price</label>
 
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" id="inputPrice" name="productDiscountPrice"
+                                <input type="number" step="any" class="form-control" id="inputPrice" name="productDiscountPrice"
                                        placeholder="Discount Price">
                             </div>
                         </div>

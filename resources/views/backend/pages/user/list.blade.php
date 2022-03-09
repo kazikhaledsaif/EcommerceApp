@@ -24,9 +24,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($users as $user)
+                @foreach($users->reverse() as $key=>$user)
                     <tr>
-                        <td>{{ 1  }}</td>
+                        <td>{{ $key+1 }}</td>
                         <td>{{ $user->first_name . " ". $user->last_name  }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->email }}</td>

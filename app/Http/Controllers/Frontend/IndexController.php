@@ -44,7 +44,7 @@ class IndexController extends Controller
         $products_rand = Product::inRandomOrder()->take(8)->get();
         // $products_weekly = Product::whereDate('weekly','$current')->get();
         $products_weekly = DB::select("SELECT * FROM `products` WHERE `weekly_deal` > '$current' ");
-        $featuredCategory = FeaturedCategory::take(12)->orderBy('id', 'Asc')->get();
+        $featuredCategory = FeaturedCategory::take(25)->orderBy('id', 'Asc')->get();
         $top_sell = DB::select("SELECT  `product_id`,`name`,`slug`,`details`,`regular_price`,`discount_price`,`product_image`,
                                     `badge`,`percentage`,
                                  COUNT(`product_id`) AS `value_occurrence`

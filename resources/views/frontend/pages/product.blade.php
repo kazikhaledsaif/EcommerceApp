@@ -143,7 +143,7 @@
 
                         <p class="product-price mb-30">
                             @if( $product->discount_price == 0 )
-                                <span class="main-price"> ${{ $product->regular_price }}</span>
+                                <span class="main-price"> ৳{{ $product->regular_price }}</span>
                             @else
                                 <span class="main-price discounted">৳{{ $product->regular_price }}</span>
                                 <span class="discounted-price"> ৳{{ $product->discount_price }}</span>
