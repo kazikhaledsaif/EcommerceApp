@@ -104,7 +104,7 @@
 
                             <div class="col-sm-4">
                                 <input type="number" min="0" class="form-control" id="inputMaxItem"
-                                {{ $product->per_user_max_item }}    name="inputMaxItem" placeholder="Left blank for unlimited">
+                               value="{{ $product->per_user_max_item }}"   name="inputMaxItem" >
                          </div>
 
                      </div>

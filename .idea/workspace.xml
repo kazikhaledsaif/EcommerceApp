@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f37afbf-5046-4b3d-8387-1f12bc1f55a3" name="Changes" comment="Homepage Edit">
-      <change afterPath="$PROJECT_DIR$/resources.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/FeaturedCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/FeaturedCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/featuredcategory/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/product/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/product/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/CheckoutController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/product/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/product/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/pages/user/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/pages/user/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/product.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -261,7 +257,8 @@
       <workItem from="1644670115177" duration="1463000" />
       <workItem from="1644743265364" duration="868000" />
       <workItem from="1645217892849" duration="359000" />
-      <workItem from="1646834481838" duration="440000" />
+      <workItem from="1646834481838" duration="8949000" />
+      <workItem from="1647169266363" duration="1741000" />
     </task>
     <task id="LOCAL-00001" summary="Changes update">
       <created>1639576813879</created>
@@ -354,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644670164268</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Homepage Edit">
+      <created>1646837113138</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1646837113138</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -33,7 +33,7 @@
     =            single product page content         =
     =============================================-->
 
-    <div class="single-product-page-content mb-80">
+    <div class="single-product-page-content mb-80 mt-50">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-md-50 mb-sm-50">

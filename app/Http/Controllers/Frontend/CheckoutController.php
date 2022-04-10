@@ -54,6 +54,28 @@ class CheckoutController extends Controller
             $user->zip = $request->postcode;
             $user->save();
 
+
+            $itemFinished = false;
+            foreach (Cart::instance('default')->content() as $item) {
+                $product = Product::find($item->model->id);
+
+                if($product->stock  < 1  or $product->stock < $item->qty){
+                    Cart::instance('default')->remove($item->rowId);
+                    $itemFinished = true;
+                }
+
+            }
+
+
+            if ($itemFinished){
+                Flashy::error("Sorry! Some product has been removed from your cart because it can no longer be purchased " );
+
+                return back() ;
+            }
+
+
+
+
             //insert in to order table
             $order = Order::create(
                 [

@@ -47,26 +47,77 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $itemFinished = false;
+        foreach (Cart::instance('default')->content() as $item) {
+            $product = Product::find($item->model->id);
+
+            if($product->stock  < 1  or $product->stock < $item->qty){
+                Cart::instance('default')->remove($item->rowId);
+                $itemFinished = true;
+            }
+
+
+        }
+
+
+        if ($itemFinished){
+            Flashy::error("Sorry! Some product has been removed from your cart because it can no longer be purchased " );
+
+            return back() ;
+        }
 
         $product = Product::find($request->id);
         $rows = Cart::instance('default')->content();
+
         if(count($rows) > 0){
 
+            foreach (Cart::instance('default')->content() as $item) {
+                $product_n = Product::find($item->model->id);
 
-            $rowId = $rows->first()->rowId;
-            if (Cart::instance('default')->content()[ $rowId ]->qty >= $product->stock){
-                Flashy::error('Sorry ! You cannot add more than available quantity!');
-                return back()->with('error_massage','Sorry ! You cannot add more than available quantity');
+                if($request->id ==  $item->model->id ){
+
+                    if ($product_n->stock < $item->qty + $request->quantity  ){
+                        Flashy::error('Sorry ! You try to add more than stock quantity!\n Remove your cart first.');
+                        return back()->with('error_massage','Sorry ! You cannot add more than available quantity');
+                    }
+                    if ($product_n->per_user_max_item != null){
+                        if ($product_n->per_user_max_item < $item->qty + $request->quantity  ){
+                            Flashy::error('Sorry ! You try to add more than your limit ! \n Please check your cart.');
+                            return back()->with('error_massage','Sorry ! You cannot add more than available quantity');
+                        }
+                    }
+
+                }
+
             }
 
-            else {
+
+            if ($request->quantity > $product->stock) {
+                Flashy::error('Sorry ! You cannot add more than available quantity!');
+
+                return back()->with('error_massage', 'Sorry ! You cannot add more than available quantity');
+            } else {
+
                 Cart::instance('default')->add($request->id, $request->name, $request->quantity, $request->price)->associate('App\Product');
-                Flashy::success('Item added to your cart!');
+                Flashy::success('Item was added to your cart!');
 
                 return back()->with('success_message', 'Item added to your cart!');
             }
+//            $rowId = $rows->first()->rowId;
+//
+//            if (Cart::instance('default')->content()[ $rowId ]->qty >= $product->stock){
+//                Flashy::error('Sorry ! You cannot add more than available quantity!');
+//
+//                return back()->with('error_massage','Sorry ! You cannot add more than available quantity');
+//            }
+//
+//            else {
+//                Cart::instance('default')->add($request->id, $request->name, $request->quantity, $request->price)->associate('App\Product');
+//                Flashy::success('Item added to your cart!');
+//
+//                return back()->with('success_message', 'Item added to your cart!');
+//            }
         }else {
-
 
             if ($request->quantity > $product->stock) {
                 Flashy::error('Sorry ! You cannot add more than available quantity!');
