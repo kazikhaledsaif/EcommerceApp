@@ -4452,14 +4452,13 @@ a#more-btn {
         position: absolute;
         display: inline-block;
         right: 10px;
-        width: 35px;
-        height: 35px;
-        background-color: #ffffff;
+        width: 45px;
+        height: 45px;
+        background-color: #04FDA1;
         border-radius: 50%;
         text-align: center;
-        visibility: hidden;
-        opacity: 0;
-        font-size: 14px; }
+        opacity: 1;
+        font-size: 24px; }
         .home-two-wrapper .ptk-product .image a.hover-icon:hover i.lnr {
           color: #369599; }
         .home-two-wrapper .ptk-product .image a.hover-icon i.lnr {
@@ -4582,16 +4581,16 @@ a#more-btn {
         right: 10px;
         width: 35px;
         height: 35px;
-        background-color: #ffffff;
+        background-color: #04FDA1;
         border-radius: 50%;
         text-align: center;
-        visibility: hidden;
-        opacity: 0;
+
+        opacity: 1;
         font-size: 14px; }
         .home-three-wrapper .ptk-product .image a.hover-icon:hover i.lnr {
           color: #85B839; }
         .home-three-wrapper .ptk-product .image a.hover-icon i.lnr {
-          line-height: 35px;
+          line-height: 45px;
           color: #727272; }
       .home-three-wrapper .ptk-product .image a.active i.lnr {
         color: #85B839; }
@@ -4710,25 +4709,25 @@ a#more-btn {
         position: absolute;
         display: inline-block;
         right: 10px;
-        width: 35px;
-        height: 35px;
-        background-color: #ffffff;
+        width: 45px;
+        height: 45px;
+        background-color: #04FDA1;
         border-radius: 50%;
         text-align: center;
-        visibility: hidden;
-        opacity: 0;
-        font-size: 14px; }
+
+        opacity: 1;
+        font-size: 24px; }
         .ptk-product .image a.hover-icon:hover i.lnr {
-          color: #04FDA1; }
+          color: #FFF; }
         .ptk-product .image a.hover-icon i.lnr {
-          line-height: 35px;
+          line-height: 45px;
           color: #727272; }
       .ptk-product .image a.active i.lnr {
         color: #04FDA1; }
       .ptk-product .image a:nth-child(2) {
         top: 20px; }
       .ptk-product .image a:nth-child(3) {
-        top: 65px; }
+        top: 75px; }
       .ptk-product .image a:nth-child(4) {
         bottom: -20px;
         border: 2px solid #04FDA1; }
