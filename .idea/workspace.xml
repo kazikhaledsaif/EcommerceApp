@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f37afbf-5046-4b3d-8387-1f12bc1f55a3" name="Changes" comment="New Cart Floating icon">
-      <change afterPath="$PROJECT_DIR$/design.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/partials/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/IndexController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +257,7 @@
       <workItem from="1647169266363" duration="1741000" />
       <workItem from="1649579798036" duration="691000" />
       <workItem from="1650720433326" duration="10031000" />
-      <workItem from="1654008642891" duration="416000" />
+      <workItem from="1654008642891" duration="872000" />
     </task>
     <task id="LOCAL-00001" summary="Changes update">
       <created>1639576813879</created>
@@ -372,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650743256912</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="New Cart Floating icon">
+      <created>1654009962773</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1654009962773</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

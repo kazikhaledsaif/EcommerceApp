@@ -131,6 +131,18 @@ class IndexController extends Controller
 
     public function feedback(Request $request)
     {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ];
+
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
 
         $feedback = new Feedback();
         $feedback->name = $request->customerName;
@@ -145,8 +157,17 @@ class IndexController extends Controller
 
     public function newsletter(Request $request)
     {
+        $rules = [
+            'mail' => 'required',
+        ];
 
-        echo $request->email;
+        $customMessages = [
+//            'name.required' => 'Yo, what should I call you?',
+//            'email.required' => 'We need your email address also',
+        ];
+        $this->validate($request, $rules, $customMessages);
+
+
         $newsletter = new Newsletter();
         $newsletter->mail = $request->email;
         $newsletter->save();
