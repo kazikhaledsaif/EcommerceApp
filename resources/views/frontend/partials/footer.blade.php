@@ -25,7 +25,7 @@
     <div class="col-4 " style="background: #666" >
         <span class="float-right ">
 
-                  <div class="single-icon mr-20 ">
+                  <div class="single-icon mr-30 ">
         <a href="{{route('frontend.cart.index')}}">
             <i class="lnr lnr-cart"></i>
             <span class="text d-block text-white">My Cart</span>
